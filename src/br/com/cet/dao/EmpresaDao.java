@@ -1,4 +1,4 @@
-package br.com.ordemservico.dao;
+package br.com.cet.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.com.ordemservico.vo.EmpresaVo;
+import br.com.cet.vo.EmpresaVo;
 
 public class EmpresaDao extends BaseDao {
 	

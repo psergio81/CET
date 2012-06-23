@@ -1,10 +1,10 @@
-package br.com.ordemservico.main;
+package br.com.cet.main;
 
 import java.util.Iterator;
 import java.util.List;
 
-import br.com.ordemservico.dao.EmpresaDao;
-import br.com.ordemservico.vo.EmpresaVo;
+import br.com.cet.dao.EmpresaDao;
+import br.com.cet.vo.EmpresaVo;
 
 public class Main {
 	

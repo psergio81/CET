@@ -7,18 +7,18 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-		<script src="/Struts2/padrao/jquery/jquery.js"></script>
+		<script src="/CET/padrao/jquery/jquery.js"></script>
 		
-		<script src="/Struts2/padrao/bootstrap/js/bootstrap.js"></script>
+		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
 		
-		<link rel="stylesheet" href="/Struts2/padrao/bootstrap/css/bootstrap.css">
+		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
 		<style type="text/css">
 	      body {
 	        padding-top: 60px;
 	        padding-bottom: 40px;
 	      }
 	    </style>
-		<link rel="stylesheet" href="/Struts2/padrao/bootstrap/css/bootstrap-responsive.css">
+		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
 
 	</head>
 	

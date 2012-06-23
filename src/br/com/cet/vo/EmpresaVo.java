@@ -1,4 +1,4 @@
-package br.com.ordemservico.vo;
+package br.com.cet.vo;
 
 public class EmpresaVo {
 	

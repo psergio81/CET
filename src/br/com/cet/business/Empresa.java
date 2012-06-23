@@ -1,9 +1,9 @@
-package br.com.ordemservico.business;
+package br.com.cet.business;
 
 import java.util.List;
 
-import br.com.ordemservico.dao.EmpresaDao;
-import br.com.ordemservico.vo.EmpresaVo;
+import br.com.cet.dao.EmpresaDao;
+import br.com.cet.vo.EmpresaVo;
 
 public class Empresa {
 	

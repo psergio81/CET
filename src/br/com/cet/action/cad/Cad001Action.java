@@ -1,9 +1,9 @@
-package br.com.ordemservico.action.cad;
+package br.com.cet.action.cad;
 
 import java.util.List;
 
-import br.com.ordemservico.business.Empresa;
-import br.com.ordemservico.vo.EmpresaVo;
+import br.com.cet.business.Empresa;
+import br.com.cet.vo.EmpresaVo;
 
 import com.opensymphony.xwork2.ActionSupport;
 

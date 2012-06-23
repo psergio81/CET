@@ -9,7 +9,7 @@
 	
 	<package name="default" extends="struts-default">
 
-		<action name="Cad001Action!*" method="{1}" class="br.com.ordemservico.action.cad.Cad001Action">
+		<action name="Cad001Action!*" method="{1}" class="br.com.cet.action.cad.Cad001Action">
 			<result name="success">/cad/cad001i.jsp</result>
 			<result name="browser">/cad/cad001b.jsp</result>
 		</action>

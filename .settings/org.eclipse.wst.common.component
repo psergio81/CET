@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="Struts2">
+    <wb-module deploy-name="CET">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="Struts2"/>
-        <property name="java-output-path" value="/Struts2/build/classes"/>
+        <property name="context-root" value="CET"/>
+        <property name="java-output-path" value="/CET/build/classes"/>
     </wb-module>
 </project-modules>

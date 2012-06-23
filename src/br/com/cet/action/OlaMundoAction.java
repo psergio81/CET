@@ -1,4 +1,4 @@
-package br.com.ordemservico.action;
+package br.com.cet.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 

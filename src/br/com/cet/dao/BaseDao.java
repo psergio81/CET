@@ -1,4 +1,4 @@
-package br.com.ordemservico.dao;
+package br.com.cet.dao;
 
 public class BaseDao extends ConnectionDao{
 

@@ -1,4 +1,4 @@
-package br.com.ordemservico.dao;
+package br.com.cet.dao;
 
 import java.sql.Connection;
 import java.sql.Driver;
