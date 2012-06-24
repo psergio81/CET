@@ -1,5 +1,4 @@
 package br.com.cet.action;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class OlaMundoAction extends ActionSupport{
