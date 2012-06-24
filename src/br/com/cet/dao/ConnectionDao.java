@@ -1,23 +1,48 @@
 package br.com.cet.dao;
 
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionDao{
 	
-	public static Connection getConnection() throws Exception { 
+	public static Connection getConnection() throws SQLException { 
 		
-	     Driver d = (Driver) Class.forName("sun.jdbc.odbc.JdbcOdbcDriver").newInstance();  
-	     Connection c = DriverManager.getConnection("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=C:/java/banco/access2003/banco.mdb");  
-	     return c;  
-	     /* 
-	     To use an already defined ODBC Datasource :     
-	      
-	        String URL = "jdbc:odbc:myDSN"; 
-	        Connection c = DriverManager.getConnection(URL, "user", "pwd");  
-	         
-	     */       
-	    }  
+		return getConnectionMySql();
+//		return getConnectionAccess();
+		
+	}
 
+	
+	private static Connection getConnectionAccess() throws SQLException{
+		Connection c = null;
+		
+	     try {
+			
+	    	 Class.forName("sun.jdbc.odbc.JdbcOdbcDriver").newInstance();
+	    	 c = DriverManager.getConnection("jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=C:/java/banco/access2003/banco.mdb");
+			
+		} catch ( InstantiationException | IllegalAccessException| ClassNotFoundException e) {
+			e.printStackTrace();
+		}  
+	     
+	     return c;
+	}  
+	
+	
+	private static Connection getConnectionMySql(){
+		
+		String url = "jdbc:mysql://localhost/ensaio";
+		String user = "root";
+		String password = "P@ssw0rd";
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver"); 
+			return DriverManager.getConnection(url, user, password);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+	}
+	
 }

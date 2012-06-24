@@ -1,6 +1,5 @@
 package br.com.cet.main;
 
-import java.util.Iterator;
 import java.util.List;
 
 import br.com.cet.dao.EmpresaDao;

@@ -1,5 +1,9 @@
 package br.com.cet.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 public class BaseDao extends ConnectionDao{
 
 
@@ -40,5 +44,39 @@ public class BaseDao extends ConnectionDao{
 		busca = "values".concat(busca);
 
 		return busca;
+	}
+
+	
+	public void releaseResouces(Connection connection, PreparedStatement ps, ResultSet rs) {
+		this.releaseResoucesAll(connection, ps, rs);
+	}
+
+	public void releaseResouces(Connection connection, PreparedStatement ps) {
+		this.releaseResoucesAll(connection, ps, null);
+	}
+
+	public void releaseResouces(Connection connection, ResultSet rs) {
+		this.releaseResoucesAll(connection, null, rs);
+	}
+	
+	
+	private void releaseResoucesAll(Connection connection, PreparedStatement ps, ResultSet rs) {
+		try {  
+	
+			if (connection != null){
+				connection.close();
+			}
+			
+			if(ps != null){
+				ps.close();
+			}
+
+			if(rs != null){
+				rs.close();
+			}
+			
+		}catch (Exception e) { 
+			e.printStackTrace();
+		}
 	}
 }

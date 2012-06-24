@@ -34,7 +34,7 @@ public class Empresa {
 			 empresaDao.insertEmpresas(empresaVo);
 			
 		}catch (Exception e) {
-			throw new Exception(e);
+			e.printStackTrace();
 		}
 	}
 
