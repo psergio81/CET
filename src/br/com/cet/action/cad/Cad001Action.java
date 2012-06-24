@@ -2,12 +2,13 @@ package br.com.cet.action.cad;
 
 import java.util.List;
 
+import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class Cad001Action extends ActionSupport{
+public class Cad001Action extends RecursoPadraoAction{
 	
 	private EmpresaVo empresaVo = new EmpresaVo();
 	private Empresa empresa = new Empresa();
