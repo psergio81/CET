@@ -177,6 +177,7 @@ a:hover {
 .row {
   margin-left: -20px;
   *zoom: 1;
+  background-color: #555;
 }
 
 .row:before,
@@ -789,7 +790,6 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 18px;
   padding: 4px;
   margin-bottom: 9px;
   font-size: 13px;
@@ -959,15 +959,39 @@ input[type="checkbox"]:focus {
 }
 
 .input-large {
-  width: 210px;
+  width: 217.5px;
 }
 
 .input-xlarge {
-  width: 270px;
+  width: 345px;
 }
 
 .input-xxlarge {
   width: 530px;
+}
+
+.input-100 {
+  width: 100px;
+}
+.input-185 {
+  width: 185px;
+}
+
+.input-200 {
+  width: 200px;
+}
+
+.input-300 {
+  width: 300px;
+}
+.input-400 {
+  width: 400px;
+}
+.input-500 {
+  width: 500px;
+}
+.input-600 {
+  width: 600px;
 }
 
 input[class*="span"],
@@ -3789,7 +3813,7 @@ input[type="submit"].btn.btn-mini {
   float: left;
 }
 
-.navbar .nav > li > a {
+.navbar .nav > li > a > s:a {
   float: none;
   padding: 9px 10px 11px;
   line-height: 19px;
@@ -4508,9 +4532,9 @@ a.thumbnail:hover {
 
 .label,
 .badge {
-  font-size: 10.998px;
+  font-size: 12px;
   font-weight: bold;
-  line-height: 14px;
+  line-height: 25px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
