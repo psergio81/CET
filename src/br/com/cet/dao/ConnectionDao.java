@@ -8,8 +8,8 @@ public class ConnectionDao{
 	
 	public static Connection getConnection() throws SQLException { 
 		
-		return getConnectionMySql();
-//		return getConnectionAccess();
+//		return getConnectionMySql();
+		return getConnectionAccess();
 		
 	}
 
