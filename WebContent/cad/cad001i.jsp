@@ -31,9 +31,13 @@
 	      	
 	      }
 	      .label{
-	      	width: 85px;
+	      	width: 120px;
 	      
-	      .
+	      }
+	      
+	      .input, select{
+			margin-right: 20px;	      
+	      }
 	      
 	    </style>
 		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
@@ -73,39 +77,60 @@
 		<form action="Cad001Action!crud.action" class="well form-inline">
 			<fieldset>
 				<p>
-			 		<label class="label">Nome</label>
-					<input type="text" class="input-600 focused input">
-		
+			 		<label class="label">Razão Social</label>
+					<input type="text" class="input-500 focused input" required="required">
+
+			 		<label class="label">Nome Fantasia</label>
+					<input type="text" class="input-320 focused input">
 				</p>
 				<p>
 			 		<label class="label">Endereço</label>
-					<input type="text" class="input-400 focused">
+					<input type="text" class="input-700 focused input">
 	
 			 		<label class="label">Número</label>
-					<input type="text" id="numero" name="numero" class="input input-100">
+					<input type="text" id="numero" name="numero" class="input input-120">
 				</p>
 				<p>
 			 		<label class="label">Complemento</label>
-					<input type="text" class="input-300 focused">
+					<input type="text" class="input-300 focused input">
 	
 			 		<label class="label">Bairro</label>
-					<input type="text" class="input-200 focused">
+					<input type="text" class="input-245 focused input">
+
+			 		<label class="label">CEP</label>
+					<input type="text" id="cep" name="cep" class="input-120 focused input">
 				</p>
 	
 				<p>
-			 		<label class="label">CEP</label>
-					<input type="text" id="cep" name="cep" class="input-100 focused">
-	
 			 		<label class="label">Cidade</label>
-					<input type="text" class="input-200 focused">
+					<input type="text" class="input-300 focused input">
 	
 			 		<label class="label">Estado</label>
-					<input type="text" class="input-100 focused">
+			 		<select class="input-245 focused">
+			 			<option value="0"></option>
+			 			<option value="1">São Paulo</option>
+			 		</select>
+
+			 		<label class="label">Telefone</label>
+					<input id="telefone" type="tel" class="input-120 focused input">
+				</p>
+
+				<p>
+			 		<label class="label">Fax</label>
+					<input type="tel" class="input-120 focused input">
+					
+			 		<label class="label">Site</label>
+					<input type="text" class="input-300 focused input">
+	
+			 		<label class="label">E-mail</label>
+					<input type="email" class="input-245 focused input">
+
 				</p>
 				
 			</fieldset>
 		</form>
 	</div>
+
 
 	<s:form action="Cad001Action!crud.action">
 	   <s:textfield name="empresaVo.codigoEmpresa" label="Codigo" /><br/>
@@ -126,6 +151,8 @@
 	$(function($){
 		
 		$('#cep').mask('99999-999');
+		$('#telefone').mask('(99) 9999-9999?9');
+		$('#fax').mask('(99) 9999-9999?9');
 	
 	});
 

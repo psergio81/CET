@@ -973,6 +973,11 @@ input[type="checkbox"]:focus {
 .input-100 {
   width: 100px;
 }
+
+.input-120 {
+  width: 120px;
+}
+
 .input-185 {
   width: 185px;
 }
@@ -981,8 +986,16 @@ input[type="checkbox"]:focus {
   width: 200px;
 }
 
+.input-245 {
+  width: 245px;
+}
+
 .input-300 {
   width: 300px;
+}
+
+.input-320 {
+  width: 320px;
 }
 .input-400 {
   width: 400px;
@@ -992,6 +1005,17 @@ input[type="checkbox"]:focus {
 }
 .input-600 {
   width: 600px;
+}
+.input-700 {
+  width: 700px;
+}
+
+.input-800 {
+  width: 800px;
+}
+
+.input-900 {
+  width: 900px;
 }
 
 input[class*="span"],
