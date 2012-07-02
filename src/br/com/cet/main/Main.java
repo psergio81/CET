@@ -8,6 +8,7 @@ import br.com.cet.vo.EmpresaVo;
 public class Main {
 	
 	public static void main(String[] args) {
+		testeInsert();
 		testeConexaoBanco();
 	}
 	
@@ -20,6 +21,18 @@ public class Main {
 			System.out.println("Codigo Empresa........: "+empresaVo.getCodigoEmpresa());
 			System.out.println("Nome Empresa..........: "+empresaVo.getNomeEmpresa());
 			System.out.println("--------- || ---------");
+		}
+	}
+	
+	public static void testeInsert(){
+		EmpresaDao empresaDao = new EmpresaDao();
+
+		EmpresaVo empresaVo = new EmpresaVo("1","Teste");
+		
+		try {
+			empresaDao.insertEmpresas(empresaVo);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
