@@ -48,8 +48,8 @@
 		<div class="navbar-inner">
 			<div class="row">
 				<div class="span4">
-					<a class="btn btn-info" href="#">
-						<i class="icon-search icon-white">
+					<a class="btn btn-info" href="javaScript:irParaBrowser();">
+						<i class="icon-search icon-white"/>
 						</i>
 						Browser
 					</a>
@@ -74,56 +74,56 @@
 	</div>
 	
 	<div class="container">
-		<form action="Cad001Action!crud.action" class="well form-inline">
+		<form id="cad001" name="cad001" action="Cad001Action!crud.action" class="well form-inline">
 			<fieldset>
 				<p>
 			 		<label class="label">Razão Social</label>
-					<input type="text" class="input-500 focused input" required="required">
+					<input id="razaoSocial" name="razaoSocial" type="text" class="input-500 focused input" required="required">
 
 			 		<label class="label">Nome Fantasia</label>
-					<input type="text" class="input-320 focused input">
+					<input id="nomeFantasia" name="nomeFantasia" type="text" class="input-320 focused input">
 				</p>
 				<p>
 			 		<label class="label">Endereço</label>
-					<input type="text" class="input-700 focused input">
+					<input id="endereco" name="endereco" type="text" class="input-700 focused input">
 	
 			 		<label class="label">Número</label>
-					<input type="text" id="numero" name="numero" class="input input-120">
+					<input id="numero" name="numero" type="text" class="input input-120">
 				</p>
 				<p>
 			 		<label class="label">Complemento</label>
-					<input type="text" class="input-300 focused input">
+					<input id="complemento" name="complemento" type="text" class="input-300 focused input">
 	
 			 		<label class="label">Bairro</label>
-					<input type="text" class="input-245 focused input">
+					<input id="bairro" name="bairro" type="text" class="input-245 focused input">
 
 			 		<label class="label">CEP</label>
-					<input type="text" id="cep" name="cep" class="input-120 focused input">
+					<input  id="cep" name="cep" type="text" class="input-120 focused input">
 				</p>
 	
 				<p>
 			 		<label class="label">Cidade</label>
-					<input type="text" class="input-300 focused input">
+					<input id="cidade" name="cidade" type="text" class="input-300 focused input" required="required">
 	
 			 		<label class="label">Estado</label>
-			 		<select class="input-245 focused">
-			 			<option value="0"></option>
+			 		<select id="estado" name="estado" class="text required">
+			 			<option value="">Selecione um Estado...</option>
 			 			<option value="1">São Paulo</option>
 			 		</select>
 
 			 		<label class="label">Telefone</label>
-					<input id="telefone" type="tel" class="input-120 focused input">
+					<input id="telefone" name="telefone" type="tel" class="input-120 focused input" required="required">
 				</p>
 
 				<p>
 			 		<label class="label">Fax</label>
-					<input type="tel" class="input-120 focused input">
+					<input id="fax" name="fax" type="tel" class="input-120 focused input" required="required">
 					
 			 		<label class="label">Site</label>
-					<input type="text" class="input-300 focused input">
+					<input id="site" name="site" type="text" class="input-300 focused input">
 	
 			 		<label class="label">E-mail</label>
-					<input type="email" class="input-245 focused input">
+					<input id="email" name="email" type="email" class="input-245 focused input">
 
 				</p>
 				
@@ -132,14 +132,6 @@
 	</div>
 
 
-	<s:form action="Cad001Action!crud.action">
-	   <s:textfield name="empresaVo.codigoEmpresa" label="Codigo" /><br/>
-	   <s:textfield name="empresaVo.nomeEmpresa" label="Nome" /><br/>
-	   <s:submit/>
-	</s:form>
-	<br>
-	<s:a action="Cad001Action!browser.action">ir ao browser</s:a>
-	
 	<div class="navbar navbar-fixed-bottom">
 		<div class="navbar-inner">
      	</div>
@@ -153,15 +145,37 @@
 		$('#cep').mask('99999-999');
 		$('#telefone').mask('(99) 9999-9999?9');
 		$('#fax').mask('(99) 9999-9999?9');
-	
+		
 	});
 
 	function salvarCadastro(){
-		alert('função não implementada!');		
+		buscaProximoCampo();
 	}
 
 	function cancelarCadastro(){
 		alert('função não implementada!');		
+	}
+
+	function irParaBrowser(){
+		
+		$('#cad001').attr("action","Cad001Action!browser.action");
+		$('#cad001').submit();
+		
+	}
+
+	// Busca os campos requeridos no formulario e caso não esteja preenchido emite um alerta(provisório) e move o foco para o campo
+	function buscaProximoCampo(){
+		
+		$('input:required, .required').each(function(i,obj){
+
+			if(this.value == ''){
+				alert("Campo Obrigatório!");
+				this.focus();
+				return false;
+			}
+			
+		});
+		
 	}
 	
 </script>
