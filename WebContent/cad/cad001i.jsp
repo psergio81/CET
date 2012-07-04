@@ -22,17 +22,8 @@
 	        background-color: #f5f5f5;
 	      }
 	      
-	      .btn{
-	      	 width: 80px;
-	      }
-	      
-	      .btn-large{
-	      	width: 300px;
-	      	
-	      }
 	      .label{
 	      	width: 120px;
-	      
 	      }
 	      
 	      .input, select{
@@ -49,7 +40,7 @@
 			<div class="row">
 				<div class="span4">
 					<a class="btn btn-info" href="javaScript:irParaBrowser();">
-						<i class="icon-search icon-white"/>
+						<i class="icon-search icon-white">
 						</i>
 						Browser
 					</a>
@@ -140,6 +131,12 @@
 		</s:form>
 	</div>
 
+	<div id="classeErro" class="alert alert-error" hidden="true">
+		<a class="close" data-dismiss="alert" href="#">×</a>
+		<h4 class="alert-heading">Erro!</h4>
+	  		Campos Obrigatórios!
+	</div>
+
 
 	<div class="navbar navbar-fixed-bottom">
 		<div class="navbar-inner">
@@ -178,13 +175,16 @@
 		$('input:required, .required').each(function(i,obj){
 
 			if(this.value == ''){
-				alert("Campo Obrigatório!");
+				
+				$('#classeErro').fadeIn(3000,function(){
+					$('#classeErro').fadeOut(3000);		
+				});
+				
 				this.focus();
 				return false;
 			}
 			
 		});
-		
 	}
 	
 </script>
