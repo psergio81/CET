@@ -11,6 +11,48 @@ import br.com.cet.vo.EmpresaVo;
 
 public class EmpresaDao extends BaseDao {
 	
+	
+	public EmpresaVo getEmpresaPeloCodigo(EmpresaVo empresaVo){
+		return getEmpresa(empresaVo, 1);
+	}
+	
+	private EmpresaVo getEmpresa(EmpresaVo empresaVo, int criterio){
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+	    PreparedStatement ps = null;  
+	    StringBuilder qry = new StringBuilder(); 
+	    int i = 1;
+	    
+	    try {  
+	    	
+	    	connection = getConnection();  
+	  
+		    qry.append("SELECT cd_empresa, nm_empresa FROM empresa where cd_empresa = 1");
+		    
+		    ps = connection.prepareStatement(qry.toString());  
+		    
+		  //  ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+		    
+		    rs = ps.executeQuery(qry.toString());  
+		    
+		    empresaVo = null;
+		    
+		    if (rs.next()) {  
+		    	empresaVo = new EmpresaVo(rs.getString("cd_empresa"),rs.getString("nm_empresa"));
+		    }  
+		    
+	    }catch (Exception e) {  
+	        e.printStackTrace();
+	    }finally {
+	    	releaseResouces(connection, ps, rs);
+	    } 
+	    
+	    return empresaVo;
+		
+	}
+	
+	
 	public List<EmpresaVo> getListaEmpresas(){
 		
 		Connection connection = null;
@@ -49,10 +91,6 @@ public class EmpresaDao extends BaseDao {
 	
 	
 	public void insertEmpresas(EmpresaVo empresaVo) throws Exception{
-		
-		System.out.println("EmpresaDao.insertEmpresas()");
-		System.out.println("EmpresaVo nome "+empresaVo.getNomeEmpresa());
-		System.out.println("EmpresaVo codi "+empresaVo.getCodigoEmpresa());
 		
 		Connection connection = null;
 		PreparedStatement  ps = null;  

@@ -11,6 +11,17 @@ import com.opensymphony.xwork2.Preparable;
 
 public class SystemAction extends ActionSupport implements Preparable,SessionAware,RequestAware, ApplicationAware{
 
+	protected String ac;
+		
+	
+	public String getAc() {
+		return ac;
+	}
+
+	public void setAc(String ac) {
+		this.ac = ac;
+	}
+
 	@Override
 	public void setApplication(Map<String, Object> arg0) {
 		

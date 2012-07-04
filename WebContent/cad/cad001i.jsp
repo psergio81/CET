@@ -74,14 +74,14 @@
 	</div>
 	
 	<div class="container">
-		<form id="cad001" name="cad001" action="Cad001Action!crud.action" class="well form-inline">
+		<s:form id="cad001" name="cad001" action="Cad001Action!crud.action" class="well form-inline">
 			<fieldset>
 				<p>
 			 		<label class="label">Razão Social</label>
 					<input id="razaoSocial" name="razaoSocial" type="text" class="input-500 focused input" required="required">
 
 			 		<label class="label">Nome Fantasia</label>
-					<input id="nomeFantasia" name="nomeFantasia" type="text" class="input-320 focused input">
+					<s:textfield name="empresaVo.nomeEmpresa"  id="nomeEmpresa" class="input-320 focused input"/>
 				</p>
 				<p>
 			 		<label class="label">Endereço</label>
@@ -122,13 +122,22 @@
 			 		<label class="label">Site</label>
 					<input id="site" name="site" type="text" class="input-300 focused input">
 	
-			 		<label class="label">E-mail</label>
-					<input id="email" name="email" type="email" class="input-245 focused input">
-
+			 		
+			 		<div class="input-prepend">
+			 		
+			 			<label class="label">E-mail</label>
+			 			
+				 		<span class="add-on">
+				 			<i class="icon-envelope"></i>
+				 		</span>
+				 		
+						<input id="email" name="email" type="email" class="input-245 focused input">
+						
+					</div>
 				</p>
 				
 			</fieldset>
-		</form>
+		</s:form>
 	</div>
 
 

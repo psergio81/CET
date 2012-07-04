@@ -7,6 +7,10 @@ public class EmpresaVo {
 	
 	public EmpresaVo(){}
 	
+	public EmpresaVo(String codigoEmpresa){
+		this.codigoEmpresa = codigoEmpresa;
+	}
+	
 	public EmpresaVo(String codigoEmpresa, String nomeEmpresa){
 		this.codigoEmpresa = codigoEmpresa;
 		this.nomeEmpresa = nomeEmpresa;

@@ -13,6 +13,7 @@ public class Cad001Action extends RecursoPadraoAction{
 	private EmpresaVo empresaVo = new EmpresaVo();
 	private Empresa empresa = new Empresa();
 	private List<EmpresaVo> listaEmpresa = null;
+	private String codigoEmpresaSelecionado;
 	
 	
 	public void prepare(){
@@ -36,10 +37,21 @@ public class Cad001Action extends RecursoPadraoAction{
 		
 		System.out.println("passou crud.........");
 		
+		System.out.println("ac...: "+ac);
+		System.out.println("codigoEmpresaSelecionado...: "+codigoEmpresaSelecionado);
+		
+		if("con".equals(ac)){
+			
+			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
+			
+		}else if("save_inc".equals(ac)){
+			
+			empresa.insertEmpresa(empresaVo);
+		}
+		
+		
 		System.out.println("EmpresaVo nome "+empresaVo.getNomeEmpresa());
 		System.out.println("EmpresaVo codi "+empresaVo.getCodigoEmpresa());
-		
-		empresa.insertEmpresa(empresaVo);
 		
 		return SUCCESS;
 	}
@@ -60,6 +72,14 @@ public class Cad001Action extends RecursoPadraoAction{
 
 	public void setListaEmpresa(List<EmpresaVo> listaEmpresa) {
 		this.listaEmpresa = listaEmpresa;
+	}
+	
+	public String getCodigoEmpresaSelecionado() {
+		return codigoEmpresaSelecionado;
+	}
+
+	public void setCodigoEmpresaSelecionado(String codigoEmpresaSelecionado) {
+		this.codigoEmpresaSelecionado = codigoEmpresaSelecionado;
 	}
 
 }

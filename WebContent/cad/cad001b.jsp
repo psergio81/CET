@@ -13,53 +13,84 @@
 		<title>(cad001b.jsp) Cadastro de OS</title>
 		
 		<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
-		<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
 		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
+		<script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
 		
 		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
 		
+		 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+   		 <!--[if lt IE 9]>
+	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+		
+		<style>
+		 body {
+        	padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      	 }
+      	 </style>
+      	 
 	</head>
 	
 	<body>
 	
+	
+	
 	<div class="navbar navbar-fixed-top">
+	
 		<div class="navbar-inner">
-			<div class="row">
-				<div class="span4">
-					<a class="btn btn-info" href="#">
-						<i class="icon-search icon-white">
-						</i>
-						Browser
-					</a>
-				</div>
+		
+			 <div class="container">
+			 
+			 	<a class="brand" href="#">
+  					Ensaio
+				</a>
 				
-				<div class="span12" align="right">
-					<button class="btn btn-large disabled">Cadastro Empresa</button>
-				</div>
-			</div>
+				<ul class="nav nav-pills">
+				
+					<li class="active"><a href="#">Regular link</a></li>
+					
+				  	<li class="dropdown" id="menu1">
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Dropdown<b class="caret"></b></a>
+					    <ul class="dropdown-menu">
+					    	<li><a href="#">Action</a></li>
+					      	<li><a href="#">Another action</a></li>
+					      	<li><a href="#">Something else here</a></li>
+					      	<li class="divider"></li>
+					      	<li><s:a action="Cad001Action!crud.action">cadastro de empresa- crud</s:a></li>
+					    </ul>
+				  	</li>
+				</ul>
+				
+				<form class="navbar-search pull-left">
+  					<input type="text" class="search-query" placeholder="Search">
+				</form>
+			 </div>
+		
      	</div>
+     	
 	</div>
 	
 	<div class="container">
-	
-		<div><br><br><br></div>
 		
-		<table width="100%" class="table table-bordered">
+		<table width="100%" class="table table-bordered table-striped ">
 
-			<tr>
-				<th width="20%">Codigo</th>
-				<th width="*">Nome</th>
-			</tr>
-			
-			<s:iterator  value="listaEmpresa" status="status">
+			<thead>
 				<tr>
-					<td><s:property value="codigoEmpresa" /></td>
-					<td><s:property value="nomeEmpresa" /></td>
+					<th width="20%">Codigo</th>
+					<th width="*">Nome</th>
 				</tr>
-			</s:iterator>
+			</thead>
+			
+			<tbody>
+				<s:iterator  value="listaEmpresa" status="status">
+					<tr>
+						<td><s:property value="codigoEmpresa" /></td>
+						<td><a href="Cad001Action!crud.action?ac=con&codigoEmpresaSelecionado=1"><s:property value="nomeEmpresa" /></a></td>
+					</tr>
+				</s:iterator>
+			</tbody>
 		</table>
 	
-		<s:a action="Cad001Action!crud.action">cadastro de empresa- crud</s:a>
 	</div>
 	
 	<div class="navbar navbar-fixed-bottom">
@@ -69,3 +100,11 @@
 	
 	</body>
 </html>
+
+<script>
+$('.dropdown-toggle').dropdown();
+
+function selBrowser(codigo){
+	
+}
+</script>

@@ -24,9 +24,25 @@ public class Empresa {
 		
 	}
 	
-	public void insertEmpresa(EmpresaVo empresaVo) throws Exception{
+	public EmpresaVo getEmpresaPeloCodigo(String codigoEmpresa) throws Exception{
 		
-		System.out.println("Empresa.insertEmpresa()");
+		EmpresaVo empresaVo = new EmpresaVo(codigoEmpresa);
+		
+		try{
+			
+			EmpresaDao empresaDao = new EmpresaDao();
+		
+			empresaVo = empresaDao.getEmpresaPeloCodigo(empresaVo);
+			
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+		
+		return empresaVo;
+		
+	}
+	
+	public void insertEmpresa(EmpresaVo empresaVo) throws Exception{
 		
 		try{
 			

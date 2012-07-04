@@ -27,7 +27,7 @@ public class Main {
 	public static void testeInsert(){
 		EmpresaDao empresaDao = new EmpresaDao();
 
-		EmpresaVo empresaVo = new EmpresaVo("1","Teste");
+		EmpresaVo empresaVo = new EmpresaVo("2","Teste 2");
 		
 		try {
 			empresaDao.insertEmpresas(empresaVo);
