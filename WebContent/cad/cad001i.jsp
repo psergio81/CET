@@ -1,7 +1,18 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
-<%@taglib uri="/struts-tags" prefix="s"%>
-
+<!DOCTYPE html>
 <html lang="en">
+
+<head>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <sb:head/>
+</head>
 
 <meta charset="utf-8">
 	    <title>(cad001i.jsp) Cadastro de OS</title>
@@ -23,17 +34,15 @@
 	      }
 	      
 	      .label{
-	      	width: 120px;
-	      }
-	      
-	      .input, select{
-			margin-right: 20px;	      
+	      	width: 150px;
 	      }
 	      
 	    </style>
 		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
 
 <body>
+
+
 
 	<div class="navbar navbar-fixed-top">
 		<div class="navbar-inner">
@@ -65,69 +74,22 @@
 	</div>
 	
 	<div class="container">
-		<s:form id="cad001" name="cad001" action="Cad001Action!crud.action" class="well form-inline">
-			<fieldset>
-				<p>
-			 		<label class="label">Razão Social</label>
-					<input id="razaoSocial" name="razaoSocial" type="text" class="input-500 focused input" required="required">
+		<s:form action="Cad001Action!crud.action" theme="bootstrap" cssClass="well form-horizontal" >
+			
+			<s:textfield name="empresaVo.nomeEmpresa" label="Razão Social" id="razaoSocial" required="required" cssClass="input-500 "/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Nome Fantasia" id="razaoSocial" required="required" cssClass="input-500"/>
 
-			 		<label class="label">Nome Fantasia</label>
-					<s:textfield name="empresaVo.nomeEmpresa"  id="nomeEmpresa" class="input-320 focused input"/>
-				</p>
-				<p>
-			 		<label class="label">Endereço</label>
-					<input id="endereco" name="endereco" type="text" class="input-700 focused input">
-	
-			 		<label class="label">Número</label>
-					<input id="numero" name="numero" type="text" class="input input-120">
-				</p>
-				<p>
-			 		<label class="label">Complemento</label>
-					<input id="complemento" name="complemento" type="text" class="input-300 focused input">
-	
-			 		<label class="label">Bairro</label>
-					<input id="bairro" name="bairro" type="text" class="input-245 focused input">
-
-			 		<label class="label">CEP</label>
-					<input  id="cep" name="cep" type="text" class="input-120 focused input">
-				</p>
-	
-				<p>
-			 		<label class="label">Cidade</label>
-					<input id="cidade" name="cidade" type="text" class="input-300 focused input" required="required">
-	
-			 		<label class="label">Estado</label>
-			 		<select id="estado" name="estado" class="text required">
-			 			<option value="">Selecione um Estado...</option>
-			 			<option value="1">São Paulo</option>
-			 		</select>
-
-			 		<label class="label">Telefone</label>
-					<input id="telefone" name="telefone" type="tel" class="input-120 focused input" required="required">
-				</p>
-
-				<p>
-			 		<label class="label">Fax</label>
-					<input id="fax" name="fax" type="tel" class="input-120 focused input" required="required">
-					
-			 		<label class="label">Site</label>
-					<input id="site" name="site" type="text" class="input-300 focused input">
-	
-			 		
-			 		<div class="input-prepend">
-			 		
-			 			<label class="label">E-mail</label>
-			 			
-				 		<span class="add-on">
-				 			<i class="icon-envelope"></i>
-				 		</span>
-				 		
-						<input id="email" name="email" type="email" class="input-245 focused input">
-						
-					</div>
-				</p>
-				
-			</fieldset>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Endereço" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Número" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Complemento" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Bairro" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Cidade" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Estado" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Telefone" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Fax" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="WebSite" id="razaoSocial" required="required" cssClass="input-500"/>
+			<s:textfield name="empresaVo.nomeEmpresa" label="Email" id="razaoSocial" required="required" cssClass="input-500"/>
+			
 		</s:form>
 	</div>
 

@@ -1174,6 +1174,20 @@ input[type="checkbox"][readonly] {
   color: #b94a48;
 }
 
+.control-label{
+	font-size: 12px;
+  	font-weight: bold;
+  	line-height: 21px;
+  	color: #ffffff;
+  	background-color: #999999;
+
+	padding: 1px 6px 2px;
+  	-webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+
 .control-group.error .checkbox,
 .control-group.error .radio,
 .control-group.error input,
@@ -1536,7 +1550,7 @@ legend + .control-group {
   float: left;
   width: 140px;
   padding-top: 5px;
-  text-align: right;
+  text-align: left;
 }
 
 .form-horizontal .controls {
