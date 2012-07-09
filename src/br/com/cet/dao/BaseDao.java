@@ -79,4 +79,36 @@ public class BaseDao extends ConnectionDao{
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public int getProximoCodigo(String nomeTabela, String nomeCampo){
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+	    PreparedStatement ps = null;  
+	    StringBuilder qry = new StringBuilder(); 
+	    int retorno = 0;
+	    
+	    try {  
+	    	
+	    	connection = getConnection();  
+	  
+		    qry.append("select max("+nomeCampo+") "+nomeCampo+" FROM "+nomeTabela);
+		    
+		    ps = connection.prepareStatement(qry.toString());  
+		    rs = ps.executeQuery();  
+		    
+		    if (rs.next()) {
+				retorno = rs.getInt("cd_empresa");
+		    }  
+		    
+	    }catch (Exception e) {  
+	        e.printStackTrace();
+	    }finally {
+	    	releaseResouces(connection, ps, rs);
+	    }
+		
+		return ++retorno;
+	}
+	
 }

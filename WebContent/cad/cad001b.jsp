@@ -50,13 +50,11 @@
 					<li class="active"><a href="#">Regular link</a></li>
 					
 				  	<li class="dropdown" id="menu1">
-					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Dropdown<b class="caret"></b></a>
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Cadastro<b class="caret"></b></a>
 					    <ul class="dropdown-menu">
-					    	<li><a href="#">Action</a></li>
-					      	<li><a href="#">Another action</a></li>
-					      	<li><a href="#">Something else here</a></li>
+					      	<li><s:a action="Cad001Action!crud.action">Empresa</s:a></li>
+					      	<li><s:a action="Cad001Action!crud.action">Usuário</s:a></li>
 					      	<li class="divider"></li>
-					      	<li><s:a action="Cad001Action!crud.action">cadastro de empresa- crud</s:a></li>
 					    </ul>
 				  	</li>
 				</ul>
@@ -84,8 +82,12 @@
 			<tbody>
 				<s:iterator  value="listaEmpresa" status="status">
 					<tr>
-						<td><s:property value="codigoEmpresa" /></td>
-						<td><a href="Cad001Action!crud.action?ac=con&codigoEmpresaSelecionado=1"><s:property value="nomeEmpresa" /></a></td>
+						<td>
+							<s:property value="codigoEmpresa" />
+						</td>
+						<td>
+							<a href="Cad001Action!crud.action?ac=con&codigoEmpresaSelecionado=<s:property value="codigoEmpresa" />"><s:property value="razaoSocial" /></a>
+						</td>
 					</tr>
 				</s:iterator>
 			</tbody>

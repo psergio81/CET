@@ -12,6 +12,13 @@ import br.com.cet.vo.EmpresaVo;
 public class EmpresaDao extends BaseDao {
 	
 	
+	public int getProximoCodigo(){
+		
+		return getProximoCodigo("empresa", "cd_empresa");
+		
+	}
+	
+	
 	public EmpresaVo getEmpresaPeloCodigo(EmpresaVo empresaVo){
 		return getEmpresa(empresaVo, 1);
 	}
@@ -28,18 +35,21 @@ public class EmpresaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT cd_empresa, nm_empresa FROM empresa where cd_empresa = 1");
+		    qry.append("SELECT cd_empresa, nm_empresa FROM empresa where cd_empresa = ?");
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
-		  //  ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
 		    
-		    rs = ps.executeQuery(qry.toString());  
+		    rs = ps.executeQuery();  
 		    
 		    empresaVo = null;
 		    
 		    if (rs.next()) {  
-		    	empresaVo = new EmpresaVo(rs.getString("cd_empresa"),rs.getString("nm_empresa"));
+		    	empresaVo = new EmpresaVo();
+		    	
+		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
+		    	empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    }  
 		    
 	    }catch (Exception e) {  
@@ -76,7 +86,7 @@ public class EmpresaDao extends BaseDao {
 		    while (rs.next()) {  
 		    	empresaVo = new EmpresaVo();
 		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
-		        empresaVo.setNomeEmpresa(rs.getString("nm_empresa"));
+		        empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    	empresasList.add(empresaVo);
 		    }  
 		    
@@ -109,7 +119,7 @@ public class EmpresaDao extends BaseDao {
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
-		    ps.setString(i++, empresaVo.getNomeEmpresa());
+		    ps.setString(i++, empresaVo.getRazaoSocial());
 		    
 		    ps.executeUpdate();
 		    

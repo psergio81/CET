@@ -47,6 +47,10 @@ public class Empresa {
 		try{
 			
 			EmpresaDao empresaDao = new EmpresaDao();
+			String codigoEmpresa;
+			codigoEmpresa = String.valueOf(empresaDao.getProximoCodigo());
+
+			empresaVo.setCodigoEmpresa(codigoEmpresa);
 			 empresaDao.insertEmpresas(empresaVo);
 			
 		}catch (Exception e) {

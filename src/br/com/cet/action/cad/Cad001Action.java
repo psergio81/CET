@@ -35,14 +35,15 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	public String crud() throws Exception{
 		
-		System.out.println("passou crud.........");
-		
+		System.out.println("Cad001Action.crud()");
 		System.out.println("ac...: "+ac);
-		System.out.println("codigoEmpresaSelecionado...: "+codigoEmpresaSelecionado);
 		
 		if("con".equals(ac)){
 			
 			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
+			
+			System.out.println("codigo     : "+empresaVo.getCodigoEmpresa());
+			System.out.println("razaoSocial: "+empresaVo.getRazaoSocial());
 			
 		}else if("save_inc".equals(ac)){
 			
@@ -50,7 +51,7 @@ public class Cad001Action extends RecursoPadraoAction{
 		}
 		
 		
-		System.out.println("EmpresaVo nome "+empresaVo.getNomeEmpresa());
+		System.out.println("EmpresaVo nome "+empresaVo.getRazaoSocial());
 		System.out.println("EmpresaVo codi "+empresaVo.getCodigoEmpresa());
 		
 		return SUCCESS;

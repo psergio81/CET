@@ -198,7 +198,7 @@ a:hover {
 .container,
 .navbar-fixed-top .container,
 .navbar-fixed-bottom .container {
-  width: 940px;
+  width: 1200px;
 }
 
 .span12 {
@@ -970,32 +970,27 @@ input[type="checkbox"]:focus {
   width: 530px;
 }
 
+.input-50 {
+  width: 50px;
+}
+
 .input-100 {
   width: 100px;
 }
-
-.input-120 {
-  width: 120px;
-}
-
-.input-185 {
-  width: 185px;
+.input-150 {
+  width: 150px;
 }
 
 .input-200 {
   width: 200px;
 }
 
-.input-245 {
-  width: 245px;
+.input-255 {
+  width: 255px;
 }
 
 .input-300 {
   width: 300px;
-}
-
-.input-320 {
-  width: 320px;
 }
 .input-400 {
   width: 400px;
@@ -1006,16 +1001,9 @@ input[type="checkbox"]:focus {
 .input-600 {
   width: 600px;
 }
+
 .input-700 {
   width: 700px;
-}
-
-.input-800 {
-  width: 800px;
-}
-
-.input-900 {
-  width: 900px;
 }
 
 input[class*="span"],
@@ -1173,20 +1161,6 @@ input[type="checkbox"][readonly] {
 .control-group.error .help-inline {
   color: #b94a48;
 }
-
-.control-label{
-	font-size: 12px;
-  	font-weight: bold;
-  	line-height: 21px;
-  	color: #ffffff;
-  	background-color: #999999;
-
-	padding: 1px 6px 2px;
-  	-webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-
 
 .control-group.error .checkbox,
 .control-group.error .radio,
@@ -1484,6 +1458,7 @@ select:focus:required:invalid:focus {
   *display: inline;
   margin-bottom: 0;
   *zoom: 1;
+  margin-right: 20px;
 }
 
 .form-search .hide,
@@ -1550,7 +1525,7 @@ legend + .control-group {
   float: left;
   width: 140px;
   padding-top: 5px;
-  text-align: left;
+  text-align: right;
 }
 
 .form-horizontal .controls {
@@ -2672,8 +2647,6 @@ button.close {
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
      -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
           box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-          
-   width: 80px;
 }
 
 .btn:hover,
@@ -2745,7 +2718,6 @@ button.close {
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
-   width: 300px;
 }
 
 .btn-large [class^="icon-"] {
@@ -2796,6 +2768,7 @@ button.close {
 .btn {
   border-color: #ccc;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  width: 80px;
 }
 
 .btn-primary {
@@ -4575,12 +4548,13 @@ a.thumbnail:hover {
 .badge {
   font-size: 12px;
   font-weight: bold;
-  line-height: 25px;
+  line-height: 24px;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   white-space: nowrap;
   vertical-align: baseline;
   background-color: #999999;
+  width: 100px;
 }
 
 .label {
@@ -5045,4 +5019,22 @@ a.badge:hover {
 
 .invisible {
   visibility: hidden;
+}
+
+.descricaoTela{
+	display: inline-block;
+	padding: 4px 10px 4px;
+	margin: 5px 5px 6px;
+	line-height: 18px;
+	cursor: default;
+	width:300px;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	text-align: center;
+	font-weight:bold;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+	vertical-align: middle;
 }

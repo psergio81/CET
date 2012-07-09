@@ -19,7 +19,7 @@ public class Main {
 		
 		for (EmpresaVo empresaVo : lista) {
 			System.out.println("Codigo Empresa........: "+empresaVo.getCodigoEmpresa());
-			System.out.println("Nome Empresa..........: "+empresaVo.getNomeEmpresa());
+			System.out.println("Nome Empresa..........: "+empresaVo.getRazaoSocial());
 			System.out.println("--------- || ---------");
 		}
 	}
