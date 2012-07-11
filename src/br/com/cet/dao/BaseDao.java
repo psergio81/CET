@@ -3,6 +3,8 @@ package br.com.cet.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseDao extends ConnectionDao{
 
@@ -109,6 +111,31 @@ public class BaseDao extends ConnectionDao{
 	    }
 		
 		return ++retorno;
+	}
+	
+	public static String getNovaSimulacaoRowid(){
+		String caracteres[] = {"A","Z","#","-","@","P","C","M","a","L"};
+		String numeros[] = {"1","2","3","4","5","6","7","8","9","0"};
+		
+		String token = "";
+		int nroSorteado1 = 0;
+		int nroSorteado2 = 0;
+		
+		for(int i = 0; i < 9; i++){
+			nroSorteado1 =  (int) (1 + (Math.random() * 9));
+			nroSorteado2 =  (int) (1 + (Math.random() * 9));  
+			
+			if(i % 2 == 0){
+				token += caracteres[nroSorteado1];
+				token += numeros[nroSorteado2];
+			}else{
+				token += caracteres[nroSorteado2];
+				token += numeros[nroSorteado1];
+			}
+		}
+		
+		
+		return token;
 	}
 	
 }

@@ -129,10 +129,6 @@ public class EmpresaVo {
 		this.codigoEmpresa = codigoEmpresa;
 	}
 	
-	public EmpresaVo(String codigoEmpresa, String nomeEmpresa){
-		this.codigoEmpresa = codigoEmpresa;
-	}
-	
 	public String getCodigoEmpresa() {
 		return codigoEmpresa;
 	}

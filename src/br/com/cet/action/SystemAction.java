@@ -12,8 +12,16 @@ import com.opensymphony.xwork2.Preparable;
 public class SystemAction extends ActionSupport implements Preparable,SessionAware,RequestAware, ApplicationAware{
 
 	protected String ac;
-		
+	protected String rowid;
 	
+	public String getRowid() {
+		return rowid;
+	}
+
+	public void setRowid(String rowid) {
+		this.rowid = rowid;
+	}
+
 	public String getAc() {
 		return ac;
 	}

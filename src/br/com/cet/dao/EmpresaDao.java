@@ -112,12 +112,14 @@ public class EmpresaDao extends BaseDao {
 	    	connection = getConnection();  
 	  
 		    qry.append(" INSERT INTO empresa ");
-		    qry.append(" ( cd_empresa, ");
+		    qry.append(" ( rowid, ");
+		    qry.append("  cd_empresa, ");
 		    qry.append(" nm_empresa ) ");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
+		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
 		    ps.setString(i++, empresaVo.getRazaoSocial());
 		    

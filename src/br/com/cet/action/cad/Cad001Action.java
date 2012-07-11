@@ -3,6 +3,7 @@ package br.com.cet.action.cad;
 import java.util.List;
 
 import br.com.cet.action.RecursoPadraoAction;
+import br.com.cet.action.key.AcoesKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
 
@@ -24,7 +25,7 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	public String browser() throws Exception{
 		
-		System.out.println("passou browser.........");
+		
 		
 		listaEmpresa = empresa.getListaEmpresa();
 		
@@ -38,21 +39,17 @@ public class Cad001Action extends RecursoPadraoAction{
 		System.out.println("Cad001Action.crud()");
 		System.out.println("ac...: "+ac);
 		
-		if("con".equals(ac)){
+		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 			
 			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
 			
 			System.out.println("codigo     : "+empresaVo.getCodigoEmpresa());
 			System.out.println("razaoSocial: "+empresaVo.getRazaoSocial());
 			
-		}else if("save_inc".equals(ac)){
+		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			empresa.insertEmpresa(empresaVo);
 		}
-		
-		
-		System.out.println("EmpresaVo nome "+empresaVo.getRazaoSocial());
-		System.out.println("EmpresaVo codi "+empresaVo.getCodigoEmpresa());
 		
 		return SUCCESS;
 	}
