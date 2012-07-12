@@ -12,6 +12,7 @@ public class Main {
 		testeInsert();
 		testeConexaoBanco();
 		System.out.println("Michell vovó...");
+		System.out.println("Michell vovó...");
 	}
 	
 	public static void testeConexaoBanco(){
