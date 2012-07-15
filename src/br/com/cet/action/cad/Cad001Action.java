@@ -7,8 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 public class Cad001Action extends RecursoPadraoAction{
 	
 	private EmpresaVo empresaVo = new EmpresaVo();

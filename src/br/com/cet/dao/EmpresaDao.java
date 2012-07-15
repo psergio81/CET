@@ -35,7 +35,9 @@ public class EmpresaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_empresa, nm_empresa FROM empresa where cd_empresa = ?");
+		    qry.append(	"SELECT rowid, cd_empresa, nm_empresa, nm_fantasia_empresa, cep, endereco, numero, complemento, ");
+		    qry.append(	"bairro, cidade, estado, telefone, fax, website, email FROM empresa " );
+		    qry.append(	"where cd_empresa = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
@@ -51,6 +53,19 @@ public class EmpresaDao extends BaseDao {
 		    	empresaVo.setRowid(rs.getString("rowid"));
 		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		    	empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
+		    	empresaVo.setNomeFantasia(rs.getString("nm_fantasia_empresa"));
+		    	empresaVo.setCep(rs.getString("cep"));
+		    	empresaVo.setEndereco(rs.getString("endereco"));
+		    	empresaVo.setNumero(String.valueOf(rs.getInt("numero")));
+		    	empresaVo.setComplemento(rs.getString("complemento"));
+		    	empresaVo.setBairro(rs.getString("bairro"));
+		    	empresaVo.setCidade(rs.getString("cidade"));
+		    	empresaVo.setEstado(rs.getString("estado"));
+		    	empresaVo.setTelefone(rs.getString("telefone"));
+		    	empresaVo.setFax(rs.getString("fax"));
+		    	empresaVo.setWebSite(rs.getString("website"));
+		    	empresaVo.setEmail(rs.getString("email"));
+		    	
 		    }  
 		    
 	    }catch (Exception e) {  
@@ -114,8 +129,20 @@ public class EmpresaDao extends BaseDao {
 	  
 		    qry.append(" INSERT INTO empresa ");
 		    qry.append(" ( rowid, ");
-		    qry.append("  cd_empresa, ");
-		    qry.append(" nm_empresa ) ");
+		    qry.append(" cd_empresa, ");
+		    qry.append(" nm_empresa, ");
+		    qry.append(" nm_fantasia_empresa, ");
+		    qry.append(" cep, ");
+		    qry.append(" endereco, ");
+		    qry.append(" numero, ");
+		    qry.append(" complemento, ");
+		    qry.append(" bairro, ");
+		    qry.append(" cidade, ");
+		    qry.append(" estado, ");
+		    qry.append(" telefone, ");
+		    qry.append(" fax, ");
+		    qry.append(" website, ");
+		    qry.append(" email ) ");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -123,6 +150,18 @@ public class EmpresaDao extends BaseDao {
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
 		    ps.setString(i++, empresaVo.getRazaoSocial());
+		    ps.setString(i++, empresaVo.getNomeFantasia());
+		    ps.setString(i++, empresaVo.getCep());
+		    ps.setString(i++, empresaVo.getEndereco());
+		    ps.setInt(i++, Integer.parseInt(empresaVo.getNumero()));
+		    ps.setString(i++, empresaVo.getComplemento());
+		    ps.setString(i++, empresaVo.getBairro());
+		    ps.setString(i++, empresaVo.getCidade());
+		    ps.setString(i++, empresaVo.getEstado());
+		    ps.setString(i++, empresaVo.getTelefone());
+		    ps.setString(i++, empresaVo.getFax());
+		    ps.setString(i++, empresaVo.getWebSite());
+		    ps.setString(i++, empresaVo.getEmail());
 		    
 		    ps.executeUpdate();
 		    
@@ -145,11 +184,35 @@ public class EmpresaDao extends BaseDao {
 			connection = getConnection();  
 			
 			qry.append(" UPDATE empresa set ");
-			qry.append(" nm_empresa = ? ");
+			qry.append(" nm_empresa = ?, ");
+			qry.append(" nm_fantasia_empresa = ?, ");
+		    qry.append(" cep = ?, ");
+		    qry.append(" endereco = ?, ");
+		    qry.append(" numero = ?, ");
+		    qry.append(" complemento = ?, ");
+		    qry.append(" bairro = ?, ");
+		    qry.append(" cidade = ?, ");
+		    qry.append(" estado = ?, ");
+		    qry.append(" telefone = ?, ");
+		    qry.append(" fax = ?, ");
+		    qry.append(" website = ?, ");
+		    qry.append(" email = ? ");
 			qry.append(" WHERE cd_empresa = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setString(i++, empresaVo.getRazaoSocial());
+			ps.setString(i++, empresaVo.getNomeFantasia());
+		    ps.setString(i++, empresaVo.getCep());
+		    ps.setString(i++, empresaVo.getEndereco());
+		    ps.setInt(i++, Integer.parseInt(empresaVo.getNumero()));
+		    ps.setString(i++, empresaVo.getComplemento());
+		    ps.setString(i++, empresaVo.getBairro());
+		    ps.setString(i++, empresaVo.getCidade());
+		    ps.setString(i++, empresaVo.getEstado());
+		    ps.setString(i++, empresaVo.getTelefone());
+		    ps.setString(i++, empresaVo.getFax());
+		    ps.setString(i++, empresaVo.getWebSite());
+		    ps.setString(i++, empresaVo.getEmail());
 			ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
 			
 			ps.execute();
