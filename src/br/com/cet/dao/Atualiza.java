@@ -28,12 +28,8 @@ public class Atualiza extends BaseDao {
 	public static void main(String[] args) {
 		
 		Atualiza atualiza = new Atualiza();
-		
-		atualiza.criarSchema("novoBanco");
-		atualiza.criarTabela("novoBanco", "tabelaTeste");
-		atualiza.criarCampo(TipoCampo.VARCHAR, "novoBanco", "tabelaTeste","campoVARCHAR",300, false);
-		atualiza.criarCampo(TipoCampo.INTEIRO, "novoBanco", "tabelaTeste","campoINTEIRO",300, false);
-		atualiza.criarCampo(TipoCampo.INTEIRO, "novoBanco", "tabelaTeste","campoINTEIRO2",300, false);
+
+		atualiza.criarCampo(TipoCampo.VARCHAR, NOME_BANCO, "empresa", "rowid", 20, false);
 		
 	}
 	

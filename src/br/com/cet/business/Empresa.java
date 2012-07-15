@@ -58,4 +58,16 @@ public class Empresa {
 		}
 	}
 
+	public void updateEmpresa(EmpresaVo empresaVo) throws Exception{
+		
+		try{
+			
+			EmpresaDao empresaDao = new EmpresaDao();
+			empresaDao.updateEmpresas(empresaVo);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

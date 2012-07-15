@@ -35,7 +35,7 @@ public class EmpresaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT cd_empresa, nm_empresa FROM empresa where cd_empresa = ?");
+		    qry.append("SELECT rowid, cd_empresa, nm_empresa FROM empresa where cd_empresa = ?");
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
@@ -48,6 +48,7 @@ public class EmpresaDao extends BaseDao {
 		    if (rs.next()) {  
 		    	empresaVo = new EmpresaVo();
 		    	
+		    	empresaVo.setRowid(rs.getString("rowid"));
 		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		    	empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    }  
@@ -59,7 +60,6 @@ public class EmpresaDao extends BaseDao {
 	    } 
 	    
 	    return empresaVo;
-		
 	}
 	
 	
@@ -76,7 +76,7 @@ public class EmpresaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT cd_empresa, nm_empresa FROM empresa");
+		    qry.append("SELECT rowid, cd_empresa, nm_empresa FROM empresa");
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    rs = ps.executeQuery(qry.toString());  
@@ -85,6 +85,7 @@ public class EmpresaDao extends BaseDao {
 		    
 		    while (rs.next()) {  
 		    	empresaVo = new EmpresaVo();
+		    	empresaVo.setRowid(rs.getString("rowid"));
 		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		        empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    	empresasList.add(empresaVo);
@@ -126,12 +127,37 @@ public class EmpresaDao extends BaseDao {
 		    ps.executeUpdate();
 		    
 	    }catch (SQLException e) {  
-	        throw new Exception("Erro ao conectar ao banco de dados!");
-	        
+	        e.printStackTrace();
 	    }finally {
 	    	releaseResouces(connection, ps); 
 	    } 
 	}
-	
 
+	public void updateEmpresas(EmpresaVo empresaVo) throws Exception{
+		
+		Connection connection = null;
+		PreparedStatement  ps = null;  
+		StringBuilder qry = new StringBuilder(); 
+		int i = 1;
+		
+		try {  
+			
+			connection = getConnection();  
+			
+			qry.append(" UPDATE empresa set ");
+			qry.append(" nm_empresa = ? ");
+			qry.append(" WHERE cd_empresa = ? ");
+			
+			ps = connection.prepareStatement(qry.toString());  
+			ps.setString(i++, empresaVo.getRazaoSocial());
+			ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+			
+			ps.execute();
+			
+		}catch (SQLException e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps); 
+		} 
+	}
 }

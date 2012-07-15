@@ -162,11 +162,9 @@
 		var $codigo = $('#codigoEmpresa').val();
 		
 		if($codigo == 'novo'){
-			$('#ac').val("save_inc");
+			$('#ac').val("saveInclusao");
 		}else{
-			alert('Função de salvar alteração não implementada! - Clique em cancelar');
-			$('#ac').val("save_alt");
-			return;
+			$('#ac').val("saveAlteracao");
 		}	
 		
 		$('#cad001').submit();

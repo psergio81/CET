@@ -25,8 +25,6 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	public String browser() throws Exception{
 		
-		
-		
 		listaEmpresa = empresa.getListaEmpresa();
 		
 		return "browser";
@@ -36,19 +34,16 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	public String crud() throws Exception{
 		
-		System.out.println("Cad001Action.crud()");
-		System.out.println("ac...: "+ac);
-		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 			
 			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
 			
-			System.out.println("codigo     : "+empresaVo.getCodigoEmpresa());
-			System.out.println("razaoSocial: "+empresaVo.getRazaoSocial());
-			
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			empresa.insertEmpresa(empresaVo);
+			
+		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
+			empresa.updateEmpresa(empresaVo);
 		}
 		
 		return SUCCESS;

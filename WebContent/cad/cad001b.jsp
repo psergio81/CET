@@ -86,7 +86,7 @@
 							<s:property value="codigoEmpresa" />
 						</td>
 						<td>
-							<a href="Cad001Action!crud.action?ac=con&codigoEmpresaSelecionado=<s:property value="codigoEmpresa" />"><s:property value="razaoSocial" /></a>
+							<a href="Cad001Action!crud.action?ac=consultar&codigoEmpresaSelecionado=<s:property value="codigoEmpresa" />"><s:property value="razaoSocial" /></a>
 						</td>
 					</tr>
 				</s:iterator>
