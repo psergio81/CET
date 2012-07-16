@@ -67,7 +67,27 @@
      	</div>
      	
 	</div>
-	
+
+	<div class="container-fluid">
+        <div class="container">
+
+            <s:form id="cad001" action="Cad001Action!browser.action" theme="simple" cssClass="well form-inline">
+                <s:hidden name="ac" id="ac"/>
+                <s:hidden name="filtrar" id="filtrar" />
+                
+				<p>
+                	<label for="razaoSocial" class="label">Filtro</label>
+	                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="input-300 search-query" />
+					<a class="btn btn" href="javaScript:filtrar();">
+						<i class="icon-search icon">
+						</i>Buscar
+					</a>
+                </p>
+                
+            </s:form>
+        </div>
+    </div>
+
 	<div class="container">
 		
 		<table width="100%" class="table table-bordered table-striped ">
@@ -101,12 +121,30 @@
 	</div>
 	
 	</body>
-</html>
 
-<script>
-$('.dropdown-toggle').dropdown();
-
-function selBrowser(codigo){
+	<script type="text/javascript">
 	
-}
-</script>
+	
+		$(document).ready(function($) {
+			
+			$('#campoBusca').val('');
+			$('#filtrar').val(false);
+			
+		});
+		
+		$('.dropdown-toggle').dropdown();
+		
+			function selBrowser(codigo){
+			
+		}
+			
+
+		function filtrar(){
+			
+			$('#filtrar').val(true);
+			$('#cad001').submit();
+			
+		}
+			
+	</script>
+</html>

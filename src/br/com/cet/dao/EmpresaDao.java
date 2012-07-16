@@ -78,23 +78,33 @@ public class EmpresaDao extends BaseDao {
 	}
 	
 	
-	public List<EmpresaVo> getListaEmpresas(){
+	public List<EmpresaVo> getListaEmpresas(EmpresaVo empresaVo, boolean filtrar){
 		
 		Connection connection = null;
 		ResultSet rs = null;  
 	    PreparedStatement ps = null;  
 	    StringBuilder qry = new StringBuilder(); 
 	    List<EmpresaVo> empresasList = null;
-	    EmpresaVo empresaVo = null;
+	    int i = 1;
 	    
 	    try {  
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_empresa, nm_empresa FROM empresa");
+		    qry.append("SELECT rowid, cd_empresa, nm_empresa FROM empresa ");
+		
+		    if(filtrar){
+		    	qry.append(" WHERE nm_empresa like '%' ? '%' ");
+		    }
+		
 		    
-		    ps = connection.prepareStatement(qry.toString());  
-		    rs = ps.executeQuery(qry.toString());  
+		    ps = connection.prepareStatement(qry.toString());
+		    
+		    if(filtrar){
+		    	ps.setString(i++, empresaVo.getRazaoSocial());
+		    }
+		    
+		    rs = ps.executeQuery();  
 		  
 		    empresasList = new ArrayList<EmpresaVo>();
 		    

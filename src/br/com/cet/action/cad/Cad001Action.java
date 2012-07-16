@@ -13,17 +13,23 @@ public class Cad001Action extends RecursoPadraoAction{
 	private Empresa empresa = new Empresa();
 	private List<EmpresaVo> listaEmpresa = null;
 	private String codigoEmpresaSelecionado;
+	private String campoBusca;
+	private boolean filtrar;
 	
 	
 	public void prepare(){
 		
-		System.out.println("passou pelo prepare.........");
+		System.out.println("passou pelo prepare........."+campoBusca);
 		
 	}
 	
 	public String browser() throws Exception{
 		
-		listaEmpresa = empresa.getListaEmpresa();
+		
+		empresaVo.setNomeFantasia(campoBusca);
+		empresaVo.setRazaoSocial(campoBusca);
+		
+		listaEmpresa = empresa.getListaEmpresa(empresaVo, filtrar);
 		
 		return "browser";
 		
@@ -71,6 +77,22 @@ public class Cad001Action extends RecursoPadraoAction{
 
 	public void setCodigoEmpresaSelecionado(String codigoEmpresaSelecionado) {
 		this.codigoEmpresaSelecionado = codigoEmpresaSelecionado;
+	}
+
+	public String getCampoBusca() {
+		return campoBusca;
+	}
+
+	public void setCampoBusca(String campoBusca) {
+		this.campoBusca = campoBusca;
+	}
+
+	public boolean isFiltrar() {
+		return filtrar;
+	}
+
+	public void setFiltrar(boolean filtrar) {
+		this.filtrar = filtrar;
 	}
 
 }

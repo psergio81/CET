@@ -18,7 +18,8 @@ public class Main {
 	public static void testeConexaoBanco(){
 		EmpresaDao empresaDao = new EmpresaDao();
 		
-		List<EmpresaVo> lista = empresaDao.getListaEmpresas();
+		EmpresaVo empresaVo2 = new EmpresaVo();
+		List<EmpresaVo> lista = empresaDao.getListaEmpresas(empresaVo2,false);
 		
 		for (EmpresaVo empresaVo : lista) {
 			System.out.println("Codigo Empresa........: "+empresaVo.getCodigoEmpresa());

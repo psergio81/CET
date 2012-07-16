@@ -7,14 +7,14 @@ import br.com.cet.vo.EmpresaVo;
 
 public class Empresa {
 	
-	public List<EmpresaVo> getListaEmpresa() throws Exception{
+	public List<EmpresaVo> getListaEmpresa(EmpresaVo empresaVo, boolean filtrar) throws Exception{
 		
 		List<EmpresaVo> listaEmpresa = null;
 		
 		try{
 			
 			EmpresaDao empresaDao = new EmpresaDao();
-			listaEmpresa = empresaDao.getListaEmpresas();
+			listaEmpresa = empresaDao.getListaEmpresas(empresaVo, filtrar);
 			
 		}catch (Exception e) {
 			throw new Exception(e);
