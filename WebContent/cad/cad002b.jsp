@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	    
-		<title>(cad001b.jsp) Cadastro de OS</title>
+		<title>(cad002b.jsp) Cadastro de OS</title>
 		
 		<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
 		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
@@ -71,12 +71,12 @@
 	<div class="container-fluid">
         <div class="container">
 
-            <s:form id="cad001" action="Cad001Action!browser.action" theme="simple" cssClass="well form-inline">
+            <s:form id="cad002" action="Cad002Action!browser.action" theme="simple" cssClass="well form-inline">
                 <s:hidden name="ac" id="ac"/>
                 <s:hidden name="filtrar" id="filtrar" />
                 
 				<p>
-                	<label for="razaoSocial" class="label">Filtro</label>
+                	<label for="descricao" class="label">Filtro</label>
 	                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="input-300 search-query" />
 					<a class="btn btn" href="javaScript:filtrar();">
 						<i class="icon-search icon">
@@ -95,18 +95,18 @@
 			<thead>
 				<tr>
 					<th width="20%">Codigo</th>
-					<th width="*">Nome</th>
+					<th width="*">Descricao</th>
 				</tr>
 			</thead>
 			
 			<tbody>
-				<s:iterator  value="listaEmpresa" status="status">
+				<s:iterator  value="listaMarca" status="status">
 					<tr>
 						<td>
-							<s:property value="codigoEmpresa" />
+							<s:property value="codigoMarca" />
 						</td>
 						<td>
-							<a href="Cad001Action!crud.action?ac=consultar&codigoEmpresaSelecionado=<s:property value="codigoEmpresa" />"><s:property value="razaoSocial" /></a>
+							<a href="Cad002Action!crud.action?ac=consultar&codigoMarcaSelecionado=<s:property value="codigoMarca" />"><s:property value="descricao" /></a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -142,7 +142,7 @@
 		function filtrar(){
 			
 			$('#filtrar').val(true);
-			$('#cad001').submit();
+			$('#cad002').submit();
 			
 		}
 			

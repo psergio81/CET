@@ -14,6 +14,11 @@
 			<result name="browser">/cad/cad001b.jsp</result>
 		</action>
 	
+		<action name="Cad002Action!*" method="{1}" class="br.com.cet.action.cad.Cad002Action">
+			<result name="success">/cad/cad002i.jsp</result>
+			<result name="browser">/cad/cad002b.jsp</result>
+		</action>
+	
 	</package>
 
 </struts>

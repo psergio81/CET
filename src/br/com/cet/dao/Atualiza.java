@@ -11,7 +11,8 @@ public class Atualiza extends BaseAtualiza {
 		
 		Atualiza atualiza = new Atualiza();
 		
-		atualiza.a0001(true);
+		atualiza.a0001(false);
+		atualiza.a0002(true);
 		
 		
 	}
@@ -43,6 +44,23 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "fax", 20, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "website", 40, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "email", 40, false);
+
+	}
+	
+	/**
+	 * Criar tabela marca e campos
+	 */
+	private void a0002(boolean rodar){
+
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "marca";
+
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_marca", 100, false);
 
 	}
 }

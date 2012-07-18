@@ -99,7 +99,7 @@ public class BaseDao extends ConnectionDao{
 		    rs = ps.executeQuery();  
 		    
 		    if (rs.next()) {
-				retorno = rs.getInt("cd_empresa");
+				retorno = rs.getInt(nomeCampo);
 		    }  
 		    
 	    }catch (Exception e) {  

@@ -34,7 +34,8 @@ public class ConnectionDao{
 		
 		String url = "jdbc:mysql://localhost/ensaio";
 		String user = "root";
-		String password = "P@ssw0rd";
+		String password = "root";
+//		String password = "P@ssw0rd";
 //		String password = "matn06";
 		
 		try {
