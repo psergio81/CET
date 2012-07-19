@@ -11,7 +11,6 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <sb:head/>
     
    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -20,7 +19,8 @@
 	<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
 	<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
 	<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
-		
+	<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
     <style>
@@ -42,10 +42,9 @@
 				</a>
 			</div>
 			<div class="span4" align="center">
-				<a class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white">
-					</i>
-					Cancelar
+				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
+					<i class="icon-remove icon-white"></i>
+					<span id="textoBtnCancelarExcluir">Cancelar</span>
 				</a>
 				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
 					<i class="icon-ok icon-white"></i>
@@ -128,6 +127,21 @@
         </div>
     </div>
 
+	<div class="modal hide" id="myModal">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal">×</button>
+	    <h3>Confirmação de exclusão</h3>
+	  </div>
+	  <div class="modal-body">
+	    <p>Deseja realmente excluir este cadstro?</p>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="#" class="btn" data-dismiss="modal">Cancelar</a>
+	    <a href="javascript:excluirCadastro()" class="btn btn-primary">Ok</a>
+	  </div>
+	</div>
+
+
     <div class="navbar navbar-fixed-bottom">
     	<div class="navbar-inner"></div>
     </div>
@@ -144,9 +158,13 @@
 			$('#textoBtnSalvarAlterar').html('Salvar');
 		}else{
 			
+			$('#textoBtnCancelarExcluir').html('Excluir');
+			$('#botaoCancelar').attr('href','javaScript:abrirConfirmacao();');
+			
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
+			
 			$('input[class|="input"][id!="codigoEmpresa"]').attr('readonly','true');
 			
 		}
@@ -170,7 +188,24 @@
 		$('#cad001').submit();
 	}
 	
+	
+	function abrirConfirmacao(){
+		$('#myModal').modal('show');
+	}
+
+
+	function excluirCadastro(){
+		
+		$('#ac').val("excluir");
+		$('#cad001').submit();
+		
+	}
+	
+	
 	function liberarCamposAlteracao(){
+		
+		$('#textoBtnCancelarExcluir').html('Cancelar');
+		$('#botaoCancelar').attr('href','javaScript:cancelarCadastro();');
 		
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
@@ -186,6 +221,10 @@
 		if($codigo == 'novo'){
 			this.irParaBrowser();
 		}else{
+			
+			$('#textoBtnCancelarExcluir').html('Excluir');
+			$('#botaoCancelar').attr('href','javaScript:abrirConfirmacao();');
+			
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
@@ -197,7 +236,6 @@
 		
 		$('#cad001').attr("action","Cad001Action!browser.action");
 		$('#cad001').submit();
-		
 		
 	}
 

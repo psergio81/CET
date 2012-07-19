@@ -69,5 +69,19 @@ public class Empresa {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deleteEmpresa(EmpresaVo empresaVo){
+		
+		try {
+			
+			EmpresaDao empresaDao = new EmpresaDao();
+			empresaDao.deleteEmpresa(empresaVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
 
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cet.util.UtConverte;
 import br.com.cet.vo.EmpresaVo;
 
 public class EmpresaDao extends BaseDao {
@@ -158,12 +159,12 @@ public class EmpresaDao extends BaseDao {
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
-		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getCodigoEmpresa()));
 		    ps.setString(i++, empresaVo.getRazaoSocial());
 		    ps.setString(i++, empresaVo.getNomeFantasia());
 		    ps.setString(i++, empresaVo.getCep());
 		    ps.setString(i++, empresaVo.getEndereco());
-		    ps.setInt(i++, Integer.parseInt(empresaVo.getNumero()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getNumero()));
 		    ps.setString(i++, empresaVo.getComplemento());
 		    ps.setString(i++, empresaVo.getBairro());
 		    ps.setString(i++, empresaVo.getCidade());
@@ -233,4 +234,30 @@ public class EmpresaDao extends BaseDao {
 			releaseResouces(connection, ps); 
 		} 
 	}
+	
+	public void deleteEmpresa(EmpresaVo empresaVo) {
+
+		Connection connection = null;
+		PreparedStatement  ps = null;  
+	    StringBuilder qry = new StringBuilder(); 
+	    int i = 1;
+	    
+	    try {  
+	    	
+	    	connection = getConnection();  
+	  
+		    qry.append(" DELETE FROM empresa WHERE cd_empresa = ? ");
+		    
+		    ps = connection.prepareStatement(qry.toString());
+		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getCodigoEmpresa()));
+		    
+			ps.execute();
+		    
+	    }catch (SQLException e) {  
+	        e.printStackTrace();
+	    }finally {
+	    	releaseResouces(connection, ps); 
+	    }
+	}
+	
 }

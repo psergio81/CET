@@ -47,7 +47,13 @@ public class Cad001Action extends RecursoPadraoAction{
 			empresa.insertEmpresa(empresaVo);
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
+			
 			empresa.updateEmpresa(empresaVo);
+			
+		}else if(AcoesKey.ACAO_EXCLUIR.equals(ac)){
+			
+			empresa.deleteEmpresa(empresaVo);
+			
 		}
 		
 		return SUCCESS;
