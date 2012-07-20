@@ -23,6 +23,7 @@
 
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
+   	
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -63,69 +64,113 @@
 <div class="container-fluid">
         <div class="container">
 
-            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
+            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-horizontal">
                 <s:hidden name="ac" id="ac"/>
                 
-                <p>
-                	<label for="codigoEmpresa" class="label">Código</label>
-	                <s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-50" readonly="true" />
+                <div class="control-group">
+					<label for="codigoEmpresa" class="control-label">Código</label>
+					<div class="controls">
+						<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-xxlarge" readonly="true" />
+					</div>
+				</div>
 
-                	<label for="razaoSocial" class="label">Razão social</label>
-	                <s:textfield name="empresaVo.razaoSocial" id="razaoSocial" required="required" cssClass="input-400" />
-                
-                	<label for="nomeFantasia" class="label">Nome fantasia</label>
-	                <s:textfield name="empresaVo.nomeFantasia" id="nomeFantasia" required="required" cssClass="input-200" />
-                </p>
+                <div class="control-group">
+                	<label for="razaoSocial" class="control-label">Razão social</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xxlarge " />
+					</div>
+				</div>
 
-				<p>
-                	<label for="cep" class="label">CEP</label>
-	                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="input-100" />
-	                
-                	<label for="endereco" class="label">Endereço</label>
-	                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="input-500" />
+                <div class="control-group">
+                	<label for="nomeFantasia" class="control-label">Nome Fantasia</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.nomeFantasia" id="nomeFantasia" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                	<label for="numero" class="label">Número</label>
-	                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="input-50" />
+                <div class="control-group">
+                	<label for="cep" class="control-label">CEP</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                
-                </p>
+                <div class="control-group">
+                	<label for="endereco" class="control-label">Endereço</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                <p>
-                	<label for="complemento" class="label">Complemento</label>
-	                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="input-400" />
-                	<label for="bairro" class="label">Bairro</label>
-	                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="input-400" />
+                <div class="control-group">
+                	<label for="numero" class="control-label">Número</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                
-                </p>
+                <div class="control-group">
+                	<label for="complemento" class="control-label">Complemento</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                <p>
-                	<label for="cidade" class="label">Cidade</label>
-	                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="input-255" />
+                <div class="control-group">
+                	<label for="bairro" class="control-label">Bairro</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                	<label for="estado" class="label">Estado</label>
-	                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="input-50" />
-	                
-                	<label for="telefone" class="label">Telefone</label>
-	                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="input-100" />
+                <div class="control-group">
+                	<label for="cidade" class="control-label">Cidade</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                	<label for="fax" class="label">Fax</label>
-	                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="input-100" />
-                
-                </p>
-                
-                <p>
-                	<label for="website" class="label">Web Site</label>
-	                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="input-500" />
+                <div class="control-group">
+                	<label for="estado" class="control-label">Estado</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
 
-                	<label for="email" class="label">E-mail</label>
-	                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="input-300" />
-                
-                </p>
+                <div class="control-group">
+                	<label for="telefone" class="control-label">Telefone</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
+
+                <div class="control-group">
+                	<label for="fax" class="control-label">Fax</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
+
+                <div class="control-group">
+                	<label for="website" class="control-label">Web Site</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
+
+                <div class="control-group">
+                	<label for="email" class="control-label">E-mail</label>
+					<div class="controls">
+		                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="input-xxlarge" />
+					</div>
+				</div>
                 
             </s:form>
         </div>
     </div>
+
+
+
 
 	<div class="modal hide" id="myModal">
 	  <div class="modal-header">
@@ -141,7 +186,6 @@
 	  </div>
 	</div>
 
-
     <div class="navbar navbar-fixed-bottom">
     	<div class="navbar-inner"></div>
     </div>
@@ -150,6 +194,18 @@
 
 	$(document).ready(function(){
 		
+		$('#cad001').validate({
+            rules:{
+                razaoSocial:{
+                    required: true
+                }
+            },
+            messages:{
+            	razaoSocial:{
+                    required: "O campo Razão Social é obrigatorio.",
+                }
+            }
+	    });
 		
 		var $acao = $('#ac').val();
 		
@@ -178,6 +234,7 @@
 	function salvarCadastro(){
 		
 		var $codigo = $('#codigoEmpresa').val();
+		
 		
 		if($codigo == 'novo'){
 			$('#ac').val("saveInclusao");

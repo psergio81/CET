@@ -970,41 +970,6 @@ input[type="checkbox"]:focus {
   width: 530px;
 }
 
-.input-50 {
-  width: 50px;
-}
-
-.input-100 {
-  width: 100px;
-}
-.input-150 {
-  width: 150px;
-}
-
-.input-200 {
-  width: 200px;
-}
-
-.input-255 {
-  width: 255px;
-}
-
-.input-300 {
-  width: 300px;
-}
-.input-400 {
-  width: 400px;
-}
-.input-500 {
-  width: 500px;
-}
-.input-600 {
-  width: 600px;
-}
-
-.input-700 {
-  width: 700px;
-}
 
 input[class*="span"],
 select[class*="span"],
