@@ -12,7 +12,8 @@ public class Atualiza extends BaseAtualiza {
 		Atualiza atualiza = new Atualiza();
 		
 		atualiza.a0001(false);
-		atualiza.a0002(true);
+		atualiza.a0002(false);
+		atualiza.a0003(true);
 		
 		
 	}
@@ -61,6 +62,27 @@ public class Atualiza extends BaseAtualiza {
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_marca", 100, false);
+
+	}
+	
+	/**
+	 * Criar tabela marca e campos
+	 */
+	private void a0003(boolean rodar){
+
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "usuario";
+//
+//		criarTabela(NOME_BANCO, nomeTabela);
+//		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario", 0, false);
+//		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_usuario", 100, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_nick", 20, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 20, false);
+		executarComandoSql("Insert into usuario (cd_usuario,nm_usuario,nm_nick,nm_senha) Values(1,'ADM','adm','a')");
 
 	}
 }

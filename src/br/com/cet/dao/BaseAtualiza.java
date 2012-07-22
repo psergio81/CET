@@ -23,6 +23,25 @@ public class BaseAtualiza extends BaseDao {
 	private PreparedStatement ps;
 	private String qry;
 	
+	public void executarComandoSql(String comando){
+		
+	  try {  
+	    	connection = getConnection();
+
+		    qry = String.format(comando);
+		    
+		    Statement statement = connection.createStatement();
+		    statement.execute(qry);
+		    
+		    System.out.println("comando: "+qry.toString());
+		    
+	    }catch (Exception e) {  
+	        e.printStackTrace();
+	    }finally {
+	    	releaseResouces(connection, ps, rs);
+	    } 
+	}
+	
 	
 	public void criarTabela(String nomeBanco, String nomeTabela) {
 		printLog(CRIANDO_TABELA, nomeBanco, nomeTabela);

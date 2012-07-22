@@ -7,7 +7,28 @@
 
 	<include file="struts-default.xml"/>
 	
+	
+	
 	<package name="default" extends="struts-default">
+	
+		<interceptors>  
+	         <interceptor name="loginInterceptor" class="br.com.cet.action.LoginInterceptor"></interceptor>  
+	         <interceptor-stack name="interceptors">  
+	             <interceptor-ref name="loginInterceptor"/>  
+	             <interceptor-ref name="paramsPrepareParamsStack"/>  
+	         </interceptor-stack>  
+	     </interceptors>  
+	  
+	    <default-interceptor-ref name="interceptors" />
+	    
+	    <global-results>  
+            <result name="login">/login.jsp</result>  
+        </global-results> 
+	    
+	    <action name="LoginAction!*" method="{1}" class="br.com.cet.action.LoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="erro">/login.jsp</result>
+		</action>
 
 		<action name="Cad001Action!*" method="{1}" class="br.com.cet.action.cad.Cad001Action">
 			<result name="success">/cad/cad001i.jsp</result>

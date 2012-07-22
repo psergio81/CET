@@ -1,8 +1,7 @@
 package br.com.cet.vo;
 
-public class MarcaVo {
+public class MarcaVo extends EstruturaVo{
 	
-	private String rowid;
 	private String codigoMarca;
 	private String descricao;
 
@@ -10,14 +9,6 @@ public class MarcaVo {
 	
 	public MarcaVo(String codigoMarca){
 		this.codigoMarca = codigoMarca;
-	}
-	
-	public String getRowid() {
-		return rowid;
-	}
-	
-	public void setRowid(String rowid) {
-		this.rowid = rowid;
 	}
 	
 	public String getCodigoMarca() {

@@ -1,8 +1,7 @@
 package br.com.cet.vo;
 
-public class EmpresaVo {
+public class EmpresaVo extends EstruturaVo{
 	
-	private String rowid;
 	private String codigoEmpresa;
 	private String razaoSocial;
 	private String nomeFantasia;
@@ -135,14 +134,6 @@ public class EmpresaVo {
 	}
 	public void setCodigoEmpresa(String codigoEmpresa) {
 		this.codigoEmpresa = codigoEmpresa;
-	}
-
-	public String getRowid() {
-		return rowid;
-	}
-
-	public void setRowid(String rowid) {
-		this.rowid = rowid;
 	}
 
 }
