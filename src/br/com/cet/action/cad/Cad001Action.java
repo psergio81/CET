@@ -4,8 +4,10 @@ import java.util.List;
 
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
+import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
+import br.com.cet.vo.UsuarioVo;
 
 public class Cad001Action extends RecursoPadraoAction{
 	
@@ -15,11 +17,13 @@ public class Cad001Action extends RecursoPadraoAction{
 	private String codigoEmpresaSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
+	private String nomePrograma;
+	
 	
 	
 	public void prepare(){
 		
-		System.out.println("passou pelo prepare........."+campoBusca);
+		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
 		
 	}
 	
@@ -37,6 +41,13 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	
 	public String crud() throws Exception{
+
+		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		
+		if(usuarioVo != null){
+			setUsuarioLogado(usuarioVo.getNomeUsuario());
+		}
+		
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 			
@@ -99,6 +110,14 @@ public class Cad001Action extends RecursoPadraoAction{
 
 	public void setFiltrar(boolean filtrar) {
 		this.filtrar = filtrar;
+	}
+
+	public String getNomePrograma() {
+		return nomePrograma;
+	}
+
+	public void setNomePrograma(String programa) {
+		this.nomePrograma = programa;
 	}
 
 }

@@ -89,7 +89,7 @@ $(document).ready(function(){
         },
         messages:{
         	senha:{
-                required: "O campo Senha é obrigatorio.",
+                required: "O campo Senha é obrigatorio."
             }
         }
     });

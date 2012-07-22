@@ -64,7 +64,7 @@
 			
 			
 			<div class="pull-right">
-				<button class="descricaoTela"><fmt:message key="label.padrao.cadastro.empresa"/></button>
+				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
 			</div>
 		</div>
     	</div>
@@ -156,7 +156,12 @@
 	</div>
 
     <div class="navbar navbar-fixed-bottom">
-    	<div class="navbar-inner"></div>
+    	<div class="navbar-inner">
+    		<div class="pull-right">
+				<button class="descricaoTela"><s:property value="usuarioLogado"/></button>
+			</div>
+    	
+    	</div>
     </div>
 
 <script type="text/javascript">
