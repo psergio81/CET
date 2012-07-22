@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+<web-app	id="WebApp_ID" version="2.5"	
+			xmlns="http://java.sun.com/xml/ns/javaee" 
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
+			xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" >
+			
   <display-name>CET</display-name>
+  
+  <context-param>
+  	<param-name>
+  		javax.servlet.jsp.jstl.fmt.localizationContext
+  	</param-name>
+  	<param-value>
+  		ApplicationResources
+  	</param-value>
+  
+  </context-param>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

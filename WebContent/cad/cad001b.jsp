@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,10 +51,10 @@
 					<li class="active"><a href="#">Regular link</a></li>
 					
 				  	<li class="dropdown" id="menu1">
-					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Cadastro<b class="caret"></b></a>
+					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1"><fmt:message key="label.padrao.cadastro"/><b class="caret"></b></a>
 					    <ul class="dropdown-menu">
-					      	<li><s:a action="Cad001Action!crud.action">Empresa</s:a></li>
-					      	<li><s:a action="Cad002Action!crud.action">Marca</s:a></li>
+					      	<li><s:a action="Cad001Action!crud.action"><fmt:message key="label.padrao.empresa"/></s:a></li>
+					      	<li><s:a action="Cad002Action!crud.action"><fmt:message key="label.padrao.marca"/></s:a></li>
 					      	<li class="divider"></li>
 					    </ul>
 				  	</li>
@@ -76,11 +77,11 @@
                 <s:hidden name="filtrar" id="filtrar" />
                 
 				<p>
-                	<label for="razaoSocial" class="label">Filtro</label>
+                	<label for="razaoSocial" class="label" ><fmt:message key="label.padrao.filtro"/></label>
 	                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="input-300 search-query" />
 					<a class="btn btn" href="javaScript:filtrar();">
 						<i class="icon-search icon">
-						</i>Buscar
+						</i><fmt:message key="label.padrao.buscar"/>
 					</a>
                 </p>
                 
@@ -94,8 +95,8 @@
 
 			<thead>
 				<tr>
-					<th width="20%">Codigo</th>
-					<th width="*">Nome</th>
+					<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
+					<th width="*"><fmt:message key="label.padrao.nome"/></th>
 				</tr>
 			</thead>
 			

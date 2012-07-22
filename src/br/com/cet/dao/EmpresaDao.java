@@ -13,6 +13,8 @@ import br.com.cet.vo.EmpresaVo;
 public class EmpresaDao extends BaseDao {
 	
 	
+	private static final int POR_CODIGO = 1;
+
 	public int getProximoCodigo(){
 		
 		return getProximoCodigo("empresa", "cd_empresa");
@@ -21,7 +23,7 @@ public class EmpresaDao extends BaseDao {
 	
 	
 	public EmpresaVo getEmpresaPeloCodigo(EmpresaVo empresaVo){
-		return getEmpresa(empresaVo, 1);
+		return getEmpresa(empresaVo, POR_CODIGO	);
 	}
 	
 	private EmpresaVo getEmpresa(EmpresaVo empresaVo, int criterio){
@@ -42,7 +44,7 @@ public class EmpresaDao extends BaseDao {
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
-		    ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getCodigoEmpresa()));
 		    
 		    rs = ps.executeQuery();  
 		    
@@ -215,7 +217,7 @@ public class EmpresaDao extends BaseDao {
 			ps.setString(i++, empresaVo.getNomeFantasia());
 		    ps.setString(i++, empresaVo.getCep());
 		    ps.setString(i++, empresaVo.getEndereco());
-		    ps.setInt(i++, Integer.parseInt(empresaVo.getNumero()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getNumero()));
 		    ps.setString(i++, empresaVo.getComplemento());
 		    ps.setString(i++, empresaVo.getBairro());
 		    ps.setString(i++, empresaVo.getCidade());
@@ -224,7 +226,7 @@ public class EmpresaDao extends BaseDao {
 		    ps.setString(i++, empresaVo.getFax());
 		    ps.setString(i++, empresaVo.getWebSite());
 		    ps.setString(i++, empresaVo.getEmail());
-			ps.setInt(i++, Integer.parseInt(empresaVo.getCodigoEmpresa()));
+			ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getCodigoEmpresa()));
 			
 			ps.execute();
 			
