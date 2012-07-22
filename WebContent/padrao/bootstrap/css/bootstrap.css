@@ -962,6 +962,10 @@ input[type="checkbox"]:focus {
   width: 217.5px;
 }
 
+.input-305 {
+  width: 305px;
+}
+
 .input-xlarge {
   width: 345px;
 }
@@ -970,6 +974,13 @@ input[type="checkbox"]:focus {
   width: 530px;
 }
 
+.input-275 {
+  width: 275px;
+}
+
+.input-400 {
+  width: 325px;
+}
 
 input[class*="span"],
 select[class*="span"],

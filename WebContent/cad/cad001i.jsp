@@ -30,6 +30,14 @@
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
         
+        label{
+        	width: 100px;
+        }
+        
+        p{
+        	height: 40px;
+        }
+        
     </style>
 </head>
 <body>
@@ -65,113 +73,73 @@
 <div class="container-fluid">
         <div class="container">
 
-            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-horizontal">
+            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
                 <s:hidden name="ac" id="ac"/>
+
+
+                <p>
+					<label for="codigoEmpresa" class="label"><fmt:message key="label.padrao.codigo"/></label>
+					<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-mini" readonly="true" />
+
+                	<label for="razaoSocial" class="label"><fmt:message key="label.padrao.razao.social"/></label>
+	                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xlarge required" />
+
+                	<label for="nomeFantasia" class="label"><fmt:message key="label.padrao.nome.fantasia"/></label>
+	                <s:textfield name="empresaVo.nomeFantasia" id="nomeFantasia" required="required" cssClass="input-305 required" />
+				</p>
+
+
+				<p>
+                	<label for="cep" class="label"><fmt:message key="label.padrao.cep"/></label>
+	                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="input-small" />
 				
-                <div class="control-group">
-					<label for="codigoEmpresa" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
-					<div class="controls">
-						<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-xxlarge" readonly="true" />
-					</div>
-				</div>
+                	<label for="endereco" class="label"><fmt:message key="label.padrao.endereco"/></label>
+	                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="input-xxlarge" />
+				
+                	<label for="numero" class="label"><fmt:message key="label.padrao.numero"/></label>
+	                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="input-small" />
+				</p>
 
-                <div class="control-group">
-                	<label for="razaoSocial" class="control-label"><fmt:message key="label.padrao.razao.social"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xxlarge " />
-					</div>
-				</div>
+				<p>
+                	<label for="complemento" class="label"><fmt:message key="label.padrao.complemento"/></label>
+	                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="input-large" />
+				
+                	<label for="bairro" class="label"><fmt:message key="label.padrao.bairro"/></label>
+	                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="input-large" />
+				
+                	<label for="cidade" class="label"><fmt:message key="label.padrao.cidade"/></label>
+	                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="input-275" />
+				</p>
 
-                <div class="control-group">
-                	<label for="nomeFantasia" class="control-label"><fmt:message key="label.padrao.nome.fantasia"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.nomeFantasia" id="nomeFantasia" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
+				<p>
+	               	<label for="estado" class="label"><fmt:message key="label.padrao.estado"/></label>
+	                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="input-large" />
+				
+                	<label for="telefone" class="label"><fmt:message key="label.padrao.telefone"/></label>
+	                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="input-large" />
+				
+                	<label for="fax" class="label"><fmt:message key="label.padrao.fax"/></label>
+	                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="input-275" />
+				</p>
 
-                <div class="control-group">
-                	<label for="cep" class="control-label"><fmt:message key="label.padrao.cep"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
 
-                <div class="control-group">
-                	<label for="endereco" class="control-label"><fmt:message key="label.padrao.endereco"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="numero" class="control-label"><fmt:message key="label.padrao.numero"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="complemento" class="control-label"><fmt:message key="label.padrao.complemento"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="bairro" class="control-label"><fmt:message key="label.padrao.bairro"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="cidade" class="control-label"><fmt:message key="label.padrao.cidade"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="estado" class="control-label"><fmt:message key="label.padrao.estado"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="telefone" class="control-label"><fmt:message key="label.padrao.telefone"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="fax" class="control-label"><fmt:message key="label.padrao.fax"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="website" class="control-label"><fmt:message key="label.padrao.website"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-
-                <div class="control-group">
-                	<label for="email" class="control-label"><fmt:message key="label.padrao.email"/></label>
-					<div class="controls">
-		                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="input-xxlarge" />
-					</div>
-				</div>
-                
+				<p>
+                	<label for="website" class="label"><fmt:message key="label.padrao.website"/></label>
+	                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="input-xxlarge" />
+				
+                	<label for="email" class="label"><fmt:message key="label.padrao.email"/></label>
+	                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="input-400" />
+				</p>
+	
             </s:form>
+            <!-- mensagem de alerta para o validate -->
+<div id="divErros" onchange="javaScript:carregaLista()" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<ul id="listaErros" > </ul>  
+</div>
+<!-- fim da mensagem de alerta -->
         </div>
     </div>
-
-
-
 
 	<div class="modal hide" id="myModal">
 	  <div class="modal-header">
@@ -195,14 +163,40 @@
 
 	$(document).ready(function(){
 		
+		$('#divErros').css('display','none');
+		
 		$('#cad001').validate({
+
+			
+		  unhighlight: function(element, errorClass) {
+		    if (this.numberOfInvalids() == 0) {
+		      $("#divErros").hide();
+		    }
+		    $(element).removeClass(errorClass);
+		  },
+		  errorPlacement: function(error,element) {
+			  return true;
+		  },
+			
+			
+			errorLabelContainer: "#listaErros",
+			errorElement: "li",
+			
             rules:{
-                razaoSocial: "required"
+            	"empresaVo.razaoSocial":{
+                	required:true
+                },
+                "empresaVo.nomeFantasia":{
+                	required:true
+                }
                 
             },
             messages:{
-            	razaoSocial:{
-                    required: "O campo Razão Social é obrigatorio.",
+            	"empresaVo.razaoSocial":{
+                    required: "O campo Razão Social é obrigatório."	
+                },
+                "empresaVo.nomeFantasia":{
+                    required: "O campo Nome Fantasia é obrigatório."	
                 }
             }
 	    });
@@ -210,8 +204,10 @@
 		var $acao = $('#ac').val();
 		
 		if($acao == ''){
+			
 			$('#codigoEmpresa').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
+			
 		}else{
 			
 			$('#textoBtnCancelarExcluir').html('Excluir');
@@ -235,6 +231,17 @@
 		
 		var $codigo = $('#codigoEmpresa').val();
 		
+		if(buscaProximoCampo() == true){
+			
+			$('#divErros').slideUp(function(){
+				$('#divErros').css('display','none');
+			});
+			
+		}else{
+			
+			$('#divErros').fadeIn(1000).delay(1000).fadeOut('slow');
+			
+		}
 		
 		if($codigo == 'novo'){
 			$('#ac').val("saveInclusao");
@@ -257,7 +264,6 @@
 		$('#cad001').submit();
 		
 	}
-	
 	
 	function liberarCamposAlteracao(){
 		
@@ -302,10 +308,6 @@
 		$('input:required, .required').each(function(i,obj){
 
 			if(this.value == ''){
-				
-				$('#classeErro').fadeIn(3000,function(){
-					$('#classeErro').fadeOut(3000);		
-				});
 				
 				this.focus();
 				return false;
