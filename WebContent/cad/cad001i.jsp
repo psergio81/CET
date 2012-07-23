@@ -76,7 +76,6 @@
             <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
                 <s:hidden name="ac" id="ac"/>
 
-
                 <p>
 					<label for="codigoEmpresa" class="label"><fmt:message key="label.padrao.codigo"/></label>
 					<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-mini" readonly="true" />
@@ -132,7 +131,7 @@
 				</p>
 	
             </s:form>
-            <!-- mensagem de alerta para o validate -->
+<!-- mensagem de alerta para o validate -->
 <div id="divErros" onchange="javaScript:carregaLista()" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
 	<button type="button" class="close" data-dismiss="modal">×</button>
 	<ul id="listaErros" > </ul>  

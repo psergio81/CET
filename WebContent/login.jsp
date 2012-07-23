@@ -40,14 +40,14 @@
                 <div class="control-group">
 					<label for="nick" class="control-label">Login</label>
 					<div class="controls">
-						<s:textfield name="usuarioVo.nick" id="nick" required="true" cssClass="input-xxlarge"/>
+						<s:textfield name="usuarioVo.nick" id="nick" cssClass="input-xxlarge required"/>
 					</div>
 				</div>
 
                 <div class="control-group">
                 	<label for="razaoSocial" class="control-label">Senha</label>
 					<div class="controls">
-		                <s:textfield name="usuarioVo.senha" required="true" id="senha" cssClass="input-xxlarge " />
+		                <s:textfield name="usuarioVo.senha" id="senha" cssClass="input-xxlarge required" />
 					</div>
 				</div>
 				
@@ -66,7 +66,14 @@
 					</div>
 				</div>
 				
+				
 			</s:form>
+			<!-- mensagem de alerta para o validate -->
+			<div id="divErros" onchange="javaScript:carregaLista()" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
+				<button type="button" class="close" data-dismiss="modal">×</button>
+				<ul id="listaErros" > </ul>  
+			</div>
+			<!-- fim da mensagem de alerta -->
 			
 		</div>
 		
@@ -80,16 +87,28 @@
 <script>
 
 $(document).ready(function(){
+
+	$('#divErros').css('display','none');
 	
 	$('#loginAction').validate({
+	
+		errorLabelContainer: "#listaErros",
+		errorElement: "li",
+		
         rules:{
-        	senha:{
+        	"usuarioVo.nick":{
+                required: true
+            },
+            "usuarioVo.senha":{
                 required: true
             }
         },
         messages:{
-        	senha:{
-                required: "O campo Senha é obrigatorio."
+        	"usuarioVo.nick":{
+                required: "O campo Loginn é obrigatório."
+            },
+        	"usuarioVo.senha":{
+                required: "O campo Senha é obrigatório."
             }
         }
     });
@@ -97,10 +116,36 @@ $(document).ready(function(){
 
 function autenticar(){
 	
-	$('#textoBtnLogin').html('Logando...');
+	
+	if(buscaProximoCampo() == true){
+		
+		$('#divErros').slideUp(function(){
+			$('#divErros').css('display','none');
+		});
+		
+		$('#textoBtnLogin').html('Logando...');
+	}else{
+		
+		$('#divErros').fadeIn(1000).delay(1000).fadeOut('slow');
+		
+	}
 	
 	$('#loginAction').submit();
 	
+}
+
+
+function buscaProximoCampo(){
+	
+	$('input:required, .required').each(function(i,obj){
+
+		if(this.value == ''){
+			
+			this.focus();
+			return false;
+		}
+		
+	});
 }
 
 </script>
