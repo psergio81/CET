@@ -95,4 +95,11 @@ public class UtString {
 		return false;
 	}
 	
+	public static String formataNumeroZeroEsquerda(int qtdCasas, int numero){
+		
+		String formato = "%0"+qtdCasas+"d";
+		
+		return String.format(formato, numero); 
+	}
+	
 }

@@ -42,7 +42,7 @@ public class Empresa {
 		
 	}
 	
-	public void insertEmpresa(EmpresaVo empresaVo) throws Exception{
+	public boolean insertEmpresa(EmpresaVo empresaVo) throws Exception{
 		
 		try{
 			
@@ -55,7 +55,9 @@ public class Empresa {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 
 	public void updateEmpresa(EmpresaVo empresaVo) throws Exception{

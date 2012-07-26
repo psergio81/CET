@@ -73,7 +73,6 @@
         <div class="container">
 
             <s:form id="cad001" action="Cad001Action!browser.action" theme="simple" cssClass="well form-inline">
-                <s:hidden name="ac" id="ac"/>
                 <s:hidden name="filtrar" id="filtrar" />
                 
 				<p>
@@ -102,12 +101,12 @@
 			
 			<tbody>
 				<s:iterator  value="listaEmpresa" status="status">
-					<tr>
+					<tr onclick="javaScript:detalhes('<s:property value="codigoEmpresa" />')">
 						<td>
-							<s:property value="codigoEmpresa" />
+							<a><s:property value="codigoEmpresa" /></a>
 						</td>
 						<td>
-							<a href="Cad001Action!crud.action?ac=consultar&codigoEmpresaSelecionado=<s:property value="codigoEmpresa" />"><s:property value="razaoSocial" /></a>
+							<a><s:property value="razaoSocial" /></a>
 						</td>
 					</tr>
 				</s:iterator>
@@ -143,6 +142,13 @@
 		function filtrar(){
 			
 			$('#filtrar').val(true);
+			$('#cad001').submit();
+			
+		}
+		
+		function detalhes(codigo){
+			$('#ac').val(' ');
+			$('#cad001').attr("action","Cad001Action!crud.action?ac=consultar&codigoEmpresaSelecionado="+codigo);
 			$('#cad001').submit();
 			
 		}

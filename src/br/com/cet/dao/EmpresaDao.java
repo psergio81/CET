@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
+import br.com.cet.util.UtString;
 import br.com.cet.vo.EmpresaVo;
 
 public class EmpresaDao extends BaseDao {
 	
 	
+	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 	private static final int POR_CODIGO = 1;
 
 	public int getProximoCodigo(){
@@ -54,7 +56,7 @@ public class EmpresaDao extends BaseDao {
 		    	empresaVo = new EmpresaVo();
 		    	
 		    	empresaVo.setRowid(rs.getString("rowid"));
-		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
+		    	empresaVo.setCodigoEmpresa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_empresa"))));
 		    	empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    	empresaVo.setNomeFantasia(rs.getString("nm_fantasia_empresa"));
 		    	empresaVo.setCep(rs.getString("cep"));
@@ -114,7 +116,7 @@ public class EmpresaDao extends BaseDao {
 		    while (rs.next()) {  
 		    	empresaVo = new EmpresaVo();
 		    	empresaVo.setRowid(rs.getString("rowid"));
-		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
+		    	empresaVo.setCodigoEmpresa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_empresa"))));
 		        empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
 		    	empresasList.add(empresaVo);
 		    }  

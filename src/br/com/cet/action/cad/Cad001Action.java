@@ -19,8 +19,6 @@ public class Cad001Action extends RecursoPadraoAction{
 	private boolean filtrar;
 	private String nomePrograma;
 	
-	
-	
 	public void prepare(){
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
@@ -43,6 +41,7 @@ public class Cad001Action extends RecursoPadraoAction{
 	public String crud() throws Exception{
 
 		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		boolean retorno;
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());
@@ -55,7 +54,12 @@ public class Cad001Action extends RecursoPadraoAction{
 			
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			empresa.insertEmpresa(empresaVo);
+			retorno = empresa.insertEmpresa(empresaVo);
+			if(retorno){
+				setMensagemErro("Empresa cadastrada com sucesso!");
+			}else{
+				setMensagemErro("Erro ao cadastrar a empresa!");
+			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			

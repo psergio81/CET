@@ -75,6 +75,7 @@
 
             <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
                 <s:hidden name="ac" id="ac"/>
+                <s:hidden name="mensagemErro" id="mensagemErro" value="%{mensagemErro}"/>
 
                 <p>
 					<label for="codigoEmpresa" class="label"><fmt:message key="label.padrao.codigo"/></label>
@@ -132,8 +133,7 @@
 	
             </s:form>
 <!-- mensagem de alerta para o validate -->
-<div id="divErros" onchange="javaScript:carregaLista()" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-	<button type="button" class="close" data-dismiss="modal">×</button>
+<div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
 	<ul id="listaErros" > </ul>  
 </div>
 <!-- fim da mensagem de alerta -->
@@ -167,6 +167,19 @@
 
 	$(document).ready(function(){
 		
+		var acao = $('#ac').val();
+		var mensagem = $('#mensagemErro').val();
+		
+		
+		if(mensagem != null && mensagem != ''){
+			alert(mensagem);
+		}
+		
+		
+		if(acao == 'excluir'){
+			irParaBrowser();
+		}
+		
 		$('#divErros').css('display','none');
 		
 		$('#cad001').validate({
@@ -181,7 +194,6 @@
 		  errorPlacement: function(error,element) {
 			  return true;
 		  },
-			
 			
 			errorLabelContainer: "#listaErros",
 			errorElement: "li",
@@ -286,6 +298,7 @@
 		var $codigo = $('#codigoEmpresa').val();
 		
 		if($codigo == 'novo'){
+			 $("#cad001").validate().cancelSubmit = true;
 			this.irParaBrowser();
 		}else{
 			
@@ -296,12 +309,15 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			$('input[class|="input"][id!="codigoEmpresa"]').attr('readonly','true');
+			
+			$("#cad001").fieldcontain('refresh');
 		}
 	}
 
 	function irParaBrowser(){
 		
 		$('#cad001').attr("action","Cad001Action!browser.action");
+		$('#cad001').validate().cancelSubmit = true;
 		$('#cad001').submit();
 		
 	}

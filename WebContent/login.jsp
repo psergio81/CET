@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<%@  taglib  prefix="c"   uri="/struts-tags" %>    
+<%@ taglib  prefix="c"   uri="/struts-tags" %>    
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
 <html lang="en">
