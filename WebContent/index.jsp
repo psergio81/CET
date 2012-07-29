@@ -1,3 +1,4 @@
+<%@taglib uri="/struts-tags" prefix="s"%>
 
 <html lang="en">
 	<head>
@@ -24,26 +25,51 @@
 	
 <body>
 	
-	 <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Ensaio</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="#">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contato</a></li>
-              <li><a href="Cad001Action!browser.action">Cadastro de OS</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul class="nav nav-pills">
+					<li class="dropdown" id="menu1">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">
+							Cadastros<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">
+									<s:a action="Cad001Action!browser.action">Empresa</s:a>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									Usuário
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad002Action!browser.action">Marca</s:a>
+								</a>
+							</li>
+    					</ul>
+  					</li>
+				</ul>
+
+				<ul class="nav nav-pills">
+					<li class="dropdown" id="menu2">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
+							Relatórios<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="#">
+									Ensaios
+								</a>
+							</li>
+    					</ul>
+  					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
 
     <div class="container">
 

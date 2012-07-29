@@ -9,5 +9,6 @@ public class AcoesKey {
 	public static final String ACAO_BROWSER 					= "browser";
 	public static final String ACAO_SALVAR_INCLUSAO 			= "saveInclusao";
 	public static final String ACAO_SALVAR_ALTERACAO 			= "saveAlteracao";
+	public static final String ACAO_PRINCIPAL		 			= "principal";
 
 }

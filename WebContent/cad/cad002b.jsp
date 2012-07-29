@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="/struts-tags" prefix="s"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -31,48 +32,37 @@
       	 
 	</head>
 	
-	<body>
-	
-	
+<body>
 	
 	<div class="navbar navbar-fixed-top">
-	
 		<div class="navbar-inner">
-		
-			 <div class="container">
-			 
-			 	<a class="brand" href="#">
-  					Ensaio
-				</a>
+			<div class="row">
+				<div class="span4">
+					<a class="btn btn-info" href="javaScript:irParaPrincipal();">
+						<i class="icon-home icon-white">
+						</i>
+						<fmt:message key="label.padrao.principal"/>
+					</a>
+				</div>
 				
-				<ul class="nav nav-pills">
+				<div class="span4" align="center">
+					<a class="btn btn-success" onclick="javaSript:incluir()">
+						<i class="icon-plus icon-white icon">
+						</i><fmt:message key="label.padrao.incluir"/>
+					</a>
+				</div>
 				
-					<li class="active"><a href="#">Regular link</a></li>
-					
-				  	<li class="dropdown" id="menu1">
-					    <a class="dropdown-toggle" data-toggle="dropdown" href="#menu1">Cadastro<b class="caret"></b></a>
-					    <ul class="dropdown-menu">
-					      	<li><s:a action="Cad001Action!crud.action">Empresa</s:a></li>
-					      	<li><s:a action="Cad002Action!crud.action">Marca</s:a></li>
-					      	<li class="divider"></li>
-					    </ul>
-				  	</li>
-				</ul>
-				
-				<form class="navbar-search pull-left">
-  					<input type="text" class="search-query" placeholder="Search">
-				</form>
-			 </div>
-		
-     	</div>
-     	
-	</div>
+				<div class="pull-right">
+					<button class="descricaoTela"><s:property value="nomePrograma"/></button>
+				</div>
+			</div>
+	    </div>
+	</div>	
 
 	<div class="container-fluid">
         <div class="container">
 
             <s:form id="cad002" action="Cad002Action!browser.action" theme="simple" cssClass="well form-inline">
-                <s:hidden name="ac" id="ac"/>
                 <s:hidden name="filtrar" id="filtrar" />
                 
 				<p>
@@ -138,10 +128,21 @@
 			
 		}
 			
-
 		function filtrar(){
 			
 			$('#filtrar').val(true);
+			$('#cad002').submit();
+			
+		}
+		
+		function irParaPrincipal(){
+			$('#cad002').attr("action","Cad002Action!crud.action?ac=principal");
+			$('#cad002').submit();
+		}
+		
+		function incluir(){
+
+			$('#cad002').attr("action","Cad002Action!crud.action");
 			$('#cad002').submit();
 			
 		}

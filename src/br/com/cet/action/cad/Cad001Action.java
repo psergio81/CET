@@ -69,6 +69,8 @@ public class Cad001Action extends RecursoPadraoAction{
 			
 			empresa.deleteEmpresa(empresaVo);
 			
+		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
+			return "principal";
 		}
 		
 		return SUCCESS;

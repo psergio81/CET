@@ -48,7 +48,7 @@ public class LoginAction extends RecursoPadraoAction{
 		
 		}
 		
-		return "erro";
+		return ERROR;
 	}
 	
 	public UsuarioVo getUsuarioVo() {

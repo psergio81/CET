@@ -154,6 +154,15 @@
 	  </div>
 	</div>
 
+	<div class="modal hide" id="modalMensagem">
+	  <div class="modal-body">
+	    <h3 id="mensagem"></h3>
+	  </div>
+	  <div class="modal-footer">
+	    <a href="#" class="btn btn-primary" data-dismiss="modal">Ok</a>
+	  </div>
+	</div>
+
     <div class="navbar navbar-fixed-bottom">
     	<div class="navbar-inner">
     		<div class="pull-right">
@@ -172,7 +181,8 @@
 		
 		
 		if(mensagem != null && mensagem != ''){
-			alert(mensagem);
+			$('#mensagem').html(mensagem);
+			$('#modalMensagem').modal('show');
 		}
 		
 		

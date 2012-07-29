@@ -44,7 +44,13 @@ public class Cad002Action extends RecursoPadraoAction {
 			marca.insertMarca(marcaVo);
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
+			
 			marca.updateMarca(marcaVo);
+			
+		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
+			
+			return "principal";
+			
 		}
 		
 		return SUCCESS;
