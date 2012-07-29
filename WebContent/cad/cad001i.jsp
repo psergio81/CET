@@ -21,6 +21,7 @@
 	<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
 	<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
 	<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+	<script src="/CET/padrao/scripts/script.js"></script>
 
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
    	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
@@ -45,7 +46,7 @@
 	<div class="navbar-inner">
 		<div class="row">
 			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser();">
+				<a class="btn btn-info" href="javaScript:irParaBrowser('cad001');">
 					<i class="icon-search icon-white">
 					</i>
 					<fmt:message key="label.padrao.busca"/>
@@ -71,7 +72,7 @@
 </div>
 
 <div class="container-fluid">
-        <div class="container">
+        <div class="container" id="container">
 
             <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
                 <s:hidden name="ac" id="ac"/>
@@ -132,11 +133,11 @@
 				</p>
 	
             </s:form>
-<!-- mensagem de alerta para o validate -->
-<div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-	<ul id="listaErros" > </ul>  
-</div>
-<!-- fim da mensagem de alerta -->
+
+			<div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
+				<ul id="listaErros" > </ul>  
+			</div>
+			
         </div>
     </div>
 
@@ -146,11 +147,11 @@
 	    <h3>Confirmação de exclusão</h3>
 	  </div>
 	  <div class="modal-body">
-	    <p>Deseja realmente excluir este cadstro?</p>
+	    <p>Deseja realmente excluir este cadastro?</p>
 	  </div>
 	  <div class="modal-footer">
-	    <a href="#" class="btn" data-dismiss="modal">Cancelar</a>
-	    <a href="javascript:excluirCadastro()" class="btn btn-primary">Ok</a>
+	    <a href="#" class="btn" data-dismiss="modal"><fmt:message key="label.padrao.cancelar"/></a>
+	    <a href="javascript:excluirCadastro()" class="btn btn-primary"><fmt:message key="label.padrao.ok"/></a>
 	  </div>
 	</div>
 
@@ -159,7 +160,7 @@
 	    <h3 id="mensagem"></h3>
 	  </div>
 	  <div class="modal-footer">
-	    <a href="#" class="btn btn-primary" data-dismiss="modal">Ok</a>
+	    <a href="#" class="btn btn-primary" data-dismiss="modal"><fmt:message key="label.padrao.ok"/></a>
 	  </div>
 	</div>
 
@@ -187,7 +188,7 @@
 		
 		
 		if(acao == 'excluir'){
-			irParaBrowser();
+			irParaBrowser('cad001');
 		}
 		
 		$('#divErros').css('display','none');
@@ -309,7 +310,7 @@
 		
 		if($codigo == 'novo'){
 			 $("#cad001").validate().cancelSubmit = true;
-			this.irParaBrowser();
+			this.irParaBrowser('cad001');
 		}else{
 			
 			$('#textoBtnCancelarExcluir').html('Excluir');
@@ -320,7 +321,7 @@
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			$('input[class|="input"][id!="codigoEmpresa"]').attr('readonly','true');
 			
-			$("#cad001").fieldcontain('refresh');
+			location.reload();
 		}
 	}
 
@@ -332,19 +333,6 @@
 		
 	}
 
-	// Busca os campos requeridos no formulario e caso não esteja preenchido emite um alerta(provisório) e move o foco para o campo
-	function buscaProximoCampo(){
-		
-		$('input:required, .required').each(function(i,obj){
-
-			if(this.value == ''){
-				
-				this.focus();
-				return false;
-			}
-			
-		});
-	}
 	
 </script>
 </body>

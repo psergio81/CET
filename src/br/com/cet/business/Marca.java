@@ -27,12 +27,13 @@ public class Marca {
 	
 	public MarcaVo getMarcaPeloCodigo(String codigoMarca) throws Exception{
 		
-		MarcaVo marcaVo = new MarcaVo(codigoMarca);
+		MarcaVo marcaVo = new MarcaVo();
 		
 		try{
 			
 			MarcaDao marcaDao = new MarcaDao();
-		
+			marcaVo.setCodigoMarca(codigoMarca);
+			
 			marcaVo = marcaDao.getMarcaPeloCodigo(marcaVo);
 			
 		}catch (Exception e) {
@@ -67,6 +68,18 @@ public class Marca {
 			marcaDao.updateMarcas(marcaVo);
 			
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteMarca(MarcaVo marcaVo){
+		
+		try {
+			
+			MarcaDao marcaDao = new MarcaDao();
+			marcaDao.deleteMarca(marcaVo);
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

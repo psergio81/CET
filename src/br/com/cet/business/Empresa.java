@@ -86,8 +86,6 @@ public class Empresa {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

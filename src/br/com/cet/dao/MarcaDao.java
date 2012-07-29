@@ -7,9 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cet.util.UtConverte;
+import br.com.cet.util.UtString;
 import br.com.cet.vo.MarcaVo;
 
 public class MarcaDao extends BaseDao {
+	
+	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 
 	public int getProximoCodigo(){
 		
@@ -37,7 +41,6 @@ public class MarcaDao extends BaseDao {
 		    qry.append(	"where cd_marca = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
-		    
 		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
 		    
 		    rs = ps.executeQuery();  
@@ -48,8 +51,12 @@ public class MarcaDao extends BaseDao {
 		    	marcaVo = new MarcaVo();
 		    	
 		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(rs.getString("cd_marca"));
+		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
 		    	marcaVo.setDescricao(rs.getString("nm_marca"));
+		    	
+		    	
+		    	System.out.println(marcaVo.getCodigoMarca());
+		    	System.out.println(marcaVo.getDescricao());
 		    }
 		    
 		}catch (Exception e) {  
@@ -58,7 +65,7 @@ public class MarcaDao extends BaseDao {
 	    	releaseResouces(connection, ps, rs);
 	    } 
 	    
-		return null;
+		return marcaVo;
 	}
 	
 	public List<MarcaVo> getListaMarcas(MarcaVo marcaVo, boolean filtrar){
@@ -94,7 +101,7 @@ public class MarcaDao extends BaseDao {
 		    while (rs.next()) {  
 		    	marcaVo = new MarcaVo();
 		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(rs.getString("cd_marca"));
+		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
 		    	marcaVo.setDescricao(rs.getString("nm_marca"));
 		    	marcasList.add(marcaVo);
 		    }  
@@ -166,6 +173,31 @@ public class MarcaDao extends BaseDao {
 		}finally {
 			releaseResouces(connection, ps); 
 		} 
+	}
+	
+	public void deleteMarca(MarcaVo marcaVo) {
+
+		Connection connection = null;
+		PreparedStatement  ps = null;  
+	    StringBuilder qry = new StringBuilder(); 
+	    int i = 1;
+	    
+	    try {  
+	    	
+	    	connection = getConnection();  
+	  
+		    qry.append(" DELETE FROM marca WHERE cd_marca = ? ");
+		    
+		    ps = connection.prepareStatement(qry.toString());
+		    ps.setInt(i++, UtConverte.stringToInteiro(marcaVo.getCodigoMarca()));
+		    
+			ps.execute();
+		    
+	    }catch (SQLException e) {  
+	        e.printStackTrace();
+	    }finally {
+	    	releaseResouces(connection, ps); 
+	    }
 	}
 	
 }

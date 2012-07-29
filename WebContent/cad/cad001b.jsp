@@ -15,6 +15,7 @@
 		
 		<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
 		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
+		<script src="/CET/padrao/scripts/script.js"></script>
 		<script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
 		
 		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
@@ -38,7 +39,7 @@
 		<div class="navbar-inner">
 			<div class="row">
 				<div class="span4">
-					<a class="btn btn-info" href="javaScript:irParaPrincipal();">
+					<a class="btn btn-info" href="javaScript:irParaPrincipal('cad001');">
 						<i class="icon-home icon-white">
 						</i>
 						<fmt:message key="label.padrao.principal"/>
@@ -46,7 +47,7 @@
 				</div>
 				
 				<div class="span4" align="center">
-					<a class="btn btn-success" onclick="javaSript:incluir()">
+					<a class="btn btn-success" onclick="javaSript:irParaCrud('cad001');">
 						<i class="icon-plus icon-white icon">
 						</i><fmt:message key="label.padrao.incluir"/>
 					</a>
@@ -143,17 +144,6 @@
 			
 		}
 		
-		function irParaPrincipal(){
-			$('#cad001').attr("action","Cad001Action!crud.action?ac=principal");
-			$('#cad001').submit();
-		}
-		
-		function incluir(){
-
-			$('#cad001').attr("action","Cad001Action!crud.action");
-			$('#cad001').submit();
-			
-		}
 			
 	</script>
 </html>

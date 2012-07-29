@@ -33,12 +33,13 @@ public class Cad002Action extends RecursoPadraoAction {
 		
 	}
 	
+	
 	public String crud() throws Exception{
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
-			
+		
 			marcaVo = marca.getMarcaPeloCodigo(codigoMarcaSelecionado);
-			
+
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			marca.insertMarca(marcaVo);
@@ -50,6 +51,10 @@ public class Cad002Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
 			return "principal";
+			
+		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
+			
+			marca.deleteMarca(marcaVo);
 			
 		}
 		
