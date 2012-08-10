@@ -9,23 +9,23 @@ import java.util.List;
 
 import br.com.cet.util.UtConverte;
 import br.com.cet.util.UtString;
-import br.com.cet.vo.MarcaVo;
+import br.com.cet.vo.ModeloVo;
 
-public class MarcaDao extends BaseDao {
+public class ModeloDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 
 	public int getProximoCodigo(){
 		
-		return getProximoCodigo("marca", "cd_marca");
+		return getProximoCodigo("modelo", "cd_modelo");
 		
 	}
 	
-	public MarcaVo getMarcaPeloCodigo(MarcaVo marcaVo){
-		return getMarca(marcaVo,1);
+	public ModeloVo getModeloPeloCodigo(ModeloVo modeloVo){
+		return getModelo(modeloVo,1);
 	}
 
-	private MarcaVo getMarca(MarcaVo marcaVo, int criterio) {
+	private ModeloVo getModelo(ModeloVo modeloVo, int criterio) {
 
 		Connection connection = null;
 		ResultSet rs = null;  
@@ -37,22 +37,22 @@ public class MarcaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_marca, nm_marca FROM marca " );
-		    qry.append(	"where cd_marca = ? " );
+		    qry.append(	"SELECT rowid, cd_modelo, nm_modelo FROM modelo " );
+		    qry.append(	"where cd_modelo = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
-		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
+		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoModelo()));
 		    
 		    rs = ps.executeQuery();  
 		    
-		    marcaVo = null;
+		    modeloVo = null;
 	    	
 		    if (rs.next()) {  
-		    	marcaVo = new MarcaVo();
+		    	modeloVo = new ModeloVo();
 		    	
-		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
-		    	marcaVo.setDescricao(rs.getString("nm_marca"));
+		    	modeloVo.setRowid(rs.getString("rowid"));
+		    	modeloVo.setCodigoModelo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_modelo"))));
+		    	modeloVo.setDescricao(rs.getString("nm_modelo"));
 		    	
 		    }
 		    
@@ -62,45 +62,45 @@ public class MarcaDao extends BaseDao {
 	    	releaseResouces(connection, ps, rs);
 	    } 
 	    
-		return marcaVo;
+		return modeloVo;
 	}
 	
-	public List<MarcaVo> getListaMarcas(MarcaVo marcaVo, boolean filtrar){
+	public List<ModeloVo> getListaModelos(ModeloVo modeloVo, boolean filtrar){
 		
 		Connection connection = null;
 		ResultSet rs = null;  
 	    PreparedStatement ps = null;  
 	    StringBuilder qry = new StringBuilder(); 
-	    List<MarcaVo> marcasList = null;
+	    List<ModeloVo> modelosList = null;
 	    int i = 1;
 	    
 	    try {  
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_marca, nm_marca FROM marca ");
+		    qry.append("SELECT rowid, cd_modelo, nm_modelo FROM modelo ");
 		
 		    if(filtrar){
-		    	qry.append(" WHERE nm_marca like '%' ? '%' ");
+		    	qry.append(" WHERE nm_modelo like '%' ? '%' ");
 		    }
 		
 		    
 		    ps = connection.prepareStatement(qry.toString());
 		    
 		    if(filtrar){
-		    	ps.setString(i++, marcaVo.getDescricao());
+		    	ps.setString(i++, modeloVo.getDescricao());
 		    }
 		    
 		    rs = ps.executeQuery();  
 		  
-		    marcasList = new ArrayList<MarcaVo>();
+		    modelosList = new ArrayList<ModeloVo>();
 		    
 		    while (rs.next()) {  
-		    	marcaVo = new MarcaVo();
-		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
-		    	marcaVo.setDescricao(rs.getString("nm_marca"));
-		    	marcasList.add(marcaVo);
+		    	modeloVo = new ModeloVo();
+		    	modeloVo.setRowid(rs.getString("rowid"));
+		    	modeloVo.setCodigoModelo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_modelo"))));
+		    	modeloVo.setDescricao(rs.getString("nm_modelo"));
+		    	modelosList.add(modeloVo);
 		    }  
 		    
 	    }catch (Exception e) {  
@@ -109,10 +109,10 @@ public class MarcaDao extends BaseDao {
 	    	releaseResouces(connection, ps, rs);
 	    } 
 	    
-	    return marcasList;
+	    return modelosList;
 	}
 	
-	public void insertMarcas(MarcaVo marcaVo) throws Exception{
+	public void insertModelos(ModeloVo modeloVo) throws Exception{
 		
 		Connection connection = null;
 		PreparedStatement  ps = null;  
@@ -123,17 +123,17 @@ public class MarcaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append(" INSERT INTO marca ");
+		    qry.append(" INSERT INTO modelo ");
 		    qry.append(" ( rowid, ");
-		    qry.append(" cd_marca, ");
-		    qry.append(" nm_marca ) ");
+		    qry.append(" cd_modelo, ");
+		    qry.append(" nm_modelo ) ");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
-		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
-		    ps.setString(i++, marcaVo.getDescricao());
+		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoModelo()));
+		    ps.setString(i++, modeloVo.getDescricao());
 		    
 		    ps.executeUpdate();
 		    
@@ -144,7 +144,7 @@ public class MarcaDao extends BaseDao {
 	    } 
 	}
 	
-	public void updateMarcas(MarcaVo marcaVo) throws Exception{
+	public void updateModelos(ModeloVo modeloVo) throws Exception{
 		
 		Connection connection = null;
 		PreparedStatement  ps = null;  
@@ -155,13 +155,13 @@ public class MarcaDao extends BaseDao {
 			
 			connection = getConnection();  
 			
-			qry.append(" UPDATE marca set ");
-			qry.append(" nm_marca = ? ");
-			qry.append(" WHERE cd_marca = ? ");
+			qry.append(" UPDATE modelo set ");
+			qry.append(" nm_modelo = ? ");
+			qry.append(" WHERE cd_modelo = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
-			ps.setString(i++, marcaVo.getDescricao());
-			ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
+			ps.setString(i++, modeloVo.getDescricao());
+			ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoModelo()));
 			
 			ps.execute();
 			
@@ -172,7 +172,7 @@ public class MarcaDao extends BaseDao {
 		} 
 	}
 	
-	public void deleteMarca(MarcaVo marcaVo) {
+	public void deleteModelo(ModeloVo modeloVo) {
 
 		Connection connection = null;
 		PreparedStatement  ps = null;  
@@ -183,10 +183,10 @@ public class MarcaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append(" DELETE FROM marca WHERE cd_marca = ? ");
+		    qry.append(" DELETE FROM modelo WHERE cd_modelo = ? ");
 		    
 		    ps = connection.prepareStatement(qry.toString());
-		    ps.setInt(i++, UtConverte.stringToInteiro(marcaVo.getCodigoMarca()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(modeloVo.getCodigoModelo()));
 		    
 			ps.execute();
 		    
