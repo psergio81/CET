@@ -59,6 +59,16 @@
 									<s:a action="Cad004Action!browser.action">Ensaio</s:a>
 								</a>
 							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad005Action!browser.action">Veículo</s:a>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad006Action!browser.action">Pessoa</s:a>
+								</a>
+							</li>
     					</ul>
   					</li>
 				</ul>

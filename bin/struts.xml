@@ -54,6 +54,18 @@
 			<result name="browser">/cad/cad004b.jsp</result>
             <result name="principal">/index.jsp</result>  
 		</action>
+
+		<action name="Cad005Action!*" method="{1}" class="br.com.cet.action.cad.Cad005Action">
+			<result name="success">/cad/cad005i.jsp</result>
+			<result name="browser">/cad/cad005b.jsp</result>
+            <result name="principal">/index.jsp</result>  
+		</action>
+
+		<action name="Cad006Action!*" method="{1}" class="br.com.cet.action.cad.Cad006Action">
+			<result name="success">/cad/cad006i.jsp</result>
+			<result name="browser">/cad/cad006b.jsp</result>
+            <result name="principal">/index.jsp</result>  
+		</action>
 	
 	</package>
 
