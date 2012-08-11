@@ -33,7 +33,7 @@ public class Cad006Action extends RecursoPadraoAction {
 	public String browser() throws Exception{
 		
 		
-		pessoaVo.setDescricao(campoBusca);
+		pessoaVo.setNome(campoBusca);
 		
 		listaPessoa = pessoa.getListaPessoa(pessoaVo, filtrar);
 		

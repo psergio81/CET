@@ -99,7 +99,7 @@
 							<a><s:property value="codigoPessoa" /></a>
 						</td>
 						<td>
-							<a><s:property value="descricao" /></a>
+							<a><s:property value="nome" /></a>
 						</td>
 					</tr>
 				</s:iterator>

@@ -37,7 +37,7 @@ public class PessoaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_pessoa, nm_pessoa FROM pessoa " );
+		    qry.append(	"SELECT rowid, cd_pessoa, nm_pessoa, documento FROM pessoa " );
 		    qry.append(	"where cd_pessoa = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -52,7 +52,8 @@ public class PessoaDao extends BaseDao {
 		    	
 		    	pessoaVo.setRowid(rs.getString("rowid"));
 		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_pessoa"))));
-		    	pessoaVo.setDescricao(rs.getString("nm_pessoa"));
+		    	pessoaVo.setNome(rs.getString("nm_pessoa"));
+		    	pessoaVo.setCodigoDocumento(rs.getString("documento"));
 		    	
 		    }
 		    
@@ -78,7 +79,7 @@ public class PessoaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_pessoa, nm_pessoa FROM pessoa ");
+		    qry.append("SELECT rowid, cd_pessoa, nm_pessoa, documento FROM pessoa ");
 		
 		    if(filtrar){
 		    	qry.append(" WHERE nm_pessoa like '%' ? '%' ");
@@ -88,7 +89,7 @@ public class PessoaDao extends BaseDao {
 		    ps = connection.prepareStatement(qry.toString());
 		    
 		    if(filtrar){
-		    	ps.setString(i++, pessoaVo.getDescricao());
+		    	ps.setString(i++, pessoaVo.getNome());
 		    }
 		    
 		    rs = ps.executeQuery();  
@@ -99,7 +100,8 @@ public class PessoaDao extends BaseDao {
 		    	pessoaVo = new PessoaVo();
 		    	pessoaVo.setRowid(rs.getString("rowid"));
 		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_pessoa"))));
-		    	pessoaVo.setDescricao(rs.getString("nm_pessoa"));
+		    	pessoaVo.setNome(rs.getString("nm_pessoa"));
+		    	pessoaVo.setCodigoDocumento(rs.getString("documento"));
 		    	pessoasList.add(pessoaVo);
 		    }  
 		    
@@ -126,14 +128,16 @@ public class PessoaDao extends BaseDao {
 		    qry.append(" INSERT INTO pessoa ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_pessoa, ");
-		    qry.append(" nm_pessoa ) ");
+		    qry.append(" nm_pessoa, ");
+		    qry.append(" documento )");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoPessoa()));
-		    ps.setString(i++, pessoaVo.getDescricao());
+		    ps.setString(i++, pessoaVo.getNome());
+		    ps.setString(i++, pessoaVo.getCodigoDocumento());
 		    
 		    ps.executeUpdate();
 		    
@@ -156,11 +160,13 @@ public class PessoaDao extends BaseDao {
 			connection = getConnection();  
 			
 			qry.append(" UPDATE pessoa set ");
-			qry.append(" nm_pessoa = ? ");
+			qry.append(" nm_pessoa = ?, ");
+			qry.append(" documento = ? ");
 			qry.append(" WHERE cd_pessoa = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
-			ps.setString(i++, pessoaVo.getDescricao());
+			ps.setString(i++, pessoaVo.getNome());
+			ps.setString(i++, pessoaVo.getCodigoDocumento());
 			ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoPessoa()));
 			
 			ps.execute();

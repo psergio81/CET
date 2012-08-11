@@ -3,13 +3,9 @@ package br.com.cet.vo;
 public class PessoaVo extends EstruturaVo{
 	
 	private String codigoPessoa;
-	private String descricao;
-
-	public PessoaVo(){}
+	private String nome;
+	private String codigoDocumento;
 	
-	public PessoaVo(String codigoPessoa){
-		this.codigoPessoa = codigoPessoa;
-	}
 	
 	public String getCodigoPessoa() {
 		return codigoPessoa;
@@ -18,13 +14,21 @@ public class PessoaVo extends EstruturaVo{
 	public void setCodigoPessoa(String codigoPessoa) {
 		this.codigoPessoa = codigoPessoa;
 	}
-	
-	public String getDescricao() {
-		return descricao;
+
+	public String getNome() {
+		return nome;
 	}
-	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCodigoDocumento() {
+		return codigoDocumento;
+	}
+
+	public void setCodigoDocumento(String codigoDocumento) {
+		this.codigoDocumento = codigoDocumento;
 	}
 		
 }

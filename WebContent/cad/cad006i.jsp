@@ -72,10 +72,29 @@
 		        <p>
 		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.codigo"/></label>
 		         	<s:textfield name="pessoaVo.codigoPessoa" id="codigoPessoa" cssClass="input-mini" readonly="true" />
-		
-		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
-		         	<s:textfield name="pessoaVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
+
+		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
+		         	
+		         	<label class="radio">
+			         	<input type="radio" name="optionsRadios" id="optionsRadios1" value="fisica" onchange="javascript:selecionaTipoPessoa(this.value);">
+			         	<fmt:message key="label.padrao.fisica"/>
+		         	</label>
+		         	&nbsp;
+		         	<label class="radio">
+			         	<input type="radio" name="optionsRadios" id="optionsRadios2" value="juridica" onchange="javascript:selecionaTipoPessoa(this.value);" checked="checked">
+			         	<fmt:message key="label.padrao.juridica"/>
+		         	</label>
+		         	
+					
 		        
+		        </p>
+
+		        <p>
+		        	<label for="labelTipoPessoa" id="labelTipoPessoa" class="label"><fmt:message key="label.padrao.razao.social"/></label>
+		         	<s:textfield name="pessoaVo.nome" id="descricao" required="required" cssClass="input-xxlarge" />
+
+		        	<label for="labelDocumento" id="labelDocumento" class="label"><fmt:message key="label.padrao.cnpj"/></label>
+		         	<s:textfield name="pessoaVo.codigoDocumento" id="documento" required="required" cssClass="input-400" />
 		        </p>
 		
 		    </s:form>
@@ -119,6 +138,7 @@
 		var acao = $('#ac').val();
 		var mensagem = $('#mensagemErro').val();
 		
+		$('#documento').mask('99.999.999/9999-99');
 		
 		if(mensagem != null && mensagem != ''){
 			$('#mensagem').html(mensagem);
@@ -149,13 +169,13 @@
 			errorElement: "li",
 			
             rules:{
-            	"pessoaVo.descricao":{
+            	"pessoaVo.nome":{
                 	required:true
                 }
                 
             },
             messages:{
-            	"pessoaVo.descricao":{
+            	"pessoaVo.nome":{
                     required: "O campo Descrição é obrigatório."	
                 }
             }
@@ -261,7 +281,26 @@
 		$('#cad006').submit();
 		
 	}
+	
+	function selecionaTipoPessoa(tipoPessoa){
+		
+		if(tipoPessoa == 'fisica'){
+			
+			$('#labelTipoPessoa').html('<fmt:message key="label.padrao.nome"/>');
+			$('#labelDocumento').html('<fmt:message key="label.padrao.cpf"/>');
+			$('#documento').mask('999.999.999-99');
+			
+		}else{
+			
+			$('#labelTipoPessoa').html('<fmt:message key="label.padrao.razao.social"/>');
+			$('#labelDocumento').html('<fmt:message key="label.padrao.cnpj"/>');
+			$('#documento').mask('99.999.999/9999-99');
+			
+		}
+		
+	}
 
+	
 	
 </script>
 </body>

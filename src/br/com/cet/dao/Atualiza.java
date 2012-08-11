@@ -156,6 +156,7 @@ public class Atualiza extends BaseAtualiza {
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_pessoa", 100, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "documento", 20, false);
 		
 	}
 }
