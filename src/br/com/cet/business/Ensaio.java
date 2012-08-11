@@ -1,5 +1,87 @@
 package br.com.cet.business;
 
+import java.util.List;
+
+import br.com.cet.dao.EnsaioDao;
+import br.com.cet.vo.EnsaioVo;
+
 public class Ensaio {
+
+	public List<EnsaioVo> getListaEnsaio(EnsaioVo ensaioVo, boolean filtrar)
+			throws Exception {
+
+		List<EnsaioVo> listaEnsaio = null;
+
+		try {
+
+			EnsaioDao ensaioDao = new EnsaioDao();
+			listaEnsaio = ensaioDao.getListaEnsaios(ensaioVo, filtrar);
+
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+
+		return listaEnsaio;
+
+	}
+	
+	public EnsaioVo getEnsaioPeloCodigo(String codigoEnsaio) throws Exception{
+		
+		EnsaioVo ensaioVo = new EnsaioVo();
+		
+		try{
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			ensaioVo.setCodigoEnsaio(codigoEnsaio);
+			
+			ensaioVo = ensaioDao.getEnsaioPeloCodigo(ensaioVo);
+			
+		}catch (Exception e) {
+			throw new Exception(e);
+		}
+		
+		return ensaioVo;
+		
+	}
+	
+	public void insertEnsaio(EnsaioVo ensaioVo) throws Exception{
+		
+		try{
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			String codigoEnsaio;
+			codigoEnsaio = String.valueOf(ensaioDao.getProximoCodigo());
+
+			ensaioVo.setCodigoEnsaio(codigoEnsaio);
+			ensaioDao.insertEnsaios(ensaioVo);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateEnsaio(EnsaioVo ensaioVo) throws Exception{
+		
+		try{
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			ensaioDao.updateEnsaios(ensaioVo);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteEnsaio(EnsaioVo ensaioVo){
+		
+		try {
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			ensaioDao.deleteEnsaio(ensaioVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

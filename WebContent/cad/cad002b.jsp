@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="/struts-tags" prefix="s"%>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
+<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -106,10 +108,7 @@
 	
 	</div>
 	
-	<div class="navbar navbar-fixed-bottom">
-		<div class="navbar-inner">
-     	</div>
-	</div>
+	<ensaio:rodape descricao="${usuarioLogado}"/>
 	
 	</body>
 

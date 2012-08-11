@@ -1,7 +1,8 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@  taglib  prefix="c"   uri="/struts-tags" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,15 +164,8 @@
 	    <a href="#" class="btn btn-primary" data-dismiss="modal"><fmt:message key="label.padrao.ok"/></a>
 	  </div>
 	</div>
-
-    <div class="navbar navbar-fixed-bottom">
-    	<div class="navbar-inner">
-    		<div class="pull-right">
-				<button class="descricaoTela"><s:property value="usuarioLogado"/></button>
-			</div>
-    	
-    	</div>
-    </div>
+    
+    <ensaio:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 

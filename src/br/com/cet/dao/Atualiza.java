@@ -13,8 +13,9 @@ public class Atualiza extends BaseAtualiza {
 		
 		atualiza.a0001(false);
 		atualiza.a0002(false);
-		atualiza.a0003(true);
-		
+		atualiza.a0003(false);
+		atualiza.a0004(false);
+		atualiza.a0005(true);
 		
 	}
 
@@ -64,6 +65,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_marca", 100, false);
 
 	}
+
 	
 	/**
 	 * Criar tabela marca e campos
@@ -84,5 +86,40 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 20, false);
 		executarComandoSql("Insert into usuario (cd_usuario,nm_usuario,nm_nick,nm_senha) Values(1,'ADM','adm','a')");
 
+	}
+	
+
+	/**
+	 * Criar tabela modelo e campos
+	 */
+	private void a0004(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "modelo";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_modelo", 100, false);
+		
+	}
+
+	/**
+	 * Criar tabela ensaio e campos
+	 */
+	private void a0005(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "ensaio";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_ensaio", 100, false);
+		
 	}
 }

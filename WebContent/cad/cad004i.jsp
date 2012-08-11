@@ -2,12 +2,12 @@
 <%@ taglib uri="/struts-tags" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %> 
+<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %>    
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>[cad002i.jsp] Cadastro de Marca</title>
+    <title>[cad004i.jsp] Cadastro de Ensaio</title>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -38,7 +38,7 @@
 	<div class="navbar-inner">
 		<div class="row">
 			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad002');">
+				<a class="btn btn-info" href="javaScript:irParaBrowser('cad004');">
 					<i class="icon-search icon-white">
 					</i>
 					<fmt:message key="label.padrao.busca"/>
@@ -66,15 +66,15 @@
 	<div class="container-fluid">
 		<div class="container">
 		
-		    <s:form id="cad002" action="Cad002Action!crud.action" theme="simple" cssClass="well form-inline">
+		    <s:form id="cad004" action="Cad004Action!crud.action" theme="simple" cssClass="well form-inline">
 		        <s:hidden name="ac" id="ac"/>
 		        
 		        <p>
-		        	<label for="codigoMarca" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="marcaVo.codigoMarca" id="codigoMarca" cssClass="input-mini" readonly="true" />
+		        	<label for="codigoEnsaio" class="label"><fmt:message key="label.padrao.codigo"/></label>
+		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" readonly="true" />
 		
 		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
-		         	<s:textfield name="marcaVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
+		         	<s:textfield name="ensaioVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
 		        
 		        </p>
 		
@@ -127,12 +127,12 @@
 		
 		
 		if(acao == 'excluir'){
-			irParaBrowser('cad002');
+			irParaBrowser('cad004');
 		}
 		
 		$('#divErros').css('display','none');
 		
-		$('#cad002').validate({
+		$('#cad004').validate({
 
 			
 		  unhighlight: function(element, errorClass) {
@@ -149,13 +149,13 @@
 			errorElement: "li",
 			
             rules:{
-            	"marcaVo.descricao":{
+            	"ensaioVo.descricao":{
                 	required:true
                 }
                 
             },
             messages:{
-            	"marcaVo.descricao":{
+            	"ensaioVo.descricao":{
                     required: "O campo Descrição é obrigatório."	
                 }
             }
@@ -165,7 +165,7 @@
 		
 		if($acao == ''){
 			
-			$('#codigoMarca').val('novo');
+			$('#codigoEnsaio').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
 			
 		}else{
@@ -177,7 +177,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoMarca"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoEnsaio"]').attr('readonly','true');
 			
 		}
 		
@@ -185,7 +185,7 @@
 
 	function salvarCadastro(){
 		
-		var $codigo = $('#codigoMarca').val();
+		var $codigo = $('#codigoEnsaio').val();
 		
 		if(buscaProximoCampo() == true){
 			
@@ -205,7 +205,7 @@
 			$('#ac').val("saveAlteracao");
 		}	
 		
-		$('#cad002').submit();
+		$('#cad004').submit();
 	}
 	
 	
@@ -217,7 +217,7 @@
 	function excluirCadastro(){
 		
 		$('#ac').val("excluir");
-		$('#cad002').submit();
+		$('#cad004').submit();
 		
 	}
 	
@@ -229,17 +229,17 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoMarca"]').removeAttr('readonly');
+		$('input[class|="input"][id!="codigoEnsaio"]').removeAttr('readonly');
 		
 	}
 
 	function cancelarCadastro(){
 		
-		var $codigo = $('#codigoMarca').val();
+		var $codigo = $('#codigoEnsaio').val();
 		
 		if($codigo == 'novo'){
-			 $("#cad002").validate().cancelSubmit = true;
-			this.irParaBrowser('cad002');
+			 $("#cad004").validate().cancelSubmit = true;
+			this.irParaBrowser('cad004');
 		}else{
 			
 			$('#textoBtnCancelarExcluir').html('Excluir');
@@ -248,7 +248,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoMarca"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoEnsaio"]').attr('readonly','true');
 
 			location.reload();
 		}
@@ -256,9 +256,9 @@
 
 	function irParaBrowser(){
 		
-		$('#cad002').attr("action","Cad002Action!browser.action");
-		$('#cad002').validate().cancelSubmit = true;
-		$('#cad002').submit();
+		$('#cad004').attr("action","Cad004Action!browser.action");
+		$('#cad004').validate().cancelSubmit = true;
+		$('#cad004').submit();
 		
 	}
 

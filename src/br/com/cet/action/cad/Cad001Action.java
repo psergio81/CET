@@ -17,12 +17,16 @@ public class Cad001Action extends RecursoPadraoAction{
 	private String codigoEmpresaSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
-	private String nomePrograma;
 	
 	public void prepare(){
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
 		
+		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		
+		if(usuarioVo != null){
+			setUsuarioLogado(usuarioVo.getNomeUsuario());
+		}
 	}
 	
 	public String browser() throws Exception{
@@ -40,12 +44,7 @@ public class Cad001Action extends RecursoPadraoAction{
 	
 	public String crud() throws Exception{
 
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
 		boolean retorno;
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
 		
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
@@ -116,14 +115,6 @@ public class Cad001Action extends RecursoPadraoAction{
 
 	public void setFiltrar(boolean filtrar) {
 		this.filtrar = filtrar;
-	}
-
-	public String getNomePrograma() {
-		return nomePrograma;
-	}
-
-	public void setNomePrograma(String programa) {
-		this.nomePrograma = programa;
 	}
 
 }

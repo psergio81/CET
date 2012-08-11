@@ -5,22 +5,22 @@ import java.util.List;
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
-import br.com.cet.business.Marca;
-import br.com.cet.vo.MarcaVo;
+import br.com.cet.business.Ensaio;
+import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.UsuarioVo;
 
-public class Cad002Action extends RecursoPadraoAction {
+public class Cad004Action extends RecursoPadraoAction {
 
-	private MarcaVo marcaVo = new MarcaVo();
-	private Marca marca = new Marca();
-	private List<MarcaVo> listaMarca = null;
-	private String codigoMarcaSelecionado;
+	private EnsaioVo ensaioVo = new EnsaioVo();
+	private Ensaio ensaio = new Ensaio();
+	private List<EnsaioVo> listaEnsaio = null;
+	private String codigoEnsaioSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
 	
 	public void prepare(){
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_MARCAS);
+		setNomePrograma(ProgramasKey.CADASTRO_DE_ENSAIOS);
 		
 		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
 		
@@ -33,9 +33,9 @@ public class Cad002Action extends RecursoPadraoAction {
 	public String browser() throws Exception{
 		
 		
-		marcaVo.setDescricao(campoBusca);
+		ensaioVo.setDescricao(campoBusca);
 		
-		listaMarca = marca.getListaMarca(marcaVo, filtrar);
+		listaEnsaio = ensaio.getListaEnsaio(ensaioVo, filtrar);
 		
 		return "browser";
 		
@@ -46,15 +46,15 @@ public class Cad002Action extends RecursoPadraoAction {
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
-			marcaVo = marca.getMarcaPeloCodigo(codigoMarcaSelecionado);
+			ensaioVo = ensaio.getEnsaioPeloCodigo(codigoEnsaioSelecionado);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			marca.insertMarca(marcaVo);
+			ensaio.insertEnsaio(ensaioVo);
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
-			marca.updateMarca(marcaVo);
+			ensaio.updateEnsaio(ensaioVo);
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -62,43 +62,43 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
-			marca.deleteMarca(marcaVo);
+			ensaio.deleteEnsaio(ensaioVo);
 			
 		}
 		
 		return SUCCESS;
 	}
 
-	public MarcaVo getMarcaVo() {
-		return marcaVo;
+	public EnsaioVo getEnsaioVo() {
+		return ensaioVo;
 	}
 
-	public void setMarcaVo(MarcaVo marcaVo) {
-		this.marcaVo = marcaVo;
+	public void setEnsaioVo(EnsaioVo ensaioVo) {
+		this.ensaioVo = ensaioVo;
 	}
 
-	public Marca getMarca() {
-		return marca;
+	public Ensaio getEnsaio() {
+		return ensaio;
 	}
 
-	public void setMarca(Marca marca) {
-		this.marca = marca;
+	public void setEnsaio(Ensaio ensaio) {
+		this.ensaio = ensaio;
 	}
 
-	public List<MarcaVo> getListaMarca() {
-		return listaMarca;
+	public List<EnsaioVo> getListaEnsaio() {
+		return listaEnsaio;
 	}
 
-	public void setListaMarca(List<MarcaVo> listaMarca) {
-		this.listaMarca = listaMarca;
+	public void setListaEnsaio(List<EnsaioVo> listaEnsaio) {
+		this.listaEnsaio = listaEnsaio;
 	}
 
-	public String getCodigoMarcaSelecionado() {
-		return codigoMarcaSelecionado;
+	public String getCodigoEnsaioSelecionado() {
+		return codigoEnsaioSelecionado;
 	}
 
-	public void setCodigoMarcaSelecionado(String codigoMarcaSelecionado) {
-		this.codigoMarcaSelecionado = codigoMarcaSelecionado;
+	public void setCodigoEnsaioSelecionado(String codigoEnsaioSelecionado) {
+		this.codigoEnsaioSelecionado = codigoEnsaioSelecionado;
 	}
 
 	public String getCampoBusca() {

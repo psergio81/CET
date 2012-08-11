@@ -49,6 +49,16 @@
 									<s:a action="Cad002Action!browser.action">Marca</s:a>
 								</a>
 							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad003Action!browser.action">Modelo</s:a>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad004Action!browser.action">Ensaio</s:a>
+								</a>
+							</li>
     					</ul>
   					</li>
 				</ul>

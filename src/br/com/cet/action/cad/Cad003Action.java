@@ -4,8 +4,10 @@ import java.util.List;
 
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
+import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Modelo;
 import br.com.cet.vo.ModeloVo;
+import br.com.cet.vo.UsuarioVo;
 
 public class Cad003Action extends RecursoPadraoAction {
 
@@ -18,7 +20,13 @@ public class Cad003Action extends RecursoPadraoAction {
 	
 	public void prepare(){
 		
-		System.out.println("passou pelo prepare........."+campoBusca);
+		setNomePrograma(ProgramasKey.CADASTRO_DE_MODELOS);
+		
+		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		
+		if(usuarioVo != null){
+			setUsuarioLogado(usuarioVo.getNomeUsuario());
+		}
 		
 	}
 	
