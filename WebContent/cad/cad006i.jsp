@@ -34,6 +34,8 @@
     </style>
 </head>
 <body>
+
+
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
 		<div class="row">
@@ -68,24 +70,14 @@
 		
 		    <s:form id="cad006" action="Cad006Action!crud.action" theme="simple" cssClass="well form-inline">
 		        <s:hidden name="ac" id="ac"/>
-		        
+		        <s:hidden name="pessoaVo.rowid"/>
+		        <s:hidden name="pessoaVo.codigoPessoa"/>
 		        <p>
 		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="pessoaVo.codigoPessoa" id="codigoPessoa" cssClass="input-mini" readonly="true" />
+		         	<s:textfield name="pessoaVo.codigoPessoa" id="codigoPessoa" cssClass="input-mini" />
 
 		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
-		         	
-		         	<label class="radio">
-			         	<input type="radio" name="optionsRadios" id="optionsRadios1" value="fisica" onchange="javascript:selecionaTipoPessoa(this.value);">
-			         	<fmt:message key="label.padrao.fisica"/>
-		         	</label>
-		         	&nbsp;
-		         	<label class="radio">
-			         	<input type="radio" name="optionsRadios" id="optionsRadios2" value="juridica" onchange="javascript:selecionaTipoPessoa(this.value);" checked="checked">
-			         	<fmt:message key="label.padrao.juridica"/>
-		         	</label>
-		         	
-					
+					<s:select cssClass="input" list="#{'1':'Física','2':'Jurídica'}" name="pessoaVo.tipoPessoa" id="tipoPessoa" onchange="javascript:selecionaTipoPessoa(this.value)"></s:select>				
 		        
 		        </p>
 
@@ -137,8 +129,9 @@
 		
 		var acao = $('#ac').val();
 		var mensagem = $('#mensagemErro').val();
+		var tipoPessoa = $('#tipoPessoa').val();
 		
-		$('#documento').mask('99.999.999/9999-99');
+		selecionaTipoPessoa(tipoPessoa);
 		
 		if(mensagem != null && mensagem != ''){
 			$('#mensagem').html(mensagem);
@@ -181,9 +174,8 @@
             }
 	    });
 		
-		var $acao = $('#ac').val();
 		
-		if($acao == ''){
+		if(acao == ''){
 			
 			$('#codigoPessoa').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
@@ -196,8 +188,8 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			
-			$('input[class|="input"][id!="codigoPessoa"]').attr('readonly','true');
+			$('input[class|="input"]').attr('disabled','true');
+			$('#tipoPessoa').attr('disabled','true');
 			
 		}
 		
@@ -249,7 +241,8 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoPessoa"]').removeAttr('readonly');
+		$('input[class|="input"][id!="codigoPessoa"]').removeAttr('disabled');
+		$('#tipoPessoa').removeAttr('disabled');
 		
 	}
 
@@ -268,8 +261,9 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoPessoa"]').attr('readonly','true');
-
+			$('input[class|="input"][id!="codigoPessoa"]').attr('disabled','true');
+			$('#tipoPessoa').attr('disabled','true');
+	
 			location.reload();
 		}
 	}
@@ -284,7 +278,7 @@
 	
 	function selecionaTipoPessoa(tipoPessoa){
 		
-		if(tipoPessoa == 'fisica'){
+		if(tipoPessoa == '1'){
 			
 			$('#labelTipoPessoa').html('<fmt:message key="label.padrao.nome"/>');
 			$('#labelDocumento').html('<fmt:message key="label.padrao.cpf"/>');

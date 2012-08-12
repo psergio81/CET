@@ -68,10 +68,11 @@
 		
 		    <s:form id="cad004" action="Cad004Action!crud.action" theme="simple" cssClass="well form-inline">
 		        <s:hidden name="ac" id="ac"/>
+		        <s:hidden name="ensaioVo.codigoEnsaio""/>
 		        
 		        <p>
 		        	<label for="codigoEnsaio" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" readonly="true" />
+		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true" />
 		
 		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
 		         	<s:textfield name="ensaioVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
@@ -177,7 +178,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoEnsaio"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoEnsaio"]').attr('disabled','true');
 			
 		}
 		
@@ -229,7 +230,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoEnsaio"]').removeAttr('readonly');
+		$('input[class|="input"][id!="codigoEnsaio"]').removeAttr('disabled');
 		
 	}
 
@@ -248,7 +249,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoEnsaio"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoEnsaio"]').attr('disabled','true');
 
 			location.reload();
 		}

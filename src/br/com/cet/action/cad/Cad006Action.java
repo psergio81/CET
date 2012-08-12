@@ -53,7 +53,6 @@ public class Cad006Action extends RecursoPadraoAction {
 			pessoa.insertPessoa(pessoaVo);
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
-			
 			pessoa.updatePessoa(pessoaVo);
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {

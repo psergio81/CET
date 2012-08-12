@@ -4,6 +4,7 @@ public class PessoaVo extends EstruturaVo{
 	
 	private String codigoPessoa;
 	private String nome;
+	private String tipoPessoa;
 	private String codigoDocumento;
 	
 	
@@ -29,6 +30,14 @@ public class PessoaVo extends EstruturaVo{
 
 	public void setCodigoDocumento(String codigoDocumento) {
 		this.codigoDocumento = codigoDocumento;
+	}
+
+	public String getTipoPessoa() {
+		return tipoPessoa;
+	}
+
+	public void setTipoPessoa(String tipoPessoa) {
+		this.tipoPessoa = tipoPessoa;
 	}
 		
 }

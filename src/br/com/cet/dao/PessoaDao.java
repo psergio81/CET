@@ -37,7 +37,7 @@ public class PessoaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_pessoa, nm_pessoa, documento FROM pessoa " );
+		    qry.append(	"SELECT rowid, cd_pessoa, nm_pessoa, tipo_pessoa, cd_documento FROM pessoa " );
 		    qry.append(	"where cd_pessoa = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -51,9 +51,10 @@ public class PessoaDao extends BaseDao {
 		    	pessoaVo = new PessoaVo();
 		    	
 		    	pessoaVo.setRowid(rs.getString("rowid"));
-		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_pessoa"))));
+		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, rs.getInt("cd_pessoa")));
 		    	pessoaVo.setNome(rs.getString("nm_pessoa"));
-		    	pessoaVo.setCodigoDocumento(rs.getString("documento"));
+		    	pessoaVo.setTipoPessoa(rs.getString("tipo_pessoa"));
+		    	pessoaVo.setCodigoDocumento(rs.getString("cd_documento"));
 		    	
 		    }
 		    
@@ -79,7 +80,7 @@ public class PessoaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_pessoa, nm_pessoa, documento FROM pessoa ");
+		    qry.append("SELECT rowid, cd_pessoa, nm_pessoa, tipo_pessoa, cd_documento FROM pessoa ");
 		
 		    if(filtrar){
 		    	qry.append(" WHERE nm_pessoa like '%' ? '%' ");
@@ -101,7 +102,8 @@ public class PessoaDao extends BaseDao {
 		    	pessoaVo.setRowid(rs.getString("rowid"));
 		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_pessoa"))));
 		    	pessoaVo.setNome(rs.getString("nm_pessoa"));
-		    	pessoaVo.setCodigoDocumento(rs.getString("documento"));
+		    	pessoaVo.setTipoPessoa(String.valueOf(rs.getInt("tipo_pessoa")));
+		    	pessoaVo.setCodigoDocumento(rs.getString("cd_documento"));
 		    	pessoasList.add(pessoaVo);
 		    }  
 		    
@@ -129,7 +131,8 @@ public class PessoaDao extends BaseDao {
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_pessoa, ");
 		    qry.append(" nm_pessoa, ");
-		    qry.append(" documento )");
+		    qry.append(" tipo_pessoa, ");
+		    qry.append(" cd_documento )");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -137,6 +140,7 @@ public class PessoaDao extends BaseDao {
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoPessoa()));
 		    ps.setString(i++, pessoaVo.getNome());
+		    ps.setInt(i++, UtConverte.stringToInteiro(pessoaVo.getTipoPessoa()));
 		    ps.setString(i++, pessoaVo.getCodigoDocumento());
 		    
 		    ps.executeUpdate();
@@ -161,13 +165,15 @@ public class PessoaDao extends BaseDao {
 			
 			qry.append(" UPDATE pessoa set ");
 			qry.append(" nm_pessoa = ?, ");
-			qry.append(" documento = ? ");
-			qry.append(" WHERE cd_pessoa = ? ");
+			qry.append(" tipo_pessoa = ?, ");
+			qry.append(" cd_documento = ? ");
+			qry.append(" WHERE rowid = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setString(i++, pessoaVo.getNome());
+			ps.setInt(i++, UtConverte.stringToInteiro(pessoaVo.getTipoPessoa()));
 			ps.setString(i++, pessoaVo.getCodigoDocumento());
-			ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoPessoa()));
+			ps.setString(i++, pessoaVo.getRowid());
 			
 			ps.execute();
 			

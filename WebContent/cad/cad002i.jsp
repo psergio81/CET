@@ -68,10 +68,11 @@
 		
 		    <s:form id="cad002" action="Cad002Action!crud.action" theme="simple" cssClass="well form-inline">
 		        <s:hidden name="ac" id="ac"/>
+		        <s:hidden name="marcaVo.codigoMarca"/>
 		        
 		        <p>
 		        	<label for="codigoMarca" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="marcaVo.codigoMarca" id="codigoMarca" cssClass="input-mini" readonly="true" />
+		         	<s:textfield name="marcaVo.codigoMarca" id="codigoMarca" cssClass="input-mini" disabled="true" />
 		
 		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
 		         	<s:textfield name="marcaVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
@@ -177,7 +178,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoMarca"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoMarca"]').attr('disabled','true');
 			
 		}
 		
@@ -229,7 +230,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoMarca"]').removeAttr('readonly');
+		$('input[class|="input"][id!="codigoMarca"]').removeAttr('disabled');
 		
 	}
 
@@ -248,7 +249,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoMarca"]').attr('readonly','true');
+			$('input[class|="input"][id!="codigoMarca"]').attr('disabled','true');
 
 			location.reload();
 		}
