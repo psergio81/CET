@@ -77,12 +77,17 @@
 				<p>
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.marca"/></label>
 					<s:select name="tacografoVo.codigoMarca" list="listaMarca" listKey="codigoMarca" listValue="descricao" emptyOption="true"/>
-				
+					<s:a action="Cad002Action!crud.action" cssClass="badge" title="Adicionar">
+						<i class="icon-plus-sign icon-white"></i>
+					</s:a>
 				</p>
 
 				<p>
 		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.modelo"/></label>
 					<s:select name="tacografoVo.codigoModelo" list="listaModelo" listKey="codigoModelo" listValue="descricao" emptyOption="true"/>
+					<s:a action="Cad003Action!crud.action" cssClass="badge" title="Adicionar">
+						<i class="icon-plus-sign icon-white"></i>
+					</s:a>
 				
 				</p>
 				<p>

@@ -49,7 +49,7 @@
 				</div>
 				
 				<div class="span4" align="center">
-					<a class="btn btn-success" onclick="javaSript:irParaCrud('cad005');">
+					<a class="btn btn-success" onclick="javaScript:irParaCrud('cad005');">
 						<i class="icon-plus icon-white icon">
 						</i><fmt:message key="label.padrao.incluir"/>
 					</a>

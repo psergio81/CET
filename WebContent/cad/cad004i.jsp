@@ -81,18 +81,21 @@
 				<p>
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>
 					<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true"/>
-				
+					<s:a action="Cad006Action!crud.action" cssClass="badge" title="Adicionar">
+						<i class="icon-plus-sign icon-white"></i>
+					</s:a>
 				</p>
 
 				<p>
 		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.veiculo"/></label>
 					<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="descricao" emptyOption="true"/>
-				
+					<s:a action="Cad005Action!crud.action" cssClass="badge" title="Adicionar">
+						<i class="icon-plus-sign icon-white"></i>
+					</s:a>
 				</p>
 				<p>
 		        	<label for="gru" class="label"><fmt:message key="label.padrao.gru"/></label>
 		         	<s:textfield name="ensaioVo.gru" id="gru" required="required" cssClass="input-large" />
-		        
 		        </p>
 		
 		    </s:form>
