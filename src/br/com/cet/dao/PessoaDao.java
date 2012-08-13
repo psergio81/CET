@@ -100,7 +100,7 @@ public class PessoaDao extends BaseDao {
 		    while (rs.next()) {  
 		    	pessoaVo = new PessoaVo();
 		    	pessoaVo.setRowid(rs.getString("rowid"));
-		    	pessoaVo.setCodigoPessoa(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_pessoa"))));
+		    	pessoaVo.setCodigoPessoa(String.valueOf(rs.getInt("cd_pessoa")));
 		    	pessoaVo.setNome(rs.getString("nm_pessoa"));
 		    	pessoaVo.setTipoPessoa(String.valueOf(rs.getInt("tipo_pessoa")));
 		    	pessoaVo.setCodigoDocumento(rs.getString("cd_documento"));

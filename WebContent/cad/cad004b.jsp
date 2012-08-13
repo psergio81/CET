@@ -88,7 +88,7 @@
 			<thead>
 				<tr>
 					<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-					<th width="*"><fmt:message key="label.padrao.descricao"/></th>
+					<th width="*"><fmt:message key="label.padrao.data"/></th>
 				</tr>
 			</thead>
 			
@@ -99,7 +99,7 @@
 							<a><s:property value="codigoEnsaio" /></a>
 						</td>
 						<td>
-							<a><s:property value="descricao" /></a>
+							<a><s:property value="data" /></a>
 						</td>
 					</tr>
 				</s:iterator>

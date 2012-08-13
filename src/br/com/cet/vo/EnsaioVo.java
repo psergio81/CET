@@ -3,7 +3,10 @@ package br.com.cet.vo;
 public class EnsaioVo extends EstruturaVo{
 	
 	private String codigoEnsaio;
-	private String descricao;
+	private String data;
+	private String codigoProprietario;
+	private String codigoVeiculo;
+	private String gru;
 	
 	
 
@@ -15,12 +18,36 @@ public class EnsaioVo extends EstruturaVo{
 		this.codigoEnsaio = codigoEnsaio;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getData() {
+		return data;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public String getCodigoProprietario() {
+		return codigoProprietario;
+	}
+
+	public void setCodigoProprietario(String codigoProprietario) {
+		this.codigoProprietario = codigoProprietario;
+	}
+
+	public String getCodigoVeiculo() {
+		return codigoVeiculo;
+	}
+
+	public void setCodigoVeiculo(String codigoVeiculo) {
+		this.codigoVeiculo = codigoVeiculo;
+	}
+
+	public String getGru() {
+		return gru;
+	}
+
+	public void setGru(String gru) {
+		this.gru = gru;
 	}
 	
 

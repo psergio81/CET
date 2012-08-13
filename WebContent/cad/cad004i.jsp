@@ -68,14 +68,30 @@
 		
 		    <s:form id="cad004" action="Cad004Action!crud.action" theme="simple" cssClass="well form-inline">
 		        <s:hidden name="ac" id="ac"/>
-		        <s:hidden name="ensaioVo.codigoEnsaio""/>
+		        <s:hidden name="ensaioVo.codigoEnsaio"/>
 		        
 		        <p>
 		        	<label for="codigoEnsaio" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true" />
-		
-		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
-		         	<s:textfield name="ensaioVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
+		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true"/>
+				</p>
+				<p>
+		        	<label for="data" class="label"><fmt:message key="label.padrao.data"/></label>
+		         	<s:textfield name="ensaioVo.data" id="dataEnsaio" cssClass="input-small" />
+				</p>
+				<p>
+		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>
+					<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true"/>
+				
+				</p>
+
+				<p>
+		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.veiculo"/></label>
+					<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="descricao" emptyOption="true"/>
+				
+				</p>
+				<p>
+		        	<label for="gru" class="label"><fmt:message key="label.padrao.gru"/></label>
+		         	<s:textfield name="ensaioVo.gru" id="gru" required="required" cssClass="input-large" />
 		        
 		        </p>
 		
@@ -120,6 +136,8 @@
 		var acao = $('#ac').val();
 		var mensagem = $('#mensagemErro').val();
 		
+
+		$('#dataEnsaio').mask('99/99/9999');
 		
 		if(mensagem != null && mensagem != ''){
 			$('#mensagem').html(mensagem);
@@ -162,9 +180,7 @@
             }
 	    });
 		
-		var $acao = $('#ac').val();
-		
-		if($acao == ''){
+		if(acao == ''){
 			
 			$('#codigoEnsaio').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
@@ -178,7 +194,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoEnsaio"]').attr('disabled','true');
+			$('input[class|="input"],select').attr('disabled','true');
 			
 		}
 		
@@ -230,7 +246,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoEnsaio"]').removeAttr('disabled');
+		$('input[class|="input"][id!="codigoEnsaio"],select').removeAttr('disabled');
 		
 	}
 
@@ -249,7 +265,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoEnsaio"]').attr('disabled','true');
+			$('input[class|="input"]').attr('disabled','true');
 
 			location.reload();
 		}

@@ -188,8 +188,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"]').attr('disabled','true');
-			$('#tipoPessoa').attr('disabled','true');
+			$('input[class|="input"],select').attr('disabled','true');
 			
 		}
 		
@@ -241,8 +240,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoPessoa"]').removeAttr('disabled');
-		$('#tipoPessoa').removeAttr('disabled');
+		$('input[class|="input"][id!="codigoPessoa"],select').removeAttr('disabled');
 		
 	}
 
@@ -261,8 +259,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoPessoa"]').attr('disabled','true');
-			$('#tipoPessoa').attr('disabled','true');
+			$('input[class|="input"][id!="codigoPessoa"],select').attr('disabled','true');
 	
 			location.reload();
 		}

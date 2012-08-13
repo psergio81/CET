@@ -17,7 +17,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0004(false);
 		atualiza.a0005(false);
 		atualiza.a0006(false);
-		atualiza.a0007(true);
+		atualiza.a0007(false);
 		
 	}
 
@@ -120,8 +120,12 @@ public class Atualiza extends BaseAtualiza {
 		String nomeTabela = "ensaio";
 		
 		criarTabela(NOME_BANCO, nomeTabela);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);
-		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_ensaio", 100, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);	
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "data", 10, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "gru", 30, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario_criador", 0, false);
 		
 	}
 

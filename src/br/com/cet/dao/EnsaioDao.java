@@ -36,12 +36,13 @@ public class EnsaioDao extends BaseDao {
 	    try {
 	    	
 	    	connection = getConnection();  
-	  	  
-		    qry.append(	"SELECT rowid, cd_ensaio, nm_ensaio FROM ensaio " );
+	    	
+	    	
+		    qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, cd_usuario_criador FROM ensaio " );
 		    qry.append(	"where cd_ensaio = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
-		    ps.setInt(i++, Integer.parseInt(ensaioVo.getCodigoEnsaio()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 		    
 		    rs = ps.executeQuery();  
 		    
@@ -52,7 +53,13 @@ public class EnsaioDao extends BaseDao {
 		    	
 		    	ensaioVo.setRowid(rs.getString("rowid"));
 		    	ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
-		    	ensaioVo.setDescricao(rs.getString("nm_ensaio"));
+		    	ensaioVo.setData(rs.getString("data"));
+		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
+		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
+		    	ensaioVo.setGru(rs.getString("gru"));
+		    	ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
+		    	
+		    	System.out.println("CodigoProprietario: "+ensaioVo.getCodigoProprietario());
 		    	
 		    }
 		    
@@ -78,7 +85,7 @@ public class EnsaioDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_ensaio, nm_ensaio FROM ensaio ");
+		    qry.append("SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, cd_usuario_criador FROM ensaio ");
 		
 		    if(filtrar){
 		    	qry.append(" WHERE nm_ensaio like '%' ? '%' ");
@@ -88,7 +95,7 @@ public class EnsaioDao extends BaseDao {
 		    ps = connection.prepareStatement(qry.toString());
 		    
 		    if(filtrar){
-		    	ps.setString(i++, ensaioVo.getDescricao());
+
 		    }
 		    
 		    rs = ps.executeQuery();  
@@ -97,9 +104,15 @@ public class EnsaioDao extends BaseDao {
 		    
 		    while (rs.next()) {  
 		    	ensaioVo = new EnsaioVo();
+		    	
 		    	ensaioVo.setRowid(rs.getString("rowid"));
 		    	ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
-		    	ensaioVo.setDescricao(rs.getString("nm_ensaio"));
+		    	ensaioVo.setData(rs.getString("data"));
+		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
+		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
+		    	ensaioVo.setGru(rs.getString("gru"));
+		    	ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
+		    	
 		    	ensaiosList.add(ensaioVo);
 		    }  
 		    
@@ -126,14 +139,23 @@ public class EnsaioDao extends BaseDao {
 		    qry.append(" INSERT INTO ensaio ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_ensaio, ");
-		    qry.append(" nm_ensaio ) ");
+		    qry.append(" data, ");
+		    qry.append(" cd_pessoa, ");
+		    qry.append(" cd_veiculo, ");
+		    qry.append(" gru, ");
+		    qry.append(" cd_usuario_criador ) ");
+		    
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
-		    ps.setInt(i++, Integer.parseInt(ensaioVo.getCodigoEnsaio()));
-		    ps.setString(i++, ensaioVo.getDescricao());
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
+		    ps.setString(i++, ensaioVo.getData());
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
+		    ps.setString(i++, ensaioVo.getGru());
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoUsuarioCriador()));
 		    
 		    ps.executeUpdate();
 		    
@@ -156,12 +178,18 @@ public class EnsaioDao extends BaseDao {
 			connection = getConnection();  
 			
 			qry.append(" UPDATE ensaio set ");
-			qry.append(" nm_ensaio = ? ");
+			qry.append(" data = ?, ");
+			qry.append(" cd_pessoa = ?, ");
+			qry.append(" cd_veiculo = ?, ");
+			qry.append(" gru = ? ");
 			qry.append(" WHERE cd_ensaio = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
-			ps.setString(i++, ensaioVo.getDescricao());
-			ps.setInt(i++, Integer.parseInt(ensaioVo.getCodigoEnsaio()));
+			ps.setString(i++, ensaioVo.getData());
+			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
+			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
+			ps.setString(i++, ensaioVo.getGru());
+			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 			
 			ps.execute();
 			

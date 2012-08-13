@@ -98,7 +98,7 @@ public class VeiculoDao extends BaseDao {
 		    while (rs.next()) {  
 		    	veiculoVo = new VeiculoVo();
 		    	veiculoVo.setRowid(rs.getString("rowid"));
-		    	veiculoVo.setCodigoVeiculo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_veiculo"))));
+		    	veiculoVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 		    	veiculoVo.setDescricao(rs.getString("nm_veiculo"));
 		    	veiculosList.add(veiculoVo);
 		    }  
