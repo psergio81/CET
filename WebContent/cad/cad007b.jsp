@@ -82,29 +82,36 @@
     </div>
 
 	<div class="container">
+		<s:if test="%{listaTacografo.isEmpty()}">
+		    <div class="alert">
+		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
+			</div>
 		
-		<table width="100%" class="table table-bordered table-striped ">
-
-			<thead>
-				<tr>
-					<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-					<th width="*"><fmt:message key="label.padrao.numero.serie"/></th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<s:iterator  value="listaTacografo" status="status">
-					<tr onclick="javaScript:detalhes('<s:property value="codigoTacografo" />')">
-						<td>
-							<a><s:property value="codigoTacografo" /></a>
-						</td>
-						<td>
-							<a><s:property value="codigoSerie" /></a>
-						</td>
+		</s:if>
+		<s:else>
+			<table width="100%" class="table table-bordered table-striped ">
+	
+				<thead>
+					<tr>
+						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
+						<th width="*"><fmt:message key="label.padrao.numero.serie"/></th>
 					</tr>
-				</s:iterator>
-			</tbody>
-		</table>
+				</thead>
+				
+				<tbody>
+					<s:iterator  value="listaTacografo" status="status">
+						<tr onclick="javaScript:detalhes('<s:property value="codigoTacografo" />')">
+							<td>
+								<a><s:property value="codigoTacografo" /></a>
+							</td>
+							<td>
+								<a><s:property value="codigoSerie" /></a>
+							</td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</s:else>
 	
 	</div>
 

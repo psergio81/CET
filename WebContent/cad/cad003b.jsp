@@ -83,28 +83,36 @@
 
 	<div class="container">
 		
-		<table width="100%" class="table table-bordered table-striped ">
-
-			<thead>
-				<tr>
-					<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-					<th width="*"><fmt:message key="label.padrao.descricao"/></th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<s:iterator  value="listaModelo" status="status">
-					<tr onclick="javaScript:detalhes('<s:property value="codigoModelo" />')">
-						<td>
-							<a><s:property value="codigoModelo" /></a>
-						</td>
-						<td>
-							<a><s:property value="descricao" /></a>
-						</td>
+		<s:if test="%{listaModelo.isEmpty()}">
+		    <div class="alert">
+		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
+			</div>
+		
+		</s:if>
+		<s:else>
+		
+			<table width="100%" class="table table-bordered table-striped ">
+				<thead>
+					<tr>
+						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
+						<th width="*"><fmt:message key="label.padrao.descricao"/></th>
 					</tr>
-				</s:iterator>
-			</tbody>
-		</table>
+				</thead>
+				
+				<tbody>
+					<s:iterator  value="listaModelo" status="status">
+						<tr onclick="javaScript:detalhes('<s:property value="codigoModelo" />')">
+							<td>
+								<a><s:property value="codigoModelo" /></a>
+							</td>
+							<td>
+								<a><s:property value="descricao" /></a>
+							</td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</s:else>
 	
 	</div>
 	

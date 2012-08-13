@@ -82,29 +82,37 @@
     </div>
 
 	<div class="container">
+		<s:if test="%{listaEmpresa.isEmpty()}">
+		    <div class="alert">
+		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
+			</div>
 		
-		<table width="100%" class="table table-bordered table-striped ">
-
-			<thead>
-				<tr>
-					<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-					<th width="*"><fmt:message key="label.padrao.nome"/></th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<s:iterator  value="listaEmpresa" status="status">
-					<tr onclick="javaScript:detalhes('<s:property value="codigoEmpresa" />')">
-						<td>
-							<a><s:property value="codigoEmpresa" /></a>
-						</td>
-						<td>
-							<a><s:property value="razaoSocial" /></a>
-						</td>
+		</s:if>
+		<s:else>
+		
+			<table width="100%" class="table table-bordered table-striped ">
+	
+				<thead>
+					<tr>
+						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
+						<th width="*"><fmt:message key="label.padrao.nome"/></th>
 					</tr>
-				</s:iterator>
-			</tbody>
-		</table>
+				</thead>
+				
+				<tbody>
+					<s:iterator  value="listaEmpresa" status="status">
+						<tr onclick="javaScript:detalhes('<s:property value="codigoEmpresa" />')">
+							<td>
+								<a><s:property value="codigoEmpresa" /></a>
+							</td>
+							<td>
+								<a><s:property value="razaoSocial" /></a>
+							</td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</s:else>
 	
 	</div>
 	
