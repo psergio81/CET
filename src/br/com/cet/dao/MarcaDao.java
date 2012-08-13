@@ -98,7 +98,7 @@ public class MarcaDao extends BaseDao {
 		    while (rs.next()) {  
 		    	marcaVo = new MarcaVo();
 		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
+		    	marcaVo.setCodigoMarca(String.valueOf(rs.getInt("cd_marca")));
 		    	marcaVo.setDescricao(rs.getString("nm_marca"));
 		    	marcasList.add(marcaVo);
 		    }  

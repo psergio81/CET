@@ -18,6 +18,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0005(false);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
+		atualiza.a0008(true);
 		
 	}
 
@@ -162,6 +163,25 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_pessoa", 100, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "tipo_pessoa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "cd_documento", 20, false);
+		
+	}
+
+	/**
+	 * Criar tabela tacografo e campos
+	 */
+	private void a0008(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "tacografo";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_tacografo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "serie", 30, false);
 		
 	}
 }

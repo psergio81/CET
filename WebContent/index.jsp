@@ -69,6 +69,11 @@
 									<s:a action="Cad006Action!browser.action">Pessoa</s:a>
 								</a>
 							</li>
+							<li>
+								<a href="#">
+									<s:a action="Cad007Action!browser.action">Tacógrafo</s:a>
+								</a>
+							</li>
     					</ul>
   					</li>
 				</ul>

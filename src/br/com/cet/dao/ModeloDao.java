@@ -98,7 +98,7 @@ public class ModeloDao extends BaseDao {
 		    while (rs.next()) {  
 		    	modeloVo = new ModeloVo();
 		    	modeloVo.setRowid(rs.getString("rowid"));
-		    	modeloVo.setCodigoModelo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_modelo"))));
+		    	modeloVo.setCodigoModelo(String.valueOf(rs.getInt("cd_modelo")));
 		    	modeloVo.setDescricao(rs.getString("nm_modelo"));
 		    	modelosList.add(modeloVo);
 		    }  

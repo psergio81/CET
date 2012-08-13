@@ -66,6 +66,12 @@
 			<result name="browser">/cad/cad006b.jsp</result>
             <result name="principal">/index.jsp</result>  
 		</action>
+
+		<action name="Cad007Action!*" method="{1}" class="br.com.cet.action.cad.Cad007Action">
+			<result name="success">/cad/cad007i.jsp</result>
+			<result name="browser">/cad/cad007b.jsp</result>
+            <result name="principal">/index.jsp</result>  
+		</action>
 	
 	</package>
 
