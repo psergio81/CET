@@ -159,6 +159,8 @@
 
 	$(document).ready(function(){
 		
+		consultaCep();
+		
 		var acao = $('#ac').val();
 		var mensagem = $('#mensagemErro').val();
 		
@@ -314,7 +316,26 @@
 		$('#cad001').submit();
 		
 	}
-
+	
+	function consultaCep(){
+		
+		$("#cep").blur(function(e){
+	        if($.trim($("#cep").val()) != ""){
+	            $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep="+$("#cep").val(), function(){
+	                if(resultadoCEP["resultado"] == 1){
+	                    $("#endereco").val(unescape(resultadoCEP["tipo_logradouro"])+": "+unescape(resultadoCEP["logradouro"]));
+	                    $("#bairro").val(unescape(resultadoCEP["bairro"]));
+	                    $("#cidade").val(unescape(resultadoCEP["cidade"]));
+	                    $("#estado").val(unescape(resultadoCEP["uf"]));
+	                }else{
+	                    var mensagem = "Não foi possivel encontrar o endereço";
+	                    $('#divErros').html(mensagem);
+	                    $('#divErros').fadeIn(1000).delay(1000).fadeOut('slow');
+	                }
+	            });
+	        }
+	    });
+	}
 	
 </script>
 </body>
