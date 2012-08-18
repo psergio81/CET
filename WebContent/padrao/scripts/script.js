@@ -36,7 +36,7 @@ function irParaPrincipal(codigo){
 
 function buscaProximoCampo(){
 	
-	$('input:required, .required').each(function(i,obj){
+	$('.required').each(function(i,obj){
 
 		if(this.value == ''){
 			
@@ -45,4 +45,15 @@ function buscaProximoCampo(){
 		}
 		
 	});
+}
+
+function formataZero(numero, tamanho){
+	
+	numero = numero.toString();
+	
+	while(numero.length < tamanho){
+		numero = "0"+numero;
+	}
+	
+	return numero;
 }

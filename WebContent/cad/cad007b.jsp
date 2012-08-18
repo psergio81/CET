@@ -1,27 +1,15 @@
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/struts-tags" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tacografo" %>
+<%@ include file="/include/principal.jsp" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 	<head>
+		<title>[cad007b.jsp] Cadastro de Tacógrafo</title>
+		
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		   
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	    
-		<title>(cad007b.jsp) Cadastro de OS</title>
-		
-		<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
-		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
-		<script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
-		<script src="/CET/padrao/scripts/script.js"></script>
-		
-		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
-		
 		 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
    		 <!--[if lt IE 9]>
 	      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -102,7 +90,9 @@
 					<s:iterator  value="listaTacografo" status="status">
 						<tr onclick="javaScript:detalhes('<s:property value="codigoTacografo" />')">
 							<td>
-								<a><s:property value="codigoTacografo" /></a>
+								<a>
+									<fmt:formatNumber value="${codigoTacografo}" type="number"  minIntegerDigits="6" />
+								</a>
 							</td>
 							<td>
 								<a><s:property value="codigoSerie" /></a>

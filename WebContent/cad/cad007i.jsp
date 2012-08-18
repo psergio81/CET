@@ -1,31 +1,19 @@
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/struts-tags" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tacografo" %>    
+<%@ include file="/include/principal.jsp" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
     <title>[cad007i.jsp] Cadastro de Tacografo</title>
 
+   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
-   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-	<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
-	<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
-	<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
-	<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-	<script src="/CET/padrao/scripts/script.js"></script>
-		
-   	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
-   	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -77,19 +65,20 @@
 				<p>
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.marca"/></label>
 					<s:select name="tacografoVo.codigoMarca" list="listaMarca" listKey="codigoMarca" listValue="descricao" emptyOption="true"/>
-					<s:a action="Cad002Action!crud.action" cssClass="badge" title="Adicionar">
-						<i class="icon-plus-sign icon-white"></i>
+					<s:a action="Cad002Action!crud.action" title="Adicionar">
+						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
 					</s:a>
 				</p>
 
 				<p>
 		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.modelo"/></label>
 					<s:select name="tacografoVo.codigoModelo" list="listaModelo" listKey="codigoModelo" listValue="descricao" emptyOption="true"/>
-					<s:a action="Cad003Action!crud.action" cssClass="badge" title="Adicionar">
-						<i class="icon-plus-sign icon-white"></i>
+					<s:a action="Cad003Action!crud.action" title="Adicionar">
+						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
 					</s:a>
 				
 				</p>
+				
 				<p>
 		        	<label for="gru" class="label"><fmt:message key="label.padrao.numero.serie"/></label>
 		         	<s:textfield name="tacografoVo.codigoSerie" id="gru" required="required" cssClass="input-large" />
@@ -128,7 +117,7 @@
 	  </div>
 	</div>
 
-	<tacografo:rodape descricao="${usuarioLogado}"/>
+	<ensaio:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 

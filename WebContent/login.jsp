@@ -1,29 +1,25 @@
-<%@ taglib prefix="s" uri="/struts-tags" %>
-<%@ taglib  prefix="c"   uri="/struts-tags" %>    
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
+<%@ include file="/include/principal.jsp" %>
 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<head>
-    	<meta charset="utf-8">
 	    <title>CET - LOGIN</title>
+	    
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-		<script src="/CET/padrao/jquery/jquery.js"></script>
-		<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
-		<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
-		<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
-		
-		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
+	    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	    <!--[if lt IE 9]>
+	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	    <![endif]-->
+	
 		<style type="text/css">
 	      body {
 	        padding-top: 60px;
 	        padding-bottom: 40px;
 	      }
 	    </style>
-		<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
-
 	</head>
 	
 <body>
@@ -119,33 +115,15 @@ function autenticar(){
 	
 	if(buscaProximoCampo() == true){
 		
-		$('#divErros').slideUp(function(){
-			$('#divErros').css('display','none');
-		});
-		
 		$('#textoBtnLogin').html('Logando...');
 	}else{
 		
-		$('#divErros').fadeIn(1000).delay(1000).fadeOut('slow');
+		$('#divErros').fadeIn(2000).fadeOut('slow');
 		
 	}
 	
-	$('#loginAction').submit();
+	$('#loginAction').delay(1000).submit();
 	
-}
-
-
-function buscaProximoCampo(){
-	
-	$('input:required, .required').each(function(i,obj){
-
-		if(this.value == ''){
-			
-			this.focus();
-			return false;
-		}
-		
-	});
 }
 
 </script>

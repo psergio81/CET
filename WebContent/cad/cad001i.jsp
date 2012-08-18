@@ -1,10 +1,6 @@
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/struts-tags" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>    
-<%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %>
+<%@ include file="/include/principal.jsp" %>
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
     <title>[cad001i.jsp] Cadastro de Empresa</title>
@@ -18,15 +14,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-	<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
-	<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
-	<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
-	<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
-	<script src="/CET/padrao/scripts/script.js"></script>
-
-   	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
-   	<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
-   	
     <style>
         body {
             padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -82,7 +69,7 @@
 
                 <p>
 					<label for="codigoEmpresa" class="label"><fmt:message key="label.padrao.codigo"/></label>
-					<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-mini" disabled="true" />
+					<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-mini" disabled="true"  />
 
                 	<label for="razaoSocial" class="label"><fmt:message key="label.padrao.razao.social"/></label>
 	                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xlarge required" />
