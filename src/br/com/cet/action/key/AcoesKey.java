@@ -10,5 +10,6 @@ public class AcoesKey {
 	public static final String ACAO_SALVAR_INCLUSAO 			= "saveInclusao";
 	public static final String ACAO_SALVAR_ALTERACAO 			= "saveAlteracao";
 	public static final String ACAO_PRINCIPAL		 			= "principal";
+	public static final String ACAO_ASSOCIAR		 			= "associar";
 
 }

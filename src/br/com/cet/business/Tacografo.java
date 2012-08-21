@@ -24,6 +24,24 @@ public class Tacografo {
 		return listaTacografo;
 
 	}
+
+	public List<TacografoVo> getListaTacografosNaoAssociados(TacografoVo tacografoVo)
+			throws Exception {
+		
+		List<TacografoVo> listaTacografo = null;
+		
+		try {
+			
+			TacografoDao tacografoDao = new TacografoDao();
+			listaTacografo = tacografoDao.getListaTacografosNaoAssociados(tacografoVo);
+			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+		
+		return listaTacografo;
+		
+	}
 	
 	public TacografoVo getTacografoPeloCodigo(String codigoTacografo) throws Exception{
 		

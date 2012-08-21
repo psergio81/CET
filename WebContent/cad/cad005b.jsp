@@ -30,16 +30,15 @@
 			<div class="row">
 				<div class="span4">
 					<a class="btn btn-info" href="javaScript:irParaPrincipal('cad005');">
-						<i class="icon-home icon-white">
-						</i>
+						<i class="icon-home icon-white"></i>&nbsp;
 						<fmt:message key="label.padrao.principal"/>
 					</a>
 				</div>
 				
 				<div class="span4" align="center">
 					<a class="btn btn-success" onclick="javaScript:irParaCrud('cad005');">
-						<i class="icon-plus icon-white icon">
-						</i><fmt:message key="label.padrao.incluir"/>
+						<i class="icon-plus icon-white icon"></i>&nbsp;
+						<fmt:message key="label.padrao.incluir"/>
 					</a>
 				</div>
 				
@@ -60,8 +59,8 @@
                 	<label for="descricao" class="label"><fmt:message key="label.padrao.filtro"/></label>
 	                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="input-300 search-query" />
 					<a class="btn btn" href="javaScript:filtrar();">
-						<i class="icon-search icon">
-						</i><fmt:message key="label.padrao.buscar"/>
+						<i class="icon-search icon"></i>&nbsp;
+						<fmt:message key="label.padrao.buscar"/>
 					</a>
                 </p>
                 
@@ -106,7 +105,7 @@
 	
 	</div>
 	
-	<ensaio:rodape descricao="${usuarioLogado}"/>
+	<es:rodape descricao="${usuarioLogado}"/>
 	
 	</body>
 

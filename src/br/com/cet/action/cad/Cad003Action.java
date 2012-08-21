@@ -43,6 +43,7 @@ public class Cad003Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
+		System.out.println("------------------------------- crud!!! "+ac);
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		

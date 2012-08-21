@@ -13,7 +13,7 @@ import br.com.cet.vo.VeiculoVo;
 
 public class VeiculoDao extends BaseDao {
 	
-	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
+	private static final int QUANTIDADE_ZEROS_CODIGO = 6;
 
 	public int getProximoCodigo(){
 		

@@ -70,7 +70,7 @@
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>
 					<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true"/>
 					<s:a action="Cad006Action!crud.action" title="Adicionar">
-						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
+						<img src="icones/add.png" width="25pt" height="25pt" alt="" >
 					</s:a>
 				</p>
 
@@ -78,7 +78,7 @@
 		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.veiculo"/></label>
 					<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="descricao" emptyOption="true"/>
 					<s:a action="Cad005Action!crud.action" title="Adicionar">
-						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
+						<img src="icones/add.png" width="25pt" height="25pt" alt="" >
 					</s:a>
 				</p>
 				<p>
@@ -118,22 +118,15 @@
 	  </div>
 	</div>
 
-	<ensaio:rodape descricao="${usuarioLogado}"/>
+	<es:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
-		var mensagem = $('#mensagemErro').val();
-		
 
 		$('#dataEnsaio').mask('99/99/9999');
-		
-		if(mensagem != null && mensagem != ''){
-			$('#mensagem').html(mensagem);
-			$('#modalMensagem').modal('show');
-		}
 		
 		
 		if(acao == 'excluir'){

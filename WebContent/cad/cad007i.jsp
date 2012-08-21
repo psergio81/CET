@@ -66,7 +66,7 @@
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.marca"/></label>
 					<s:select name="tacografoVo.codigoMarca" list="listaMarca" listKey="codigoMarca" listValue="descricao" emptyOption="true"/>
 					<s:a action="Cad002Action!crud.action" title="Adicionar">
-						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
+						<img src="icones/add.png" width="25pt" height="25pt" alt="" >
 					</s:a>
 				</p>
 
@@ -74,7 +74,7 @@
 		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.modelo"/></label>
 					<s:select name="tacografoVo.codigoModelo" list="listaModelo" listKey="codigoModelo" listValue="descricao" emptyOption="true"/>
 					<s:a action="Cad003Action!crud.action" title="Adicionar">
-						<img src="icones/add.ico" width="25pt" height="25pt" alt="" >
+						<img src="icones/add.png" alt="" >
 					</s:a>
 				
 				</p>
@@ -117,23 +117,15 @@
 	  </div>
 	</div>
 
-	<ensaio:rodape descricao="${usuarioLogado}"/>
+	<es:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
-		var mensagem = $('#mensagemErro').val();
-		
 
 		$('#dataTacografo').mask('99/99/9999');
-		
-		if(mensagem != null && mensagem != ''){
-			$('#mensagem').html(mensagem);
-			$('#modalMensagem').modal('show');
-		}
-		
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad007');

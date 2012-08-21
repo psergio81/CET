@@ -109,23 +109,16 @@
 	  </div>
 	</div>
 
-    <ensaio:rodape descricao="${usuarioLogado}"/>
+    <es:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
-		var mensagem = $('#mensagemErro').val();
 		var tipoPessoa = $('#tipoPessoa').val();
 		
 		selecionaTipoPessoa(tipoPessoa);
-		
-		if(mensagem != null && mensagem != ''){
-			$('#mensagem').html(mensagem);
-			$('#modalMensagem').modal('show');
-		}
-		
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad006');

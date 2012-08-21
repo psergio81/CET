@@ -5,7 +5,9 @@ import java.util.List;
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
+import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
+import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.VeiculoVo;
 import br.com.cet.vo.UsuarioVo;
 
@@ -17,6 +19,7 @@ public class Cad005Action extends RecursoPadraoAction {
 	private String codigoVeiculoSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
+	private List<TacografoVo> listaTacografo = null;
 	
 	public void prepare(){
 		
@@ -43,6 +46,11 @@ public class Cad005Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
+
+		Tacografo tacografo = new Tacografo();
+		TacografoVo tacografoVo = new TacografoVo();
+		
+		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
@@ -68,7 +76,8 @@ public class Cad005Action extends RecursoPadraoAction {
 		
 		return SUCCESS;
 	}
-
+	
+	
 	public VeiculoVo getVeiculoVo() {
 		return veiculoVo;
 	}
@@ -115,6 +124,14 @@ public class Cad005Action extends RecursoPadraoAction {
 
 	public void setFiltrar(boolean filtrar) {
 		this.filtrar = filtrar;
+	}
+
+	public List<TacografoVo> getListaTacografo() {
+		return listaTacografo;
+	}
+
+	public void setListaTacografo(List<TacografoVo> listaTacografo) {
+		this.listaTacografo = listaTacografo;
 	}
 	
 	

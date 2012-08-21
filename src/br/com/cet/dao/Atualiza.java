@@ -181,6 +181,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_tacografo", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "serie", 30, false);
 		
 	}

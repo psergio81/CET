@@ -57,3 +57,19 @@ function formataZero(numero, tamanho){
 	
 	return numero;
 }
+
+$(document).ready(function(){
+	
+	
+	$('.maiusculo').focusout(function(){
+	    this.value = this.value.toUpperCase();
+	});
+	
+	
+	var mensagem = $('#mensagemErro').val();
+	
+	if(mensagem != null && mensagem != ''){
+		$('#mensagem').html(mensagem);
+		$('#modalMensagem').modal('show');
+	}
+});

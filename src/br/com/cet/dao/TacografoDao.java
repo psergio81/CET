@@ -120,6 +120,49 @@ public class TacografoDao extends BaseDao {
 	    
 	    return tacografosList;
 	}
+
+	
+	public List<TacografoVo> getListaTacografosNaoAssociados(TacografoVo tacografoVo){
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+		PreparedStatement ps = null;  
+		StringBuilder qry = new StringBuilder(); 
+		List<TacografoVo> tacografosList = null;
+		
+		try {  
+			
+			connection = getConnection();  
+			
+			qry.append("SELECT rowid, cd_tacografo, cd_marca, cd_modelo, serie FROM tacografo ");
+			qry.append("WHERE cd_veiculo is null ");
+			
+			ps = connection.prepareStatement(qry.toString());
+			
+			rs = ps.executeQuery();  
+			
+			tacografosList = new ArrayList<TacografoVo>();
+			
+			while (rs.next()) {  
+				tacografoVo = new TacografoVo();
+				
+				tacografoVo.setRowid(rs.getString("rowid"));
+				tacografoVo.setCodigoTacografo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_tacografo"))));
+				tacografoVo.setCodigoMarca(String.valueOf(rs.getInt("cd_marca")));
+				tacografoVo.setCodigoModelo(String.valueOf(rs.getInt("cd_modelo")));
+				tacografoVo.setCodigoSerie(rs.getString("serie"));
+				
+				tacografosList.add(tacografoVo);
+			}  
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+		
+		return tacografosList;
+	}
 	
 	public void insertTacografos(TacografoVo tacografoVo) throws Exception{
 		

@@ -103,7 +103,7 @@
 		
 	</div>
 	
-	<ensaio:rodape descricao="${usuarioLogado}"/>
+	<es:rodape descricao="${usuarioLogado}"/>
 	
 	</body>
 

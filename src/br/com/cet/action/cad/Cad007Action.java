@@ -1,7 +1,14 @@
 package br.com.cet.action.cad;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
@@ -14,6 +21,8 @@ import br.com.cet.vo.ModeloVo;
 import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.UsuarioVo;
 
+import com.google.gson.Gson;
+
 public class Cad007Action extends RecursoPadraoAction {
 
 	private TacografoVo tacografoVo = new TacografoVo();
@@ -25,6 +34,8 @@ public class Cad007Action extends RecursoPadraoAction {
 	private UsuarioVo usuarioVo;
 	private List<MarcaVo> listaMarca = null;
 	private List<ModeloVo> listaModelo = null;
+	private String codigoVeiculo;
+	private ServletResponse response;
 	
 	public void prepare(){
 		
@@ -81,11 +92,20 @@ public class Cad007Action extends RecursoPadraoAction {
 			
 			tacografo.deleteTacografo(tacografoVo);
 			
+		}else if(AcoesKey.ACAO_ASSOCIAR.equals(ac)){
+			
 		}
 		
 		return SUCCESS;
 	}
+	
+	public void associarTacografo() throws IOException{
+		System.out.println("Cad007Action.associarTacografo()");
 
+		
+
+	}
+	
 	public TacografoVo getTacografoVo() {
 		return tacografoVo;
 	}
@@ -148,6 +168,14 @@ public class Cad007Action extends RecursoPadraoAction {
 
 	public void setListaModelo(List<ModeloVo> listaModelo) {
 		this.listaModelo = listaModelo;
+	}
+
+	public String getCodigoVeiculo() {
+		return codigoVeiculo;
+	}
+
+	public void setCodigoVeiculo(String codigoVeiculo) {
+		this.codigoVeiculo = codigoVeiculo;
 	}
 	
 }

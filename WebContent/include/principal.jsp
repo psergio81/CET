@@ -6,8 +6,7 @@
     
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
-<%@ taglib tagdir="/WEB-INF/tags" prefix="ensaio" %>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="tacografo" %>    
+<%@ taglib tagdir="/WEB-INF/tags" prefix="es" %>
 
 
 <script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
@@ -16,7 +15,7 @@
 
 <script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
 <script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
-<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js" type="text/javascript"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js"></script>
 
 <script src="/CET/padrao/scripts/script.js"></script>
 

@@ -18,6 +18,10 @@
 	        body {
 	            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 	        }
+	        .icone{
+	        	width: 13pt;
+	        	height: 13pt;
+	        }
 	        
 	    </style>
 	</head>
@@ -28,17 +32,17 @@
 			<div class="span4">
 				<a class="btn btn-info" href="javaScript:irParaBrowser('cad005');">
 					<i class="icon-search icon-white">
-					</i>
+					</i>&nbsp;
 					<fmt:message key="label.padrao.busca"/>
 				</a>
 			</div>
 			<div class="span4" align="center">
 				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>
+					<i class="icon-remove icon-white"></i>&nbsp;
 					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
 				</a>
 				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>
+					<i class="icon-ok icon-white"></i>&nbsp;
 					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
 				</a>
 			</div>
@@ -64,8 +68,31 @@
 		        </p>
 		        <p>
 		        	<label for="descricao" class="label"><fmt:message key="label.padrao.placa"/></label>
-		         	<s:textfield name="veiculoVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
+		         	<s:textfield name="veiculoVo.descricao" id="placa" required="required" cssClass="input-large maiusculo" />
+		         	
 		        </p>
+				
+				<p>
+		        	
+		        	<label for="descricao" class="label"><fmt:message key="label.padrao.tacografo"/></label>
+					<s:select name="tacografosDisponiveis" id="tacografosDisponiveis" list="listaTacografo" listKey="codigoTacografo" listValue="codigoSerie" emptyOption="true" ></s:select>
+					
+					<span style="display: none;" class="associarTacografo" title="Cancelar">
+						<a href="javascript:cancelarAssociacao();">
+							<img src="icones/cancel.png" alt="" class="icone">
+						</a>
+						&nbsp;
+						<a href="javascript:associar();" title="Confirmar">
+							<img src="icones/ok.png" alt="" class="icone">
+						</a>
+					</span>
+					
+					<span class="associarTacografo">
+						<a href="javascript:alternaIcones('3');" title="Associar tacógrafo">
+							<img src="icones/zoomIn.png" alt="" class="icone">
+						</a>
+					</span>
+				</p>
 		
 		    </s:form>
 		    
@@ -75,6 +102,45 @@
 			
 		</div>
 	</div>
+	
+	<div class="container">
+		<s:if test="%{listaTacografo.isEmpty()}">
+		    <div class="alert">
+		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
+			</div>
+		
+		</s:if>
+		<s:else>
+			<table width="100%" class="table table-bordered table-striped ">
+	
+				<thead>
+					<tr>
+						<th colspan="2" style="text-align: center;"><fmt:message key="label.padrao.tacografos.associados"/></th>
+					</tr>
+					<tr>
+						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
+						<th width="*"><fmt:message key="label.padrao.numero.serie"/></th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<s:iterator  value="listaTacografo" status="status">
+						<tr onclick="javaScript:detalhes('<s:property value="codigoTacografo" />')">
+							<td>
+								<a>
+									<fmt:formatNumber value="${codigoTacografo}" type="number"  minIntegerDigits="6" />
+								</a>
+							</td>
+							<td>
+								<a><s:property value="codigoSerie" /></a>
+							</td>
+						</tr>
+					</s:iterator>
+				</tbody>
+			</table>
+		</s:else>
+	</div>
+	
 
     <div class="modal hide" id="myModal">
 	  <div class="modal-header">
@@ -99,20 +165,18 @@
 	  </div>
 	</div>
 
-    <ensaio:rodape descricao="${usuarioLogado}"/>
+    <es:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
-		var mensagem = $('#mensagemErro').val();
+
 		
+		$('#placa').mask('aaa-9999');
 		
-		if(mensagem != null && mensagem != ''){
-			$('#mensagem').html(mensagem);
-			$('#modalMensagem').modal('show');
-		}
+
 		
 		
 		if(acao == 'excluir'){
@@ -123,7 +187,6 @@
 		
 		$('#cad005').validate({
 
-			
 		  unhighlight: function(element, errorClass) {
 		    if (this.numberOfInvalids() == 0) {
 		      $("#divErros").hide();
@@ -150,12 +213,13 @@
             }
 	    });
 		
-		var $acao = $('#ac').val();
 		
-		if($acao == ''){
+		if(acao == ''){
 			
 			$('#codigoVeiculo').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
+			$('.associarTacografo').attr('disabled','true');
+			
 			
 		}else{
 			
@@ -166,7 +230,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoVeiculo"]').attr('disabled','true');
+			$('input[class|="input"],select').attr('disabled','true');
 			
 		}
 		
@@ -249,6 +313,52 @@
 		$('#cad005').validate().cancelSubmit = true;
 		$('#cad005').submit();
 		
+	}
+	
+	function cancelarAssociacao(){
+		alternaIcones('1');
+	}
+
+	function associar(){
+		alternaIcones('2');
+		
+		$.ajax({
+		      url: "Cad007Action!associarTacografo.action",
+		      type: "POST",
+		      data: {
+		    	  codigo: $('#codigoVeiculo').val(),
+		    	  
+		      },
+		      dataType: "json",  
+		      error: function(){  
+		          alert('Error');
+		      },
+		      success: function(data){   
+
+		    	  alert('SUCCESS');
+		    	  
+		      }
+		  });
+		
+	}
+	
+	function alternaIcones(origem){
+		$('.associarTacografo').toggle();
+		
+		if(origem == '1'){
+		
+			$('#tacografosDisponiveis').attr('disabled','true');
+			$('#tacografosDisponiveis').val('');
+		
+		}else if(origem == '2'){
+
+			$('#tacografosDisponiveis').attr('disabled','true');
+			
+		}else{
+			
+			$('#tacografosDisponiveis').removeAttr('disabled');
+			
+		}
 	}
 
 	

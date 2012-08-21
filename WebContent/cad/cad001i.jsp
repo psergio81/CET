@@ -129,7 +129,7 @@
 			
         </div>
     </div>
-
+    
 	<div class="modal hide" id="myModal">
 	  <div class="modal-header">
 	    <button type="button" class="close" data-dismiss="modal">×</button>
@@ -153,7 +153,7 @@
 	  </div>
 	</div>
     
-    <ensaio:rodape descricao="${usuarioLogado}"/>
+    <es:rodape descricao="${usuarioLogado}"/>
 
 <script type="text/javascript">
 
@@ -161,15 +161,11 @@
 		
 		consultaCep();
 		
+		$('#cep').mask('99999-999');
+		$('#telefone').mask('(99) 9999-9999?9');
+		$('#fax').mask('(99) 9999-9999?9');
+		
 		var acao = $('#ac').val();
-		var mensagem = $('#mensagemErro').val();
-		
-		
-		if(mensagem != null && mensagem != ''){
-			$('#mensagem').html(mensagem);
-			$('#modalMensagem').modal('show');
-		}
-		
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad001');
@@ -212,9 +208,7 @@
             }
 	    });
 		
-		var $acao = $('#ac').val();
-		
-		if($acao == ''){
+		if(acao == ''){
 			
 			$('#codigoEmpresa').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
@@ -231,10 +225,6 @@
 			$('input[class|="input"][id!="codigoEmpresa"]').attr('disabled','true');
 			
 		}
-		
-		$('#cep').mask('99999-999');
-		$('#telefone').mask('(99) 9999-9999?9');
-		$('#fax').mask('(99) 9999-9999?9');
 		
 	});
 
@@ -330,6 +320,10 @@
 	                }else{
 	                    var mensagem = "Não foi possivel encontrar o endereço";
 	                    $('#divErros').html(mensagem);
+	                    $("#endereco").val('');
+	                    $("#bairro").val('');
+	                    $("#cidade").val('');
+	                    $("#estado").val('');
 	                    $('#divErros').fadeIn(1000).delay(1000).fadeOut('slow');
 	                }
 	            });
