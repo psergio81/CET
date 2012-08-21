@@ -5,6 +5,7 @@ public class RecursoPadraoAction extends SystemAction{
 	private String usuarioLogado;
 	private String mensagemErro;
 	private String nomePrograma;
+	private String campoBusca;
 
 	public String getUsuarioLogado() {
 		return usuarioLogado;
@@ -28,5 +29,13 @@ public class RecursoPadraoAction extends SystemAction{
 
 	public void setNomePrograma(String nomePrograma) {
 		this.nomePrograma = nomePrograma;
+	}
+
+	public String getCampoBusca() {
+		return campoBusca;
+	}
+
+	public void setCampoBusca(String campoBusca) {
+		this.campoBusca = campoBusca;
 	}
 }

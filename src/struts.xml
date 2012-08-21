@@ -72,6 +72,11 @@
 			<result name="browser">/cad/cad007b.jsp</result>
             <result name="principal">/index.jsp</result>  
 		</action>
+		
+		<action name="Cad008Action!*" method="{1}" class="br.com.cet.action.cad.Cad008Action">
+			<result name="success">/cad/cad008i.jsp</result>
+			<result name="browser">/cad/cad008b.jsp</result>
+		</action>
 	
 	</package>
 

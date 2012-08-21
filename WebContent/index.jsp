@@ -41,7 +41,7 @@
 							</li>
 							<li>
 								<a href="#">
-									Usuário
+									<s:a action="Cad008Action!browser.action">Usuário</s:a>
 								</a>
 							</li>
 							<li>
