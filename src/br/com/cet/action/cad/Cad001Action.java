@@ -32,7 +32,7 @@ public class Cad001Action extends RecursoPadraoAction{
 	public String browser() throws Exception{
 		
 		
-		empresaVo.setNomeFantasia(campoBusca);
+		empresaVo.setCnpj(campoBusca);
 		empresaVo.setRazaoSocial(campoBusca);
 		
 		listaEmpresa = empresa.getListaEmpresa(empresaVo, filtrar);

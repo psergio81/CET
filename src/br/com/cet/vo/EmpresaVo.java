@@ -4,7 +4,7 @@ public class EmpresaVo extends EstruturaVo{
 	
 	private String codigoEmpresa;
 	private String razaoSocial;
-	private String nomeFantasia;
+	private String cnpj;
 	private String endereco;
 	private String numero;
 	private String complemento;
@@ -25,14 +25,6 @@ public class EmpresaVo extends EstruturaVo{
 
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
-	}
-
-	public String getNomeFantasia() {
-		return nomeFantasia;
-	}
-
-	public void setNomeFantasia(String nomeFantasia) {
-		this.nomeFantasia = nomeFantasia;
 	}
 
 	public String getEndereco() {
@@ -134,6 +126,14 @@ public class EmpresaVo extends EstruturaVo{
 	}
 	public void setCodigoEmpresa(String codigoEmpresa) {
 		this.codigoEmpresa = codigoEmpresa;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
 	}
 
 }

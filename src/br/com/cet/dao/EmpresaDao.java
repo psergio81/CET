@@ -8,13 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
-import br.com.cet.util.UtString;
 import br.com.cet.vo.EmpresaVo;
 
 public class EmpresaDao extends BaseDao {
 	
-	
-	private static final int QUANTIDADE_ZEROS_CODIGO = 6;
 	private static final int POR_CODIGO = 1;
 
 	public int getProximoCodigo(){
@@ -40,7 +37,7 @@ public class EmpresaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append(	"SELECT rowid, cd_empresa, nm_empresa, nm_fantasia_empresa, cep, endereco, numero, complemento, ");
+		    qry.append(	"SELECT rowid, cd_empresa, nm_empresa, cnpj, cep, endereco, numero, complemento, ");
 		    qry.append(	"bairro, cidade, estado, telefone, fax, website, email FROM empresa " );
 		    qry.append(	"where cd_empresa = ? " );
 		    
@@ -58,7 +55,7 @@ public class EmpresaDao extends BaseDao {
 		    	empresaVo.setRowid(rs.getString("rowid"));
 		    	empresaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		    	empresaVo.setRazaoSocial(rs.getString("nm_empresa"));
-		    	empresaVo.setNomeFantasia(rs.getString("nm_fantasia_empresa"));
+		    	empresaVo.setCnpj(rs.getString("cnpj"));
 		    	empresaVo.setCep(rs.getString("cep"));
 		    	empresaVo.setEndereco(rs.getString("endereco"));
 		    	empresaVo.setNumero(String.valueOf(rs.getInt("numero")));
@@ -146,7 +143,7 @@ public class EmpresaDao extends BaseDao {
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_empresa, ");
 		    qry.append(" nm_empresa, ");
-		    qry.append(" nm_fantasia_empresa, ");
+		    qry.append(" cnpj, ");
 		    qry.append(" cep, ");
 		    qry.append(" endereco, ");
 		    qry.append(" numero, ");
@@ -165,7 +162,7 @@ public class EmpresaDao extends BaseDao {
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getCodigoEmpresa()));
 		    ps.setString(i++, empresaVo.getRazaoSocial());
-		    ps.setString(i++, empresaVo.getNomeFantasia());
+		    ps.setString(i++, empresaVo.getCnpj());
 		    ps.setString(i++, empresaVo.getCep());
 		    ps.setString(i++, empresaVo.getEndereco());
 		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getNumero()));
@@ -200,7 +197,7 @@ public class EmpresaDao extends BaseDao {
 			
 			qry.append(" UPDATE empresa set ");
 			qry.append(" nm_empresa = ?, ");
-			qry.append(" nm_fantasia_empresa = ?, ");
+			qry.append(" cnpj = ?, ");
 		    qry.append(" cep = ?, ");
 		    qry.append(" endereco = ?, ");
 		    qry.append(" numero = ?, ");
@@ -216,7 +213,7 @@ public class EmpresaDao extends BaseDao {
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setString(i++, empresaVo.getRazaoSocial());
-			ps.setString(i++, empresaVo.getNomeFantasia());
+			ps.setString(i++, empresaVo.getCnpj());
 		    ps.setString(i++, empresaVo.getCep());
 		    ps.setString(i++, empresaVo.getEndereco());
 		    ps.setInt(i++, UtConverte.stringToInteiro(empresaVo.getNumero()));

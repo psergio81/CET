@@ -74,8 +74,8 @@
                 	<label for="razaoSocial" class="label"><fmt:message key="label.padrao.razao.social"/></label>
 	                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xlarge required" />
 
-                	<label for="nomeFantasia" class="label"><fmt:message key="label.padrao.nome.fantasia"/></label>
-	                <s:textfield name="empresaVo.nomeFantasia" id="nomeFantasia" required="required" cssClass="input-305 required" />
+                	<label for="cnpj" class="label"><fmt:message key="label.padrao.cnpj"/></label>
+	                <s:textfield name="empresaVo.cnpj" id="cnpj" required="required" cssClass="input-305 required" />
 				</p>
 
 
@@ -164,6 +164,7 @@
 		$('#cep').mask('99999-999');
 		$('#telefone').mask('(99) 9999-9999?9');
 		$('#fax').mask('(99) 9999-9999?9');
+		$('#cnpj').mask('99.999.999/9999-99');
 		
 		var acao = $('#ac').val();
 		
@@ -193,8 +194,9 @@
             	"empresaVo.razaoSocial":{
                 	required:true
                 },
-                "empresaVo.nomeFantasia":{
-                	required:true
+                "empresaVo.cnpj":{
+                	required:true,
+                	cnpj: true
                 }
                 
             },
@@ -202,8 +204,9 @@
             	"empresaVo.razaoSocial":{
                     required: "O campo Razão Social é obrigatório."	
                 },
-                "empresaVo.nomeFantasia":{
-                    required: "O campo Nome Fantasia é obrigatório."	
+                "empresaVo.cnpj":{
+                    required: "O campo Nome Fantasia é obrigatório.",
+                    cnpj:"CNPJ inválido!"
                 }
             }
 	    });
