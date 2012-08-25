@@ -1,14 +1,7 @@
 package br.com.cet.action.cad;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
@@ -20,8 +13,6 @@ import br.com.cet.vo.MarcaVo;
 import br.com.cet.vo.ModeloVo;
 import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.UsuarioVo;
-
-import com.google.gson.Gson;
 
 public class Cad007Action extends RecursoPadraoAction {
 
@@ -35,7 +26,6 @@ public class Cad007Action extends RecursoPadraoAction {
 	private List<MarcaVo> listaMarca = null;
 	private List<ModeloVo> listaModelo = null;
 	private String codigoVeiculo;
-	private ServletResponse response;
 	
 	public void prepare(){
 		
@@ -99,12 +89,6 @@ public class Cad007Action extends RecursoPadraoAction {
 		return SUCCESS;
 	}
 	
-	public void associarTacografo() throws IOException{
-		System.out.println("Cad007Action.associarTacografo()");
-
-		
-
-	}
 	
 	public TacografoVo getTacografoVo() {
 		return tacografoVo;

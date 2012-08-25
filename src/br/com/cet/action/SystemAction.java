@@ -2,6 +2,10 @@ package br.com.cet.action;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -11,14 +15,24 @@ import com.opensymphony.xwork2.Preparable;
 
 public class SystemAction extends ActionSupport implements Preparable,SessionAware,RequestAware, ApplicationAware{
 	
-//	protected HttpServletRequest request;
-//	protected HttpServletResponse response; 
+	
+	protected HttpServletRequest requestOrigem;
+	protected HttpServletResponse responseOrigem; 
 	
 	protected Map<String, Object> session;
 	protected Map<String,Object> request;
+	protected Map<String,Object> response;
 
 	protected String ac;
 	protected String rowid;
+	
+	
+	public void prepare() throws Exception{
+		
+		requestOrigem = ServletActionContext.getRequest();
+		responseOrigem =ServletActionContext.getResponse();
+		
+	} 
 	
 	public String getRowid() {
 		return rowid;
@@ -50,11 +64,6 @@ public class SystemAction extends ActionSupport implements Preparable,SessionAwa
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
-	@Override
-	public void prepare() throws Exception {
-		
-	}
 	
 	public Map<String,Object> getSession(){
 		return session;
@@ -64,6 +73,12 @@ public class SystemAction extends ActionSupport implements Preparable,SessionAwa
 		return request;
 	}
 
+	public Map<String,Object> getResponse() {
+		return response;
+	}
 
+	public void setResponse(Map<String,Object> response) {
+		this.response = response;
+	}
 	
 }

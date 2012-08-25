@@ -1,15 +1,22 @@
 package br.com.cet.action.cad;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import com.sun.xml.internal.bind.v2.TODO;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
+
 import br.com.cet.action.RecursoPadraoAction;
+import br.com.cet.action.ResultJsonHelper;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
 import br.com.cet.vo.TacografoVo;
-import br.com.cet.vo.VeiculoVo;
 import br.com.cet.vo.UsuarioVo;
+import br.com.cet.vo.VeiculoVo;
 
 public class Cad005Action extends RecursoPadraoAction {
 
@@ -78,6 +85,42 @@ public class Cad005Action extends RecursoPadraoAction {
 	}
 	
 	
+	public void associarTacografo() throws IOException{
+		System.out.println("Cad005Action.associarTacografo()");
+	        
+		JettisonMappedXmlDriver driver;
+		XStream xstream;
+
+		driver = new JettisonMappedXmlDriver();
+		xstream = new XStream(driver);
+		
+		xstream.setMode(XStream.NO_REFERENCES);
+        String alias = "Chave";
+		Object bean = "Valor";
+		
+		xstream.alias(alias, bean.getClass());
+		
+		String xml = xstream.toXML(bean);
+	    
+	    System.out.println("xml: "+xml);
+		
+	    System.out.println("response: "+response);
+	    System.out.println("responseOrigem: "+responseOrigem);
+
+	    System.out.println("requestt: "+request);
+	    System.out.println("requestOrigem: "+requestOrigem);
+
+	    //TODO Michell o objeto ta pronto mas os "responses" estão nulos 
+//	    responseOrigem.setContentType("json");
+//		responseOrigem.setCharacterEncoding("utf-8");
+//
+//		PrintWriter out = responseOrigem.getWriter();
+//		out.print(responseOrigem.getContentType());
+//		out.flush();
+	    
+	}
+	
+	
 	public VeiculoVo getVeiculoVo() {
 		return veiculoVo;
 	}
@@ -133,6 +176,5 @@ public class Cad005Action extends RecursoPadraoAction {
 	public void setListaTacografo(List<TacografoVo> listaTacografo) {
 		this.listaTacografo = listaTacografo;
 	}
-	
 	
 }

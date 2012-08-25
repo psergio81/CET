@@ -323,7 +323,7 @@
 		alternaIcones('2');
 		
 		$.ajax({
-		      url: "Cad007Action!associarTacografo.action",
+		      url: "Cad005Action!associarTacografo.action",
 		      type: "POST",
 		      data: {
 		    	  codigo: $('#codigoVeiculo').val(),
