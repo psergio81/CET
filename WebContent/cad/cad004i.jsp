@@ -63,8 +63,7 @@
 		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true"/>
 				</p>
 				<p>
-		        	<label for="data" class="label"><fmt:message key="label.padrao.data"/></label>
-		         	<s:textfield name="ensaioVo.data" id="dataEnsaio" cssClass="input-small" />
+		         	<cet:campoData name="ensaioVo.data" id="dataEnsaio"/>
 				</p>
 				<p>
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>
@@ -126,8 +125,6 @@
 		
 		var acao = $('#ac').val();
 
-		$('#dataEnsaio').mask('99/99/9999');
-		
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad004');

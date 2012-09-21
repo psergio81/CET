@@ -3,15 +3,18 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <%@ taglib uri="/struts-tags" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
     
 <%@ taglib prefix="sb" uri="/struts-bootstrap-tags" %>
 
 <%@ taglib tagdir="/WEB-INF/tags" prefix="es" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="cet" %>
 
 
 <script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
 <script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
 <script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
+<script src="/CET/padrao/jquery/jquery-ui-1.7.3.custom.min.js" type="text/javascript"></script>	
 
 <script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
 <script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
@@ -22,6 +25,4 @@
 
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
-
-
-		
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/jquery-ui-1.7.3.custom.css">

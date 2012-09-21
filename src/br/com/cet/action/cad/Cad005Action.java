@@ -1,15 +1,9 @@
 package br.com.cet.action.cad;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
-import com.sun.xml.internal.bind.v2.TODO;
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
-
 import br.com.cet.action.RecursoPadraoAction;
-import br.com.cet.action.ResultJsonHelper;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Tacografo;
@@ -17,6 +11,9 @@ import br.com.cet.business.Veiculo;
 import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.UsuarioVo;
 import br.com.cet.vo.VeiculoVo;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 public class Cad005Action extends RecursoPadraoAction {
 
