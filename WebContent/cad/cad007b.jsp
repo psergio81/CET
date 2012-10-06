@@ -105,7 +105,7 @@
 	
 	</div>
 
-	<tacografo:rodape descricao="${usuarioLogado}"/>
+	<cet:rodape descricao="${usuarioLogado}"/>
 	
 	</body>
 

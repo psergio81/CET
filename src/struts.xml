@@ -58,6 +58,8 @@
 		<action name="Cad005Action!*" method="{1}" class="br.com.cet.action.cad.Cad005Action">
 			<result name="success">/cad/cad005i.jsp</result>
 			<result name="browser">/cad/cad005b.jsp</result>
+			<result name="associados">/cad/cad005l.jsp</result>
+			<result name="combo">/cad/cad005c.jsp</result>
             <result name="principal">/index.jsp</result>  
 		</action>
 

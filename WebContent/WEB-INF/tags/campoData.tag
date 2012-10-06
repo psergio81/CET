@@ -1,16 +1,16 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1"%>
 
-<%@ taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib uri="/struts-tags" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="/struts-tags" prefix="s" %>
 
-<%@ attribute name="name" required="true" %>
-<%@ attribute name="id" required="true" %>
-
-
+<%@ attribute name="param1" required="false" %>
+<%@ attribute name="param2" required="false" %>
 
 <label for="data" class="label"><fmt:message key="label.padrao.data"/></label>
-<s:textfield name="#name" id="#id" cssClass="input-small" />
+<input type="text" name="${param1}" id="${param2}">
+
+
 
 <script type="text/javascript">
 	$("#dataEnsaio").datepicker({dateFormat: 'dd/mm/yy'});

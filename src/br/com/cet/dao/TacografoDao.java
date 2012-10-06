@@ -75,7 +75,6 @@ public class TacografoDao extends BaseDao {
 	    PreparedStatement ps = null;  
 	    StringBuilder qry = new StringBuilder(); 
 	    List<TacografoVo> tacografosList = null;
-	    int i = 1;
 	    
 	    try {  
 	    	
@@ -134,10 +133,17 @@ public class TacografoDao extends BaseDao {
 			
 			connection = getConnection();  
 			
-			qry.append("SELECT rowid, cd_tacografo, cd_marca, cd_modelo, serie FROM tacografo ");
-			qry.append("WHERE cd_veiculo is null ");
+			qry.append(" SELECT rowid, cd_tacografo, cd_marca, cd_modelo, serie FROM tacografo ");
+			qry.append(" WHERE cd_tacografo not in ( select distinct cd_tacografo ");
+			qry.append(" from veiculo_tacografo ");
+			qry.append(" where cd_veiculo = ? ");
+			qry.append(" and dt_inicio is not null and dt_fim is null ) ");
 			
 			ps = connection.prepareStatement(qry.toString());
+			
+			System.out.println(qry.toString());
+			
+			ps.setInt(1, UtConverte.stringToInteiro(tacografoVo.getCodigoTacografo()));
 			
 			rs = ps.executeQuery();  
 			
@@ -147,7 +153,7 @@ public class TacografoDao extends BaseDao {
 				tacografoVo = new TacografoVo();
 				
 				tacografoVo.setRowid(rs.getString("rowid"));
-				tacografoVo.setCodigoTacografo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_tacografo"))));
+				tacografoVo.setCodigoTacografo(rs.getString("cd_tacografo"));
 				tacografoVo.setCodigoMarca(String.valueOf(rs.getInt("cd_marca")));
 				tacografoVo.setCodigoModelo(String.valueOf(rs.getInt("cd_modelo")));
 				tacografoVo.setCodigoSerie(rs.getString("serie"));

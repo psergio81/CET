@@ -27,7 +27,8 @@ public class Cad007Action extends RecursoPadraoAction {
 	private List<ModeloVo> listaModelo = null;
 	private String codigoVeiculo;
 	
-	public void prepare(){
+	public void prepare() throws Exception{
+		super.prepare();
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_TACOGRAFOS);
 		
@@ -59,6 +60,10 @@ public class Cad007Action extends RecursoPadraoAction {
 		Modelo modelo = new Modelo();
 		setListaModelo(new ArrayList<ModeloVo>());
 		setListaModelo(modelo.getListaModelo(null, false));
+		
+		
+		System.out.println("AC: "+ac);
+		
 		
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){

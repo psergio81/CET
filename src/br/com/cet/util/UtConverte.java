@@ -23,4 +23,10 @@ public class UtConverte extends UtString{
 		}
 	}
 
+	public static int longToInteiro(long numero){
+
+		return Integer.valueOf(String.valueOf(numero));
+			
+	}
+
 }

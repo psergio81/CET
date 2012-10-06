@@ -1,23 +1,20 @@
 package br.com.cet.action;
 
-import java.util.HashMap;
 import java.util.Map;
-
-import com.opensymphony.xwork2.ActionContext;
 
 import br.com.cet.business.Usuario;
 import br.com.cet.util.UtString;
 import br.com.cet.vo.UsuarioVo;
 
+import com.opensymphony.xwork2.ActionContext;
+
 public class LoginAction extends RecursoPadraoAction{
 	
 	private UsuarioVo usuarioVo = new UsuarioVo();
 
-	public void prepare(){
-		
-		System.out.println("login action");
+	public void prepare() throws Exception{
+		super.prepare();
 	}
-	
 	
 	
 	public String autenticacao() throws Exception{
@@ -35,11 +32,8 @@ public class LoginAction extends RecursoPadraoAction{
 			usuarioVo = usuario.autenticacao(nick, senha);
 			
 			if(usuarioVo != null){
-//				Map<String,Object> session = new HashMap<String,Object>();
-//				session.put("usuarioVo", usuarioVo);
-//				setSession(session);
 				
-				Map session = ActionContext.getContext().getSession();
+				Map<String, Object> session = ActionContext.getContext().getSession();
 				
 				session.put("usuarioVo", usuarioVo);  
 				
@@ -55,13 +49,8 @@ public class LoginAction extends RecursoPadraoAction{
 		return usuarioVo;
 	}
 
-
-
 	public void setUsuarioVo(UsuarioVo usuarioVo) {
 		this.usuarioVo = usuarioVo;
 	}
-	
-	
-
 
 }

@@ -11,7 +11,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		Atualiza atualiza = new Atualiza();
 		
-		atualiza.a0001(true);
+		atualiza.a0001(false);
 		atualiza.a0002(false);
 		atualiza.a0003(false);
 		atualiza.a0004(false);
@@ -19,6 +19,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
+		atualiza.a0009(true);
 		
 	}
 
@@ -183,6 +184,25 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "serie", 30, false);
+		
+	}
+
+	private void a0009(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "veiculo_tacografo";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo_tacografo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_tacografo", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "dt_inicio", 10, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "hr_inicio", 10, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "dt_fim", 10, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "hr_fim", 10, false);
 		
 	}
 }

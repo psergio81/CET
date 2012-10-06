@@ -1,19 +1,20 @@
 package br.com.cet.action.cad;
 
-import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.cet.action.RecursoPadraoAction;
+import br.com.cet.action.helper.ResultJsonHelper;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
+import br.com.cet.business.VeiculoTacografo;
 import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.UsuarioVo;
+import br.com.cet.vo.VeiculoTacografoVo;
 import br.com.cet.vo.VeiculoVo;
-
-import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver;
 
 public class Cad005Action extends RecursoPadraoAction {
 
@@ -24,9 +25,12 @@ public class Cad005Action extends RecursoPadraoAction {
 	private String campoBusca;
 	private boolean filtrar;
 	private List<TacografoVo> listaTacografo = null;
+	private List<VeiculoTacografoVo> listaTacografosAssociados = null;
+	private String codigoVeiculo;
+	private String codigoTacografo;
 	
-	public void prepare(){
-		
+	public void prepare() throws Exception{
+		super.prepare();
 		setNomePrograma(ProgramasKey.CADASTRO_DE_VEICULOS);
 		
 		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
@@ -82,41 +86,64 @@ public class Cad005Action extends RecursoPadraoAction {
 	}
 	
 	
-	public void associarTacografo() throws IOException{
-		System.out.println("Cad005Action.associarTacografo()");
-	        
-		JettisonMappedXmlDriver driver;
-		XStream xstream;
+	public String associarTacografo(){
+		
+		ResultJsonHelper resultJsonHelper = new ResultJsonHelper(responseOrigem);
 
-		driver = new JettisonMappedXmlDriver();
-		xstream = new XStream(driver);
-		
-		xstream.setMode(XStream.NO_REFERENCES);
-        String alias = "Chave";
-		Object bean = "Valor";
-		
-		xstream.alias(alias, bean.getClass());
-		
-		String xml = xstream.toXML(bean);
-	    
-	    System.out.println("xml: "+xml);
-		
-	    System.out.println("response: "+response);
-	    System.out.println("responseOrigem: "+responseOrigem);
+		try {
+			
 
-	    System.out.println("requestt: "+request);
-	    System.out.println("requestOrigem: "+requestOrigem);
+			VeiculoTacografo veiculoTacografo = new VeiculoTacografo();
+			VeiculoTacografoVo veiculoTacografoVo = new VeiculoTacografoVo();
 
-	    //TODO Michell o objeto ta pronto mas os "responses" estão nulos 
-//	    responseOrigem.setContentType("json");
-//		responseOrigem.setCharacterEncoding("utf-8");
-//
-//		PrintWriter out = responseOrigem.getWriter();
-//		out.print(responseOrigem.getContentType());
-//		out.flush();
-	    
+			veiculoTacografoVo.setCodigoVeiculo(codigoVeiculo);
+			veiculoTacografoVo.setCodigoTacografo(getCodigoTacografo());
+			
+			veiculoTacografo.insertVeiculoTacografo(veiculoTacografoVo);
+			
+			
+			Map<String, String> map = new HashMap<String, String>();
+			
+			map.put("teste", "casa");
+			
+			resultJsonHelper.jsonDo(map);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return resultJsonHelper.getResultTypeJson();
+		
 	}
 	
+	
+	public String carregaTacografosAssociados() throws Exception{
+		
+		
+		VeiculoTacografoVo veiculoTacografoVo = new VeiculoTacografoVo();
+		VeiculoTacografo veiculoTacografo = new VeiculoTacografo();
+		veiculoTacografoVo.setCodigoVeiculo(getCodigoVeiculo());
+		
+		setListaTacografosAssociados(veiculoTacografo.getTacografosDeUmVeiculo(veiculoTacografoVo));
+		
+		return "associados";
+		
+	}
+
+	public String carregaTacografosNaoAssociados() throws Exception{
+		
+		Tacografo tacografo = new Tacografo();
+		TacografoVo tacografoVo = new TacografoVo();
+		tacografoVo.setCodigoTacografo(codigoVeiculo);System.out.println("codigoTacografo: "+codigoTacografo);
+		
+		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
+		
+		ResultJsonHelper resultJsonHelper = new ResultJsonHelper(responseOrigem);
+		resultJsonHelper.jsonDo(listaTacografo);
+		
+		return resultJsonHelper.getResultTypeJson();
+	}
 	
 	public VeiculoVo getVeiculoVo() {
 		return veiculoVo;
@@ -172,6 +199,31 @@ public class Cad005Action extends RecursoPadraoAction {
 
 	public void setListaTacografo(List<TacografoVo> listaTacografo) {
 		this.listaTacografo = listaTacografo;
+	}
+
+	public List<VeiculoTacografoVo> getListaTacografosAssociados() {
+		return listaTacografosAssociados;
+	}
+
+	public void setListaTacografosAssociados(
+			List<VeiculoTacografoVo> listaTacografosAssociados) {
+		this.listaTacografosAssociados = listaTacografosAssociados;
+	}
+
+	public String getCodigoVeiculo() {
+		return codigoVeiculo;
+	}
+
+	public void setCodigoVeiculo(String codigoVeiculo) {
+		this.codigoVeiculo = codigoVeiculo;
+	}
+
+	public String getCodigoTacografo() {
+		return codigoTacografo;
+	}
+
+	public void setCodigoTacografo(String codigoTacografo) {
+		this.codigoTacografo = codigoTacografo;
 	}
 	
 }

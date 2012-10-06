@@ -71,10 +71,11 @@
 		         	<s:textfield name="veiculoVo.descricao" id="placa" required="required" cssClass="input-large maiusculo" />
 		         	
 		        </p>
-				
+		        
 				<p>
 		        	
 		        	<label for="descricao" class="label"><fmt:message key="label.padrao.tacografo"/></label>
+
 					<s:select name="tacografosDisponiveis" id="tacografosDisponiveis" list="listaTacografo" listKey="codigoTacografo" listValue="codigoSerie" emptyOption="true" ></s:select>
 					
 					<span style="display: none;" class="associarTacografo" title="Cancelar">
@@ -103,43 +104,7 @@
 		</div>
 	</div>
 	
-	<div class="container">
-		<s:if test="%{listaTacografo.isEmpty()}">
-		    <div class="alert">
-		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
-			</div>
-		
-		</s:if>
-		<s:else>
-			<table width="100%" class="table table-bordered table-striped ">
-	
-				<thead>
-					<tr>
-						<th colspan="2" style="text-align: center;"><fmt:message key="label.padrao.tacografos.associados"/></th>
-					</tr>
-					<tr>
-						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-						<th width="*"><fmt:message key="label.padrao.numero.serie"/></th>
-					</tr>
-				</thead>
-				
-				<tbody>
-					<s:iterator  value="listaTacografo" status="status">
-						<tr onclick="javaScript:detalhes('<s:property value="codigoTacografo" />')">
-							<td>
-								<a>
-									<fmt:formatNumber value="${codigoTacografo}" type="number"  minIntegerDigits="6" />
-								</a>
-							</td>
-							<td>
-								<a><s:property value="codigoSerie" /></a>
-							</td>
-						</tr>
-					</s:iterator>
-				</tbody>
-			</table>
-		</s:else>
-	</div>
+	<div class="container" id="divAssociados"></div>
 	
 
     <div class="modal hide" id="myModal">
@@ -176,14 +141,14 @@
 		
 		$('#placa').mask('aaa-9999');
 		
-
+		carregaTacografosAssociados();
 		
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad005');
 		}
 		
-		$('#divErros').css('display','none');
+	$('#divErros').css('display','none');
 		
 		$('#cad005').validate({
 
@@ -321,26 +286,81 @@
 
 	function associar(){
 		alternaIcones('2');
+		var $codigoTacografo = $('#tacografosDisponiveis').find("option:selected").val();
+		
+		if($codigoTacografo == ''){
+			return;
+		}
 		
 		$.ajax({
 		      url: "Cad005Action!associarTacografo.action",
 		      type: "POST",
-		      data: {
-		    	  codigo: $('#codigoVeiculo').val(),
-		    	  
-		      },
 		      dataType: "json",  
-		      error: function(){  
-		          alert('Error');
+		      data: {
+		    	  codigoVeiculo: $('#codigoVeiculo').val(),
+		    	  codigoTacografo: $('#tacografosDisponiveis').find("option:selected").val()
 		      },
 		      success: function(data){   
 
-		    	  alert('SUCCESS');
+		    	  carregaTacografosAssociados();
 		    	  
+		      },
+		      error: function(){  
+		          alert('Error');
 		      }
 		  });
-		
 	}
+
+	function carregaTacografosAssociados(){
+		
+		$.ajax({
+		      url: "Cad005Action!carregaTacografosAssociados.action",
+		      type: "POST",
+		      dataType: "html",  
+		      data: {
+		    	  codigoVeiculo: $('#codigoVeiculo').val()
+		    	  
+		      },
+		      success: function(data){   
+
+		    	  $('#divAssociados').slideUp('slow').html(data).slideDown('slow');
+		    	  
+		      },
+		      error: function(){  
+		          alert('Error');
+		      }
+		  });
+	}
+
+	function carregaTacografosNaoAssociados(){
+		
+		$.ajax({
+		      url: "Cad005Action!carregaTacografosNaoAssociados.action",
+		      type: "POST",
+		      dataType: "html",  
+		      data: {
+		    	  codigoVeiculo: $('#codigoVeiculo').val()
+		    	  
+		      },
+		      success: function(json){   
+		    	  
+		    	  var obj = jQuery.parseJSON(json);
+
+		    	  var options = "<option value=''></option>";
+		    	  
+		    	  $.each(obj, function(obj){
+		    		  options += "<option value="+this.codigoTacografo+">"+this.codigoSerie+"</option>";
+		            });
+
+		    	  $('#tacografosDisponiveis').html(options);
+		    	  
+		      },
+		      error: function(){  
+		          alert('Error');
+		      }
+		  });
+	}
+	
 	
 	function alternaIcones(origem){
 		$('.associarTacografo').toggle();
@@ -356,12 +376,13 @@
 			
 		}else{
 			
+			carregaTacografosNaoAssociados();
 			$('#tacografosDisponiveis').removeAttr('disabled');
 			
 		}
 	}
 
-	
+
 </script>
 </body>
 </html>

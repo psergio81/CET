@@ -63,7 +63,8 @@
 		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true"/>
 				</p>
 				<p>
-		         	<cet:campoData name="ensaioVo.data" id="dataEnsaio"/>
+					<label for="data" class="label"><fmt:message key="label.padrao.data"/></label>
+		         	<s:textfield id="dataEnsaio" name="ensaioVo.data" cssClass="input-large data "/>
 				</p>
 				<p>
 		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>

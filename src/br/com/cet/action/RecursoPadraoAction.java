@@ -7,6 +7,7 @@ public class RecursoPadraoAction extends SystemAction{
 	private String nomePrograma;
 	private String campoBusca;
 
+	
 	public String getUsuarioLogado() {
 		return usuarioLogado;
 	}
