@@ -18,7 +18,9 @@ public class Cad001Action extends RecursoPadraoAction{
 	private String campoBusca;
 	private boolean filtrar;
 	
-	public void prepare(){
+	public void prepare() throws Exception{
+		
+		super.prepare();
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
 		

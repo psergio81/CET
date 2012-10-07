@@ -26,7 +26,9 @@ public class Cad004Action extends RecursoPadraoAction {
 	private List<VeiculoVo> listaVeiculo = null;
 	private UsuarioVo usuarioVo;
 	
-	public void prepare(){
+	public void prepare() throws Exception{
+		
+		super.prepare();
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_ENSAIOS);
 		

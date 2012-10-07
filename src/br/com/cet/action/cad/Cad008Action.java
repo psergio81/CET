@@ -20,7 +20,9 @@ public class Cad008Action extends RecursoPadraoAction {
 	private UsuarioVo usuarioVo;
 	private List<EmpresaVo> listaEmpresa = null;
 	
-	public void prepare(){
+	public void prepare() throws Exception{
+		
+		super.prepare();
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_USUARIOS);
 		
