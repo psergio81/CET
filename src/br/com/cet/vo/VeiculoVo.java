@@ -3,7 +3,7 @@ package br.com.cet.vo;
 public class VeiculoVo extends EstruturaVo{
 	
 	private String codigoVeiculo;
-	private String descricao;
+	private String placa;
 
 	public VeiculoVo(){}
 	
@@ -18,13 +18,14 @@ public class VeiculoVo extends EstruturaVo{
 	public void setCodigoVeiculo(String codigoVeiculo) {
 		this.codigoVeiculo = codigoVeiculo;
 	}
-	
-	public String getDescricao() {
-		return descricao;
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
 	}
 	
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
 		
 }

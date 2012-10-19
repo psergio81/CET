@@ -14,6 +14,7 @@ public class ConnectionDao{
 	}
 
 	
+	@SuppressWarnings("unused")
 	private static Connection getConnectionAccess() throws SQLException{
 		Connection c = null;
 		

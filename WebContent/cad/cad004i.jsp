@@ -2,95 +2,71 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<head>
-    <title>[cad004i.jsp] Cadastro de Ensaio</title>
+	<head>
 
-   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    	<title>[cad004i.jsp] Cadastro de Ensaio</title>
 
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        
-    </style>
-</head>
+	</head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="row">
-			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad004');">
-					<i class="icon-search icon-white">
-					</i>
-					<fmt:message key="label.padrao.busca"/>
-				</a>
-			</div>
-			<div class="span4" align="center">
-				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>
-					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
-				</a>
-				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>
-					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
-				</a>
-			</div>
-			
-			
-			<div class="pull-right">
-				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
-			</div>
-		</div>
-    	</div>
-</div>
-
+	<div class="navbar navbar-fixed-top">
+		
+		<es:menu mostrarNomePrograma="true"/>
+		   	
+		<es:botoes codigoPrograma="cad004"/>
+	   	
+	</div>
+	
 	<div class="container-fluid">
 		<div class="container">
 		
-		    <s:form id="cad004" action="Cad004Action!crud.action" theme="simple" cssClass="well form-inline">
+		    <s:form id="cad004" action="Cad004Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
 		        <s:hidden name="ensaioVo.codigoEnsaio"/>
 		        
-		        <p>
-		        	<label for="codigoEnsaio" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="input-mini" disabled="true"/>
-				</p>
-				<p>
-					<label for="data" class="label"><fmt:message key="label.padrao.data"/></label>
-		         	<s:textfield id="dataEnsaio" name="ensaioVo.data" cssClass="input-large data "/>
-				</p>
-				<p>
-		        	<label for="proprietario" class="label"><fmt:message key="label.padrao.proprietario"/></label>
-					<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true"/>
-					<s:a action="Cad006Action!crud.action" title="Adicionar">
-						<img src="icones/add.png" width="25pt" height="25pt" alt="" >
-					</s:a>
-				</p>
+        		<div class="control-group">
+		        	<label for="codigoEnsaio" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
+   					<div class="controls">
+			         	<s:textfield name="ensaioVo.codigoEnsaio" id="codigoEnsaio" cssClass="span2" disabled="true"/>
+   					</div>
+				</div>
 
-				<p>
-		        	<label for="veiculo" class="label"><fmt:message key="label.padrao.veiculo"/></label>
-					<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="descricao" emptyOption="true"/>
-					<s:a action="Cad005Action!crud.action" title="Adicionar">
-						<img src="icones/add.png" width="25pt" height="25pt" alt="" >
-					</s:a>
-				</p>
-				<p>
-		        	<label for="gru" class="label"><fmt:message key="label.padrao.gru"/></label>
-		         	<s:textfield name="ensaioVo.gru" id="gru" required="required" cssClass="input-large" />
-		        </p>
+        		<div class="control-group">
+					<label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
+   					<div class="controls">
+			         	<s:textfield id="dataEnsaio" name="ensaioVo.data" cssClass="span2 data "/>
+   					</div>
+				</div>
+
+        		<div class="control-group">
+		        	<label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
+   					<div class="controls">
+						<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" cssClass="span4"/>
+						<s:a action="Cad006Action!crud.action" title="Adicionar">
+							<img src="icones/add.png" width="25pt" height="25pt" alt="" >
+						</s:a>
+   					</div>
+				</div>
+		        
+        		<div class="control-group">
+		        	<label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
+   					<div class="controls">
+						<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="placa" emptyOption="true" cssClass="span4"/>
+						<s:a action="Cad005Action!crud.action" title="Adicionar">
+							<img src="icones/add.png" width="25pt" height="25pt" alt="" >
+						</s:a>
+   					</div>
+				</div>
+
+        		<div class="control-group">
+		        	<label for="gru" class="control-label"><fmt:message key="label.padrao.gru"/></label>
+   					<div class="controls">
+			         	<s:textfield name="ensaioVo.gru" id="gru" required="required" cssClass="span4" />
+   					</div>
+				</div>
 		
 		    </s:form>
 		    
-		    <div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-				<ul id="listaErros" > </ul>  
-			</div>
+		    <es:mensagemErro />
 			
 		</div>
 	</div>
@@ -150,15 +126,34 @@
 			errorElement: "li",
 			
             rules:{
-            	"ensaioVo.descricao":{
+            	"ensaioVo.data":{
+                	required:true
+                },
+                "ensaioVo.codigoProprietario":{
+                	required:true
+                },
+                "ensaioVo.codigoVeiculo":{
+                	required:true
+                },
+                "ensaioVo.gru":{
                 	required:true
                 }
                 
             },
             messages:{
-            	"ensaioVo.descricao":{
-                    required: "O campo Descrição é obrigatório."	
+            	"ensaioVo.data":{
+                    required: "O campo Data é obrigatório."	
+                },
+                "ensaioVo.codigoProprietario":{
+                	required:"O campo Proprietário é obrigatório."
+                },
+                "ensaioVo.codigoVeiculo":{
+                	required:"O campo Veículo é obrigatório."
+                },
+                "ensaioVo.gru":{
+                	required:"O campo GRU é obrigatório."
                 }
+                
             }
 	    });
 		
@@ -176,7 +171,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"],select').attr('disabled','true');
+			$('input[class*="span"],select').attr('disabled','true');
 			
 		}
 		
@@ -228,7 +223,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoEnsaio"],select').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoEnsaio"],select').removeAttr('disabled');
 		
 	}
 
@@ -247,7 +242,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"]').attr('disabled','true');
+			$('input[class*="span"]').attr('disabled','true');
 
 			location.reload();
 		}

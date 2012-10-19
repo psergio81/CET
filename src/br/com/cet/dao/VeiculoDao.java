@@ -37,7 +37,7 @@ public class VeiculoDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_veiculo, nm_veiculo FROM veiculo " );
+		    qry.append(	"SELECT rowid, cd_veiculo, placa FROM veiculo " );
 		    qry.append(	"where cd_veiculo = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -52,7 +52,7 @@ public class VeiculoDao extends BaseDao {
 		    	
 		    	veiculoVo.setRowid(rs.getString("rowid"));
 		    	veiculoVo.setCodigoVeiculo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_veiculo"))));
-		    	veiculoVo.setDescricao(rs.getString("nm_veiculo"));
+		    	veiculoVo.setPlaca(rs.getString("placa"));
 		    	
 		    }
 		    
@@ -78,17 +78,17 @@ public class VeiculoDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_veiculo, nm_veiculo FROM veiculo ");
+		    qry.append("SELECT rowid, cd_veiculo, placa FROM veiculo ");
 		
 		    if(filtrar){
-		    	qry.append(" WHERE nm_veiculo like '%' ? '%' ");
+		    	qry.append(" WHERE placa like '%' ? '%' ");
 		    }
 		
 		    
 		    ps = connection.prepareStatement(qry.toString());
 		    
 		    if(filtrar){
-		    	ps.setString(i++, veiculoVo.getDescricao());
+		    	ps.setString(i++, veiculoVo.getPlaca());
 		    }
 		    
 		    rs = ps.executeQuery();  
@@ -99,7 +99,7 @@ public class VeiculoDao extends BaseDao {
 		    	veiculoVo = new VeiculoVo();
 		    	veiculoVo.setRowid(rs.getString("rowid"));
 		    	veiculoVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
-		    	veiculoVo.setDescricao(rs.getString("nm_veiculo"));
+		    	veiculoVo.setPlaca(rs.getString("placa"));
 		    	veiculosList.add(veiculoVo);
 		    }  
 		    
@@ -126,14 +126,14 @@ public class VeiculoDao extends BaseDao {
 		    qry.append(" INSERT INTO veiculo ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_veiculo, ");
-		    qry.append(" nm_veiculo ) ");
+		    qry.append(" placa ) ");
 		    qry.append(getValues(qry));
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(veiculoVo.getCodigoVeiculo()));
-		    ps.setString(i++, veiculoVo.getDescricao());
+		    ps.setString(i++, veiculoVo.getPlaca());
 		    
 		    ps.executeUpdate();
 		    
@@ -156,11 +156,11 @@ public class VeiculoDao extends BaseDao {
 			connection = getConnection();  
 			
 			qry.append(" UPDATE veiculo set ");
-			qry.append(" nm_veiculo = ? ");
+			qry.append(" placa = ? ");
 			qry.append(" WHERE cd_veiculo = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
-			ps.setString(i++, veiculoVo.getDescricao());
+			ps.setString(i++, veiculoVo.getPlaca());
 			ps.setInt(i++, Integer.parseInt(veiculoVo.getCodigoVeiculo()));
 			
 			ps.execute();

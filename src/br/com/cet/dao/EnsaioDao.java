@@ -79,7 +79,6 @@ public class EnsaioDao extends BaseDao {
 	    PreparedStatement ps = null;  
 	    StringBuilder qry = new StringBuilder(); 
 	    List<EnsaioVo> ensaiosList = null;
-	    int i = 1;
 	    
 	    try {  
 	    	

@@ -44,7 +44,7 @@ public class Cad005Action extends RecursoPadraoAction {
 	public String browser() throws Exception{
 		
 		
-		veiculoVo.setDescricao(campoBusca);
+		veiculoVo.setPlaca(campoBusca);
 		
 		listaVeiculo = veiculo.getListaVeiculo(veiculoVo, filtrar);
 		

@@ -2,86 +2,60 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<head>
-    <title>[cad006i.jsp] Cadastro de Pessoa</title>
+	<head>
 
-   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    	<title>[cad006i.jsp] Cadastro de Pessoa</title>
 
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        
-    </style>
-</head>
+	</head>
 <body>
 
-
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="row">
-			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad006');">
-					<i class="icon-search icon-white">
-					</i>
-					<fmt:message key="label.padrao.busca"/>
-				</a>
-			</div>
-			<div class="span4" align="center">
-				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>
-					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
-				</a>
-				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>
-					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
-				</a>
-			</div>
-			
-			
-			<div class="pull-right">
-				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
-			</div>
-		</div>
-    	</div>
-</div>
-
+	<div class="navbar navbar-fixed-top">
+		
+		<es:menu mostrarNomePrograma="true"/>
+		   	
+	   	<es:botoes codigoPrograma="cad006" />
+	   	
+	</div>
+	
 	<div class="container-fluid">
 		<div class="container">
 		
-		    <s:form id="cad006" action="Cad006Action!crud.action" theme="simple" cssClass="well form-inline">
+		    <s:form id="cad006" action="Cad006Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
 		        <s:hidden name="pessoaVo.rowid"/>
 		        <s:hidden name="pessoaVo.codigoPessoa"/>
-		        <p>
-		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="pessoaVo.codigoPessoa" id="codigoPessoa" cssClass="input-mini" />
-
-		        	<label for="codigoPessoa" class="label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
-					<s:select cssClass="input" list="#{'1':'Física','2':'Jurídica'}" name="pessoaVo.tipoPessoa" id="tipoPessoa" onchange="javascript:selecionaTipoPessoa(this.value)"></s:select>				
 		        
-		        </p>
+		        <div class="control-group">
+		        	<label for="codigoPessoa" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
+   					<div class="controls">
+			         	<s:textfield name="pessoaVo.codigoPessoa" id="codigoPessoa" cssClass="span2" />
+   					</div>
+  				</div>
 
-		        <p>
-		        	<label for="labelTipoPessoa" id="labelTipoPessoa" class="label"><fmt:message key="label.padrao.razao.social"/></label>
-		         	<s:textfield name="pessoaVo.nome" id="descricao" required="required" cssClass="input-xxlarge" />
+		        <div class="control-group">
+		        	<label for="codigoPessoa" class="control-label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
+   					<div class="controls">
+						<s:select cssClass="input" list="#{'1':'Física','2':'Jurídica'}" name="pessoaVo.tipoPessoa" id="tipoPessoa" onchange="javascript:selecionaTipoPessoa(this.value)" cssErrorClass="span3"/>				
+   					</div>
+  				</div>
 
-		        	<label for="labelDocumento" id="labelDocumento" class="label"><fmt:message key="label.padrao.cnpj"/></label>
-		         	<s:textfield name="pessoaVo.codigoDocumento" id="documento" required="required" cssClass="input-400" />
-		        </p>
-		
+		        <div class="control-group">
+		        	<label for="labelTipoPessoa" id="labelTipoPessoa" class="control-label"><fmt:message key="label.padrao.razao.social"/></label>
+   					<div class="controls">
+			         	<s:textfield name="pessoaVo.nome" id="descricao" required="required" cssClass="span6" />
+   					</div>
+  				</div>
+
+		        <div class="control-group">
+		        	<label for="labelDocumento" id="labelDocumento" class="control-label"><fmt:message key="label.padrao.cnpj"/></label>
+   					<div class="controls">
+			         	<s:textfield name="pessoaVo.codigoDocumento" id="documento" required="required" cssClass="span3" />
+   					</div>
+  				</div>
+		        
 		    </s:form>
 		    
-		    <div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-				<ul id="listaErros" > </ul>  
-			</div>
+		    <es:mensagemErro />
 			
 		</div>
 	</div>
@@ -145,12 +119,30 @@
             rules:{
             	"pessoaVo.nome":{
                 	required:true
+                },
+                "pessoaVo.codigoDocumento":{
+                	required:true
                 }
                 
             },
             messages:{
             	"pessoaVo.nome":{
-                    required: "O campo Descrição é obrigatório."	
+                    required:function(e){
+                    	if($('#tipoPessoa').val() == 1){
+	                    	return "O campo Nome é obrigatório.";
+                    	}else{
+                    		return "O campo Razão Social é obrigatório.";
+                    	}
+                    } 	
+                },
+                "pessoaVo.codigoDocumento":{
+                	required:function(e){
+                    	if($('#tipoPessoa').val() == 1){
+	                    	return "O campo CPF é obrigatório.";
+                    	}else{
+                    		return "O campo CNPJ é obrigatório.";
+                    	}
+                    }
                 }
             }
 	    });
@@ -169,7 +161,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"],select').attr('disabled','true');
+			$('input[class*="span"],select').attr('disabled','true');
 			
 		}
 		
@@ -221,7 +213,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoPessoa"],select').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoPessoa"],select').removeAttr('disabled');
 		
 	}
 
@@ -240,7 +232,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoPessoa"],select').attr('disabled','true');
+			$('input[class*="span"][id!="codigoPessoa"],select').attr('disabled','true');
 	
 			location.reload();
 		}

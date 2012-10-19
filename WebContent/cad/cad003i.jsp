@@ -2,76 +2,44 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<head>
-    <title>[cad003i.jsp] Cadastro de Modelo</title>
+	<head>
 
-   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    	<title>[cad003i.jsp] Cadastro de Modelo</title>
 
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        
-    </style>
-</head>
+	</head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="row">
-			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad003');">
-					<i class="icon-search icon-white">
-					</i>
-					<fmt:message key="label.padrao.busca"/>
-				</a>
-			</div>
-			<div class="span4" align="center">
-				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>
-					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
-				</a>
-				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>
-					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
-				</a>
-			</div>
-			
-			
-			<div class="pull-right">
-				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
-			</div>
-		</div>
-    	</div>
-</div>
+	<div class="navbar navbar-fixed-top">
+	
+		<es:menu mostrarNomePrograma="true"/>
+	
+		<es:menu mostrarNomePrograma="cad003" />
+	   	
+	</div>
 
 	<div class="container-fluid">
 		<div class="container">
 		
-		    <s:form id="cad003" action="Cad003Action!crud.action" theme="simple" cssClass="well form-inline">
+		    <s:form id="cad003" action="Cad003Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
 		        <s:hidden name="modeloVo.codigoModelo"/>
 		        
-		        <p>
-		        	<label for="codigoModelo" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="modeloVo.codigoModelo" id="codigoModelo" cssClass="input-mini" disabled="true" />
-		
-		        	<label for="descricao" class="label"><fmt:message key="label.padrao.descricao"/></label>
-		         	<s:textfield name="modeloVo.descricao" id="descricao" required="required" cssClass="input-xxlarge" />
+		        <div class="control-group">
+		        	<label for="codigoModelo" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
+   					<div class="controls">
+			         	<s:textfield name="modeloVo.codigoModelo" id="codigoModelo" cssClass="span2" disabled="true" />
+   					</div>
+				</div>
+
+		        <div class="control-group">
+		        	<label for="descricao" class="control-label"><fmt:message key="label.padrao.descricao"/></label>
+   					<div class="controls">
+			         	<s:textfield name="modeloVo.descricao" id="descricao" required="required" cssClass="input span4" />
+   					</div>
+				</div>
 		        
-		        </p>
-		
 		    </s:form>
 		    
-		    <div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-				<ul id="listaErros" > </ul>  
-			</div>
+			<es:mensagemErro />
 			
 		</div>
 	</div>
@@ -158,7 +126,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoModelo"]').attr('disabled','true');
+			$('input[class*="input"][id!="codigoModelo"]').attr('disabled','true');
 			
 		}
 		
@@ -210,7 +178,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoModelo"]').removeAttr('disabled');
+		$('input[class*="input"][id!="codigoModelo"]').removeAttr('disabled');
 		
 	}
 
@@ -229,7 +197,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoModelo"]').attr('disabled','true');
+			$('input[class*="input"][id!="codigoModelo"]').attr('disabled','true');
 
 			location.reload();
 		}

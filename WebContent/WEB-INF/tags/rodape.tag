@@ -6,7 +6,7 @@
 <div class="navbar navbar-fixed-bottom">
    	<div class="navbar-inner">
    		<div class="pull-right">
-			<button class="descricaoTela">${descricao}</button>
+   			<input type="text" class="span2 search-query" value="${descricao}" style="width: 300px; text-align: center; margin-top: 1px; margin-right: 5px;">
 		</div>
    	</div>
 </div>

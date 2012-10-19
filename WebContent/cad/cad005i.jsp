@@ -3,103 +3,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<head>
+
 	    <title>[cad005i.jsp] Cadastro de Veiculos</title>
 	
-	   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta name="description" content="">
-	    <meta name="author" content="">
-	    
-	    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-	    <!--[if lt IE 9]>
-	    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	    <![endif]-->
-	
-	    <style>
-	        body {
-	            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-	        }
-	        .icone{
-	        	width: 13pt;
-	        	height: 13pt;
-	        }
-	        
-	    </style>
 	</head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="row">
-			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad005');">
-					<i class="icon-search icon-white">
-					</i>&nbsp;
-					<fmt:message key="label.padrao.busca"/>
-				</a>
-			</div>
-			<div class="span4" align="center">
-				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>&nbsp;
-					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
-				</a>
-				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>&nbsp;
-					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
-				</a>
-			</div>
-			
-			
-			<div class="pull-right">
-				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
-			</div>
-		</div>
-    	</div>
-</div>
-
+	<div class="navbar navbar-fixed-top">
+		
+		<es:menu mostrarNomePrograma="true"/>
+		   	
+	   	<es:botoes codigoPrograma="cad005" />
+	   	
+	</div>
+	
 	<div class="container-fluid">
 		<div class="container">
 		
-		    <s:form id="cad005" action="Cad005Action!crud.action" theme="simple" cssClass="well form-inline">
+		    <s:form id="cad005" action="Cad005Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
 		        <s:hidden name="veiculoVo.codigoVeiculo"/>
 		        
-		        <p>
-		        	<label for="codigoVeiculo" class="label"><fmt:message key="label.padrao.codigo"/></label>
-		         	<s:textfield name="veiculoVo.codigoVeiculo" id="codigoVeiculo" cssClass="input-mini" disabled="true" />
-		        </p>
-		        <p>
-		        	<label for="descricao" class="label"><fmt:message key="label.padrao.placa"/></label>
-		         	<s:textfield name="veiculoVo.descricao" id="placa" required="required" cssClass="input-large maiusculo" />
-		         	
-		        </p>
-		        
-				<p>
-		        	
-		        	<label for="descricao" class="label"><fmt:message key="label.padrao.tacografo"/></label>
+		        <div class="control-group">
+		        	<label for="codigoVeiculo" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
+   					<div class="controls">
+			         	<s:textfield name="veiculoVo.codigoVeiculo" id="codigoVeiculo" cssClass="span2" disabled="true" />
+   					</div>
+				</div>
 
-					<s:select name="tacografosDisponiveis" id="tacografosDisponiveis" list="listaTacografo" listKey="codigoTacografo" listValue="codigoSerie" emptyOption="true" ></s:select>
-					
-					<span style="display: none;" class="associarTacografo" title="Cancelar">
-						<a href="javascript:cancelarAssociacao();">
-							<img src="icones/cancel.png" alt="" class="icone">
-						</a>
-						&nbsp;
-						<a href="javascript:associar();" title="Confirmar">
-							<img src="icones/ok.png" alt="" class="icone">
-						</a>
-					</span>
-					
-					<span class="associarTacografo">
-						<a href="javascript:alternaIcones('3');" title="Associar tacógrafo">
-							<img src="icones/zoomIn.png" alt="" class="icone">
-						</a>
-					</span>
-				</p>
-		
+		        <div class="control-group">
+		        	<label for="placa" class="control-label"><fmt:message key="label.padrao.placa"/></label>
+   					<div class="controls">
+			         	<s:textfield name="veiculoVo.placa" id="placa" required="required" cssClass="span2 maiusculo" />
+   					</div>
+				</div>
+
+		        <div class="control-group">
+		        	<label for="descricao" class="control-label"><fmt:message key="label.padrao.tacografo"/></label>
+   					<div class="controls">
+						<s:select name="tacografosDisponiveis" id="tacografosDisponiveis" list="listaTacografo" listKey="codigoTacografo" listValue="codigoSerie" emptyOption="true" ></s:select>
+						<span style="display: none;" class="associarTacografo" title="Cancelar">
+							<a href="javascript:cancelarAssociacao();">
+								<img src="icones/cancel.png" alt="" class="icone">
+							</a>
+							&nbsp;
+							<a href="javascript:associar();" title="Confirmar">
+								<img src="icones/ok.png" alt="" class="icone">
+							</a>
+						</span>
+						<span class="associarTacografo">
+							<a href="javascript:alternaIcones('3');" title="Associar tacógrafo">
+								<img src="icones/zoomIn.png" alt="" class="icone">
+							</a>
+						</span>
+   					</div>
+				</div>
 		    </s:form>
 		    
-		    <div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-				<ul id="listaErros" > </ul>  
-			</div>
+		    <es:mensagemErro />
 			
 		</div>
 	</div>
@@ -166,14 +126,14 @@
 			errorElement: "li",
 			
             rules:{
-            	"veiculoVo.descricao":{
+            	"veiculoVo.placa":{
                 	required:true
                 }
                 
             },
             messages:{
-            	"veiculoVo.descricao":{
-                    required: "O campo Descrição é obrigatório."	
+            	"veiculoVo.placa":{
+                    required: "O campo Placa é obrigatório."	
                 }
             }
 	    });
@@ -195,7 +155,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"],select').attr('disabled','true');
+			$('input[class*="span"],select').attr('disabled','true');
 			
 		}
 		
@@ -247,7 +207,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoVeiculo"]').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoVeiculo"]').removeAttr('disabled');
 		
 	}
 
@@ -266,7 +226,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoVeiculo"]').attr('disabled','true');
+			$('input[class*="span"][id!="codigoVeiculo"]').attr('disabled','true');
 
 			location.reload();
 		}

@@ -43,7 +43,7 @@
                 <div class="control-group">
                 	<label for="razaoSocial" class="control-label">Senha</label>
 					<div class="controls">
-		                <s:textfield name="usuarioVo.senha" id="senha" cssClass="input-xxlarge required" />
+		                <s:password name="usuarioVo.senha" id="senha" cssClass="input-xxlarge required" />
 					</div>
 				</div>
 				
@@ -111,6 +111,11 @@ $(document).ready(function(){
 });
 
 function autenticar(){
+	
+	var senha = $('#senha').val();
+	senha = $.md5(senha);
+	
+	$('#senha').val(senha);
 	
 	
 	if(buscaProximoCampo() == true){

@@ -2,130 +2,129 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
-<head>
-    <title>[cad001i.jsp] Cadastro de Empresa</title>
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    
-   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        
-        label{
-        	width: 100px;
-        }
-        
-        p{
-        	height: 40px;
-        }
-        
-    </style>
-</head>
+	<head>
+	
+	    <title>[cad001i.jsp] Cadastro de Empresa</title>
+	
+	</head>
 <body>
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="row">
-			<div class="span4">
-				<a class="btn btn-info" href="javaScript:irParaBrowser('cad001');">
-					<i class="icon-search icon-white">
-					</i>
-					<fmt:message key="label.padrao.busca"/>
-				</a>
-			</div>
-			<div class="span4" align="center">
-				<a id="botaoCancelar" class="btn btn-danger" href="javaScript:cancelarCadastro();">
-					<i class="icon-remove icon-white"></i>
-					<span id="textoBtnCancelarExcluir"><fmt:message key="label.padrao.cancelar"/></span>
-				</a>
-				<a id="botaoSalvar" class="btn btn-success" href="javaScript:salvarCadastro();">
-					<i class="icon-ok icon-white"></i>
-					<span id="textoBtnSalvarAlterar"><fmt:message key="label.padrao.salvar"/></span>
-				</a>
-			</div>
-			
-			
-			<div class="pull-right">
-				<button class="descricaoTela"><s:property value="nomePrograma"/></button>
-			</div>
-		</div>
-    	</div>
-</div>
+	<div class="navbar navbar-fixed-top">
+		
+		<es:menu mostrarNomePrograma="true"/>
+		   	
+		<es:botoes codigoPrograma="cad001" />
+	   		   	
+	</div>
 
-<div class="container-fluid">
+	<div class="container-fluid">
         <div class="container" id="container">
 
-            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-inline">
+            <s:form id="cad001" action="Cad001Action!crud.action" theme="simple" cssClass="well form-horizontal">
                 <s:hidden name="ac" id="ac"/>
                 <s:hidden name="mensagemErro" id="mensagemErro" value="%{mensagemErro}"/>
                 <s:hidden name="empresaVo.codigoEmpresa"/>
 
-                <p>
-					<label for="codigoEmpresa" class="label"><fmt:message key="label.padrao.codigo"/></label>
-					<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="input-mini" disabled="true"  />
+					<div class="control-group">
+						<label for="codigoEmpresa" class="control-label"><fmt:message key="label.padrao.codigo"/></label>
+    					<div class="controls">
+							<s:textfield name="empresaVo.codigoEmpresa" id="codigoEmpresa" cssClass="span2" disabled="true"  />
+    					</div>
+  					</div>
 
-                	<label for="razaoSocial" class="label"><fmt:message key="label.padrao.razao.social"/></label>
-	                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="input-xlarge required" />
+					<div class="control-group">
+	                	<label for="razaoSocial" class="control-label"><fmt:message key="label.padrao.razao.social"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.razaoSocial" required="true" id="razaoSocial" cssClass="span6 required" />
+    					</div>
+  					</div>
 
-                	<label for="cnpj" class="label"><fmt:message key="label.padrao.cnpj"/></label>
-	                <s:textfield name="empresaVo.cnpj" id="cnpj" required="required" cssClass="input-305 required" />
-				</p>
+					<div class="control-group">
+	                	<label for="cnpj" class="control-label"><fmt:message key="label.padrao.cnpj"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.cnpj" id="cnpj" required="required" cssClass=" span3 required" />
+    					</div>
+  					</div>
 
+					<div class="control-group">
+	                	<label for="cep" class="control-label"><fmt:message key="label.padrao.cep"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="span2" />
+    					</div>
+  					</div>
 
-				<p>
-                	<label for="cep" class="label"><fmt:message key="label.padrao.cep"/></label>
-	                <s:textfield name="empresaVo.cep" id="cep" required="required" cssClass="input-small" />
-				
-                	<label for="endereco" class="label"><fmt:message key="label.padrao.endereco"/></label>
-	                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="input-xxlarge" />
-				
-                	<label for="numero" class="label"><fmt:message key="label.padrao.numero"/></label>
-	                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="input-small" />
-				</p>
+					<div class="control-group">
+	                	<label for="endereco" class="control-label"><fmt:message key="label.padrao.endereco"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.endereco" id="endereco" required="required" cssClass="span6" />
+    					</div>
+  					</div>
 
-				<p>
-                	<label for="complemento" class="label"><fmt:message key="label.padrao.complemento"/></label>
-	                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="input-large" />
-				
-                	<label for="bairro" class="label"><fmt:message key="label.padrao.bairro"/></label>
-	                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="input-large" />
-				
-                	<label for="cidade" class="label"><fmt:message key="label.padrao.cidade"/></label>
-	                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="input-275" />
-				</p>
+					<div class="control-group">
+	                	<label for="numero" class="control-label"><fmt:message key="label.padrao.numero"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.numero" id="numero" required="required" cssClass="span2" />
+    					</div>
+  					</div>
 
-				<p>
-	               	<label for="estado" class="label"><fmt:message key="label.padrao.estado"/></label>
-	                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="input-large" />
-				
-                	<label for="telefone" class="label"><fmt:message key="label.padrao.telefone"/></label>
-	                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="input-large" />
-				
-                	<label for="fax" class="label"><fmt:message key="label.padrao.fax"/></label>
-	                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="input-275" />
-				</p>
+					<div class="control-group">
+	                	<label for="complemento" class="control-label"><fmt:message key="label.padrao.complemento"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.complemento" id="complemento" required="required" cssClass="span4" />
+    					</div>
+  					</div>
 
+					<div class="control-group">
+	                	<label for="bairro" class="control-label"><fmt:message key="label.padrao.bairro"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.bairro" id="bairro" required="required" cssClass="span4" />
+    					</div>
+  					</div>
 
-				<p>
-                	<label for="website" class="label"><fmt:message key="label.padrao.website"/></label>
-	                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="input-xxlarge" />
-				
-                	<label for="email" class="label"><fmt:message key="label.padrao.email"/></label>
-	                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="input-400" />
-				</p>
+					<div class="control-group">
+	                	<label for="cidade" class="control-label"><fmt:message key="label.padrao.cidade"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.cidade" id="cidade" required="required" cssClass="span4" />
+    					</div>
+  					</div>
+
+					<div class="control-group">
+		               	<label for="estado" class="control-label"><fmt:message key="label.padrao.estado"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.estado" id="estado" required="required" cssClass="span1" />
+    					</div>
+  					</div>
+
+					<div class="control-group">
+	                	<label for="telefone" class="control-label"><fmt:message key="label.padrao.telefone"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.telefone" id="telefone" required="required" cssClass="span3" />
+    					</div>
+  					</div>
+
+					<div class="control-group">
+	                	<label for="fax" class="control-label"><fmt:message key="label.padrao.fax"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.fax" id="fax" required="required" cssClass="span3" />
+    					</div>
+  					</div>
+
+					<div class="control-group">
+	                	<label for="website" class="control-label"><fmt:message key="label.padrao.website"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.webSite" id="website" required="required" cssClass="span4" />
+    					</div>
+  					</div>
+
+					<div class="control-group">
+	                	<label for="email" class="control-label"><fmt:message key="label.padrao.email"/></label>
+    					<div class="controls">
+			                <s:textfield name="empresaVo.email" id="email" required="required" cssClass="span4" />
+    					</div>
+  					</div>
 	
             </s:form>
 
-			<div id="divErros" class="well alert alert-error" style="overflow; position:absolute; display: block; width: 300px;" >
-				<ul id="listaErros" > </ul>  
-			</div>
+			<es:mensagemErro />
 			
         </div>
     </div>
@@ -205,7 +204,7 @@
                     required: "O campo Razão Social é obrigatório."	
                 },
                 "empresaVo.cnpj":{
-                    required: "O campo Nome Fantasia é obrigatório.",
+                    required: "O campo CNPJ é obrigatório.",
                     cnpj:"CNPJ inválido!"
                 }
             }
@@ -225,7 +224,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoEmpresa"]').attr('disabled','true');
+			$('input[class*="span"][id!="codigoEmpresa"]').attr('disabled','true');
 			
 		}
 		
@@ -277,7 +276,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoEmpresa"]').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoEmpresa"]').removeAttr('disabled');
 		
 	}
 
@@ -296,7 +295,7 @@
 			$('#textoBtnSalvarAlterar').html('Alterar');
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
-			$('input[class|="input"][id!="codigoEmpresa"]').attr('disabled','true');
+			$('input[class*="span"][id!="codigoEmpresa"]').attr('disabled','true');
 			
 			location.reload();
 		}

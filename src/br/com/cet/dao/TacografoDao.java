@@ -80,7 +80,10 @@ public class TacografoDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("SELECT rowid, cd_tacografo, cd_marca, cd_modelo, serie FROM tacografo ");
+		    qry.append(" SELECT t.rowid, t.cd_tacografo, t.cd_marca, t.cd_modelo, serie, ma.nm_marca nome_marca, mo.nm_modelo nome_modelo ");
+		    qry.append(" FROM tacografo t, marca ma, modelo mo");
+		    qry.append(" where t.cd_marca = ma.cd_marca and ");
+		    qry.append(" t.cd_modelo = mo.cd_modelo ");
 		
 		    if(filtrar){
 		    	qry.append(" WHERE serie like '%' ? '%' ");
@@ -104,7 +107,9 @@ public class TacografoDao extends BaseDao {
 		    	tacografoVo.setRowid(rs.getString("rowid"));
 		    	tacografoVo.setCodigoTacografo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_tacografo"))));
 		    	tacografoVo.setCodigoMarca(String.valueOf(rs.getInt("cd_marca")));
+		    	tacografoVo.setNomeMarca(rs.getString("nome_marca"));
 		    	tacografoVo.setCodigoModelo(String.valueOf(rs.getInt("cd_modelo")));
+		    	tacografoVo.setNomeModelo(rs.getString("nome_modelo"));
 		    	tacografoVo.setCodigoSerie(rs.getString("serie"));
 		    	
 		    	
@@ -140,8 +145,6 @@ public class TacografoDao extends BaseDao {
 			qry.append(" and dt_inicio is not null and dt_fim is null ) ");
 			
 			ps = connection.prepareStatement(qry.toString());
-			
-			System.out.println(qry.toString());
 			
 			ps.setInt(1, UtConverte.stringToInteiro(tacografoVo.getCodigoTacografo()));
 			
