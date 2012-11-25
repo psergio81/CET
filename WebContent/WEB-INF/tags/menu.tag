@@ -68,6 +68,12 @@
 									<s:a action="Cad004Action!browser.action">Ensaio</s:a>
 								</a>
 							</li>
+
+							<li>
+								<a href="#">
+									<s:a action="Cad009Action!browser.action">Programa</s:a>
+								</a>
+							</li>
 						</ul>
 					</li>
 				</ul>

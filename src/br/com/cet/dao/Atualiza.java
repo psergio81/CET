@@ -13,13 +13,14 @@ public class Atualiza extends BaseAtualiza {
 		
 		atualiza.a0001(false);
 		atualiza.a0002(false);
-		atualiza.a0003(true);
+		atualiza.a0003(false);
 		atualiza.a0004(false);
 		atualiza.a0005(false);
-		atualiza.a0006(true);
+		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
 		atualiza.a0009(false);
+		atualiza.a0010(true);
 		
 	}
 
@@ -203,6 +204,22 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "hr_inicio", 10, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "dt_fim", 10, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "hr_fim", 10, false);
+		
+	}
+
+	private void a0010(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "programa";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_programa", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa", 100, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa_menu", 100, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa_action", 100, false);
 		
 	}
 }
