@@ -21,653 +21,73 @@ body {
   
 }
 
-.widget {
-position: relative;
-clear: both;
-width: auto;
-margin-bottom: 2em;
-overflow: hidden;
-}
 
-.widget-header {
-position: relative;
-height: 40px;
-line-height: 40px;
-background: #E9E9E9;
-background: -moz-linear-gradient(top, #FAFAFA 0%, #E9E9E9 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FAFAFA), color-stop(100%,#E9E9E9));
-background: -webkit-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
-background: -o-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
-background: -ms-linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
-background: linear-gradient(top, #FAFAFA 0%,#E9E9E9 100%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9');
--ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FAFAFA', endColorstr='#E9E9E9')";
-border: 1px solid #D5D5D5;
--webkit-border-top-left-radius: 4px;
--webkit-border-top-right-radius: 4px;
--moz-border-radius-topleft: 4px;
--moz-border-radius-topright: 4px;
-border-top-left-radius: 4px;
-border-top-right-radius: 4px;
--webkit-background-clip: padding-box;
-}
-
-.widget-content::before, .widget-content::after {
-content: "";
-display: table;
-}
-
-.widget-content::after {
-clear: both;
-}
-.widget-content::before, .widget-content::after {
-content: "";
-display: table;
-}
-
-.shortcuts {
-text-align: center;
-}
-
-.shortcuts .shortcut .shortcut-icon {
-margin-top: .25em;
-margin-bottom: .25em;
-font-size: 32px;
-color: #888;
-}
-a [class^="icon-"], a [class*=" icon-"] {
-display: inline-block;
-text-decoration: inherit;
-}
-[class^="icon-"], [class*=" icon-"] {
-display: inline;
-width: auto;
-height: auto;
-line-height: inherit;
-vertical-align: baseline;
-background-image: none;
-background-position: 0% 0%;
-background-repeat: repeat;
-}
-.icon-list-alt {
-background-position: -264px -24px;
-}
-[class^="icon-"], [class*=" icon-"] {
-display: inline-block;
-width: 14px;
-height: 14px;
-line-height: 14px;
-vertical-align: text-top;
-background-image: url("../img/glyphicons-halflings.png");
-background-position: 14px 14px;
-background-repeat: no-repeat;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
+.form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
 }
 
 
-/*------------------------------------------------------------------
-
-[Dashboard Stylesheet]
-
-	Project:		Base Admin
-	Version:		1.0
-	Last change:	05/21/2012
-	Assigned to:	Rod Howard (rh)
-
-
-
-[Table of contents]
-
-	1. Shortcuts
-	2. Stats
-	3. Task List
-	4. News Item
-
--------------------------------------------------------------------*/
-
-
-
-/*------------------------------------------------------------------
-[1. Shortcuts / .shortcuts]
-*/
-
-.shortcuts {
-	text-align: center;	
-}
-
-.shortcuts .shortcut { 
-	width: 22.50%;
-	display: inline-block;
-	padding: 12px 0;
-	margin: 0 .9% 1em;
-	vertical-align: top;	
-	
-	text-decoration: none;
-	
-	background: #F3F3F3;
-	
-	border-radius: 5px;
-}
-
-.shortcuts .shortcut .shortcut-icon {
-	margin-top: .25em;
-	margin-bottom: .25em;
-	
-	font-size: 32px;
-	color: #888;
-}
-
-.shortcuts .shortcut:hover {
-	background: #E8E8E8;
-}
-
-.shortcuts .shortcut:hover .shortcut-icon {
-	color: #666;
-}
-
-.shortcuts .shortcut-label {
-	display: block;
-	
-	font-weight: 400;
-	color: #666;
-}
-
-
-
-/*------------------------------------------------------------------
-[2. Stats / .stats]
-*/
-
-.stats {
+.barra {
+	overflow: visible;
 	width: 100%;
-	display: table;
-	padding: 0 0 0 10px;
-	margin-top: .5em;
-	margin-bottom: 1.9em;
-}
-
-.stats .stat {
-	display: table-cell;
-	width: 40%;
-	vertical-align: top;
-	
-	font-size: 11px;
-	font-weight: bold;
-	color: #999;
-}
-
-.stat-value {
+	height: 40px;
+	position: relative;
+	z-index: 2500000;
+	color: white;
+	background-color: #0072C6;
+	white-space: nowrap;
+	line-height: 142%;
 	display: block;
-	margin-bottom: .55em;
-	
-	font-size: 30px;
-	font-weight: bold;
-	letter-spacing: -2px;
-	color: #444;
 }
 
-.stat-time {
-	text-align: center;
-	padding-top: 1.5em;
-}
-
-.stat-time .stat-value {
-	color: #F90;
-	font-size: 40px;
-}
-
-.stats #donut-chart {
-	height: 100px;
-	margin-left: -20px;	
-}
-
-
-
-
-
-/*------------------------------------------------------------------
-[3. News Item / .news-items]
-*/
-
-.news-items {
-	margin: 1em 0 0;
-}
-
-.news-items li {
-	display: table;
-	padding: 0 2em 0 1.5em;
-	padding-bottom: 1em;
-	margin-bottom: 1em;
-	
-	border-bottom: 1px dotted #CCC;
-}
-
-.news-items li:last-child { padding-bottom: 0; border: none; }
-
-.news-item-date {
-	display: table-cell;
-}
-
-.news-item-detail {
-	display: table-cell;
-}
-
-.news-item-title {
-	font-size: 13px;
-	font-weight: 600;
-}
-
-.news-item-date {
-	width: 75px;
-	vertical-align: middle;
-	
-	text-align: right;
-}
-
-.news-item-day {
-	display: block;
-	margin-bottom: .25em;
-	
-	font-size: 24px;
-	color: #888;
-}
-
-.news-item-preview {
-	margin-bottom: 0;
-	
-	color: #777;
-}
-
-.news-item-month {
-	display: block;
-	padding-right: 1px;	
-	
-	font-size: 12px;
-	font-weight: 600;
-	color: #888;
-}
-
-
-
-/*------------------------------------------------------------------
-[4. Action Table / .action-table]
-*/
-
-.action-table .btn-small {
-	padding: 4px 5px 5px;
-	
-	font-size: 10px;
-}
-
-.action-table .td-actions { 
-	width: 80px; 
-	
-	text-align: center; 
-}
-
-	.action-table .td-actions .btn { 
-		margin-right: .5em;		
-	}
-	
-	.action-table .td-actions .btn:last-child { 
-		margin-rigth: 0; 		
-	}
-	
-	
-	
-	
-	
-	
-	
-@media (max-width: 979px) {
-	
-	.shortcuts .shortcut {
-		width: 31%;
-	}
-}
-
-
-@media (max-width: 480px) {
-	
-	.stats .stat {
-		
-		margin-bottom: 3em;
-	}
-	
-	.stats .stat .stat-value {
-		margin-bottom: .15em;
-		
-		font-size: 20px;
-	}
-	
-	.stats {
-		float: left;
-		
-		display: block;
-		
-		margin-bottom: 0;
-	}
-	
-	#chart-stats {
-		margin: 2em 0 1em;		
-	}
-	
-	.shortcuts .shortcut {
-		width: 48%;
-	}
-}
-
-/*------------------------------------------------------------------
-
-[Dashboard Stylesheet]
-
-	Project:		Base Admin
-	Version:		1.0
-	Last change:	05/21/2012
-	Assigned to:	Rod Howard (rh)
-
-
-
-[Table of contents]
-
-	1. Shortcuts
-	2. Stats
-	3. Task List
-	4. News Item
-
--------------------------------------------------------------------*/
-
-
-
-/*------------------------------------------------------------------
-[1. Shortcuts / .shortcuts]
-*/
-
-.shortcuts {
-	text-align: center;	
-}
-
-.shortcuts .shortcut { 
-	width: 22.50%;
-	display: inline-block;
-	padding: 12px 0;
-	margin: 0 .9% 1em;
-	vertical-align: top;	
-	
-	text-decoration: none;
-	
-	background: #F3F3F3;
-	
-	border-radius: 5px;
-}
-
-.shortcuts .shortcut .shortcut-icon {
-	margin-top: .25em;
-	margin-bottom: .25em;
-	
-	font-size: 32px;
-	color: #888;
-}
-
-.shortcuts .shortcut:hover {
-	background: #E8E8E8;
-}
-
-.shortcuts .shortcut:hover .shortcut-icon {
-	color: #666;
-}
-
-.shortcuts .shortcut-label {
-	display: block;
-	
-	font-weight: 400;
-	color: #666;
-}
-
-
-
-/*------------------------------------------------------------------
-[2. Stats / .stats]
-*/
-
-.stats {
+.rodape {
+	overflow: visible;
 	width: 100%;
-	display: table;
-	padding: 0 0 0 10px;
-	margin-top: .5em;
-	margin-bottom: 1.9em;
-}
-
-.stats .stat {
-	display: table-cell;
-	width: 40%;
-	vertical-align: top;
-	
-	font-size: 11px;
-	font-weight: bold;
-	color: #999;
-}
-
-.stat-value {
+	height: 40px;
+	position: relative;
+	z-index: 2500000;
+	color: white;
+	background-color: #0072C6;
+	white-space: nowrap;
+	line-height: 142%;
 	display: block;
-	margin-bottom: .55em;
-	
-	font-size: 30px;
-	font-weight: bold;
-	letter-spacing: -2px;
-	color: #444;
 }
 
-.stat-time {
-	text-align: center;
-	padding-top: 1.5em;
-}
-
-.stat-time .stat-value {
-	color: #F90;
-	font-size: 40px;
-}
-
-.stats #donut-chart {
-	height: 100px;
-	margin-left: -20px;	
-}
-
-
-
-
-
-/*------------------------------------------------------------------
-[3. News Item / .news-items]
-*/
-
-.news-items {
-	margin: 1em 0 0;
-}
-
-.news-items li {
-	display: table;
-	padding: 0 2em 0 1.5em;
-	padding-bottom: 1em;
-	margin-bottom: 1em;
-	
-	border-bottom: 1px dotted #CCC;
-}
-
-.news-items li:last-child { padding-bottom: 0; border: none; }
-
-.news-item-date {
-	display: table-cell;
-}
-
-.news-item-detail {
-	display: table-cell;
-}
-
-.news-item-title {
-	font-size: 13px;
-	font-weight: 600;
-}
-
-.news-item-date {
-	width: 75px;
-	vertical-align: middle;
-	
-	text-align: right;
-}
-
-.news-item-day {
+.c_clogo {
+	padding-left: 10px;
+	height: 40px;
+	float: left;
+	color: #555;
+	text-decoration: none;
+	background-color: #E5E5E5;
+	text-shadow: 0 1px 0 white;
 	display: block;
-	margin-bottom: .25em;
+	line-height: 20px;
+	-webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+	line-height: 20px;
+	text-align: -webkit-match-parent;
+	cursor: auto;
+	line-height: 20px;
 	
-	font-size: 24px;
-	color: #888;
-}
-
-.news-item-preview {
-	margin-bottom: 0;
-	
-	color: #777;
-}
-
-.news-item-month {
-	display: block;
-	padding-right: 1px;	
-	
-	font-size: 12px;
-	font-weight: 600;
-	color: #888;
-}
-
-
-
-/*------------------------------------------------------------------
-[4. Action Table / .action-table]
-*/
-
-.action-table .btn-small {
-	padding: 4px 5px 5px;
-	
-	font-size: 10px;
-}
-
-.action-table .td-actions { 
-	width: 80px; 
-	
-	text-align: center; 
-}
-
-	.action-table .td-actions .btn { 
-		margin-right: .5em;		
-	}
-	
-	.action-table .td-actions .btn:last-child { 
-		margin-rigth: 0; 		
-	}
-	
-	
-	
-	
-	
-	
-	
-@media (max-width: 979px) {
-	
-	.shortcuts .shortcut {
-		width: 31%;
-	}
-}
-
-
-@media (max-width: 480px) {
-	
-	.stats .stat {
-		
-		margin-bottom: 3em;
-	}
-	
-	.stats .stat .stat-value {
-		margin-bottom: .15em;
-		
-		font-size: 20px;
-	}
-	
-	.stats {
-		float: left;
-		
-		display: block;
-		
-		margin-bottom: 0;
-	}
-	
-	#chart-stats {
-		margin: 2em 0 1em;		
-	}
-	
-	.shortcuts .shortcut {
-		width: 48%;
-	}
-}
-
-
-.widget-header [class^="icon-"], .widget-header [class*=" icon-"] {
-display: inline-block;
-margin-left: 13px;
-margin-right: -2px;
-font-size: 16px;
-color: #555;
-vertical-align: middle;
-}
-[class^="icon-"], [class*=" icon-"] {
-display: inline;
-width: auto;
-height: auto;
-line-height: inherit;
-vertical-align: baseline;
-background-image: none;
-background-position: 0% 0%;
-background-repeat: repeat;
-}
-.icon-bookmark {
-background-position: -72px -48px;
-}
-[class^="icon-"], [class*=" icon-"] {
-display: inline-block;
-width: 14px;
-height: 14px;
-line-height: 14px;
-vertical-align: text-top;
-background-image: url("../img/glyphicons-halflings.png");
-background-position: 14px 14px;
-background-repeat: no-repeat;
-}
-user agent stylesheeti, cite, em, var, address, dfn {
-font-style: italic;
-}
-Pseudo ::before element
-.icon-bookmark::before {
-content: "f02e";
-}
-[class^="icon-"]::before, [class*=" icon-"]::before {
-font-family: FontAwesome;
-font-weight: normal;
-font-style: normal;
-display: inline-block;
-text-decoration: inherit;
-}
-Inherited from div.widget-header
-.widget-header {
-line-height: 40px;
-}
-Inherited from body
-body {
-font: 13px/1.7em 'Open Sans';
-}
-body {
-font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-font-size: 13px;
-line-height: 18px;
-color: #333;
 }
