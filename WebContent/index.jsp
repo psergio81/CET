@@ -23,20 +23,17 @@
       <div class="hero-unit">
         <h1>Olá, seja bem vindo!</h1>
         <p>Este é um sistema de controle de conotacógrafos</p>
-        <p><a class="btn btn-primary btn-large">Leia mais aqui &raquo;</a></p>
       </div>
 
       <!-- Example row of columns -->
       <div class="row">
         <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>O que é cronotacógrafo</h2>
+           <p>Cronotacógrafo é o instrumento ou conjunto de instrumentos destinado a indicar e registrar, de forma simultânea, inalterável e instantânea, a velocidade e a distância percorrida pelo veículo, em função do tempo decorrido, assim como os parâmetros relacionados com o condutor do veículo, tais como: o tempo de trabalho e os tempos de parada e de direção. </p>
         </div>
         <div class="span4">
-          <h2>Heading</h2>
-           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <h2>História</h2>
+           <p>Usado para monitorar o trânsito de ônibus e caminhões, o cronotacógrafo inicialmente era utilizado em trens. O instrumento de medição de velocidade, tempo e distância foi criado no século XIX pelo alemão Max Maria von Weber, filho de Carl von Weber, autor de Franco Atirador, a primeira ópera romântica alemã. Hoje, o cronotacógrafo de Max é mundialmente utilizado como meio de controle e fiscalização de veículos e de seus condutores. </p>
        </div>
         <div class="span4">
           <h2>Heading</h2>
