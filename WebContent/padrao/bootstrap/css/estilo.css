@@ -91,3 +91,11 @@ body {
 	line-height: 20px;
 	
 }
+
+.btnlogout{
+	white-space: nowrap;
+	line-height: 142%;
+	color: #ffffff;
+	text-decoration: none;
+	
+}

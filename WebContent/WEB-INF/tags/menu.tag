@@ -92,11 +92,13 @@
 						</ul>
 					</li>
 				</ul>
+            	
 			</div>
+	
+           	<s:a action="LogoutAction!logout.action">Sair</s:a>
 			
 			<c:if test="${mostrarNomePrograma == true}">
-			
-				<div class="c_clogo" style="min-width: 300px; float: right; display: table;">
+				<div class="c_clogo" style="min-width: 300px; display: table; float: right;">
 					<div style="display: table-row;">
 						<div style="display: table-cell; vertical-align: middle; text-align: center;">
 							<c:out value="${nomePrograma}" />

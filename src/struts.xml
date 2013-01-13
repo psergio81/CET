@@ -23,9 +23,15 @@
 	    
 	    <global-results>  
             <result name="login">/login.jsp</result>
+            <result name="logout">/login.jsp</result>
             <result name="principal">/index.jsp</result>  
         </global-results> 
 	    
+	    <action name="LogoutAction!*" method="{1}" class="br.com.cet.action.LogoutAction">
+			<result name="success">/login.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		
 	    <action name="LoginAction!*" method="{1}" class="br.com.cet.action.LoginAction">
 			<result name="success">/index.jsp</result>
 			<result name="error">/login.jsp</result>
