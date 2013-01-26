@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
-import br.com.cet.util.UtString;
 import br.com.cet.vo.ProgramaVo;
 
 public class ProgramaDao extends BaseDao {

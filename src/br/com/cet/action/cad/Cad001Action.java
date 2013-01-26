@@ -77,7 +77,9 @@ public class Cad001Action extends RecursoPadraoAction{
 		return SUCCESS;
 	}
 	
-	
+	public String principal(){
+		return "principal";
+	} 
 
 	public EmpresaVo getEmpresaVo() {
 		return empresaVo;

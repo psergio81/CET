@@ -5,10 +5,11 @@
 <%@ attribute name="mostrarNomePrograma" required="true" %>
 
 		<div class="barra">
-			<div class="c_clogo" style="min-width: 170px; display: table; margin-right: 10px;" title="Principal">
+			<div class="c_clogo" style="min-width: 170px; display: table; margin-right: 10px; cursor: pointer;" title="Principal">
 				<div style="display: table-row;">
 					<div style="display: table-cell; vertical-align: middle; text-align: center;">
-						CET
+						<i class="icon-home icon-white"></i>
+						<s:a action="Cad001Action!principal.action">CET</s:a>
 					</div>
 				</div>
 			</div>
@@ -90,12 +91,24 @@
 								</a>
 							</li>
 						</ul>
+                       	<ul class="dropdown-menu">
+							<li>
+								<a href="#">
+									<s:a action="Cad001Action!browser.action">Ensaios</s:a>
+								</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
-            	
+
+				<ul class="nav">
+					<li class="dropdown">
+                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:sair()">
+                       	    Sair
+                       	</a>
+					</li>
+				</ul>
 			</div>
-	
-           	<s:a action="LogoutAction!logout.action">Sair</s:a>
 			
 			<c:if test="${mostrarNomePrograma == true}">
 				<div class="c_clogo" style="min-width: 300px; display: table; float: right;">
@@ -109,3 +122,15 @@
 			</c:if>
                 </div>
 	    </div>
+	    
+<form action="LogoutAction!logout.action" name="formLogout" id="formLogout">
+
+</form>
+	    
+	    
+<script type="text/javascript">
+    
+    function sair(){
+    	$('<form/>').attr('action','LogoutAction!logout.action').submit();
+    }
+</script>
