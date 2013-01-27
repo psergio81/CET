@@ -13,14 +13,14 @@ public class Atualiza extends BaseAtualiza {
 		
 		atualiza.a0001(false);
 		atualiza.a0002(false);
-		atualiza.a0003(false);
+		atualiza.a0003(true);
 		atualiza.a0004(false);
 		atualiza.a0005(false);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
 		atualiza.a0009(false);
-		atualiza.a0010(true);
+		atualiza.a0010(false);
 		
 	}
 
@@ -89,7 +89,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_usuario", 100, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_nick", 20, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 32, false);
-		executarComandoSql("Insert into usuario (cd_usuario,nm_usuario,nm_nick,nm_senha) Values(1,'ADM','adm','0cc175b9c0f1b6a831c399e269772661')");
+		executarComandoSql("Insert into usuario (cd_usuario,nm_usuario,nm_nick,nm_senha) Values(1,'Paulo Sérgio','adm','0cc175b9c0f1b6a831c399e269772661')");
 
 	}
 	
