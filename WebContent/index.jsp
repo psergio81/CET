@@ -15,31 +15,79 @@
 		<es:menu mostrarNomePrograma="false" />
 
 	</div>	
-	
+
+    <div class="container">
+        <div class="row-fluid">
+            
+    <div class="span12">
+      <!--Body content-->
+      <div class="hero-unit" align="center">
+        <h1>Olá, seja bem vindo!</h1>
+        <p>Este é um sistema de controle de conotacógrafos</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 	
     <div class="container">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Olá, seja bem vindo!</h1>
-        <p>Este é um sistema de controle de conotacógrafos</p>
-      </div>
+      
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span4">
-          <h2>O que é cronotacógrafo</h2>
-           <p>Cronotacógrafo é o instrumento ou conjunto de instrumentos destinado a indicar e registrar, de forma simultânea, inalterável e instantânea, a velocidade e a distância percorrida pelo veículo, em função do tempo decorrido, assim como os parâmetros relacionados com o condutor do veículo, tais como: o tempo de trabalho e os tempos de parada e de direção. </p>
-        </div>
-        <div class="span4">
-          <h2>História</h2>
-           <p>Usado para monitorar o trânsito de ônibus e caminhões, o cronotacógrafo inicialmente era utilizado em trens. O instrumento de medição de velocidade, tempo e distância foi criado no século XIX pelo alemão Max Maria von Weber, filho de Carl von Weber, autor de Franco Atirador, a primeira ópera romântica alemã. Hoje, o cronotacógrafo de Max é mundialmente utilizado como meio de controle e fiscalização de veículos e de seus condutores. </p>
+        <div class="span12">
+                <div class="widget">
+                    <div class="container-fluid">                        
+                        <div class="widget-content">
+                            <div class="shortcuts">
+                                <a href="javascript:irParaPrograma('Cad004');" class="shortcut">
+                                    <i class="shortcut-icon icon-list-alt"></i>
+                                    <span class="shortcut-label">Ensaio</span>
+                                </a>
+                            
+                                <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
+                                    <i class="shortcut-icon icon-bookmark"></i>
+                                    <span class="shortcut-label">Empresa</span>                               
+                                </a>
+                                
+                                <a href="javascript:irParaPrograma('Cad005');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i>
+                                    <span class="shortcut-label">Veículo</span> 
+                                </a>
+
+                                <a href="javascript:irParaPrograma('Cad002');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i>
+                                    <span class="shortcut-label">Marca</span> 
+                                </a>
+                                
+                                <a href="javascript:irParaPrograma('Cad003');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i>
+                                    <span class="shortcut-label">Modelo</span> 
+                                </a>
+                                
+                                <a href="javascript:irParaPrograma('Cad007');" class="shortcut">
+                                    <i class="shortcut-icon icon-comment"></i>
+                                    <span class="shortcut-label">Tacógrafo</span>                                
+                                </a>
+                                
+                                <a href="javascript:irParaPrograma('Cad006');" class="shortcut">
+                                    <i class="shortcut-icon icon-user"></i>
+                                    <span class="shortcut-label">Pessoa</span>
+                                </a>
+                                
+                                <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
+                                    <i class="shortcut-icon icon-file"></i>
+                                    <span class="shortcut-label">Relatório</span>   
+                                </a>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div>
        </div>
-        <div class="span4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div>
       </div>
 
       <hr>
@@ -48,7 +96,16 @@
         <p>&copy; Stdio.H - Company 2012</p>
       </footer>
 
-    </div>
-
   </body>
+
+<script type="text/javascript">
+
+    function irParaPrograma(action){
+    	
+    	$('<form/>').attr('action',action+'Action!browser.action').submit();
+
+    }
+
+</script>
+
 </html>

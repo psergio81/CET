@@ -11,8 +11,7 @@
 	<div class="navbar navbar-fixed-top">
 	
 		<es:menu mostrarNomePrograma="true"/>
-	
-		<es:menu mostrarNomePrograma="cad003" />
+		<es:botoes codigoPrograma="cad003" />
 	   	
 	</div>
 

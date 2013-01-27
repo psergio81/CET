@@ -120,12 +120,8 @@
 				</div>
 			
 			</c:if>
-                </div>
-	    </div>
-	    
-<form action="LogoutAction!logout.action" name="formLogout" id="formLogout">
-
-</form>
+        </div>
+    </div>
 	    
 	    
 <script type="text/javascript">

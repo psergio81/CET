@@ -27,6 +27,9 @@
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/jquery-ui-1.7.3.custom.css">
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/estilo.css">
 
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/dashboard.css">
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
