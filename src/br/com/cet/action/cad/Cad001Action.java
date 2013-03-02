@@ -11,7 +11,6 @@ import br.com.cet.vo.UsuarioVo;
 
 public class Cad001Action extends RecursoPadraoAction{
 	
-	private EmpresaVo empresaVo = new EmpresaVo();
 	private Empresa empresa = new Empresa();
 	private List<EmpresaVo> listaEmpresa = null;
 	private String codigoEmpresaSelecionado;

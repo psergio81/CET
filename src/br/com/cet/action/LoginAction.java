@@ -12,9 +12,6 @@ import com.opensymphony.xwork2.ActionContext;
 
 public class LoginAction extends RecursoPadraoAction{
 	
-	private UsuarioVo usuarioVo = new UsuarioVo();
-	private EmpresaVo empresaVo = new EmpresaVo();
-
 	public void prepare() throws Exception{
 		super.prepare();
 	}
@@ -27,9 +24,6 @@ public class LoginAction extends RecursoPadraoAction{
 		
 		String nick = usuarioVo.getNick();
 		String senha = usuarioVo.getSenha();
-		
-		System.out.println("nick "+nick);
-		System.out.println("senha "+senha);
 		
 		
 		if(!UtString.isNullOrEmpty(nick) && !UtString.isNullOrEmpty(senha)){

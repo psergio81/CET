@@ -209,4 +209,9 @@ public class PessoaDao extends BaseDao {
 	    }
 	}
 	
+	public int getQuantidadePessoas(PessoaVo pessoaVo){
+		List<PessoaVo> listaPessoas = this.getListaPessoas(pessoaVo, false);
+		
+		return listaPessoas.size();
+	}
 }

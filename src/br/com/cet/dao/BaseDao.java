@@ -81,7 +81,7 @@ public class BaseDao extends ConnectionDao{
 	}
 	
 	
-	public int getProximoCodigo(String nomeTabela, String nomeCampo){
+	public int getProximoCodigo(String codigoEmpresa, String nomeTabela, String nomeCampo){
 		
 		Connection connection = null;
 		ResultSet rs = null;  
@@ -93,7 +93,7 @@ public class BaseDao extends ConnectionDao{
 	    	
 	    	connection = getConnection();  
 	  
-		    qry.append("select max("+nomeCampo+") "+nomeCampo+" FROM "+nomeTabela);
+		    qry.append("select max("+nomeCampo+") "+nomeCampo+" FROM "+nomeTabela+" where cd_empresa = "+codigoEmpresa );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
 		    rs = ps.executeQuery();  

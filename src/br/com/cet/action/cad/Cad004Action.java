@@ -24,8 +24,6 @@ public class Cad004Action extends RecursoPadraoAction {
 	private boolean filtrar;
 	private List<PessoaVo> listaPessoa = null;
 	private List<VeiculoVo> listaVeiculo = null;
-	private UsuarioVo usuarioVo;
-	
 	public void prepare() throws Exception{
 		
 		super.prepare();

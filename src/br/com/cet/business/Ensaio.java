@@ -83,5 +83,21 @@ public class Ensaio {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getQuantidadeEnsaios(String codigoEmpresa){
+
+		int quantidadeEnsaios = 0 ;
+		EnsaioVo ensaioVo = new EnsaioVo();
+		try {
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			quantidadeEnsaios = ensaioDao.getQuantidadeEnsaios(ensaioVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return quantidadeEnsaios;
+		
+	}
 
 }

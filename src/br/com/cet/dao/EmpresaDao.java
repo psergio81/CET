@@ -16,7 +16,7 @@ public class EmpresaDao extends BaseDao {
 
 	public int getProximoCodigo(){
 		
-		return getProximoCodigo("empresa", "cd_empresa");
+		return getProximoCodigo("0", "empresa", "cd_empresa");
 		
 	}
 	

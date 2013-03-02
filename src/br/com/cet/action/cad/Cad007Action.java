@@ -22,7 +22,6 @@ public class Cad007Action extends RecursoPadraoAction {
 	private String codigoTacografoSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
-	private UsuarioVo usuarioVo;
 	private List<MarcaVo> listaMarca = null;
 	private List<ModeloVo> listaModelo = null;
 	private String codigoVeiculo;
@@ -53,18 +52,18 @@ public class Cad007Action extends RecursoPadraoAction {
 	public String crud() throws Exception{
 		
 		
+		MarcaVo marcaVo = new MarcaVo();
+		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		
 		Marca marca = new Marca();
 		listaMarca = new ArrayList<MarcaVo>();
-		listaMarca = marca.getListaMarca(null, false);
+		listaMarca = marca.getListaMarca(marcaVo, false);
 		
 		Modelo modelo = new Modelo();
 		setListaModelo(new ArrayList<ModeloVo>());
 		setListaModelo(modelo.getListaModelo(null, false));
 		
-		
-		System.out.println("AC: "+ac);
-		
-		
+		tacografoVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		

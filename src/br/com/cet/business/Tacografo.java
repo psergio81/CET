@@ -68,7 +68,7 @@ public class Tacografo {
 			
 			TacografoDao tacografoDao = new TacografoDao();
 			String codigoTacografo;
-			codigoTacografo = String.valueOf(tacografoDao.getProximoCodigo());
+			codigoTacografo = String.valueOf(tacografoDao.getProximoCodigo(tacografoVo.getCodigoEmpresa()));
 
 			tacografoVo.setCodigoTacografo(codigoTacografo);
 			tacografoDao.insertTacografos(tacografoVo);
@@ -100,6 +100,22 @@ public class Tacografo {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public int getQuantidadeTacografo(String codigoEmpresa){
+
+		int quantidadeTacografos = 0 ;
+		TacografoVo tacografoVo = new TacografoVo();
+		try {
+			
+			TacografoDao tacografoDao = new TacografoDao();
+			quantidadeTacografos = tacografoDao.getQuantidadeTacografo(tacografoVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return quantidadeTacografos;
+		
 	}
 
 }

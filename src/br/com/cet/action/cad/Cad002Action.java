@@ -24,7 +24,7 @@ public class Cad002Action extends RecursoPadraoAction {
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_MARCAS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		usuarioVo = (UsuarioVo) session.get("usuarioVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());
@@ -34,6 +34,7 @@ public class Cad002Action extends RecursoPadraoAction {
 	
 	public String browser() throws Exception{
 		
+		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		marcaVo.setDescricao(campoBusca);
 		
@@ -46,9 +47,12 @@ public class Cad002Action extends RecursoPadraoAction {
 	
 	public String crud() throws Exception{
 		
-		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
+		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
-			marcaVo = marca.getMarcaPeloCodigo(codigoMarcaSelecionado);
+		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
+			marcaVo.setCodigoMarca(codigoMarcaSelecionado);
+		
+			marcaVo = marca.getMarcaPeloCodigo(marcaVo);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			

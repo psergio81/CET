@@ -8,16 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
-import br.com.cet.util.UtString;
 import br.com.cet.vo.MarcaVo;
 
 public class MarcaDao extends BaseDao {
 	
-	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
-
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("marca", "cd_marca");
+		return getProximoCodigo(codigoEmpresa, "marca", "cd_marca");
 		
 	}
 	
@@ -37,11 +34,13 @@ public class MarcaDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_marca, nm_marca FROM marca " );
-		    qry.append(	"where cd_marca = ? " );
+		    qry.append(	" SELECT rowid, cd_marca, cd_empresa, nm_marca FROM marca " );
+		    qry.append(	" where cd_empresa = ? ");
+		    qry.append(	" and cd_marca = ? " );
 		    
-		    ps = connection.prepareStatement(qry.toString());  
-		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
+		    ps = connection.prepareStatement(qry.toString());
+		    ps.setInt(i++, UtConverte.stringToInteiro(marcaVo.getCodigoEmpresa()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(marcaVo.getCodigoMarca()));
 		    
 		    rs = ps.executeQuery();  
 		    
@@ -51,7 +50,8 @@ public class MarcaDao extends BaseDao {
 		    	marcaVo = new MarcaVo();
 		    	
 		    	marcaVo.setRowid(rs.getString("rowid"));
-		    	marcaVo.setCodigoMarca(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_marca"))));
+		    	marcaVo.setCodigoMarca(rs.getString("cd_marca"));
+		    	marcaVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		    	marcaVo.setDescricao(rs.getString("nm_marca"));
 		    	
 		    }
@@ -79,13 +79,15 @@ public class MarcaDao extends BaseDao {
 	    	connection = getConnection();  
 	  
 		    qry.append("SELECT rowid, cd_marca, nm_marca FROM marca ");
-		
+		    qry.append(" where cd_empresa = ? ");
+		    
 		    if(filtrar){
-		    	qry.append(" WHERE nm_marca like '%' ? '%' ");
+		    	qry.append(" and nm_marca like '%' ? '%' ");
 		    }
 		
 		    
 		    ps = connection.prepareStatement(qry.toString());
+		    ps.setInt(i++, UtConverte.stringToInteiro(marcaVo.getCodigoEmpresa()));
 		    
 		    if(filtrar){
 		    	ps.setString(i++, marcaVo.getDescricao());
@@ -126,6 +128,7 @@ public class MarcaDao extends BaseDao {
 		    qry.append(" INSERT INTO marca ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_marca, ");
+		    qry.append(" cd_empresa, ");
 		    qry.append(" nm_marca ) ");
 		    qry.append(getValues(qry));
 		    
@@ -133,6 +136,7 @@ public class MarcaDao extends BaseDao {
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoMarca()));
+		    ps.setInt(i++, Integer.parseInt(marcaVo.getCodigoEmpresa()));
 		    ps.setString(i++, marcaVo.getDescricao());
 		    
 		    ps.executeUpdate();

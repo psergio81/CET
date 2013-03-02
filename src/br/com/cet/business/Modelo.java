@@ -25,15 +25,11 @@ public class Modelo {
 
 	}
 	
-	public ModeloVo getModeloPeloCodigo(String codigoModelo) throws Exception{
-		
-		ModeloVo modeloVo = new ModeloVo();
+	public ModeloVo getModeloPeloCodigo(ModeloVo modeloVo) throws Exception{
 		
 		try{
 			
 			ModeloDao modeloDao = new ModeloDao();
-			modeloVo.setCodigoModelo(codigoModelo);
-			
 			modeloVo = modeloDao.getModeloPeloCodigo(modeloVo);
 			
 		}catch (Exception e) {
@@ -50,7 +46,7 @@ public class Modelo {
 			
 			ModeloDao modeloDao = new ModeloDao();
 			String codigoModelo;
-			codigoModelo = String.valueOf(modeloDao.getProximoCodigo());
+			codigoModelo = String.valueOf(modeloDao.getProximoCodigo(modeloVo.getCodigoEmpresa()));
 
 			modeloVo.setCodigoModelo(codigoModelo);
 			modeloDao.insertModelos(modeloVo);

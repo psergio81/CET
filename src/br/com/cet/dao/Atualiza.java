@@ -12,8 +12,8 @@ public class Atualiza extends BaseAtualiza {
 		Atualiza atualiza = new Atualiza();
 		
 		atualiza.a0001(false);
-		atualiza.a0002(false);
-		atualiza.a0003(true);
+		atualiza.a0002(true);
+		atualiza.a0003(false);
 		atualiza.a0004(false);
 		atualiza.a0005(false);
 		atualiza.a0006(false);
@@ -67,6 +67,7 @@ public class Atualiza extends BaseAtualiza {
 
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_marca", 100, false);
 
 	}
@@ -107,6 +108,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_modelo", 100, false);
 		
 	}
@@ -124,6 +126,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);	
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_emperesa", 0, false);	
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "data", 10, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
@@ -145,6 +148,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "placa", 100, false);
 		
 	}
@@ -162,6 +166,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_pessoa", 100, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "tipo_pessoa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "cd_documento", 20, false);
@@ -181,6 +186,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_tacografo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_marca", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_modelo", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);

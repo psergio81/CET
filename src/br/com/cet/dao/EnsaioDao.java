@@ -59,8 +59,6 @@ public class EnsaioDao extends BaseDao {
 		    	ensaioVo.setGru(rs.getString("gru"));
 		    	ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
 		    	
-		    	System.out.println("CodigoProprietario: "+ensaioVo.getCodigoProprietario());
-		    	
 		    }
 		    
 		}catch (Exception e) {  
@@ -224,4 +222,9 @@ public class EnsaioDao extends BaseDao {
 	    }
 	}
 	
+	public int getQuantidadeEnsaios(EnsaioVo ensaioVo){
+		List<EnsaioVo> listaEnsaios = this.getListaEnsaios(ensaioVo, false);
+		
+		return listaEnsaios.size();
+	}
 }

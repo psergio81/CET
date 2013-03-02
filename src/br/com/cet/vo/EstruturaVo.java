@@ -5,6 +5,7 @@ public class EstruturaVo {
 	private String rowid;
 	private String codigoUsuarioCriador;
 	private String campoBusca;
+	private String codigoEmpresa;
 
 	public String getRowid() {
 		return rowid;
@@ -28,6 +29,14 @@ public class EstruturaVo {
 
 	public void setCampoBusca(String campoBusca) {
 		this.campoBusca = campoBusca;
+	}
+
+	public String getCodigoEmpresa() {
+		return codigoEmpresa;
+	}
+
+	public void setCodigoEmpresa(String codigoEmpresa) {
+		this.codigoEmpresa = codigoEmpresa;
 	}
 
 }

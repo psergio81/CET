@@ -6,6 +6,20 @@
 
 <title>CET</title>
 
+
+<style type="text/css">
+    
+    body {
+        padding-top: 50px;
+    }
+    
+    .widget-content {
+        margin-bottom: 5px;
+    }
+
+</style>
+
+
 </head>
 
 <body>
@@ -31,21 +45,21 @@
 						<thead>
 							<tr>
 								<td>Ensaios</td>
-								<td>132</td>
+								<td><c:out value="${quantidadeEnsaios}" /></td>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
 								<td>Veículos</td>
-								<td>30</td>
+								<td><c:out value="${quantidadeVeiculos}" /></td>
 							</tr>
 							<tr>
 								<td>Tacógrafos</td>
-								<td>40</td>
+								    <td><c:out value="${quantidadeTacografos}" /></td>
 							</tr>
 							<tr>
 								<td>Pessoas</td>
-								<td>35</td>
+								<td><c:out value="${quantidadePessoas}" /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -53,7 +67,7 @@
 			</div>
 			
 			<div class="span5 widget-content">
-                <div id="visualization" style="width: 350px; height: 256px;"> </div> 
+                <div id="visualization" style="width: 350px; height: 260px;"> </div> 
             </div>
 
 		</div>

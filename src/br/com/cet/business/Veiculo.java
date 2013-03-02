@@ -83,5 +83,21 @@ public class Veiculo {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getQuantidadeVeiculos(String codigoEmpresa){
+
+		int quantidadeVeiculos = 0 ;
+		VeiculoVo veiculoVo = new VeiculoVo();
+		try {
+			
+			VeiculoDao veiculoDao = new VeiculoDao();
+			quantidadeVeiculos = veiculoDao.getQuantidadeVeiculos(veiculoVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return quantidadeVeiculos;
+		
+	}
 
 }

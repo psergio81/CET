@@ -24,7 +24,7 @@ public class Cad003Action extends RecursoPadraoAction {
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_MODELOS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		usuarioVo = (UsuarioVo) session.get("usuarioVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());
@@ -34,6 +34,7 @@ public class Cad003Action extends RecursoPadraoAction {
 	
 	public String browser() throws Exception{
 		
+		modeloVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		modeloVo.setDescricao(campoBusca);
 		
@@ -45,11 +46,13 @@ public class Cad003Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
-		System.out.println("------------------------------- crud!!! "+ac);
+		
+		modeloVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
-		
-			modeloVo = modelo.getModeloPeloCodigo(codigoModeloSelecionado);
+			
+			modeloVo.setCodigoModelo(codigoModeloSelecionado);
+			modeloVo = modelo.getModeloPeloCodigo(modeloVo);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			

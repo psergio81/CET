@@ -83,5 +83,20 @@ public class Pessoa {
 			e.printStackTrace();
 		}
 	}
+	
+	public int getQuantidadePessoas(String codigoEmpresa){
+
+		int quantidadePessoas = 0 ;
+		PessoaVo pessoaVo = new PessoaVo();
+		try {
+			
+			PessoaDao pessoaDao = new PessoaDao();
+			quantidadePessoas = pessoaDao.getQuantidadePessoas(pessoaVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return quantidadePessoas;
+	}
 
 }

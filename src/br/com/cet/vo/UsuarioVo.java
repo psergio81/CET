@@ -6,7 +6,6 @@ public class UsuarioVo extends EstruturaVo{
 	private String nomeUsuario;
 	private String senha;
 	private String nick;
-	private String codigoEmpresa;
 	
 	public String getSenha() {
 		return senha;
@@ -31,12 +30,6 @@ public class UsuarioVo extends EstruturaVo{
 	}
 	public void setNick(String nick) {
 		this.nick = nick;
-	}
-	public String getCodigoEmpresa() {
-		return codigoEmpresa;
-	}
-	public void setCodigoEmpresa(String codigoEmpresa) {
-		this.codigoEmpresa = codigoEmpresa;
 	}
 	
 }

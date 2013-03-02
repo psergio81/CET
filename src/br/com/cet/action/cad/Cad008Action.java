@@ -17,7 +17,6 @@ public class Cad008Action extends RecursoPadraoAction {
 	private List<UsuarioVo> listaUsuario= null;
 	private String codigoUsuarioSelecionado;
 	private boolean filtrar;
-	private UsuarioVo usuarioVo;
 	private List<EmpresaVo> listaEmpresa = null;
 	
 	public void prepare() throws Exception{

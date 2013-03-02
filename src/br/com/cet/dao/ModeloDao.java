@@ -8,16 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
-import br.com.cet.util.UtString;
 import br.com.cet.vo.ModeloVo;
 
 public class ModeloDao extends BaseDao {
 	
-	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
-
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("modelo", "cd_modelo");
+		return getProximoCodigo(codigoEmpresa,"modelo", "cd_modelo");
 		
 	}
 	
@@ -37,10 +34,13 @@ public class ModeloDao extends BaseDao {
 	    	
 	    	connection = getConnection();  
 	  	  
-		    qry.append(	"SELECT rowid, cd_modelo, nm_modelo FROM modelo " );
-		    qry.append(	"where cd_modelo = ? " );
+		    qry.append(" SELECT rowid, cd_modelo, cd_empresa, nm_modelo");
+		    qry.append(" FROM modelo " );
+		    qry.append(" where cd_empresa = ? " );
+		    qry.append(" and cd_modelo = ?");
 		    
 		    ps = connection.prepareStatement(qry.toString());  
+		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoEmpresa()));
 		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoModelo()));
 		    
 		    rs = ps.executeQuery();  
@@ -51,7 +51,8 @@ public class ModeloDao extends BaseDao {
 		    	modeloVo = new ModeloVo();
 		    	
 		    	modeloVo.setRowid(rs.getString("rowid"));
-		    	modeloVo.setCodigoModelo(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_modelo"))));
+		    	modeloVo.setCodigoModelo(rs.getString("cd_modelo"));
+		    	modeloVo.setCodigoEmpresa(rs.getString("cd_empresa"));
 		    	modeloVo.setDescricao(rs.getString("nm_modelo"));
 		    	
 		    }
@@ -126,6 +127,7 @@ public class ModeloDao extends BaseDao {
 		    qry.append(" INSERT INTO modelo ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_modelo, ");
+		    qry.append(" cd_empresa, ");
 		    qry.append(" nm_modelo ) ");
 		    qry.append(getValues(qry));
 		    
@@ -133,6 +135,7 @@ public class ModeloDao extends BaseDao {
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoModelo()));
+		    ps.setInt(i++, Integer.parseInt(modeloVo.getCodigoEmpresa()));
 		    ps.setString(i++, modeloVo.getDescricao());
 		    
 		    ps.executeUpdate();

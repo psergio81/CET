@@ -25,15 +25,11 @@ public class Marca {
 
 	}
 	
-	public MarcaVo getMarcaPeloCodigo(String codigoMarca) throws Exception{
-		
-		MarcaVo marcaVo = new MarcaVo();
+	public MarcaVo getMarcaPeloCodigo(MarcaVo marcaVo) throws Exception{
 		
 		try{
 			
 			MarcaDao marcaDao = new MarcaDao();
-			marcaVo.setCodigoMarca(codigoMarca);
-			
 			marcaVo = marcaDao.getMarcaPeloCodigo(marcaVo);
 			
 		}catch (Exception e) {
@@ -50,7 +46,7 @@ public class Marca {
 			
 			MarcaDao marcaDao = new MarcaDao();
 			String codigoMarca;
-			codigoMarca = String.valueOf(marcaDao.getProximoCodigo());
+			codigoMarca = String.valueOf(marcaDao.getProximoCodigo(marcaVo.getCodigoEmpresa()));
 
 			marcaVo.setCodigoMarca(codigoMarca);
 			marcaDao.insertMarcas(marcaVo);

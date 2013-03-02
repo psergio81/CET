@@ -35,7 +35,6 @@ public class UsuarioDao extends BaseDao {
 	}
 	
 	private UsuarioVo getUsuario(UsuarioVo usuarioVo, int criterio){
-		System.out.println("UsuarioDao.getUsuario()");
 		Connection connection = null;
 		ResultSet rs = null;  
 	    PreparedStatement ps = null;  
@@ -86,7 +85,6 @@ public class UsuarioDao extends BaseDao {
 		    	usuarioVo.setSenha(rs.getString("nm_senha"));
 		    	usuarioVo.setNick(rs.getString("nm_nick"));
 		    	usuarioVo.setNomeUsuario(rs.getString("nm_usuario"));
-		    	System.out.println("usuarioVo.getSenha(): "+usuarioVo.getSenha());
 		    	
 		    }  
 		    

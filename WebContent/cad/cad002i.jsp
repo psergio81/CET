@@ -110,14 +110,14 @@
             }
 	    });
 		
-		var $acao = $('#ac').val();
 		
-		if($acao == ''){
+		if(acao == ''){
 			
 			$('#codigoMarca').val('novo');
 			$('#textoBtnSalvarAlterar').html('Salvar');
 			
 		}else{
+			console.log('acao: '+ acao);
 			
 			$('#textoBtnCancelarExcluir').html('Excluir');
 			$('#botaoCancelar').attr('href','javaScript:abrirConfirmacao();');
@@ -126,7 +126,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class|="input"][id!="codigoMarca"]').attr('disabled','true');
+			$('input[class*="span"][id!="codigoMarca"]').attr('disabled','true');
 			
 		}
 		
@@ -178,7 +178,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class|="input"][id!="codigoMarca"]').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoMarca"]').removeAttr('disabled');
 		
 	}
 

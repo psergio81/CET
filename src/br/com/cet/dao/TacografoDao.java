@@ -15,9 +15,9 @@ public class TacografoDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("tacografo", "cd_tacografo");
+		return getProximoCodigo(codigoEmpresa, "tacografo", "cd_tacografo");
 		
 	}
 	
@@ -187,6 +187,7 @@ public class TacografoDao extends BaseDao {
 		    qry.append(" INSERT INTO tacografo ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_tacografo, ");
+		    qry.append(" cd_empresa, ");
 		    qry.append(" cd_marca, ");
 		    qry.append(" cd_modelo, ");
 		    qry.append(" serie ) ");
@@ -197,6 +198,7 @@ public class TacografoDao extends BaseDao {
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, UtConverte.stringToInteiro(tacografoVo.getCodigoTacografo()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(tacografoVo.getCodigoEmpresa()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(tacografoVo.getCodigoMarca()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(tacografoVo.getCodigoModelo()));
 		    ps.setString(i++, tacografoVo.getCodigoSerie());
@@ -266,6 +268,12 @@ public class TacografoDao extends BaseDao {
 	    }finally {
 	    	releaseResouces(connection, ps); 
 	    }
+	}
+	
+	public int getQuantidadeTacografo(TacografoVo tacografoVo){
+		List<TacografoVo> listaTacografo = this.getListaTacografos(tacografoVo, false);
+		
+		return listaTacografo.size();
 	}
 	
 }

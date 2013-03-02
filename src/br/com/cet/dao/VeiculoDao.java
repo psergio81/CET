@@ -197,4 +197,11 @@ public class VeiculoDao extends BaseDao {
 	    }
 	}
 	
+	
+	public int getQuantidadeVeiculos(VeiculoVo veiculoVo){
+		List<VeiculoVo> listaVeiculos = this.getListaVeiculos(veiculoVo, false);
+		
+		return listaVeiculos.size();
+	}
+	
 }
