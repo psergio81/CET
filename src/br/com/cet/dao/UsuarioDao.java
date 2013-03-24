@@ -15,9 +15,9 @@ public class UsuarioDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 	
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("usuario", "cd_usuario");
+		return getProximoCodigo(codigoEmpresa, "usuario", "cd_usuario");
 		
 	}
 	

@@ -14,9 +14,9 @@ import br.com.cet.vo.VeiculoTacografoVo;
 public class VeiculoTacografoDao extends BaseDao {
 	
 	
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("veiculo_tacografo", "cd_veiculo_tacografo");
+		return getProximoCodigo(codigoEmpresa, "veiculo_tacografo", "cd_veiculo_tacografo");
 		
 	}
 

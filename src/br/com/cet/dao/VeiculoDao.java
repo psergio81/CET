@@ -15,9 +15,9 @@ public class VeiculoDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 6;
 
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("veiculo", "cd_veiculo");
+		return getProximoCodigo(codigoEmpresa, "veiculo", "cd_veiculo");
 		
 	}
 	

@@ -15,9 +15,9 @@ public class EnsaioDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("ensaio", "cd_ensaio");
+		return getProximoCodigo(codigoEmpresa, "ensaio", "cd_ensaio");
 		
 	}
 	

@@ -50,7 +50,7 @@ public class Ensaio {
 			
 			EnsaioDao ensaioDao = new EnsaioDao();
 			String codigoEnsaio;
-			codigoEnsaio = String.valueOf(ensaioDao.getProximoCodigo());
+			codigoEnsaio = String.valueOf(ensaioDao.getProximoCodigo(ensaioVo.getCodigoEmpresa()));
 
 			ensaioVo.setCodigoEnsaio(codigoEnsaio);
 			ensaioDao.insertEnsaios(ensaioVo);

@@ -14,7 +14,7 @@ public class VeiculoTacografo {
 			
 			VeiculoTacografoDao veiculoTacografoDao = new VeiculoTacografoDao();
 			String codigoTacografo;
-			codigoTacografo = String.valueOf(veiculoTacografoDao.getProximoCodigo());
+			codigoTacografo = String.valueOf(veiculoTacografoDao.getProximoCodigo(veiculoTacografoVo.getCodigoEmpresa()));
 
 			veiculoTacografoVo.setCodigoVeiculoTacografo(codigoTacografo);
 			veiculoTacografoVo.setCodigoTacografo(veiculoTacografoVo.getCodigoTacografo());

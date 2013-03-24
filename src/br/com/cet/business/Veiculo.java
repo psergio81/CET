@@ -50,7 +50,7 @@ public class Veiculo {
 			
 			VeiculoDao veiculoDao = new VeiculoDao();
 			String codigoVeiculo;
-			codigoVeiculo = String.valueOf(veiculoDao.getProximoCodigo());
+			codigoVeiculo = String.valueOf(veiculoDao.getProximoCodigo(veiculoVo.getCodigoEmpresa()));
 
 			veiculoVo.setCodigoVeiculo(codigoVeiculo);
 			veiculoDao.insertVeiculos(veiculoVo);

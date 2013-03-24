@@ -50,7 +50,7 @@ public class Programa {
 			
 			ProgramaDao programaDao = new ProgramaDao();
 			String codigoPrograma;
-			codigoPrograma = String.valueOf(programaDao.getProximoCodigo());
+			codigoPrograma = String.valueOf(programaDao.getProximoCodigo(programaVo.getCodigoEmpresa()));
 
 			programaVo.setCodigoPrograma(codigoPrograma);
 			programaDao.insertProgramas(programaVo);

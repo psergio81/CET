@@ -75,7 +75,7 @@ public class Usuario {
 			
 			UsuarioDao usuarioDao = new UsuarioDao();
 			String codigoUsuario;
-			codigoUsuario = String.valueOf(usuarioDao.getProximoCodigo());
+			codigoUsuario = String.valueOf(usuarioDao.getProximoCodigo(usuarioVo.getCodigoEmpresa()));
 
 			usuarioVo.setCodigoUsuario(codigoUsuario);
 			usuarioDao.insertUsuario(usuarioVo);

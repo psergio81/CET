@@ -12,9 +12,9 @@ import br.com.cet.vo.ProgramaVo;
 
 public class ProgramaDao extends BaseDao {
 	
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("programa", "cd_programa");
+		return getProximoCodigo(codigoEmpresa, "programa", "cd_programa");
 		
 	}
 	

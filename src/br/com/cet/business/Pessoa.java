@@ -50,7 +50,7 @@ public class Pessoa {
 			
 			PessoaDao pessoaDao = new PessoaDao();
 			String codigoPessoa;
-			codigoPessoa = String.valueOf(pessoaDao.getProximoCodigo());
+			codigoPessoa = String.valueOf(pessoaDao.getProximoCodigo(pessoaVo.getCodigoEmpresa()));
 
 			pessoaVo.setCodigoPessoa(codigoPessoa);
 			pessoaDao.insertPessoas(pessoaVo);

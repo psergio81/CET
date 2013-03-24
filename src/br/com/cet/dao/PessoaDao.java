@@ -15,9 +15,9 @@ public class PessoaDao extends BaseDao {
 	
 	private static final int QUANTIDADE_ZEROS_CODIGO = 8;
 
-	public int getProximoCodigo(){
+	public int getProximoCodigo(String codigoEmpresa){
 		
-		return getProximoCodigo("pessoa", "cd_pessoa");
+		return getProximoCodigo(codigoEmpresa, "pessoa", "cd_pessoa");
 		
 	}
 	
