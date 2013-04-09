@@ -21,6 +21,7 @@
 		
 		    <s:form id="cad008" action="Cad008Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
+	         	<s:hidden name="mensagemErro" id="mensagemErro" value="%{mensagemErro}"/>
 		        <s:hidden name="usuarioDadosVo.codigoUsuario"/>
 		        
 		        <div class="control-group">

@@ -69,7 +69,7 @@ public class Usuario {
 		
 	}
 	
-	public void insertUsuario(UsuarioVo usuarioVo) throws Exception{
+	public boolean insertUsuario(UsuarioVo usuarioVo) throws Exception{
 		
 		try{
 			
@@ -82,7 +82,9 @@ public class Usuario {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateUsuario(UsuarioVo usuarioVo) throws Exception{

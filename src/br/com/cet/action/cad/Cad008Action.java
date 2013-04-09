@@ -45,6 +45,7 @@ public class Cad008Action extends RecursoPadraoAction {
 	
 	public String crud() throws Exception{
 		
+		boolean retorno;
 		
 		Empresa empresa = new Empresa();
 		listaEmpresa = empresa.getListaEmpresa(null, false);
@@ -56,7 +57,13 @@ public class Cad008Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			usuarioDadosVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
-			usuario.insertUsuario(usuarioDadosVo);
+			retorno = usuario.insertUsuario(usuarioDadosVo);
+			
+			if(retorno){
+				setMensagemErro("Usuário cadastrado com sucesso!");
+			}else{
+				setMensagemErro("Erro ao cadastrar o usuário!");
+			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
