@@ -45,7 +45,9 @@
 						<thead>
 							<tr>
 								<td>Ensaios</td>
-								<td><c:out value="${quantidadeEnsaios}" /></td>
+								<td class="text-center">
+								    <c:out value="${quantidadeEnsaios}" />
+                                </td>
 							</tr>
 						</thead>
 						<tbody>

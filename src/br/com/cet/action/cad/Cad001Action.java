@@ -23,7 +23,8 @@ public class Cad001Action extends RecursoPadraoAction{
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		empresaVo = (EmpresaVo) session.get("empresaVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());

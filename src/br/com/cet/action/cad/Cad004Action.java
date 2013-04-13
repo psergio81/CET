@@ -9,6 +9,7 @@ import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Ensaio;
 import br.com.cet.business.Pessoa;
 import br.com.cet.business.Veiculo;
+import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.PessoaVo;
 import br.com.cet.vo.UsuarioVo;
@@ -31,6 +32,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		setNomePrograma(ProgramasKey.CADASTRO_DE_ENSAIOS);
 		
 		usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		empresaVo = (EmpresaVo) session.get("empresaVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());
@@ -40,7 +42,7 @@ public class Cad004Action extends RecursoPadraoAction {
 	
 	public String browser() throws Exception{
 		
-		
+		ensaioVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		listaEnsaio = ensaio.getListaEnsaio(ensaioVo, filtrar);
 		
 		return "browser";
@@ -58,6 +60,8 @@ public class Cad004Action extends RecursoPadraoAction {
 		Veiculo veiculo = new Veiculo();
 		listaVeiculo = new ArrayList<VeiculoVo>();
 		listaVeiculo = veiculo.getListaVeiculo(null, false);
+		
+		ensaioVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		

@@ -57,6 +57,7 @@ public class Cad005Action extends RecursoPadraoAction {
 
 		Tacografo tacografo = new Tacografo();
 		TacografoVo tacografoVo = new TacografoVo();
+		veiculoVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
 		

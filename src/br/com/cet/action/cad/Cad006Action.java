@@ -24,7 +24,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_PESSOAS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		usuarioVo = (UsuarioVo) session.get("usuarioVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());
@@ -45,6 +45,8 @@ public class Cad006Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
+		
+		pessoaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		

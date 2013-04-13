@@ -36,6 +36,7 @@ public class LoginAction extends RecursoPadraoAction{
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				
 				session.put("usuarioVo", usuarioVo);  
+				session.put("empresaVo", empresaVo);  
 				
 				return SUCCESS;
 			}

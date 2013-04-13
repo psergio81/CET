@@ -130,6 +130,7 @@ public class PessoaDao extends BaseDao {
 		    qry.append(" INSERT INTO pessoa ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_pessoa, ");
+		    qry.append(" cd_empresa, ");
 		    qry.append(" nm_pessoa, ");
 		    qry.append(" tipo_pessoa, ");
 		    qry.append(" cd_documento )");
@@ -139,6 +140,7 @@ public class PessoaDao extends BaseDao {
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoPessoa()));
+		    ps.setInt(i++, Integer.parseInt(pessoaVo.getCodigoEmpresa()));
 		    ps.setString(i++, pessoaVo.getNome());
 		    ps.setInt(i++, UtConverte.stringToInteiro(pessoaVo.getTipoPessoa()));
 		    ps.setString(i++, pessoaVo.getCodigoDocumento());

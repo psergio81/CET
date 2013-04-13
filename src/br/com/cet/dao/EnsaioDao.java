@@ -136,6 +136,7 @@ public class EnsaioDao extends BaseDao {
 		    qry.append(" INSERT INTO ensaio ");
 		    qry.append(" ( rowid, ");
 		    qry.append(" cd_ensaio, ");
+		    qry.append(" cd_empresa, ");
 		    qry.append(" data, ");
 		    qry.append(" cd_pessoa, ");
 		    qry.append(" cd_veiculo, ");
@@ -148,6 +149,7 @@ public class EnsaioDao extends BaseDao {
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEmpresa()));
 		    ps.setString(i++, ensaioVo.getData());
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));

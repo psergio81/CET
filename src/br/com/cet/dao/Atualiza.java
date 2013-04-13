@@ -12,10 +12,10 @@ public class Atualiza extends BaseAtualiza {
 		Atualiza atualiza = new Atualiza();
 		
 		atualiza.a0001(false);
-		atualiza.a0002(true);
+		atualiza.a0002(false);
 		atualiza.a0003(false);
 		atualiza.a0004(false);
-		atualiza.a0005(false);
+		atualiza.a0005(true);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
@@ -126,7 +126,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);	
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_emperesa", 0, false);	
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);	
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "data", 10, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
