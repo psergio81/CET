@@ -99,5 +99,20 @@ public class Ensaio {
 		return quantidadeEnsaios;
 		
 	}
+	
+	public List<EnsaioVo> verificaEnsaiosCadastrados(List<EnsaioVo> listaEnsaio) throws Exception {
+
+		try {
+
+			EnsaioDao ensaioDao = new EnsaioDao();
+			listaEnsaio = ensaioDao.verificaEnsaiosCadastrados(listaEnsaio);
+
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+
+		return listaEnsaio;
+
+	}
 
 }

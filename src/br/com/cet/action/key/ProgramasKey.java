@@ -11,4 +11,5 @@ public class ProgramasKey {
 	public static final String CADASTRO_DE_PESSOAS						= "Cadastro de Pessoas";
 	public static final String CADASTRO_DE_TACOGRAFOS					= "Cadastro de Tacógrafos";
 	public static final String CADASTRO_DE_PROGRAMAS					= "Cadastro de Programas";
+	public static final String UPLOAD_ARQUIVOS							= "Upload de Arquivos";
 }

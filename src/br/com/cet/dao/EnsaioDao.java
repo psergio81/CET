@@ -69,6 +69,49 @@ public class EnsaioDao extends BaseDao {
 	    
 		return ensaioVo;
 	}
+
+	public List<EnsaioVo> verificaEnsaiosCadastrados(List<EnsaioVo> listaEnsaio) {
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+		PreparedStatement ps = null;  
+		StringBuilder qry = new StringBuilder(); 
+		
+		try {
+			
+			connection = getConnection();  
+			
+			
+			qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, cd_usuario_criador FROM ensaio " );
+			qry.append(	"where gru = ? " );
+			
+			ps = connection.prepareStatement(qry.toString());
+			
+			for (EnsaioVo ensaioVo : listaEnsaio) {
+				int i = 1;
+				
+				
+				ps.setString(i++, ensaioVo.getGru());
+				
+				rs = ps.executeQuery();  
+				
+				if (rs.next()) {  
+					ensaioVo.setCadastrado(true);
+				}
+				
+				ps.clearParameters();
+			}
+			
+			ps = connection.prepareStatement(qry.toString());  
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+		
+		return listaEnsaio;
+	}
 	
 	public List<EnsaioVo> getListaEnsaios(EnsaioVo ensaioVo, boolean filtrar){
 		

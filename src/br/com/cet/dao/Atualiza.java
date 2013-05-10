@@ -13,9 +13,9 @@ public class Atualiza extends BaseAtualiza {
 		
 		atualiza.a0001(false);
 		atualiza.a0002(false);
-		atualiza.a0003(false);
+		atualiza.a0003(true);
 		atualiza.a0004(false);
-		atualiza.a0005(true);
+		atualiza.a0005(false);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
@@ -85,12 +85,14 @@ public class Atualiza extends BaseAtualiza {
 		String nomeTabela = "usuario";
 
 		criarTabela(NOME_BANCO, nomeTabela);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario", 0, false);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
-		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_usuario", 100, false);
-		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_nick", 20, false);
-		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 32, false);
-		executarComandoSql("Insert into usuario (cd_usuario,nm_usuario,nm_nick,nm_senha) Values(1,'Paulo Sérgio','adm','0cc175b9c0f1b6a831c399e269772661')");
+//		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario", 0, false);
+//		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_usuario", 100, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_nick", 20, false);
+//		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 32, false);
+		
+		executarComandoSql("delete from usuario");
+		executarComandoSql("Insert into usuario (cd_usuario,cd_empresa,nm_usuario,nm_nick,nm_senha) Values(1,1,'Paulo Sérgio','adm','0cc175b9c0f1b6a831c399e269772661')");
 
 	}
 	

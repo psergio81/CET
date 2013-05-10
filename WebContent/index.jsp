@@ -69,7 +69,7 @@
 			</div>
 			
 			<div class="span5 widget-content">
-                <div id="visualization" style="width: 350px; height: 260px;"> </div> 
+                <cet:grafico tituloDaSerie="Ensaios" tituloDoGrafico="Ensaios por Mês" /> 
             </div>
 
 		</div>
@@ -104,7 +104,7 @@
 								</a> <a href="javascript:irParaPrograma('Cad006');" class="shortcut">
 									<i class="shortcut-icon icon-user"></i> <span
 									class="shortcut-label">Pessoa</span>
-								</a> <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
+								</a> <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
 									<i class="shortcut-icon icon-file"></i> <span
 									class="shortcut-label">Relatório</span>
 								</a>
@@ -124,7 +124,6 @@
 
 </body>
 
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
 <script type="text/javascript">
 
     function irParaPrograma(action){
@@ -132,21 +131,11 @@
     	$('<form/>').attr('action',action+'Action!browser.action').submit();
 
     }
+    function irParaRelatorio(action){
+    	
+    	$('<form/>').attr('action',action+'Action!crud.action').attr('target','_blank').submit();
 
-    google.load('visualization', '1');
-    
-    function drawVisualization() {
-        var wrapper = new google.visualization.ChartWrapper({
-          chartType: 'ColumnChart',
-          dataTable: [['','Outubro', 'Novembro', 'Dezembro', 'Janeiro'],
-                      ['', 500, 700, 300, 400]],
-          options: {'title': 'Ensaios por Mês'},
-          containerId: 'visualization'
-        });
-        wrapper.draw();
-      }
-
-      google.setOnLoadCallback(drawVisualization);
+    }
     
 </script>
 

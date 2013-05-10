@@ -8,13 +8,13 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="es" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="cet" %>
 
-
 <script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
 <script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
 <script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
 <script src="/CET/padrao/jquery/jquery-ui-1.7.3.custom.min.js" type="text/javascript"></script>	
 
 <script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap-filestyle.js"></script>
 <script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
 <script src="/CET/padrao/bootstrap/js/bootstrap-modal.js"></script>
 

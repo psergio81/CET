@@ -75,6 +75,12 @@
 									<s:a action="Cad009Action!browser.action">Programa</s:a>
 								</a>
 							</li>
+
+							<li>
+								<a href="#">
+									<s:a action="Cad010Action!browser.action">Upload</s:a>
+								</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -87,14 +93,14 @@
                        	<ul class="dropdown-menu">
 							<li>
 								<a href="#">
-									<s:a action="Cad001Action!browser.action">Ensaios</s:a>
+									<s:a action="Rel001Action!crud.action">Ensaios</s:a>
 								</a>
 							</li>
 						</ul>
                        	<ul class="dropdown-menu">
 							<li>
 								<a href="#">
-									<s:a action="Cad001Action!browser.action">Ensaios</s:a>
+									<s:a action="Rel001Action!crud.action" target="_blank">Ensaios</s:a>
 								</a>
 							</li>
 						</ul>

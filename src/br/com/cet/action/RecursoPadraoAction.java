@@ -1,10 +1,14 @@
 package br.com.cet.action;
 
+import java.util.HashMap;
+
+import br.com.cet.action.helper.ResultJsonHelper;
 import br.com.cet.business.Ensaio;
 import br.com.cet.business.Pessoa;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
 import br.com.cet.vo.EmpresaVo;
+import br.com.cet.vo.GraficoVo;
 import br.com.cet.vo.UsuarioVo;
 
 
@@ -19,6 +23,7 @@ public class RecursoPadraoAction extends SystemAction{
 	private String quantidadeVeiculos;
 	private String quantidadeTacografos;
 	private String quantidadePessoas;
+	private String ultimosEnsaiosJson;
 	
 	protected UsuarioVo usuarioVo = new UsuarioVo();
 	protected EmpresaVo empresaVo = new EmpresaVo();
@@ -35,6 +40,27 @@ public class RecursoPadraoAction extends SystemAction{
 		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioVo.getCodigoEmpresa())));
 		setQuantidadeTacografos(String.valueOf(tacografo.getQuantidadeTacografo(usuarioVo.getCodigoEmpresa())));
 		setQuantidadePessoas(String.valueOf(pessoa.getQuantidadePessoas(usuarioVo.getCodigoEmpresa())));
+		
+		HashMap<String, GraficoVo> teste = new HashMap<String, GraficoVo>();
+		GraficoVo graficoVo;
+		graficoVo = new GraficoVo();
+		graficoVo.getValores().add("100");
+		graficoVo.getValores().add("130");
+		graficoVo.getValores().add("160");
+		graficoVo.getValores().add("160");
+		teste.put("2012", graficoVo);
+
+		graficoVo = new GraficoVo();
+		graficoVo.getValores().add("200");
+		graficoVo.getValores().add("230");
+		graficoVo.getValores().add("260");
+		graficoVo.getValores().add("260");
+		teste.put("2013", graficoVo);
+		ResultJsonHelper resultJsonHelper = new ResultJsonHelper(responseOrigem);
+		resultJsonHelper.jsonDo(teste);
+		String json = resultJsonHelper.getJson();
+		System.out.println("=+++++++++++++: "+json);
+		setUltimosEnsaiosJson(json);
 		
 		super.prepare();
 	}
@@ -109,6 +135,14 @@ public class RecursoPadraoAction extends SystemAction{
 
 	public void setQuantidadePessoas(String quantidadePessoas) {
 		this.quantidadePessoas = quantidadePessoas;
+	}
+
+	public String getUltimosEnsaiosJson() {
+		return ultimosEnsaiosJson;
+	}
+
+	public void setUltimosEnsaiosJson(String ultimosEnsaiosJson) {
+		this.ultimosEnsaiosJson = ultimosEnsaiosJson;
 	}
 
 }

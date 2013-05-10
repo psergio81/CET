@@ -5,6 +5,11 @@ public class ComboVo {
 	private String chave;
 	private String valor;
 	
+	public ComboVo(String chave, String valor) {
+
+		this.chave = chave;
+		this.valor = valor;
+	}
 	
 	public String getChave() {
 		return chave;

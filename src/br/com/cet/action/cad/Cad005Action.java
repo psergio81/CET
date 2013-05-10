@@ -136,7 +136,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		
 		Tacografo tacografo = new Tacografo();
 		TacografoVo tacografoVo = new TacografoVo();
-		tacografoVo.setCodigoTacografo(codigoVeiculo);System.out.println("codigoTacografo: "+codigoTacografo);
+		tacografoVo.setCodigoTacografo(codigoVeiculo);
 		
 		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
 		
