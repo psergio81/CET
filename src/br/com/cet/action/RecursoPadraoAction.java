@@ -20,6 +20,7 @@ public class RecursoPadraoAction extends SystemAction{
 	private String usuarioLogado;
 	private String mensagemErro;
 	private String nomePrograma;
+	private String codigoPrograma;
 	private String campoBusca;
 	private String codigoEmpresa;
 	private String quantidadeEnsaios;
@@ -71,6 +72,11 @@ public class RecursoPadraoAction extends SystemAction{
 		
 		
 		super.prepare();
+	}
+	
+	public void gravaLog(String descricao){
+		//log.salvarLog(ac, descricao, codigoPrograma);
+		log.salvarLog(ac, descricao, "1");
 	}
 	
 	public String getUsuarioLogado() {
@@ -143,6 +149,14 @@ public class RecursoPadraoAction extends SystemAction{
 
 	public void setQuantidadePessoas(String quantidadePessoas) {
 		this.quantidadePessoas = quantidadePessoas;
+	}
+	
+	public void setCodigoPrograma(String codigoPrograma){
+		this.codigoPrograma = codigoPrograma;
+	}
+	
+	public String getCodigoPrograma(){
+		return codigoPrograma;
 	}
 
 	public String getUltimosEnsaiosJson() {

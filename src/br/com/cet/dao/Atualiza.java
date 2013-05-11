@@ -21,6 +21,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0008(false);
 		atualiza.a0009(false);
 		atualiza.a0010(false);
+		atualiza.a0011(true);
 		
 	}
 
@@ -90,9 +91,8 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_usuario", 100, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_nick", 20, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_senha", 32, false);
-		
-		executarComandoSql("Insert into usuario (cd_usuario,cd_empresa,nm_usuario,nm_nick,nm_senha) Values(1,1,'Paulo Sérgio','adm','0cc175b9c0f1b6a831c399e269772661')");
-
+		executarComandoSql("Insert into usuario (cd_usuario,cd_empresa, nm_usuario,nm_nick,nm_senha) Values(1,1,'Paulo Sérgio','adm','0cc175b9c0f1b6a831c399e269772661')");
+		executarComandoSql("Insert into usuario (cd_usuario,cd_empresa, nm_usuario,nm_nick,nm_senha) Values(2,1,'Michell Sarno','michellsarno','e12e4454a59552dc66625fbc7bc48977')");
 	}
 	
 
@@ -229,6 +229,31 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa", 100, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa_menu", 100, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "nm_programa_action", 100, false);
+		
+	}
+	
+	/**
+	 * Criar tabela log
+	 */
+	private void a0011(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "log";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_programa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_log", 0, false);
+		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "dt_log", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hr_log", 0, false);
+		
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "ip_log", 20, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "acao_log", 100, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "ds_log", 500, false);
 		
 	}
 }

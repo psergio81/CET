@@ -1,5 +1,10 @@
 package br.com.cet.util;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+
 public class UtConverte extends UtString{
 
 	
@@ -27,6 +32,28 @@ public class UtConverte extends UtString{
 
 		return Integer.valueOf(String.valueOf(numero));
 			
+	}
+	
+	public static Date dataStringToDateSql(String data){
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");     
+		
+		Date dataSQL = null;
+		
+		try {
+			
+			if(!UtString.isNullOrEmpty(data)){
+			
+				dataSQL = new Date(sdf.parse(data).getTime());
+			
+			}
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return dataSQL;
+		
 	}
 
 }

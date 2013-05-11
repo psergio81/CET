@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad001Action extends RecursoPadraoAction{
 	
@@ -23,12 +22,6 @@ public class Cad001Action extends RecursoPadraoAction{
 		
 		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
 		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		empresaVo = (EmpresaVo) session.get("empresaVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
 	}
 	
 	public String browser() throws Exception{
@@ -57,7 +50,11 @@ public class Cad001Action extends RecursoPadraoAction{
 			
 			retorno = empresa.insertEmpresa(empresaVo);
 			if(retorno){
+				
 				setMensagemErro("Empresa cadastrada com sucesso!");
+				
+				gravaLog("Log de Inserção de Empresa");
+				
 			}else{
 				setMensagemErro("Erro ao cadastrar a empresa!");
 			}
@@ -66,9 +63,13 @@ public class Cad001Action extends RecursoPadraoAction{
 			
 			empresa.updateEmpresa(empresaVo);
 			
+			gravaLog("Log de Alteração de Empresa");
+			
 		}else if(AcoesKey.ACAO_EXCLUIR.equals(ac)){
 			
 			empresa.deleteEmpresa(empresaVo);
+			
+			gravaLog("Log de Deleção de Empresa");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			return "principal";

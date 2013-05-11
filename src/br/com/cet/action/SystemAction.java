@@ -10,6 +10,10 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import br.com.cet.log.Log;
+import br.com.cet.vo.EmpresaVo;
+import br.com.cet.vo.UsuarioVo;
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
@@ -26,13 +30,32 @@ public class SystemAction extends ActionSupport implements Preparable,SessionAwa
 	protected String ac;
 	protected String rowid;
 	
+	protected Log log;
+	protected UsuarioVo usuarioLogadoVo;
+	protected EmpresaVo empresaLogadaVo;
+	
 	
 	public void prepare() throws Exception{
 		
 		requestOrigem = ServletActionContext.getRequest();
 		responseOrigem =ServletActionContext.getResponse();
 		
+		usuarioLogadoVo = (UsuarioVo) session.get("usuarioVo");
+		empresaLogadaVo = (EmpresaVo) session.get("empresaVo");
+		
+		
+		log = new Log(usuarioLogadoVo, empresaLogadaVo);
 	} 
+	
+	
+	
+	public EmpresaVo getEmpresaLogadaVo(){
+		return empresaLogadaVo;
+	}
+	
+	public UsuarioVo getUsuarioLogadoVo(){
+		return usuarioLogadoVo;
+	}
 	
 	public String getRowid() {
 		return rowid;

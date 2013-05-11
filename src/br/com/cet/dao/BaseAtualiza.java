@@ -23,6 +23,7 @@ public class BaseAtualiza extends BaseDao {
 	private PreparedStatement ps;
 	private String qry;
 	
+	
 	public void executarComandoSql(String comando){
 		
 	  try {  
@@ -95,6 +96,11 @@ public class BaseAtualiza extends BaseDao {
 			
 			criarCampoCaracter(nomeBanco, nomeTabela, nomeCampo, tamanho);
 			break;
+		
+		case DATA:
+			
+			criarCampoDate(nomeBanco, nomeTabela, nomeCampo);
+			break;
 
 		default:
 			break;
@@ -122,6 +128,22 @@ public class BaseAtualiza extends BaseDao {
 			connection = getConnection();
 			
 			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s VARCHAR(%s) NULL ;", nomeBanco,nomeTabela,nomeCampo,tamanho);
+			
+			Statement statement = connection.createStatement();
+			statement.execute(qry);
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+	}
+	
+	private void criarCampoDate(String nomeBanco, String nomeTabela, String nomeCampo) {
+		try {  
+			connection = getConnection();
+			
+			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s DATE ;", nomeBanco,nomeTabela,nomeCampo);
 			
 			Statement statement = connection.createStatement();
 			statement.execute(qry);
