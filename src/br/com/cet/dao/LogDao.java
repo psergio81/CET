@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
-import br.com.cet.util.UtString;
-import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.log.LogVo;
 
 /**
