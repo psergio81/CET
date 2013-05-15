@@ -24,6 +24,24 @@ public class Ensaio {
 		return listaEnsaio;
 
 	}
+
+	public List<EnsaioVo> getListaEnsaiosPendente(EnsaioVo ensaioVo)
+			throws Exception {
+		
+		List<EnsaioVo> listaEnsaio = null;
+		
+		try {
+			
+			EnsaioDao ensaioDao = new EnsaioDao();
+			listaEnsaio = ensaioDao.getListaEnsaiosPendente(ensaioVo);
+			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+		
+		return listaEnsaio;
+		
+	}
 	
 	public EnsaioVo getEnsaioPeloCodigo(String codigoEnsaio) throws Exception{
 		

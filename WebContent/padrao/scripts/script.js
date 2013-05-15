@@ -175,6 +175,21 @@ jQuery.validator.addMethod("dateTimeBR", function(value, element) {
 
 
 
+jQuery.validator.addMethod("timeBR", function(value, element) {
+	 //contando chars
+	if(value.length!=5) return false;
+	
+	// verificando hora
+	var horario 	= value;
+	var	hora 		= horario.substr(0,2);
+	var doispontos 	= horario.substr(2,1);
+	var minuto 		= horario.substr(3,2);
+	if(horario.length!=5||isNaN(hora)||isNaN(minuto)||hora>23||minuto>59||doispontos!=":")return false;
+	return true;
+}, "Informe uma hora v&aacute;lida");
+
+
+
 /*
  *
  * NOVO METODO PARA O JQUERY VALIDATE

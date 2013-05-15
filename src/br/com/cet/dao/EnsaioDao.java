@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.util.UtConverte;
+import br.com.cet.util.UtDataHora;
 import br.com.cet.util.UtString;
 import br.com.cet.vo.EnsaioVo;
 
@@ -38,7 +39,7 @@ public class EnsaioDao extends BaseDao {
 	    	connection = getConnection();  
 	    	
 	    	
-		    qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, cd_usuario_criador FROM ensaio " );
+		    qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora, tipo_servico, cd_usuario_criador FROM ensaio " );
 		    qry.append(	"where cd_ensaio = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -57,6 +58,8 @@ public class EnsaioDao extends BaseDao {
 		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 		    	ensaioVo.setGru(rs.getString("gru"));
+		    	ensaioVo.setHora(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora")));
+		    	ensaioVo.setCodigoTipoServico(rs.getString("tipo_servico"));
 		    	ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
 		    	
 		    }
@@ -164,6 +167,49 @@ public class EnsaioDao extends BaseDao {
 	    
 	    return ensaiosList;
 	}
+	public List<EnsaioVo> getListaEnsaiosPendente(EnsaioVo ensaioVo){
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+		PreparedStatement ps = null;  
+		StringBuilder qry = new StringBuilder(); 
+		List<EnsaioVo> ensaiosList = null;
+		
+		try {  
+			
+			connection = getConnection();  
+			
+			qry.append("SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora, cd_usuario_criador FROM ensaio ");
+			
+			ps = connection.prepareStatement(qry.toString());
+			
+			rs = ps.executeQuery();  
+			
+			ensaiosList = new ArrayList<EnsaioVo>();
+			
+			while (rs.next()) {  
+				ensaioVo = new EnsaioVo();
+				
+				ensaioVo.setRowid(rs.getString("rowid"));
+				ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
+				ensaioVo.setData(rs.getString("data"));
+				ensaioVo.setHora(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora")));
+				ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
+				ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
+				ensaioVo.setGru(rs.getString("gru"));
+				ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
+				
+				ensaiosList.add(ensaioVo);
+			}  
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+		
+		return ensaiosList;
+	}
 	
 	public void insertEnsaios(EnsaioVo ensaioVo) throws Exception{
 		
@@ -181,9 +227,11 @@ public class EnsaioDao extends BaseDao {
 		    qry.append(" cd_ensaio, ");
 		    qry.append(" cd_empresa, ");
 		    qry.append(" data, ");
+		    qry.append(" hora, ");
 		    qry.append(" cd_pessoa, ");
 		    qry.append(" cd_veiculo, ");
 		    qry.append(" gru, ");
+		    qry.append(" tipo_servico, ");
 		    qry.append(" cd_usuario_criador ) ");
 		    
 		    qry.append(getValues(qry));
@@ -194,9 +242,11 @@ public class EnsaioDao extends BaseDao {
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEmpresa()));
 		    ps.setString(i++, ensaioVo.getData());
+		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 		    ps.setString(i++, ensaioVo.getGru());
+		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoTipoServico()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoUsuarioCriador()));
 		    
 		    ps.executeUpdate();
@@ -221,6 +271,7 @@ public class EnsaioDao extends BaseDao {
 			
 			qry.append(" UPDATE ensaio set ");
 			qry.append(" data = ?, ");
+			qry.append(" hora = ?, ");
 			qry.append(" cd_pessoa = ?, ");
 			qry.append(" cd_veiculo = ?, ");
 			qry.append(" gru = ? ");
@@ -228,6 +279,7 @@ public class EnsaioDao extends BaseDao {
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setString(i++, ensaioVo.getData());
+			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 			ps.setString(i++, ensaioVo.getGru());

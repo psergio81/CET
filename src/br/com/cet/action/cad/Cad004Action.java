@@ -52,6 +52,7 @@ public class Cad004Action extends RecursoPadraoAction {
 	
 	public String crud() throws Exception{
 		
+		System.out.println(ac);
 		
 		Pessoa pessoa = new Pessoa();
 		listaPessoa = new ArrayList<PessoaVo>();

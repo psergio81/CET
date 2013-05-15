@@ -109,6 +109,20 @@
 
 				<ul class="nav">
 					<li class="dropdown">
+                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:atalhos()">
+                       	    Atalhos
+                       	</a>
+					</li>
+				</ul>
+				<ul class="nav">
+					<li class="dropdown">
+                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:grafico()">
+                       	    Gráfico
+                       	</a>
+					</li>
+				</ul>
+				<ul class="nav">
+					<li class="dropdown">
                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:sair()">
                        	    Sair
                        	</a>
@@ -134,5 +148,22 @@
     
     function sair(){
     	$('<form/>').attr('action','LogoutAction!logout.action').submit();
+    }
+
+    function atalhos(){
+    	$('#atalhos').toggle('slow');
+    }
+    function grafico(){
+    	
+    	var visivel = $('#grafico').is(':visible');
+    	
+    	
+	    	$('#grafico').toggle('slow');
+    	if(visivel){
+	    	$('#ordemServico').addClass('maximizarOrdemServicoPendente');
+    	}else{
+	    	$('#ordemServico').removeClass('maximizarOrdemServicoPendente');
+    	}
+    	
     }
 </script>

@@ -16,6 +16,23 @@
     .widget-content {
         margin-bottom: 5px;
     }
+    
+    .maximizarInformacoes{
+        
+        width: 30%;
+    
+    }
+
+    .maximizarOrdemServicoPendente{
+        
+        width: 65.96% !important;
+    
+    }
+    .maximizarOrdemServicoPendente tbody{
+        
+        font-size: medium;
+    
+    }
 
 </style>
 
@@ -30,10 +47,56 @@
 
 	</div>
 	
-	<div class="container">
+	
+
+    <div class="container-fluid" id="atalhos" style="display: none;">
+                <div class="widget">
+                        <div class="widget-content" style="padding: 5px 5px 5px">
+                            <div class="shortcuts">
+                                <a href="javascript:irParaPrograma('Cad004');" class="shortcut">
+                                    <i class="shortcut-icon icon-list-alt"></i> <span
+                                    class="shortcut-label">Ensaio</span>
+                                </a> <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
+                                    <i class="shortcut-icon icon-bookmark"></i> <span
+                                    class="shortcut-label">Empresa</span>
+                                </a> <a href="javascript:irParaPrograma('Cad005');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i> <span
+                                    class="shortcut-label">Veículo</span>
+                                </a> <a href="javascript:irParaPrograma('Cad002');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i> <span
+                                    class="shortcut-label">Marca</span>
+                                </a> <a href="javascript:irParaPrograma('Cad003');" class="shortcut">
+                                    <i class="shortcut-icon icon-signal"></i> <span
+                                    class="shortcut-label">Modelo</span>
+                                </a> <a href="javascript:irParaPrograma('Cad007');" class="shortcut">
+                                    <i class="shortcut-icon icon-comment"></i> <span
+                                    class="shortcut-label">Tacógrafo</span>
+                                </a> <a href="javascript:irParaPrograma('Cad006');" class="shortcut">
+                                    <i class="shortcut-icon icon-user"></i> <span
+                                    class="shortcut-label">Pessoa</span>
+                                </a> <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
+                                    <i class="shortcut-icon icon-file"></i> <span
+                                    class="shortcut-label">Relatório</span>
+                                </a>
+                                <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
+                                    <i class="shortcut-icon icon-file"></i> <span
+                                    class="shortcut-label">Relatório</span>
+                                </a>
+                                <a href="javascript:irParaPrograma('Cad010');" class="shortcut">
+                                    <i class="shortcut-icon icon-upload"></i> <span
+                                    class="shortcut-label">Upload</span>
+                                </a>
+                            </div>
+            </div>
+        </div>
+    </div>
+	
+	
+	
+	<div class="container-fluid">
 		<div class="row-fluid">
 
-			<div class="span7">
+			<div class="span4 maximizarInformacoes" id="informacoes">
 				<div class="widget-content">
 					<p>
 						<b>Usuário:</b> <c:out value="${usuarioVo.nomeUsuario}" /><br>
@@ -68,53 +131,67 @@
 				</div>
 			</div>
 			
-			<div class="span5 widget-content">
+			<div class="span4 widget-content" id="grafico" style="display: none;">
                 <cet:grafico tituloDaSerie="Ensaios" tituloDoGrafico="Ensaios por Mês" /> 
+            </div>
+			<div class="span4 widget-content maximizarOrdemServicoPendente" style="height: 297px; overflow-y: scroll; font-size: 8px !important;" id="ordemServico">
+			     <table class="table table-condensed">
+			         <thead>
+                           <tr>
+                                <th colspan="3" style="text-align: center;">
+                                    Ordem de Serviço Pendente
+                                </th>
+                           </tr>			         
+			         </thead>
+                     <s:if test="%{listaEnsaio.isEmpty()}">
+                        <tbody>
+                            <tr>
+                                <td>
+			                         <div class="alert">
+			                             <strong>Sem Resultado!</strong><br> Não existe Ordem de Serviço Pendente.
+			                         </div>
+                                </td>
+                            </tr>
+                        
+                        </tbody>
+     
+                     </s:if>
+                     <s:else>
+				         <tbody>
+				                <tr>
+				                    <th>
+                                        Código				                    
+				                    </th>
+				                    <th>
+                                        Data				                    
+				                    </th>
+				                    <th>
+                                        Hora				                    
+				                    </th>
+				                </tr>
+		                        <s:iterator  value="listaEnsaio" status="status">
+		                            <tr onclick="javaScript:detalhes('<s:property value="codigoEnsaio" />')">
+		                                <td>
+		                                    <a>
+		                                        <fmt:formatNumber value="${codigoEnsaio}" type="number"  minIntegerDigits="6" />
+		                                    </a>
+		                                </td>
+		                                <td>
+		                                    <a><s:property value="data" /></a>
+		                                </td>
+		                                <td>
+		                                    <a><s:property value="hora" /></a>
+		                                </td>
+		                            </tr>
+		                        </s:iterator>
+				         </tbody>
+                    </s:else>
+			     </table>
             </div>
 
 		</div>
 	</div>
 
-
-	<div class="container">
-		<div class="row">
-			<div class="span12" style="margin-left: 0px; width: 980px;">
-				<div class="widget">
-					<div class="container-fluid">
-						<div class="widget-content">
-							<div class="shortcuts">
-								<a href="javascript:irParaPrograma('Cad004');" class="shortcut">
-									<i class="shortcut-icon icon-list-alt"></i> <span
-									class="shortcut-label">Ensaio</span>
-								</a> <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
-									<i class="shortcut-icon icon-bookmark"></i> <span
-									class="shortcut-label">Empresa</span>
-								</a> <a href="javascript:irParaPrograma('Cad005');" class="shortcut">
-									<i class="shortcut-icon icon-signal"></i> <span
-									class="shortcut-label">Veículo</span>
-								</a> <a href="javascript:irParaPrograma('Cad002');" class="shortcut">
-									<i class="shortcut-icon icon-signal"></i> <span
-									class="shortcut-label">Marca</span>
-								</a> <a href="javascript:irParaPrograma('Cad003');" class="shortcut">
-									<i class="shortcut-icon icon-signal"></i> <span
-									class="shortcut-label">Modelo</span>
-								</a> <a href="javascript:irParaPrograma('Cad007');" class="shortcut">
-									<i class="shortcut-icon icon-comment"></i> <span
-									class="shortcut-label">Tacógrafo</span>
-								</a> <a href="javascript:irParaPrograma('Cad006');" class="shortcut">
-									<i class="shortcut-icon icon-user"></i> <span
-									class="shortcut-label">Pessoa</span>
-								</a> <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
-									<i class="shortcut-icon icon-file"></i> <span
-									class="shortcut-label">Relatório</span>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
 	<hr>
 
@@ -135,6 +212,17 @@
     	
     	$('<form/>').attr('action',action+'Action!crud.action').attr('target','_blank').submit();
 
+    }
+    
+    function detalhes(codigo){
+    	
+    	var newForm = $('<form>', {
+            'action': 'Cad004Action!crud.action?ac=consultar&codigoEnsaioSelecionado='+codigo,
+            'method':'Post'
+        });
+    	
+    	newForm.submit();
+        
     }
     
 </script>

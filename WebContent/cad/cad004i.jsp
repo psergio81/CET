@@ -32,28 +32,43 @@
 
         		<div class="control-group">
 					<label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
-   					<div class="controls">
+   					<div class="controls input-append">
 			         	<s:textfield id="dataEnsaio" name="ensaioVo.data" cssClass="span2 data "/>
+			         	<span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
+   					</div>
+				</div>
+        		<div class="control-group">
+					<label for="hora" class="control-label"><fmt:message key="label.padrao.hora.inicio"/></label>
+   					<div class="controls input-append">
+			         	<s:textfield id="horaEnsaio" name="ensaioVo.hora" cssClass="span2"/>
+			         	<span class="add-on btn" id="horaAtual"><i class="icon-time"></i></span>
    					</div>
 				</div>
 
         		<div class="control-group">
 		        	<label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
-   					<div class="controls">
+   					<div class="controls input-append">
 						<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" cssClass="span4"/>
-						<s:a action="Cad006Action!crud.action" title="Adicionar">
-							<img src="icones/add.png" width="25pt" height="25pt" alt="" >
+						<s:a action="Cad006Action!crud.action" title="Adicionar" cssClass="add-on btn"  target="_blank">
+							<i class="icon-plus" id="horaAtual"></i>
 						</s:a>
    					</div>
 				</div>
 		        
         		<div class="control-group">
 		        	<label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
-   					<div class="controls">
+   					<div class="controls input-append">
 						<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="placa" emptyOption="true" cssClass="span4"/>
-						<s:a action="Cad005Action!crud.action" title="Adicionar">
-							<img src="icones/add.png" width="25pt" height="25pt" alt="" >
+						<s:a action="Cad005Action!crud.action" title="Adicionar"  cssClass="add-on btn">
+							<i class="icon-plus"></i>
 						</s:a>
+   					</div>
+				</div>
+
+        		<div class="control-group">
+		        	<label for="veiculo" class="control-label"><fmt:message key="label.padrao.tipo.servico"/></label>
+   					<div class="controls input-append">
+						<s:select name="ensaioVo.codigoTipoServico" list="#{'1':'Calibração','2':'Ensaio','3':'Selagem'}" emptyOption="true" cssClass="span4" value="%{ensaioVo.codigoTipoServico }"/>
    					</div>
 				</div>
 
@@ -101,10 +116,41 @@
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
+		
+		$('#horaEnsaio').mask('99:99');
+		
+		$('#horaAtual').click(function(){
+			
+			var campoDesabilitado = $('#horaEnsaio').is(':disabled');
+			
+			if(campoDesabilitado){
+				return;
+			}
+			
+			var data = new Date();
+			var hora = data.getHours();
+			var minuto = data.getMinutes();
+			
+			if(minuto < 10){
+				minuto = "0"+minuto;
+			}
+			
+		    hora = hora+":"+minuto; 
+			$('#horaEnsaio').val(hora);
+		});
+
+		$('#dataAtual').click(function(){
+			
+			carregaData('dataEnsaio');
+			
+		});
+		
 
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad004');
+		}else if(acao == 'incluir'){
+			carregaData('dataEnsaio');
 		}
 		
 		$('#divErros').css('display','none');
@@ -137,6 +183,10 @@
                 },
                 "ensaioVo.gru":{
                 	required:true
+                },
+                "ensaioVo.hora":{
+                	timeBR:true,
+                	required:true
                 }
                 
             },
@@ -152,6 +202,10 @@
                 },
                 "ensaioVo.gru":{
                 	required:"O campo GRU é obrigatório."
+                },
+                "ensaioVo.hora":{
+                	timeBR:"Informe uma hora válida",
+                	required:"O campo Hora é obrigatório."
                 }
                 
             }
@@ -171,7 +225,7 @@
 			$('#botaoSalvar').attr('href','javaScript:liberarCamposAlteracao();');
 			$('#botaoSalvar').removeClass('btn-success').addClass('btn-primary');
 			
-			$('input[class*="span"],select').attr('disabled','true');
+			$('input[class*="span"],select, span, i').attr('disabled','true');
 			
 		}
 		
@@ -223,7 +277,7 @@
 		$('#textoBtnSalvarAlterar').html('Salvar');
 		$('#botaoSalvar').removeClass('btn-primary').addClass('btn-success');
 		$('#botaoSalvar').attr('href','javaScript:salvarCadastro();');
-		$('input[class*="span"][id!="codigoEnsaio"],select').removeAttr('disabled');
+		$('input[class*="span"][id!="codigoEnsaio"],select, span, i').removeAttr('disabled');
 		
 	}
 
@@ -255,7 +309,35 @@
 		$('#cad004').submit();
 		
 	}
-
+	
+	
+	function carregaData(campo){
+		
+		var campoDesabilitado = $('#'+campo).is(':disabled');
+        
+        if(campoDesabilitado){
+            return;
+        }
+		
+	     var data = new Date();
+	     var dia = data.getDate();
+	     var mes = data.getUTCMonth()+1;
+	     var ano = data.getUTCFullYear();
+	     
+	     if(dia < 10){
+	         dia = "0"+dia;  
+	     }
+	     
+	     if(mes < 10){
+	         mes = "0"+mes;
+	     }
+	     
+	     var dataFinal = dia+"/"+mes+"/"+ano;
+	     
+	     $('#'+campo).val(dataFinal);
+		
+	}
+	
 	
 </script>
 </body>

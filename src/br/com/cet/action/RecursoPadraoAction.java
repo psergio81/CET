@@ -1,6 +1,8 @@
 package br.com.cet.action;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import br.com.cet.action.helper.ResultJsonHelper;
 import br.com.cet.business.Ensaio;
@@ -8,6 +10,7 @@ import br.com.cet.business.Pessoa;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
 import br.com.cet.vo.EmpresaVo;
+import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.GraficoVo;
 import br.com.cet.vo.UsuarioVo;
 
@@ -24,6 +27,7 @@ public class RecursoPadraoAction extends SystemAction{
 	private String quantidadeTacografos;
 	private String quantidadePessoas;
 	private String ultimosEnsaiosJson;
+	private List<EnsaioVo> listaEnsaio = new ArrayList<EnsaioVo>();
 	
 	protected UsuarioVo usuarioVo = new UsuarioVo();
 	protected EmpresaVo empresaVo = new EmpresaVo();
@@ -40,6 +44,10 @@ public class RecursoPadraoAction extends SystemAction{
 		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioVo.getCodigoEmpresa())));
 		setQuantidadeTacografos(String.valueOf(tacografo.getQuantidadeTacografo(usuarioVo.getCodigoEmpresa())));
 		setQuantidadePessoas(String.valueOf(pessoa.getQuantidadePessoas(usuarioVo.getCodigoEmpresa())));
+		
+		EnsaioVo ensaioVo = new EnsaioVo();
+		ensaioVo.setCodigoEmpresa(empresaVo.getCodigoEmpresa());
+		setListaEnsaio(ensaio.getListaEnsaiosPendente(ensaioVo ));
 		
 		HashMap<String, GraficoVo> teste = new HashMap<String, GraficoVo>();
 		GraficoVo graficoVo;
@@ -59,8 +67,8 @@ public class RecursoPadraoAction extends SystemAction{
 		ResultJsonHelper resultJsonHelper = new ResultJsonHelper(responseOrigem);
 		resultJsonHelper.jsonDo(teste);
 		String json = resultJsonHelper.getJson();
-		System.out.println("=+++++++++++++: "+json);
 		setUltimosEnsaiosJson(json);
+		
 		
 		super.prepare();
 	}
@@ -143,6 +151,14 @@ public class RecursoPadraoAction extends SystemAction{
 
 	public void setUltimosEnsaiosJson(String ultimosEnsaiosJson) {
 		this.ultimosEnsaiosJson = ultimosEnsaiosJson;
+	}
+
+	public List<EnsaioVo> getListaEnsaio() {
+		return listaEnsaio;
+	}
+
+	public void setListaEnsaio(List<EnsaioVo> listaEnsaio) {
+		this.listaEnsaio = listaEnsaio;
 	}
 
 }

@@ -13,7 +13,7 @@
 	<div class="navbar navbar-fixed-top">
 		
 		<es:menu mostrarNomePrograma="true" />
-		<es:botoesBrowse codigoPrograma="cad010"/>		
+		<es:botoesBrowse codigoPrograma="cad010" id_botao="botao_incluir"/>		
 		
 	</div>
 
@@ -137,6 +137,9 @@
 			
 			if(quantidadeEnsaiosRelatorio != '0' && quantidadeEnsaiosRelatorio != ''){
 				$('.resultado').show();
+			    $('#botao_incluir').show();
+			}else{
+			    $('#botao_incluir').hide();
 			}
 			
 			

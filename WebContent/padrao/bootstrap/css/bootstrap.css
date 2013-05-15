@@ -1720,7 +1720,6 @@ input.search-query {
 .form-search .input-append,
 .form-inline .input-append,
 .form-horizontal .input-append {
-  display: inline-block;
   *display: inline;
   margin-bottom: 0;
   vertical-align: middle;

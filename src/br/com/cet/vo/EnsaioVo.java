@@ -4,6 +4,7 @@ public class EnsaioVo extends EstruturaVo{
 	
 	private String codigoEnsaio;
 	private String data;
+	private String hora;
 	private String codigoProprietario;
 	private String nomeProprietario;
 	private String renavam;
@@ -15,6 +16,7 @@ public class EnsaioVo extends EstruturaVo{
 	private String gru;
 	private String classeCss;
 	private boolean cadastrado;
+	private String codigoTipoServico;
 	
 	
 
@@ -121,7 +123,21 @@ public class EnsaioVo extends EstruturaVo{
 	public void setCadastrado(boolean cadastrado) {
 		this.cadastrado = cadastrado;
 	}
-	
 
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+
+	public String getCodigoTipoServico() {
+		return codigoTipoServico;
+	}
+
+	public void setCodigoTipoServico(String codigoTipoServico) {
+		this.codigoTipoServico = codigoTipoServico;
+	}
 		
 }

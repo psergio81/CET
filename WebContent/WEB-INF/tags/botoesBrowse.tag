@@ -4,10 +4,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <%@ attribute name="codigoPrograma" required="true" %>
+<%@ attribute name="id_botao" required="false" %>
 
 	<div class="navbar-inner2">
 		<div style="display: table-cell; vertical-align: middle;">
-			<a class="btn btn-success" onclick="javaScript:irParaCrud('<c:out value="${codigoPrograma}" />');">
+			<a id="<c:out value="${id_botao}" />" class="btn btn-success" onclick="javaScript:irParaCrud('<c:out value="${codigoPrograma}" />');">
 					<i class="icon-plus icon-white icon">
 					</i><fmt:message key="label.padrao.incluir"/>
 			</a>
