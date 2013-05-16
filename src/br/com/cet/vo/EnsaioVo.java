@@ -4,7 +4,8 @@ public class EnsaioVo extends EstruturaVo{
 	
 	private String codigoEnsaio;
 	private String data;
-	private String hora;
+	private String horaInicio;
+	private String horaFim;
 	private String codigoProprietario;
 	private String nomeProprietario;
 	private String renavam;
@@ -124,12 +125,12 @@ public class EnsaioVo extends EstruturaVo{
 		this.cadastrado = cadastrado;
 	}
 
-	public String getHora() {
-		return hora;
+	public String getHoraInicio() {
+		return horaInicio;
 	}
 
-	public void setHora(String hora) {
-		this.hora = hora;
+	public void setHoraInicio(String horaInicio) {
+		this.horaInicio = horaInicio;
 	}
 
 	public String getCodigoTipoServico() {
@@ -138,6 +139,14 @@ public class EnsaioVo extends EstruturaVo{
 
 	public void setCodigoTipoServico(String codigoTipoServico) {
 		this.codigoTipoServico = codigoTipoServico;
+	}
+
+	public String getHoraFim() {
+		return horaFim;
+	}
+
+	public void setHoraFim(String horaFim) {
+		this.horaFim = horaFim;
 	}
 		
 }

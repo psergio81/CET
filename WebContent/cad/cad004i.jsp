@@ -37,11 +37,25 @@
 			         	<span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
    					</div>
 				</div>
+        		
+        		
         		<div class="control-group">
 					<label for="hora" class="control-label"><fmt:message key="label.padrao.hora.inicio"/></label>
    					<div class="controls input-append">
-			         	<s:textfield id="horaEnsaio" name="ensaioVo.hora" cssClass="span2"/>
-			         	<span class="add-on btn" id="horaAtual"><i class="icon-time"></i></span>
+			         	<s:textfield id="horaInicioEnsaio" name="ensaioVo.horaInicio" cssClass="span2"/>
+			         	<span class="add-on btn" onclick="javascript:setHoraAtual('horaInicioEnsaio')">
+			         	   <i class="icon-time"></i>
+			         	</span>
+   					</div>
+				</div>
+
+        		<div class="control-group">
+					<label for="hora" class="control-label"><fmt:message key="label.padrao.hora.fim"/></label>
+   					<div class="controls input-append">
+			         	<s:textfield id="horaFimEnsaio" name="ensaioVo.horaFim" cssClass="span2"/>
+			         	<span class="add-on btn" onclick="javascript:setHoraAtual('horaFimEnsaio')">
+			         	   <i class="icon-time"></i>
+			         	</span>
    					</div>
 				</div>
 
@@ -49,9 +63,9 @@
 		        	<label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
    					<div class="controls input-append">
 						<s:select name="ensaioVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" cssClass="span4"/>
-						<s:a action="Cad006Action!crud.action" title="Adicionar" cssClass="add-on btn"  target="_blank">
-							<i class="icon-plus" id="horaAtual"></i>
-						</s:a>
+						<span class="add-on btn" id="adicionaProprietario">
+                           <i class="icon-plus"></i>
+                        </span>
    					</div>
 				</div>
 		        
@@ -59,9 +73,9 @@
 		        	<label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
    					<div class="controls input-append">
 						<s:select name="ensaioVo.codigoVeiculo" list="listaVeiculo" listKey="codigoVeiculo" listValue="placa" emptyOption="true" cssClass="span4"/>
-						<s:a action="Cad005Action!crud.action" title="Adicionar"  cssClass="add-on btn">
-							<i class="icon-plus"></i>
-						</s:a>
+						<span class="add-on btn" id="adicionaVeiculo">
+                           <i class="icon-plus"></i>
+                        </span>
    					</div>
 				</div>
 
@@ -119,31 +133,37 @@
 		
 		$('#horaEnsaio').mask('99:99');
 		
-		$('#horaAtual').click(function(){
-			
-			var campoDesabilitado = $('#horaEnsaio').is(':disabled');
-			
-			if(campoDesabilitado){
-				return;
-			}
-			
-			var data = new Date();
-			var hora = data.getHours();
-			var minuto = data.getMinutes();
-			
-			if(minuto < 10){
-				minuto = "0"+minuto;
-			}
-			
-		    hora = hora+":"+minuto; 
-			$('#horaEnsaio').val(hora);
-		});
-
 		$('#dataAtual').click(function(){
 			
 			carregaData('dataEnsaio');
 			
 		});
+
+		$('#adicionaVeiculo').click(function(){
+			
+			var newForm = $('<form>', {
+	            'action': 'Cad005Action!crud.action',
+	            'method': 'Post',
+	            'target': '_blank'
+	        });
+	        
+	        newForm.submit();
+			
+		});
+
+		$('#adicionaProprietario').click(function(){
+			
+			var newForm = $('<form>', {
+	            'action': 'Cad006Action!crud.action',
+	            'method': 'Post',
+	            'target': '_blank'
+	        });
+	        
+	        newForm.submit();
+			
+		});
+		
+		
 		
 
 		
@@ -184,7 +204,7 @@
                 "ensaioVo.gru":{
                 	required:true
                 },
-                "ensaioVo.hora":{
+                "ensaioVo.horaInicio":{
                 	timeBR:true,
                 	required:true
                 }
@@ -203,7 +223,7 @@
                 "ensaioVo.gru":{
                 	required:"O campo GRU é obrigatório."
                 },
-                "ensaioVo.hora":{
+                "ensaioVo.horaInicio":{
                 	timeBR:"Informe uma hora válida",
                 	required:"O campo Hora é obrigatório."
                 }
@@ -335,6 +355,28 @@
 	     var dataFinal = dia+"/"+mes+"/"+ano;
 	     
 	     $('#'+campo).val(dataFinal);
+		
+	}
+	
+	function setHoraAtual(idCampo){
+		
+	            
+	    var campoDesabilitado = $('#'+idCampo).is(':disabled');
+	    
+	    if(campoDesabilitado){
+	        return;
+	    }
+	    
+	    var data = new Date();
+	    var hora = data.getHours();
+	    var minuto = data.getMinutes();
+	    
+	    if(minuto < 10){
+	        minuto = "0"+minuto;
+	    }
+	    
+	    hora = hora+":"+minuto; 
+	    $('#'+idCampo).val(hora);
 		
 	}
 	

@@ -166,7 +166,7 @@
                                         Data				                    
 				                    </th>
 				                    <th>
-                                        Hora				                    
+                                        Hora Inicio				                    
 				                    </th>
 				                </tr>
 		                        <s:iterator  value="listaEnsaio" status="status">
@@ -180,7 +180,7 @@
 		                                    <a><s:property value="data" /></a>
 		                                </td>
 		                                <td>
-		                                    <a><s:property value="hora" /></a>
+		                                    <a><s:property value="horaInicio" /></a>
 		                                </td>
 		                            </tr>
 		                        </s:iterator>

@@ -39,7 +39,7 @@ public class EnsaioDao extends BaseDao {
 	    	connection = getConnection();  
 	    	
 	    	
-		    qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora, tipo_servico, cd_usuario_criador FROM ensaio " );
+		    qry.append(	"SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora_inicio, hora_fim, tipo_servico, cd_usuario_criador FROM ensaio " );
 		    qry.append(	"where cd_ensaio = ? " );
 		    
 		    ps = connection.prepareStatement(qry.toString());  
@@ -58,7 +58,8 @@ public class EnsaioDao extends BaseDao {
 		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 		    	ensaioVo.setGru(rs.getString("gru"));
-		    	ensaioVo.setHora(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora")));
+		    	ensaioVo.setHoraInicio(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora_inicio")));
+		    	ensaioVo.setHoraFim(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora_fim")));
 		    	ensaioVo.setCodigoTipoServico(rs.getString("tipo_servico"));
 		    	ensaioVo.setCodigoUsuarioCriador(String.valueOf(rs.getInt("cd_usuario_criador")));
 		    	
@@ -179,7 +180,9 @@ public class EnsaioDao extends BaseDao {
 			
 			connection = getConnection();  
 			
-			qry.append("SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora, cd_usuario_criador FROM ensaio ");
+			qry.append(" SELECT rowid, cd_ensaio, data, cd_pessoa, cd_veiculo, gru, hora_inicio, hora_fim, cd_usuario_criador ");
+			qry.append(" FROM ensaio ");
+			qry.append(" WHERE hora_fim = 0 ");
 			
 			ps = connection.prepareStatement(qry.toString());
 			
@@ -193,7 +196,8 @@ public class EnsaioDao extends BaseDao {
 				ensaioVo.setRowid(rs.getString("rowid"));
 				ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
 				ensaioVo.setData(UtConverte.dateSqlTodataString(rs.getDate("data")));
-				ensaioVo.setHora(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora")));
+				ensaioVo.setHoraInicio(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora_inicio")));
+				ensaioVo.setHoraFim(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora_fim")));
 				ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 				ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 				ensaioVo.setGru(rs.getString("gru"));
@@ -227,7 +231,8 @@ public class EnsaioDao extends BaseDao {
 		    qry.append(" cd_ensaio, ");
 		    qry.append(" cd_empresa, ");
 		    qry.append(" data, ");
-		    qry.append(" hora, ");
+		    qry.append(" hora_inicio, ");
+		    qry.append(" hora_fim, ");
 		    qry.append(" cd_pessoa, ");
 		    qry.append(" cd_veiculo, ");
 		    qry.append(" gru, ");
@@ -242,7 +247,8 @@ public class EnsaioDao extends BaseDao {
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEmpresa()));
 		    ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
-		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
+		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraInicio()));
+		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraFim()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 		    ps.setString(i++, ensaioVo.getGru());
@@ -271,7 +277,8 @@ public class EnsaioDao extends BaseDao {
 			
 			qry.append(" UPDATE ensaio set ");
 			qry.append(" data = ?, ");
-			qry.append(" hora = ?, ");
+			qry.append(" hora_inicio = ?, ");
+			qry.append(" hora_fim = ?, ");
 			qry.append(" cd_pessoa = ?, ");
 			qry.append(" cd_veiculo = ?, ");
 			qry.append(" gru = ? ");
@@ -279,7 +286,8 @@ public class EnsaioDao extends BaseDao {
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
-			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
+			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraInicio()));
+			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraFim()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 			ps.setString(i++, ensaioVo.getGru());
