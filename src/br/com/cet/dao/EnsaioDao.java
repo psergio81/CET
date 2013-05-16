@@ -54,7 +54,7 @@ public class EnsaioDao extends BaseDao {
 		    	
 		    	ensaioVo.setRowid(rs.getString("rowid"));
 		    	ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
-		    	ensaioVo.setData(rs.getString("data"));
+		    	ensaioVo.setData(UtConverte.dateSqlTodataString(rs.getDate("data")));
 		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 		    	ensaioVo.setGru(rs.getString("gru"));
@@ -150,7 +150,7 @@ public class EnsaioDao extends BaseDao {
 		    	
 		    	ensaioVo.setRowid(rs.getString("rowid"));
 		    	ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
-		    	ensaioVo.setData(rs.getString("data"));
+		    	ensaioVo.setData(UtConverte.dateSqlTodataString(rs.getDate("data")));
 		    	ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 		    	ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
 		    	ensaioVo.setGru(rs.getString("gru"));
@@ -192,7 +192,7 @@ public class EnsaioDao extends BaseDao {
 				
 				ensaioVo.setRowid(rs.getString("rowid"));
 				ensaioVo.setCodigoEnsaio(UtString.formataNumeroZeroEsquerda(QUANTIDADE_ZEROS_CODIGO, UtConverte.stringToInteiro(rs.getString("cd_ensaio"))));
-				ensaioVo.setData(rs.getString("data"));
+				ensaioVo.setData(UtConverte.dateSqlTodataString(rs.getDate("data")));
 				ensaioVo.setHora(UtDataHora.segundosInteiroToStringHora(rs.getInt("hora")));
 				ensaioVo.setCodigoProprietario(String.valueOf(rs.getInt("cd_pessoa")));
 				ensaioVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
@@ -241,7 +241,7 @@ public class EnsaioDao extends BaseDao {
 		    ps.setString(i++, getNovaSimulacaoRowid());
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEmpresa()));
-		    ps.setString(i++, ensaioVo.getData());
+		    ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
 		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
@@ -278,7 +278,7 @@ public class EnsaioDao extends BaseDao {
 			qry.append(" WHERE cd_ensaio = ? ");
 			
 			ps = connection.prepareStatement(qry.toString());  
-			ps.setString(i++, ensaioVo.getData());
+			ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
 			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHora()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));

@@ -15,7 +15,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0002(false);
 		atualiza.a0003(false);
 		atualiza.a0004(false);
-		atualiza.a0005(false);
+		atualiza.a0005(true);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
@@ -124,11 +124,12 @@ public class Atualiza extends BaseAtualiza {
 		}
 		
 		String nomeTabela = "ensaio";
-
+		
+		executarComandoSql("drop table "+nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);	
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);		
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);	
-		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "data", 10, false);
+		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);

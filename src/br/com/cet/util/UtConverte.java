@@ -55,5 +55,22 @@ public class UtConverte extends UtString{
 		return dataSQL;
 		
 	}
+	
+	
+	public static String dateSqlTodataString(Date data){
+		
+		SimpleDateFormat formato;
+		String dataString = "";
+		
+		if(data == null){
+			return "";
+		}
+		
+		formato = new SimpleDateFormat("dd/MM/yyyy");  
+        dataString = formato.format(data);  
+        
+		return dataString;
+		
+	}
 
 }
