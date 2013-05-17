@@ -101,6 +101,11 @@ public class BaseAtualiza extends BaseDao {
 			
 			criarCampoDate(nomeBanco, nomeTabela, nomeCampo);
 			break;
+		
+		case BOOLEAN:
+			
+			criarCampoBoolean(nomeBanco, nomeTabela, nomeCampo);
+			break;
 
 		default:
 			break;
@@ -144,6 +149,22 @@ public class BaseAtualiza extends BaseDao {
 			connection = getConnection();
 			
 			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s DATE ;", nomeBanco,nomeTabela,nomeCampo);
+			
+			Statement statement = connection.createStatement();
+			statement.execute(qry);
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+	}
+
+	private void criarCampoBoolean(String nomeBanco, String nomeTabela, String nomeCampo) {
+		try {  
+			connection = getConnection();
+			
+			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s TINYINT NULL DEFAULT 0 ;", nomeBanco,nomeTabela,nomeCampo);
 			
 			Statement statement = connection.createStatement();
 			statement.execute(qry);

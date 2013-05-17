@@ -3,6 +3,7 @@ package br.com.cet.action;
 import java.util.Map;
 
 import br.com.cet.business.Empresa;
+import br.com.cet.business.ParametroUsuario;
 import br.com.cet.business.Usuario;
 import br.com.cet.util.UtString;
 import br.com.cet.vo.EmpresaVo;
@@ -32,6 +33,9 @@ public class LoginAction extends RecursoPadraoAction{
 			empresaVo = empresa.getEmpresaPeloCodigo(usuarioVo.getCodigoEmpresa());
 			
 			if(usuarioVo != null){
+				
+				ParametroUsuario parametroUsuario = new ParametroUsuario();
+				usuarioVo = parametroUsuario.getParametroUsuario(usuarioVo);
 				
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				

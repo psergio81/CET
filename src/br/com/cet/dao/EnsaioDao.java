@@ -332,4 +332,44 @@ public class EnsaioDao extends BaseDao {
 		
 		return listaEnsaios.size();
 	}
+
+	public EnsaioVo verificaGruCadastrada(EnsaioVo ensaioVo) {
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+		PreparedStatement ps = null;  
+		StringBuilder qry = new StringBuilder();
+		EnsaioVo ensaioVoRetorno = null;
+		
+		try {
+			
+			connection = getConnection();  
+			
+			qry.append(	" SELECT rowid " );
+			qry.append(	" from ensaio " );
+			qry.append(	" where gru = ? " );
+			
+			ps = connection.prepareStatement(qry.toString());
+			
+			int i = 1;
+			
+			ps.setString(i++, ensaioVo.getGru());
+			
+			rs = ps.executeQuery();  
+			
+			if (rs.next()) {  
+				ensaioVoRetorno = new EnsaioVo();
+				ensaioVoRetorno.setRowid(rs.getString("rowid"));
+			}
+			
+			ps = connection.prepareStatement(qry.toString());  
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+		
+		return ensaioVoRetorno;
+	}
 }

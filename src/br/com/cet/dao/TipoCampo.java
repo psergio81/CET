@@ -4,7 +4,8 @@ public enum TipoCampo {
 
 	INTEIRO(1),
 	VARCHAR(2),
-	DATA(3);
+	DATA(3),
+	BOOLEAN(4);
 
 	
 	private final int numero;

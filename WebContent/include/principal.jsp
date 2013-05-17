@@ -35,6 +35,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<input type="hidden" id="mensagemErro" name="mensagemErro" value="${mensagemErro}">
 <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>

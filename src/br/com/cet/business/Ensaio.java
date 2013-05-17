@@ -133,4 +133,12 @@ public class Ensaio {
 
 	}
 
+	public EnsaioVo verificaGruCadastrada(EnsaioVo ensaioVo) {
+		
+		EnsaioDao ensaioDao = new EnsaioDao();
+		
+		return ensaioDao.verificaGruCadastrada(ensaioVo);
+		
+	}
+
 }

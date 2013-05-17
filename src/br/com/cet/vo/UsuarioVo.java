@@ -1,6 +1,6 @@
 package br.com.cet.vo;
 
-public class UsuarioVo extends EstruturaVo{
+public class UsuarioVo extends ParametroUsuarioVo{
 
 	private String codigoUsuario;
 	private String nomeUsuario;
@@ -31,5 +31,4 @@ public class UsuarioVo extends EstruturaVo{
 	public void setNick(String nick) {
 		this.nick = nick;
 	}
-	
 }

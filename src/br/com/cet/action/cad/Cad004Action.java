@@ -52,8 +52,6 @@ public class Cad004Action extends RecursoPadraoAction {
 	
 	public String crud() throws Exception{
 		
-		System.out.println(ac);
-		
 		Pessoa pessoa = new Pessoa();
 		listaPessoa = new ArrayList<PessoaVo>();
 		listaPessoa = pessoa.getListaPessoa(null, false);
@@ -69,6 +67,15 @@ public class Cad004Action extends RecursoPadraoAction {
 			ensaioVo = ensaio.getEnsaioPeloCodigo(codigoEnsaioSelecionado);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
+			
+			EnsaioVo ensaioVoRetorno = ensaio.verificaGruCadastrada(ensaioVo);
+			
+			if(ensaioVoRetorno != null){
+				
+				setMensagemErro("Já existe um ensaio cadastrado com este número de GRU!");
+				
+				return SUCCESS;
+			}
 			
 			ensaioVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
 			ensaio.insertEnsaio(ensaioVo);

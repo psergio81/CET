@@ -47,9 +47,10 @@
 
 	</div>
 	
+	<input type="hidden" id="mostraAtalho" value="${usuarioVo.mostraAtalhosTelaInicial}"> 
+	<input type="hidden" id="mostraGrafico" value="${usuarioVo.mostraGraficoTelaInicial}"> 
 	
-
-    <div class="container-fluid" id="atalhos" style="display: none;">
+    <div class="container-fluid" id="atalhos">
                 <div class="widget">
                         <div class="widget-content" style="padding: 5px 5px 5px">
                             <div class="shortcuts">
@@ -131,9 +132,10 @@
 				</div>
 			</div>
 			
-			<div class="span4 widget-content" id="grafico" style="display: none;">
+			<div class="span4 widget-content" id="grafico">
                 <cet:grafico tituloDaSerie="Ensaios" tituloDoGrafico="Ensaios por Mês" /> 
             </div>
+            
 			<div class="span4 widget-content maximizarOrdemServicoPendente" style="height: 297px; overflow-y: scroll; font-size: 8px !important;" id="ordemServico">
 			     <table class="table table-condensed">
 			         <thead>
@@ -202,6 +204,29 @@
 </body>
 
 <script type="text/javascript">
+
+
+    $(document).ready(function(){
+    	
+    	var $mostraGrafico = $('#mostraGrafico').val();
+    	var $mostraAtalho = $('#mostraAtalho').val();
+    	
+    	
+    	if($mostraAtalho == 'true'){
+    		$('#atalhos').show();
+    	}else{
+    		$('#atalhos').hide();
+    	}
+    	if($mostraGrafico == 'true'){
+    		$('#grafico').show();
+    		$('#ordemServico').removeClass('maximizarOrdemServicoPendente');
+    	}else{
+    		$('#grafico').hide();
+    		$('#ordemServico').addClass('maximizarOrdemServicoPendente');
+    	}
+    	
+    });
+
 
     function irParaPrograma(action){
     	

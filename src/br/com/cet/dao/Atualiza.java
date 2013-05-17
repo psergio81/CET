@@ -15,13 +15,14 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0002(false);
 		atualiza.a0003(false);
 		atualiza.a0004(false);
-		atualiza.a0005(true);
+		atualiza.a0005(false);
 		atualiza.a0006(false);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
 		atualiza.a0009(false);
 		atualiza.a0010(false);
 		atualiza.a0011(false);
+		atualiza.a0012(true);
 		
 	}
 
@@ -256,6 +257,30 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "ip_log", 20, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "acao_log", 100, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "ds_log", 500, false);
+		
+	}
+
+	/**
+	 * Criar tabela parametro_usuario
+	 */
+	private void a0012(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "parametro_usuario";
+		
+		executarComandoSql("drop table "+nomeTabela);
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_usuario", 0, false);
+		criarCampo(TipoCampo.BOOLEAN, NOME_BANCO, nomeTabela, "ic_mostra_atalhos", 0, false);
+		criarCampo(TipoCampo.BOOLEAN, NOME_BANCO, nomeTabela, "ic_mostra_grafico", 0, false);
+		
+		executarComandoSql("Insert into parametro_usuario (cd_empresa, cd_usuario, ic_mostra_grafico, ic_mostra_atalhos) Values(1,1,1,1)");
+		
+		
 		
 	}
 }
