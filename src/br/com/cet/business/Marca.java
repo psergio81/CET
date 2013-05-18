@@ -40,7 +40,7 @@ public class Marca {
 		
 	}
 	
-	public void insertMarca(MarcaVo marcaVo) throws Exception{
+	public boolean insertMarca(MarcaVo marcaVo) throws Exception{
 		
 		try{
 			
@@ -53,7 +53,9 @@ public class Marca {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateMarca(MarcaVo marcaVo) throws Exception{

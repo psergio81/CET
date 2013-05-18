@@ -54,7 +54,7 @@ public class Cad005Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
-
+		boolean retorno;
 		Tacografo tacografo = new Tacografo();
 		TacografoVo tacografoVo = new TacografoVo();
 		veiculoVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
@@ -67,7 +67,13 @@ public class Cad005Action extends RecursoPadraoAction {
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			veiculo.insertVeiculo(veiculoVo);
+			retorno = veiculo.insertVeiculo(veiculoVo);
+			
+			if(retorno){
+				setMensagemErro("Veículo cadastrado com sucesso!");
+			}else{
+				setMensagemErro("Erro ao cadastrar veículo!");
+			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			

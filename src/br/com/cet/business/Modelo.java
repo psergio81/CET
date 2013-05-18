@@ -40,7 +40,7 @@ public class Modelo {
 		
 	}
 	
-	public void insertModelo(ModeloVo modeloVo) throws Exception{
+	public boolean insertModelo(ModeloVo modeloVo) throws Exception{
 		
 		try{
 			
@@ -53,7 +53,9 @@ public class Modelo {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateModelo(ModeloVo modeloVo) throws Exception{

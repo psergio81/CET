@@ -44,7 +44,7 @@ public class Veiculo {
 		
 	}
 	
-	public void insertVeiculo(VeiculoVo veiculoVo) throws Exception{
+	public boolean insertVeiculo(VeiculoVo veiculoVo) throws Exception{
 		
 		try{
 			
@@ -57,7 +57,9 @@ public class Veiculo {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateVeiculo(VeiculoVo veiculoVo) throws Exception{

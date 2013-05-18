@@ -46,6 +46,7 @@ public class Cad003Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
+		boolean retorno;
 		
 		modeloVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
 		
@@ -56,7 +57,13 @@ public class Cad003Action extends RecursoPadraoAction {
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			modelo.insertModelo(modeloVo);
+			retorno = modelo.insertModelo(modeloVo);
+			
+			if(retorno){
+				setMensagemErro("Modelo cadastrado com sucesso!");
+			}else{
+				setMensagemErro("Erro ao cadastrar modelo!");
+			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			

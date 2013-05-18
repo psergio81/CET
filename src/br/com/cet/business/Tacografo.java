@@ -62,7 +62,7 @@ public class Tacografo {
 		
 	}
 	
-	public void insertTacografo(TacografoVo tacografoVo) throws Exception{
+	public boolean insertTacografo(TacografoVo tacografoVo) throws Exception{
 		
 		try{
 			
@@ -75,7 +75,9 @@ public class Tacografo {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateTacografo(TacografoVo tacografoVo) throws Exception{

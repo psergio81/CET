@@ -62,7 +62,7 @@ public class Ensaio {
 		
 	}
 	
-	public void insertEnsaio(EnsaioVo ensaioVo) throws Exception{
+	public boolean insertEnsaio(EnsaioVo ensaioVo) throws Exception{
 		
 		try{
 			
@@ -75,7 +75,9 @@ public class Ensaio {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updateEnsaio(EnsaioVo ensaioVo) throws Exception{

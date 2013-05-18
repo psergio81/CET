@@ -44,7 +44,7 @@ public class Pessoa {
 		
 	}
 	
-	public void insertPessoa(PessoaVo pessoaVo) throws Exception{
+	public boolean insertPessoa(PessoaVo pessoaVo) throws Exception{
 		
 		try{
 			
@@ -57,7 +57,9 @@ public class Pessoa {
 			
 		}catch (Exception e) {
 			e.printStackTrace();
+			return false;
 		}
+		return true;
 	}
 	
 	public void updatePessoa(PessoaVo pessoaVo) throws Exception{

@@ -51,7 +51,7 @@ public class Cad004Action extends RecursoPadraoAction {
 	
 	
 	public String crud() throws Exception{
-		
+		boolean retorno;
 		Pessoa pessoa = new Pessoa();
 		listaPessoa = new ArrayList<PessoaVo>();
 		listaPessoa = pessoa.getListaPessoa(null, false);
@@ -78,7 +78,13 @@ public class Cad004Action extends RecursoPadraoAction {
 			}
 			
 			ensaioVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
-			ensaio.insertEnsaio(ensaioVo);
+			retorno = ensaio.insertEnsaio(ensaioVo);
+			
+			if(retorno){
+				setMensagemErro("Ensaio cadastrado com sucesso!");
+			}else{
+				setMensagemErro("Erro ao cadastrar ensaio!");
+			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
