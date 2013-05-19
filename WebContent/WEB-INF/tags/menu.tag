@@ -106,21 +106,23 @@
 						</ul>
 					</li>
 				</ul>
-
-				<ul class="nav">
-					<li class="dropdown">
-                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:atalhos()">
-                       	    Atalhos
-                       	</a>
-					</li>
-				</ul>
-				<ul class="nav">
-					<li class="dropdown">
-                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:grafico()">
-                       	    Gráfico
-                       	</a>
-					</li>
-				</ul>
+                
+                <c:if test="${mostrarNomePrograma == false}">
+					<ul class="nav">
+						<li class="dropdown">
+	                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:atalhos()">
+	                       	    Atalhos
+	                       	</a>
+						</li>
+					</ul>
+					<ul class="nav">
+						<li class="dropdown">
+	                       	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:grafico()">
+	                       	    Gráfico
+	                       	</a>
+						</li>
+					</ul>
+				</c:if>
 				<ul class="nav">
 					<li class="dropdown">
                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="javacript:sair()">

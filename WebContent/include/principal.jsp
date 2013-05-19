@@ -24,6 +24,7 @@
 
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap_new_icons.css">
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/jquery-ui-1.7.3.custom.css">
 <link rel="stylesheet" href="/CET/padrao/bootstrap/css/estilo.css">
 

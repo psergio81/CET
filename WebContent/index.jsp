@@ -51,43 +51,29 @@
 	<input type="hidden" id="mostraGrafico" value="${usuarioVo.mostraGraficoTelaInicial}"> 
 	
     <div class="container-fluid" id="atalhos">
-                <div class="widget">
-                        <div class="widget-content" style="padding: 5px 5px 5px">
-                            <div class="shortcuts">
-                                <a href="javascript:irParaPrograma('Cad004');" class="shortcut">
-                                    <i class="shortcut-icon icon-list-alt"></i> <span
-                                    class="shortcut-label">Ensaio</span>
-                                </a> <a href="javascript:irParaPrograma('Cad001');" class="shortcut">
-                                    <i class="shortcut-icon icon-bookmark"></i> <span
-                                    class="shortcut-label">Empresa</span>
-                                </a> <a href="javascript:irParaPrograma('Cad005');" class="shortcut">
-                                    <i class="shortcut-icon icon-signal"></i> <span
-                                    class="shortcut-label">Veículo</span>
-                                </a> <a href="javascript:irParaPrograma('Cad002');" class="shortcut">
-                                    <i class="shortcut-icon icon-signal"></i> <span
-                                    class="shortcut-label">Marca</span>
-                                </a> <a href="javascript:irParaPrograma('Cad003');" class="shortcut">
-                                    <i class="shortcut-icon icon-signal"></i> <span
-                                    class="shortcut-label">Modelo</span>
-                                </a> <a href="javascript:irParaPrograma('Cad007');" class="shortcut">
-                                    <i class="shortcut-icon icon-comment"></i> <span
-                                    class="shortcut-label">Tacógrafo</span>
-                                </a> <a href="javascript:irParaPrograma('Cad006');" class="shortcut">
-                                    <i class="shortcut-icon icon-user"></i> <span
-                                    class="shortcut-label">Pessoa</span>
-                                </a> <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
-                                    <i class="shortcut-icon icon-file"></i> <span
-                                    class="shortcut-label">Relatório</span>
-                                </a>
-                                <a href="javascript:irParaRelatorio('Rel001');" class="shortcut">
-                                    <i class="shortcut-icon icon-file"></i> <span
-                                    class="shortcut-label">Relatório</span>
-                                </a>
-                                <a href="javascript:irParaPrograma('Cad010');" class="shortcut">
-                                    <i class="shortcut-icon icon-upload"></i> <span
-                                    class="shortcut-label">Upload</span>
-                                </a>
-                            </div>
+        <div class="widget">
+            <div class="widget-content" style="padding: 5px 5px 5px">
+                <div class="shortcuts">
+                    
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad004" label="Ensaio" nomeIcone="icon-list-alt"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad001" label="Empresa" nomeIcone="icon-briefcase"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad005" label="Veículo" nomeIcone="icon-veiculo"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad002" label="Marca" nomeIcone="icon-tasks"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad003" label="Modelo" nomeIcone="icon-tasks"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad007" label="Tacógrafo" nomeIcone="icon-time"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad006" label="Pessoa" nomeIcone="icon-user"/>
+
+                    <cet:botao_atalho funcao="irParaRelatorio" codigoPrograma="Rel001" label="Relatório" nomeIcone="icon-file"/>
+
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad010" label="Upload" nomeIcone="icon-upload"/>
+                    
+                </div>
             </div>
         </div>
     </div>
