@@ -6,6 +6,7 @@ import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Pessoa;
+import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.PessoaVo;
 import br.com.cet.vo.UsuarioVo;
 
@@ -25,6 +26,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		setNomePrograma(ProgramasKey.CADASTRO_DE_PESSOAS);
 		
 		usuarioVo = (UsuarioVo) session.get("usuarioVo");
+		empresaVo = (EmpresaVo) session.get("empresaVo");
 		
 		if(usuarioVo != null){
 			setUsuarioLogado(usuarioVo.getNomeUsuario());

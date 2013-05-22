@@ -22,7 +22,9 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0009(false);
 		atualiza.a0010(false);
 		atualiza.a0011(false);
-		atualiza.a0012(true);
+		atualiza.a0012(false);
+		atualiza.a0013(true);
+		
 		
 	}
 
@@ -281,6 +283,29 @@ public class Atualiza extends BaseAtualiza {
 		executarComandoSql("Insert into parametro_usuario (cd_empresa, cd_usuario, ic_mostra_grafico, ic_mostra_atalhos) Values(1,1,1,1)");
 		
 		
+		
+	}
+
+	/**
+	 * Criar tabela Agendamento
+	 */
+	private void a0013(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "agendamento";
+		
+		excluirTabela(NOME_BANCO, nomeTabela);
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_agendamento", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_servico", 0, false);
+		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
 		
 	}
 }

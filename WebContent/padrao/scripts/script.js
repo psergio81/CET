@@ -82,6 +82,61 @@ function formataZero(numero, tamanho){
 	return numero;
 }
 
+
+function setDataAtual(campo){
+	
+	var campoDesabilitado = $('#'+campo).is(':disabled');
+    
+    if(campoDesabilitado){
+        return;
+    }
+	
+     var data = new Date();
+     var dia = data.getDate();
+     var mes = data.getUTCMonth()+1;
+     var ano = data.getUTCFullYear();
+     
+     if(dia < 10){
+         dia = "0"+dia;  
+     }
+     
+     if(mes < 10){
+         mes = "0"+mes;
+     }
+     
+     var dataFinal = dia+"/"+mes+"/"+ano;
+     
+     $('#'+campo).val(dataFinal);
+	
+}
+
+function setHoraAtual(idCampo){
+	
+    
+    var campoDesabilitado = $('#'+idCampo).is(':disabled');
+    
+    if(campoDesabilitado){
+        return;
+    }
+    
+    var data = new Date();
+    var hora = data.getHours();
+    var minuto = data.getMinutes();
+    
+    if(hora < 10){
+        hora = "0"+hora;
+    }
+    if(minuto < 10){
+        minuto = "0"+minuto;
+    }
+    
+    hora = hora+":"+minuto; 
+    $('#'+idCampo).val(hora);
+	
+}
+
+
+
 $(document).ready(function(){
 	
 	
@@ -263,6 +318,8 @@ jQuery.validator.addMethod("cnpj", function(cnpj, element) {
    }
 }, "Informe um CNPJ válido."); 
  
+
+
 
 
 

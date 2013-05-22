@@ -135,7 +135,7 @@
 		
 		$('#dataAtual').click(function(){
 			
-			carregaData('dataEnsaio');
+			setDataAtual('dataEnsaio');
 			
 		});
 
@@ -162,15 +162,12 @@
 	        newForm.submit();
 			
 		});
-		
-		
-		
 
 		
 		if(acao == 'excluir'){
 			irParaBrowser('cad004');
 		}else if(acao == 'incluir'){
-			carregaData('dataEnsaio');
+			setDataAtual('dataEnsaio');
 		}
 		
 		$('#divErros').css('display','none');
@@ -328,60 +325,6 @@
 		$('#cad004').submit();
 		
 	}
-	
-	
-	function carregaData(campo){
-		
-		var campoDesabilitado = $('#'+campo).is(':disabled');
-        
-        if(campoDesabilitado){
-            return;
-        }
-		
-	     var data = new Date();
-	     var dia = data.getDate();
-	     var mes = data.getUTCMonth()+1;
-	     var ano = data.getUTCFullYear();
-	     
-	     if(dia < 10){
-	         dia = "0"+dia;  
-	     }
-	     
-	     if(mes < 10){
-	         mes = "0"+mes;
-	     }
-	     
-	     var dataFinal = dia+"/"+mes+"/"+ano;
-	     
-	     $('#'+campo).val(dataFinal);
-		
-	}
-	
-	function setHoraAtual(idCampo){
-		
-	            
-	    var campoDesabilitado = $('#'+idCampo).is(':disabled');
-	    
-	    if(campoDesabilitado){
-	        return;
-	    }
-	    
-	    var data = new Date();
-	    var hora = data.getHours();
-	    var minuto = data.getMinutes();
-	    
-	    if(hora < 10){
-	        hora = "0"+hora;
-	    }
-	    if(minuto < 10){
-	        minuto = "0"+minuto;
-	    }
-	    
-	    hora = hora+":"+minuto; 
-	    $('#'+idCampo).val(hora);
-		
-	}
-	
 	
 </script>
 </body>

@@ -17,6 +17,7 @@ public class BaseAtualiza extends BaseDao {
 	private static final String NOME_DO_BANCO = "Nome do Banco";
 	private static final String CRIANDO_SCHEMA = "Criando Schema";
 	private static final String CRIANDO_TABELA = "Criando Tabela";
+	private static final String EXCLINDO_TABELA = "Excluindo Tabela";
 	private static final String CRIANDO_CAMPO = "Criando Campo";
 	private Connection connection;
 	private ResultSet rs;
@@ -59,6 +60,23 @@ public class BaseAtualiza extends BaseDao {
 	    }finally {
 	    	releaseResouces(connection, ps, rs);
 	    } 
+	}
+
+	public void excluirTabela(String nomeBanco, String nomeTabela) {
+		printLog(EXCLINDO_TABELA, nomeBanco, nomeTabela);
+		try {  
+			connection = getConnection();
+			
+			qry = String.format("DROP TABLE IF EXISTS %s.%s;", nomeBanco,nomeTabela);
+			
+			Statement statement = connection.createStatement();
+			statement.execute(qry);
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
 	}
 
 	public void criarSchema(String nomeBanco) {

@@ -56,6 +56,8 @@
                 <div class="shortcuts">
                     
                     <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad004" label="Ensaio" nomeIcone="icon-list-alt"/>
+                    
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad011" label="Agendamento" nomeIcone="icon-calendar"/>
 
                     <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad001" label="Empresa" nomeIcone="icon-briefcase"/>
 
