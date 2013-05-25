@@ -19,7 +19,7 @@
 </path>
 
 <target name="compile" depends="init" >
-  <javac destdir="build/classes" debug="true" srcdir="src">
+  <javac destdir="build/classes" debug="true" srcdir="src" encoding="iso-8859-1">
     <classpath refid="compile.classpath"/>
   </javac>
   <!-- Adds the xml config files to the build-->
