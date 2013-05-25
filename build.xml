@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="cet" default="build">
+
+<target name="clean">
+  <delete dir="build" />
+  <delete dir="target" />
+</target>
+
+<target name="init">
+  <mkdir dir="build/classes"/>
+  <mkdir dir="target" />
+</target>
+
+<path id="compile.classpath">
+  <!-- Adds provided dependancies -->
+  <fileset dir="lib">
+    <include name="*.jar"/>
+  </fileset>
+  <!-- Adds external dependancies -->
+  <fileset dir="WebContent/WEB-INF/lib">
+    <include name="*.jar"/>
+  </fileset>
+</path>
+
+<target name="compile" depends="init" >
+  <javac destdir="build/classes" debug="true" srcdir="src">
+    <classpath refid="compile.classpath"/>
+  </javac>
+  <!-- Adds the xml config files to the build-->
+  <copy todir="build/classes">
+    <fileset dir="src" includes="**/*.xml"/>
+  </copy>
+</target>
+
+<target name="test" depends="compile">
+  <junit printsummary="yes" haltonfailure="yes">
+    <classpath>
+      <pathelement location="build/classes"/>
+      <path refid="compile.classpath"/>
+    </classpath>
+    <test name="test.ItemTest" haltonfailure="no" outfile="result" />
+  </junit>
+</target>
+
+<target name="build" depends="test">
+  <war destfile="target/cet.war" webxml="WebContent/WEB-INF/web.xml">
+    <fileset dir="WebContent"/>
+    <lib dir="WebContent/WEB-INF/lib"/>
+    <classes dir="build/classes"/>
+  </war>
+</target>
+</project>
