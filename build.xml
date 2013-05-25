@@ -28,17 +28,7 @@
   </copy>
 </target>
 
-<target name="test" depends="compile">
-  <junit printsummary="yes" haltonfailure="yes">
-    <classpath>
-      <pathelement location="build/classes"/>
-      <path refid="compile.classpath"/>
-    </classpath>
-    <test name="test.ItemTest" haltonfailure="no" outfile="result" />
-  </junit>
-</target>
-
-<target name="build" depends="test">
+<target name="build">
   <war destfile="target/cet.war" webxml="WebContent/WEB-INF/web.xml">
     <fileset dir="WebContent"/>
     <lib dir="WebContent/WEB-INF/lib"/>
