@@ -6,9 +6,7 @@ import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Pessoa;
-import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.PessoaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad006Action extends RecursoPadraoAction {
 
@@ -23,14 +21,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_PESSOAS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		empresaVo = (EmpresaVo) session.get("empresaVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_PESSOAS, ProgramasKey.CADASTRO_DE_PESSOAS);
 		
 	}
 	
@@ -49,7 +40,7 @@ public class Cad006Action extends RecursoPadraoAction {
 	public String crud() throws Exception{
 		boolean retorno;
 		
-		pessoaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		pessoaVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
@@ -61,13 +52,16 @@ public class Cad006Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Pessoa cadastrada com sucesso!");
+				gravaLog("Log de Inserção Pessoa");
 			}else{
 				setMensagemErro("Erro ao cadastrar Pessoa!");
 			}
 			
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
+			
 			pessoa.updatePessoa(pessoaVo);
+			gravaLog("Log de Alteração Pessoa");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -76,6 +70,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			pessoa.deletePessoa(pessoaVo);
+			gravaLog("Log de Deleção Pessoa");
 			
 		}
 		

@@ -3,11 +3,8 @@ package br.com.cet.action.cad;
 import java.util.List;
 
 import br.com.cet.action.RecursoPadraoAction;
-import br.com.cet.action.key.AcoesKey;
-import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Rel001Action extends RecursoPadraoAction{
 	
@@ -21,46 +18,39 @@ public class Rel001Action extends RecursoPadraoAction{
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		empresaVo = (EmpresaVo) session.get("empresaVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		//setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_AGENDAMENTOS, ProgramasKey.CADASTRO_DE_AGENDAMENTOS);		
 	}
 	
 	public String crud() throws Exception{
 
-		boolean retorno;
-		
-		
-		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
-			
-			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
-			
-		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
-			
-			retorno = empresa.insertEmpresa(empresaVo);
-			if(retorno){
-				setMensagemErro("Empresa cadastrada com sucesso!");
-			}else{
-				setMensagemErro("Erro ao cadastrar a empresa!");
-			}
-			
-		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
-			
-			empresa.updateEmpresa(empresaVo);
-			
-		}else if(AcoesKey.ACAO_EXCLUIR.equals(ac)){
-			
-			empresa.deleteEmpresa(empresaVo);
-			
-		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
-			return "principal";
-		}
-		
+//		boolean retorno;
+//		
+//		
+//		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
+//			
+//			empresaVo = empresa.getEmpresaPeloCodigo(codigoEmpresaSelecionado);
+//			
+//		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
+//			
+//			retorno = empresa.insertEmpresa(empresaVo);
+//			if(retorno){
+//				setMensagemErro("Empresa cadastrada com sucesso!");
+//			}else{
+//				setMensagemErro("Erro ao cadastrar a empresa!");
+//			}
+//			
+//		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
+//			
+//			empresa.updateEmpresa(empresaVo);
+//			
+//		}else if(AcoesKey.ACAO_EXCLUIR.equals(ac)){
+//			
+//			empresa.deleteEmpresa(empresaVo);
+//			
+//		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
+//			return "principal";
+//		}
+//		
 		return SUCCESS;
 	}
 	
@@ -68,13 +58,6 @@ public class Rel001Action extends RecursoPadraoAction{
 		return "principal";
 	} 
 
-	public EmpresaVo getEmpresaVo() {
-		return empresaVo;
-	}
-
-	public void setEmpresaVo(EmpresaVo empresaVo) {
-		this.empresaVo = empresaVo;
-	}
 
 	public List<EmpresaVo> getListaEmpresa() {
 		return listaEmpresa;

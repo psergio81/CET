@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Empresa;
 import br.com.cet.vo.EmpresaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad001Action extends RecursoPadraoAction{
 	
@@ -16,19 +15,13 @@ public class Cad001Action extends RecursoPadraoAction{
 	private String codigoEmpresaSelecionado;
 	private String campoBusca;
 	private boolean filtrar;
+	private EmpresaVo empresaVo = new EmpresaVo();
 	
 	public void prepare() throws Exception{
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_EMPRESAS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		empresaVo = (EmpresaVo) session.get("empresaVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_EMPRESAS, ProgramasKey.CADASTRO_DE_EMPRESAS);
 		
 	}
 	

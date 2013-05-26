@@ -13,6 +13,9 @@ import com.opensymphony.xwork2.ActionContext;
 
 public class LoginAction extends RecursoPadraoAction{
 	
+	private UsuarioVo usuarioVo = new UsuarioVo();
+	private EmpresaVo empresaVo = new EmpresaVo();
+	
 	public void prepare() throws Exception{
 		super.prepare();
 	}
@@ -39,8 +42,8 @@ public class LoginAction extends RecursoPadraoAction{
 				
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				
-				session.put("usuarioVo", usuarioVo);  
-				session.put("empresaVo", empresaVo);  
+				session.put("usuarioLogadoVo", usuarioVo);  
+				session.put("empresaLogadoVo", empresaVo);  
 				
 				return SUCCESS;
 			}

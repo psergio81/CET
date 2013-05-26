@@ -9,10 +9,8 @@ import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Ensaio;
 import br.com.cet.business.Pessoa;
 import br.com.cet.business.Veiculo;
-import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.PessoaVo;
-import br.com.cet.vo.UsuarioVo;
 import br.com.cet.vo.VeiculoVo;
 
 public class Cad004Action extends RecursoPadraoAction {
@@ -29,20 +27,13 @@ public class Cad004Action extends RecursoPadraoAction {
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_ENSAIOS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		empresaVo = (EmpresaVo) session.get("empresaVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_ENSAIOS, ProgramasKey.CADASTRO_DE_ENSAIOS);
 		
 	}
 	
 	public String browser() throws Exception{
 		
-		ensaioVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		ensaioVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		listaEnsaio = ensaio.getListaEnsaio(ensaioVo, filtrar);
 		
 		return "browser";
@@ -60,7 +51,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		listaVeiculo = new ArrayList<VeiculoVo>();
 		listaVeiculo = veiculo.getListaVeiculo(null, false);
 		
-		ensaioVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		ensaioVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
@@ -77,11 +68,12 @@ public class Cad004Action extends RecursoPadraoAction {
 				return SUCCESS;
 			}
 			
-			ensaioVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
+			ensaioVo.setCodigoUsuarioCriador(usuarioLogadoVo.getCodigoUsuario());
 			retorno = ensaio.insertEnsaio(ensaioVo);
 			
 			if(retorno){
 				setMensagemErro("Ensaio cadastrado com sucesso!");
+				gravaLog("Log de Inserção de Ensaio");
 			}else{
 				setMensagemErro("Erro ao cadastrar ensaio!");
 			}
@@ -89,6 +81,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			ensaio.updateEnsaio(ensaioVo);
+			gravaLog("Log de Alteração de Ensaio");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -97,6 +90,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			ensaio.deleteEnsaio(ensaioVo);
+			gravaLog("Log de Deleção de Ensaio");
 			
 		}
 		

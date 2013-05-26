@@ -12,7 +12,6 @@ import br.com.cet.business.Tacografo;
 import br.com.cet.vo.MarcaVo;
 import br.com.cet.vo.ModeloVo;
 import br.com.cet.vo.TacografoVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad007Action extends RecursoPadraoAction {
 
@@ -29,13 +28,7 @@ public class Cad007Action extends RecursoPadraoAction {
 	public void prepare() throws Exception{
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_TACOGRAFOS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_TACOGRAFOS, ProgramasKey.CADASTRO_DE_TACOGRAFOS);
 		
 	}
 	
@@ -53,7 +46,7 @@ public class Cad007Action extends RecursoPadraoAction {
 		
 		boolean retorno;
 		MarcaVo marcaVo = new MarcaVo();
-		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		marcaVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		Marca marca = new Marca();
 		listaMarca = new ArrayList<MarcaVo>();
@@ -63,7 +56,7 @@ public class Cad007Action extends RecursoPadraoAction {
 		setListaModelo(new ArrayList<ModeloVo>());
 		setListaModelo(modelo.getListaModelo(null, false));
 		
-		tacografoVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		tacografoVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
@@ -71,11 +64,12 @@ public class Cad007Action extends RecursoPadraoAction {
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			tacografoVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
+			tacografoVo.setCodigoUsuarioCriador(usuarioLogadoVo.getCodigoUsuario());
 			retorno = tacografo.insertTacografo(tacografoVo);
 			
 			if(retorno){
 				setMensagemErro("Tacógrafo cadastrado com sucesso!");
+				gravaLog("Log de Inserção Tacografo");
 			}else{
 				setMensagemErro("Erro ao cadastrar tacógrafo!");
 			}
@@ -83,6 +77,7 @@ public class Cad007Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			tacografo.updateTacografo(tacografoVo);
+			gravaLog("Log de Alteração Tacografo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -91,6 +86,7 @@ public class Cad007Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			tacografo.deleteTacografo(tacografoVo);
+			gravaLog("Log de Deleção Tacografo");
 			
 		}else if(AcoesKey.ACAO_ASSOCIAR.equals(ac)){
 			

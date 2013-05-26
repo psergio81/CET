@@ -22,13 +22,7 @@ public class Cad011Action extends RecursoPadraoAction {
 
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_AGENDAMENTOS);
-		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_AGENDAMENTOS, ProgramasKey.CADASTRO_DE_AGENDAMENTOS);
 		
 	}
 	
@@ -53,10 +47,12 @@ public class Cad011Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			programa.insertPrograma(programaVo);
+			gravaLog("Log de Inserção Agendamento");
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			programa.updatePrograma(programaVo);
+			gravaLog("Log de Alteração Agendamento");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -65,6 +61,7 @@ public class Cad011Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			programa.deletePrograma(programaVo);
+			gravaLog("Log de Deleção Agendamento");
 			
 		}
 		

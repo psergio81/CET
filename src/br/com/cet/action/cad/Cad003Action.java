@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Modelo;
 import br.com.cet.vo.ModeloVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad003Action extends RecursoPadraoAction {
 
@@ -22,19 +21,13 @@ public class Cad003Action extends RecursoPadraoAction {
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_MODELOS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_MODELOS, ProgramasKey.CADASTRO_DE_MODELOS);
 		
 	}
 	
 	public String browser() throws Exception{
 		
-		modeloVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		modeloVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		modeloVo.setDescricao(campoBusca);
 		
@@ -48,7 +41,7 @@ public class Cad003Action extends RecursoPadraoAction {
 	public String crud() throws Exception{
 		boolean retorno;
 		
-		modeloVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		modeloVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 			
@@ -61,6 +54,7 @@ public class Cad003Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Modelo cadastrado com sucesso!");
+				gravaLog("Log de Inserção de Modelo");
 			}else{
 				setMensagemErro("Erro ao cadastrar modelo!");
 			}
@@ -68,6 +62,7 @@ public class Cad003Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			modelo.updateModelo(modeloVo);
+			gravaLog("Log de Alteração de Modelo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -76,6 +71,7 @@ public class Cad003Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			modelo.deleteModelo(modeloVo);
+			gravaLog("Log de Deleção de Modelo");
 			
 		}
 		

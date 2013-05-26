@@ -67,7 +67,7 @@
 	  </div>
 	</div>
 
-	<es:rodape descricao="${usuarioLogado}"/>
+	<es:rodape descricao="${usuarioLogadoVo.nomeUsuario}"/>
 
 <script type="text/javascript">
 

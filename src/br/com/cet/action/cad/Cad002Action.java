@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Marca;
 import br.com.cet.vo.MarcaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad002Action extends RecursoPadraoAction {
 
@@ -22,19 +21,13 @@ public class Cad002Action extends RecursoPadraoAction {
 
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_MARCAS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_MARCAS, ProgramasKey.CADASTRO_DE_MARCAS);
 		
 	}
 	
 	public String browser() throws Exception{
 		
-		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		marcaVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		marcaVo.setDescricao(campoBusca);
 		
@@ -48,7 +41,7 @@ public class Cad002Action extends RecursoPadraoAction {
 	public String crud() throws Exception{
 		boolean retorno;
 		
-		marcaVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		marcaVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 			marcaVo.setCodigoMarca(codigoMarcaSelecionado);
@@ -61,6 +54,7 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Marca cadastrada com sucesso!");
+				gravaLog("Log de Inserção de Marca");
 			}else{
 				setMensagemErro("Erro ao cadastrar marca!");
 			}
@@ -69,6 +63,8 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 			marca.updateMarca(marcaVo);
 			
+			gravaLog("Log de Alteração de Marca");
+			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
 			return "principal";
@@ -76,6 +72,8 @@ public class Cad002Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			marca.deleteMarca(marcaVo);
+			
+			gravaLog("Log de Deleção de Marca");
 			
 		}
 		

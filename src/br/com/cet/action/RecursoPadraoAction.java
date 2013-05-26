@@ -30,8 +30,8 @@ public class RecursoPadraoAction extends SystemAction{
 	private String ultimosEnsaiosJson;
 	private List<EnsaioVo> listaEnsaio = new ArrayList<EnsaioVo>();
 	
-	protected UsuarioVo usuarioVo = new UsuarioVo();
-	protected EmpresaVo empresaVo = new EmpresaVo();
+//	protected UsuarioVo usuarioVo = new UsuarioVo();
+//	protected EmpresaVo empresaVo = new EmpresaVo();
 
 	
 	public void prepare() throws Exception {
@@ -41,13 +41,13 @@ public class RecursoPadraoAction extends SystemAction{
 		Tacografo tacografo = new Tacografo();
 		Pessoa pessoa = new Pessoa();
 		
-		setQuantidadeEnsaios(String.valueOf(ensaio.getQuantidadeEnsaios(usuarioVo.getCodigoEmpresa())));
-		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioVo.getCodigoEmpresa())));
-		setQuantidadeTacografos(String.valueOf(tacografo.getQuantidadeTacografo(usuarioVo.getCodigoEmpresa())));
-		setQuantidadePessoas(String.valueOf(pessoa.getQuantidadePessoas(usuarioVo.getCodigoEmpresa())));
+		setQuantidadeEnsaios(String.valueOf(ensaio.getQuantidadeEnsaios(usuarioLogadoVo.getCodigoEmpresa())));
+		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioLogadoVo.getCodigoEmpresa())));
+		setQuantidadeTacografos(String.valueOf(tacografo.getQuantidadeTacografo(usuarioLogadoVo.getCodigoEmpresa())));
+		setQuantidadePessoas(String.valueOf(pessoa.getQuantidadePessoas(usuarioLogadoVo.getCodigoEmpresa())));
 		
 		EnsaioVo ensaioVo = new EnsaioVo();
-		ensaioVo.setCodigoEmpresa(empresaVo.getCodigoEmpresa());
+		ensaioVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		setListaEnsaio(ensaio.getListaEnsaiosPendente(ensaioVo ));
 		
 		HashMap<String, GraficoVo> teste = new HashMap<String, GraficoVo>();
@@ -74,9 +74,14 @@ public class RecursoPadraoAction extends SystemAction{
 		super.prepare();
 	}
 	
+	public void setPrograma(String codigoPrograma, String nomePrograma){
+		this.codigoPrograma = codigoPrograma;
+		this.nomePrograma   = nomePrograma;
+	}
+	
 	public void gravaLog(String descricao){
-		//log.salvarLog(ac, descricao, codigoPrograma);
-		log.salvarLog(ac, descricao, "1");
+		log.salvarLog(ac, descricao, codigoPrograma);
+		//log.salvarLog(ac, descricao, "1");
 	}
 	
 	public String getUsuarioLogado() {

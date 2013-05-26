@@ -22,13 +22,8 @@ public class Cad009Action extends RecursoPadraoAction {
 
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_PROGRAMAS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_PROGRAMAS, ProgramasKey.CADASTRO_DE_PROGRAMAS);
 		
 	}
 	
@@ -54,9 +49,13 @@ public class Cad009Action extends RecursoPadraoAction {
 			
 			programa.insertPrograma(programaVo);
 			
+			gravaLog("Log de Inserção Programa");
+			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			programa.updatePrograma(programaVo);
+			
+			gravaLog("Log de Alteração Programa");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -65,6 +64,7 @@ public class Cad009Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			programa.deletePrograma(programaVo);
+			gravaLog("Log de Deleção Programa");
 			
 		}
 		

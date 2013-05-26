@@ -12,7 +12,6 @@ import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
 import br.com.cet.business.VeiculoTacografo;
 import br.com.cet.vo.TacografoVo;
-import br.com.cet.vo.UsuarioVo;
 import br.com.cet.vo.VeiculoTacografoVo;
 import br.com.cet.vo.VeiculoVo;
 
@@ -31,13 +30,8 @@ public class Cad005Action extends RecursoPadraoAction {
 	
 	public void prepare() throws Exception{
 		super.prepare();
-		setNomePrograma(ProgramasKey.CADASTRO_DE_VEICULOS);
 		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_VEICULOS, ProgramasKey.CADASTRO_DE_VEICULOS);
 		
 	}
 	
@@ -57,7 +51,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		boolean retorno;
 		Tacografo tacografo = new Tacografo();
 		TacografoVo tacografoVo = new TacografoVo();
-		veiculoVo.setCodigoEmpresa(usuarioVo.getCodigoEmpresa());
+		veiculoVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
 		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
 		
@@ -71,6 +65,7 @@ public class Cad005Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Veículo cadastrado com sucesso!");
+				gravaLog("Log de Inserção de Veiculos");
 			}else{
 				setMensagemErro("Erro ao cadastrar veículo!");
 			}
@@ -78,6 +73,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			veiculo.updateVeiculo(veiculoVo);
+			gravaLog("Log de Alteração Veiculo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -86,6 +82,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			veiculo.deleteVeiculo(veiculoVo);
+			gravaLog("Log de Deleção Veiculo");
 			
 		}
 		

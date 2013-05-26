@@ -9,7 +9,6 @@ import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Upload;
 import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.RelatorioEnsaioVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad010Action extends RecursoPadraoAction {
 
@@ -24,13 +23,7 @@ public class Cad010Action extends RecursoPadraoAction {
 
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.UPLOAD_ARQUIVOS);
-		
-		UsuarioVo usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_UPLOAD_ARQUIVOS, ProgramasKey.UPLOAD_ARQUIVOS);
 		
 	}
 	

@@ -23,13 +23,7 @@ public class Cad008Action extends RecursoPadraoAction {
 		
 		super.prepare();
 		
-		setNomePrograma(ProgramasKey.CADASTRO_DE_USUARIOS);
-		
-		usuarioVo = (UsuarioVo) session.get("usuarioVo");
-		
-		if(usuarioVo != null){
-			setUsuarioLogado(usuarioVo.getNomeUsuario());
-		}
+		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_USUARIOS, ProgramasKey.CADASTRO_DE_USUARIOS);
 		
 	}
 	
@@ -56,11 +50,12 @@ public class Cad008Action extends RecursoPadraoAction {
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			usuarioDadosVo.setCodigoUsuarioCriador(usuarioVo.getCodigoUsuario());
+			usuarioDadosVo.setCodigoUsuarioCriador(usuarioLogadoVo.getCodigoUsuario());
 			retorno = usuario.insertUsuario(usuarioDadosVo);
 			
 			if(retorno){
 				setMensagemErro("Usuário cadastrado com sucesso!");
+				gravaLog("Log de Inserção Usuario");
 			}else{
 				setMensagemErro("Erro ao cadastrar o usuário!");
 			}
@@ -68,6 +63,7 @@ public class Cad008Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			usuario.updateUsuario(usuarioDadosVo);
+			gravaLog("Log de Alteração Usuario");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -76,6 +72,7 @@ public class Cad008Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			usuario.deleteUsuario(usuarioDadosVo);
+			gravaLog("Log de Deleção Usuario");
 			
 		}
 		
@@ -122,13 +119,6 @@ public class Cad008Action extends RecursoPadraoAction {
 		this.filtrar = filtrar;
 	}
 
-	public UsuarioVo getUsuarioVo() {
-		return usuarioVo;
-	}
-
-	public void setUsuarioVo(UsuarioVo usuarioVo) {
-		this.usuarioVo = usuarioVo;
-	}
 
 	public List<EmpresaVo> getListaEmpresa() {
 		return listaEmpresa;

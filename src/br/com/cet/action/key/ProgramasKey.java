@@ -13,4 +13,18 @@ public class ProgramasKey {
 	public static final String CADASTRO_DE_PROGRAMAS					= "Cadastro de Programas";
 	public static final String UPLOAD_ARQUIVOS							= "Upload de Arquivos";
 	public static final String CADASTRO_DE_AGENDAMENTOS					= "Cadastro de Agendamentos";
+	
+	
+	public static final String CODIGO_CADASTRO_DE_EMPRESAS 				= "1";
+	public static final String CODIGO_CADASTRO_DE_MARCAS 				= "2";
+	public static final String CODIGO_CADASTRO_DE_MODELOS 				= "3";
+	public static final String CODIGO_CADASTRO_DE_ENSAIOS 				= "4";
+	public static final String CODIGO_CADASTRO_DE_USUARIOS				= "5";
+	public static final String CODIGO_CADASTRO_DE_VEICULOS				= "6";
+	public static final String CODIGO_CADASTRO_DE_PESSOAS				= "7";
+	public static final String CODIGO_CADASTRO_DE_TACOGRAFOS			= "8";
+	public static final String CODIGO_CADASTRO_DE_PROGRAMAS				= "9";
+	public static final String CODIGO_UPLOAD_ARQUIVOS					= "10";
+	public static final String CODIGO_CADASTRO_DE_AGENDAMENTOS			= "11";
+		
 }
