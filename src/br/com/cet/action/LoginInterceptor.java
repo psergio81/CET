@@ -36,7 +36,7 @@ public class LoginInterceptor extends SystemAction implements Interceptor{
 			// HttpSession session = request.getSession(true);
 			 
 			 
-	         if (session.containsKey("usuarioVo")) {
+	         if (session.containsKey("usuarioLogadoVo")) {
 	        	 
 	        	 System.out.println("Usuario Existe na Sessao");
 	        	 

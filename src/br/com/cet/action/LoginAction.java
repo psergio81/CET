@@ -17,7 +17,7 @@ public class LoginAction extends RecursoPadraoAction{
 	private EmpresaVo empresaVo = new EmpresaVo();
 	
 	public void prepare() throws Exception{
-		super.prepare();
+		//super.prepare();
 	}
 	
 	
@@ -28,7 +28,6 @@ public class LoginAction extends RecursoPadraoAction{
 		
 		String nick = usuarioVo.getNick();
 		String senha = usuarioVo.getSenha();
-		
 		
 		if(!UtString.isNullOrEmpty(nick) && !UtString.isNullOrEmpty(senha)){
 		
@@ -43,7 +42,7 @@ public class LoginAction extends RecursoPadraoAction{
 				Map<String, Object> session = ActionContext.getContext().getSession();
 				
 				session.put("usuarioLogadoVo", usuarioVo);  
-				session.put("empresaLogadoVo", empresaVo);  
+				session.put("empresaLogadaVo", empresaVo);  
 				
 				return SUCCESS;
 			}

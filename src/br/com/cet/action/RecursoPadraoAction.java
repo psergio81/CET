@@ -36,10 +36,14 @@ public class RecursoPadraoAction extends SystemAction{
 	
 	public void prepare() throws Exception {
 		
+		super.prepare();
+		
 		Ensaio ensaio = new Ensaio();
 		Veiculo veiculo = new Veiculo();
 		Tacografo tacografo = new Tacografo();
 		Pessoa pessoa = new Pessoa();
+		
+		System.out.println("usuarioLogadoVo... "+usuarioLogadoVo);
 		
 		setQuantidadeEnsaios(String.valueOf(ensaio.getQuantidadeEnsaios(usuarioLogadoVo.getCodigoEmpresa())));
 		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioLogadoVo.getCodigoEmpresa())));
@@ -71,7 +75,7 @@ public class RecursoPadraoAction extends SystemAction{
 		setUltimosEnsaiosJson(json);
 		
 		
-		super.prepare();
+		
 	}
 	
 	public void setPrograma(String codigoPrograma, String nomePrograma){

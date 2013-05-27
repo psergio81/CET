@@ -33,21 +33,25 @@ public class SystemAction extends ActionSupport implements Preparable,SessionAwa
 	protected Log log;
 	protected UsuarioVo usuarioLogadoVo;
 	protected EmpresaVo empresaLogadaVo;
-	
-	
+
+
 	public void prepare() throws Exception{
 		
 		requestOrigem = ServletActionContext.getRequest();
 		responseOrigem =ServletActionContext.getResponse();
 		
-		usuarioLogadoVo = (UsuarioVo) session.get("usuarioVo");
-		empresaLogadaVo = (EmpresaVo) session.get("empresaVo");
+		usuarioLogadoVo = (UsuarioVo) session.get("usuarioLogadoVo");
+		empresaLogadaVo = (EmpresaVo) session.get("empresaLogadaVo");
+		
+		System.out.println("usuarioLogadoVo....: "+usuarioLogadoVo);
 		
 		
 		log = new Log(usuarioLogadoVo, empresaLogadaVo);
 	} 
 	
-	
+	public void setEmpresaLogadaVo(EmpresaVo empresaLogadaVo) {
+		this.empresaLogadaVo = empresaLogadaVo;
+	}
 	
 	public EmpresaVo getEmpresaLogadaVo(){
 		return empresaLogadaVo;
