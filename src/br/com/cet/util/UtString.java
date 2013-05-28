@@ -3,7 +3,7 @@ package br.com.cet.util;
 public class UtString {
 
 	/**
-	 * Metodo que verifica se uma string é nula ou vazia
+	 * Metodo que verifica se uma string eh nula ou vazia
 	 * @param string
 	 * @return
 	 */

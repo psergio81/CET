@@ -204,7 +204,7 @@ public class Upload {
 
 
 	private String getPeriodo(String string) throws IOException {
-		Pattern pattern = Pattern.compile("Período: (.*? )");     
+		Pattern pattern = Pattern.compile("Per odo: (.*? )");     
 		
 		Matcher matcher = pattern.matcher(string);  
 		if(matcher.find()){

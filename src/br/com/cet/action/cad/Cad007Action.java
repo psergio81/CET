@@ -68,16 +68,16 @@ public class Cad007Action extends RecursoPadraoAction {
 			retorno = tacografo.insertTacografo(tacografoVo);
 			
 			if(retorno){
-				setMensagemErro("Tacógrafo cadastrado com sucesso!");
-				gravaLog("Log de Inserção Tacografo");
+				setMensagemErro("Tac grafo cadastrado com sucesso!");
+				gravaLog("Log de Inser  o Tacografo");
 			}else{
-				setMensagemErro("Erro ao cadastrar tacógrafo!");
+				setMensagemErro("Erro ao cadastrar tac grafo!");
 			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			tacografo.updateTacografo(tacografoVo);
-			gravaLog("Log de Alteração Tacografo");
+			gravaLog("Log de Altera  o Tacografo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -86,7 +86,7 @@ public class Cad007Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			tacografo.deleteTacografo(tacografoVo);
-			gravaLog("Log de Deleção Tacografo");
+			gravaLog("Log de Dele  o Tacografo");
 			
 		}else if(AcoesKey.ACAO_ASSOCIAR.equals(ac)){
 			

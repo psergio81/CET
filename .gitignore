@@ -1,4 +1,5 @@
 *.class
+WebContent/WEB-INF/lib/*
 
 # Package Files #
 *.war

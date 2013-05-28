@@ -40,7 +40,7 @@ public class LoginInterceptor extends SystemAction implements Interceptor{
 	        	 
 	        	 System.out.println("Usuario Existe na Sessao");
 	        	 
-	        	//esta if é para verificar os acessos do usuario, quando o mesmo for implementado
+	        	//esta if eh para verificar os acessos do usuario, quando o mesmo for implementado
 	        	
 	         } else { 
 	        	 System.out.println("Usuario nao existe na sessao");
@@ -74,7 +74,7 @@ public class LoginInterceptor extends SystemAction implements Interceptor{
 //	        	 
 //	        	 System.out.println("Usuario Existe na Sessao");
 //	        	 
-//	        	//esta if é para verificar os acessos do usuario, quando o mesmo for implementado
+//	        	//esta if eh para verificar os acessos do usuario, quando o mesmo for implementado
 //	        	
 //	         } else {  
 //	        	
@@ -95,7 +95,7 @@ public class LoginInterceptor extends SystemAction implements Interceptor{
 //	                    invocation.getInvocationContext().getSession().put("usuarioVo", usuarioVo);  
 //	                } else {  
 //	                    try {  
-//	                        throw new UsuarioNaoExisteException("Usuario ou senha não existem, tente novamente.");  
+//	                        throw new UsuarioNaoExisteException("Usuario ou senha nao existem, tente novamente.");  
 //	                    } catch (UsuarioNaoExisteException e) {  
 //	                        e.printStackTrace();  
 //	                    }  

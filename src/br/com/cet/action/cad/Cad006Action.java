@@ -52,7 +52,7 @@ public class Cad006Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Pessoa cadastrada com sucesso!");
-				gravaLog("Log de Inserção Pessoa");
+				gravaLog("Log de Inser  o Pessoa");
 			}else{
 				setMensagemErro("Erro ao cadastrar Pessoa!");
 			}
@@ -61,7 +61,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			pessoa.updatePessoa(pessoaVo);
-			gravaLog("Log de Alteração Pessoa");
+			gravaLog("Log de Altera  o Pessoa");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -70,7 +70,7 @@ public class Cad006Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			pessoa.deletePessoa(pessoaVo);
-			gravaLog("Log de Deleção Pessoa");
+			gravaLog("Log de Dele  o Pessoa");
 			
 		}
 		

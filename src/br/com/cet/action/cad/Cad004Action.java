@@ -63,7 +63,7 @@ public class Cad004Action extends RecursoPadraoAction {
 			
 			if(ensaioVoRetorno != null){
 				
-				setMensagemErro("Já existe um ensaio cadastrado com este número de GRU!");
+				setMensagemErro("J  existe um ensaio cadastrado com este n mero de GRU!");
 				
 				return SUCCESS;
 			}
@@ -73,7 +73,7 @@ public class Cad004Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Ensaio cadastrado com sucesso!");
-				gravaLog("Log de Inserção de Ensaio");
+				gravaLog("Log de Inser  o de Ensaio");
 			}else{
 				setMensagemErro("Erro ao cadastrar ensaio!");
 			}
@@ -81,7 +81,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			ensaio.updateEnsaio(ensaioVo);
-			gravaLog("Log de Alteração de Ensaio");
+			gravaLog("Log de Altera  o de Ensaio");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -90,7 +90,7 @@ public class Cad004Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			ensaio.deleteEnsaio(ensaioVo);
-			gravaLog("Log de Deleção de Ensaio");
+			gravaLog("Log de Dele  o de Ensaio");
 			
 		}
 		

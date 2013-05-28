@@ -54,7 +54,7 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Marca cadastrada com sucesso!");
-				gravaLog("Log de Inserção de Marca");
+				gravaLog("Log de Inser  o de Marca");
 			}else{
 				setMensagemErro("Erro ao cadastrar marca!");
 			}
@@ -63,7 +63,7 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 			marca.updateMarca(marcaVo);
 			
-			gravaLog("Log de Alteração de Marca");
+			gravaLog("Log de Altera  o de Marca");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -73,7 +73,7 @@ public class Cad002Action extends RecursoPadraoAction {
 			
 			marca.deleteMarca(marcaVo);
 			
-			gravaLog("Log de Deleção de Marca");
+			gravaLog("Log de Dele  o de Marca");
 			
 		}
 		

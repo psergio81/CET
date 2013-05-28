@@ -54,7 +54,7 @@ public class Cad003Action extends RecursoPadraoAction {
 			
 			if(retorno){
 				setMensagemErro("Modelo cadastrado com sucesso!");
-				gravaLog("Log de Inserção de Modelo");
+				gravaLog("Log de Inser  o de Modelo");
 			}else{
 				setMensagemErro("Erro ao cadastrar modelo!");
 			}
@@ -62,7 +62,7 @@ public class Cad003Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			modelo.updateModelo(modeloVo);
-			gravaLog("Log de Alteração de Modelo");
+			gravaLog("Log de Altera  o de Modelo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -71,7 +71,7 @@ public class Cad003Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			modelo.deleteModelo(modeloVo);
-			gravaLog("Log de Deleção de Modelo");
+			gravaLog("Log de Dele  o de Modelo");
 			
 		}
 		

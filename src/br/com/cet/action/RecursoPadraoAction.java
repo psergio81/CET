@@ -9,10 +9,8 @@ import br.com.cet.business.Ensaio;
 import br.com.cet.business.Pessoa;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
-import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.EnsaioVo;
 import br.com.cet.vo.GraficoVo;
-import br.com.cet.vo.UsuarioVo;
 
 
 public class RecursoPadraoAction extends SystemAction{

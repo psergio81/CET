@@ -1,0 +1,52 @@
+<ivy-module version="2.0">
+	<info organisation="CET" module="CET" />
+
+	<configurations>
+		<conf name="default" description="dependencies used for compile" />
+		<conf name="provided" description="dependencies used for compile but is not packaged" visibility="public" />
+		<conf name="test" description="dependencies used for tests" visibility="public" />
+		<conf name="jetty" description="dependencies used for jetty" visibility="public" />
+		<conf name="minify" description="dependencies used to minify js and css" visibility="public" />
+	</configurations>
+
+	<dependencies>
+		<dependency org="org.apache.struts" name="struts2-core" rev="2.3.14" conf="default" />
+		<dependency org="javassist" name="javassist" rev="3.12.1.GA" conf="default" />
+		<dependency org="javax.servlet" name="jstl" rev="1.2" conf="default" />
+	    <dependency org="commons-fileupload" name="commons-fileupload" rev="1.3" conf="default" />
+		<dependency org="commons-io" name="commons-io" rev="2.4" conf="default" />
+		<dependency org="commons-logging" name="commons-logging" rev="1.1.2" conf="default" />
+		<dependency org="org.freemarker" name="freemarker" rev="2.3.19" conf="default" />
+		<dependency org="ognl" name="ognl" rev="3.0.6" conf="default" />
+		<dependency org="org.apache.commons" name="commons-lang3" rev="3.1" conf="default" />
+		<dependency org="commons-logging" name="commons-logging-api" rev="1.1" conf="default" />
+		<dependency org="org.apache.struts.xwork" name="xwork-core" rev="2.3.14" conf="default" />
+		<dependency org="com.jgeppert.struts2.jquery" name="struts2-jquery-plugin" rev="3.5.1" conf="default" />
+		<dependency org="mysql" name="mysql-connector-java" rev="5.1.25" conf="default" />
+		<dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.4" conf="default" />
+		<dependency org="org.codehaus.jettison" name="jettison" rev="1.3.3" conf="default" />
+		<dependency org="com.google.code.gson" name="gson" rev="2.2.4" conf="default" />
+		<dependency org="org.apache.pdfbox" name="pdfbox" rev="1.8.1" conf="default" />
+		<dependency org="org.apache.pdfbox" name="pdfbox-app" rev="1.8.1" conf="default" />
+		<dependency org="opensymphony" name="xwork" rev="2.0.3" conf="default" />
+
+		<!-- Provided dependencies -->
+		<dependency org="javax.servlet" name="servlet-api" rev="2.5" conf="provided->default" />
+		<dependency org="javax.servlet.jsp" name="jsp-api" rev="2.1" conf="provided->default" />
+
+		<!-- Test dependencies 
+		Pode ser util no futuro-->
+		<!-- <dependency org="junit" name="junit" rev="4.10" conf="test->default" />
+		<dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="test->default" />
+		<dependency org="org.mockito" name="mockito-all" rev="1.9.0" conf="test->default" /> -->
+
+		<!-- Jetty dependencies - pode ser utilizado pra nao ter que instalar um servidor
+		Esse jah eh imbarcado-->
+		<dependency org="org.mortbay.jetty" name="jsp-api-2.1" rev="6.1.14" conf="jetty->default" />
+		<dependency org="org.mortbay.jetty" name="jsp-2.1" rev="6.1.14" conf="jetty->default" />
+		<dependency org="org.mortbay.jetty" name="jetty-ant" rev="6.1.14" conf="jetty->default" />
+
+		<!-- Minify dependencies -->
+		<dependency org="com.yahoo.platform.yui" name="yuicompressor" rev="2.3.6" conf="minify->default" />
+	</dependencies>
+</ivy-module>

@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Programa;
 import br.com.cet.vo.ProgramaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad011Action extends RecursoPadraoAction {
 
@@ -47,12 +46,12 @@ public class Cad011Action extends RecursoPadraoAction {
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
 			programa.insertPrograma(programaVo);
-			gravaLog("Log de Inserção Agendamento");
+			gravaLog("Log de Inser  o Agendamento");
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			programa.updatePrograma(programaVo);
-			gravaLog("Log de Alteração Agendamento");
+			gravaLog("Log de Altera  o Agendamento");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -61,7 +60,7 @@ public class Cad011Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			programa.deletePrograma(programaVo);
-			gravaLog("Log de Deleção Agendamento");
+			gravaLog("Log de Dele  o Agendamento");
 			
 		}
 		

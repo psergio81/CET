@@ -64,16 +64,16 @@ public class Cad005Action extends RecursoPadraoAction {
 			retorno = veiculo.insertVeiculo(veiculoVo);
 			
 			if(retorno){
-				setMensagemErro("Veículo cadastrado com sucesso!");
-				gravaLog("Log de Inserção de Veiculos");
+				setMensagemErro("Ve culo cadastrado com sucesso!");
+				gravaLog("Log de Inser  o de Veiculos");
 			}else{
-				setMensagemErro("Erro ao cadastrar veículo!");
+				setMensagemErro("Erro ao cadastrar ve culo!");
 			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			veiculo.updateVeiculo(veiculoVo);
-			gravaLog("Log de Alteração Veiculo");
+			gravaLog("Log de Altera  o Veiculo");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -82,7 +82,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			veiculo.deleteVeiculo(veiculoVo);
-			gravaLog("Log de Deleção Veiculo");
+			gravaLog("Log de Dele  o Veiculo");
 			
 		}
 		
