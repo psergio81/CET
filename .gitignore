@@ -3,3 +3,9 @@
 # Package Files #
 *.war
 *.ear
+
+#Pastars com os JARs
+WebContent/WEB-INF/lib/*
+src/main/webapp/WEB-INF/lib/*
+lib/*
+#Pastars com os JARs

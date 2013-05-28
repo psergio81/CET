@@ -54,7 +54,7 @@ public class Cad001Action extends RecursoPadraoAction{
 				
 				setMensagemErro("Empresa cadastrada com sucesso!");
 				
-				gravaLog("Log de Inserção de Empresa");
+				gravaLog("Log de Inser  o de Empresa");
 				
 			}else{
 				setMensagemErro("Erro ao cadastrar a empresa!");
@@ -64,13 +64,13 @@ public class Cad001Action extends RecursoPadraoAction{
 			
 			empresa.updateEmpresa(empresaVo);
 			
-			gravaLog("Log de Alteração de Empresa");
+			gravaLog("Log de Altera  o de Empresa");
 			
 		}else if(AcoesKey.ACAO_EXCLUIR.equals(ac)){
 			
 			empresa.deleteEmpresa(empresaVo);
 			
-			gravaLog("Log de Deleção de Empresa");
+			gravaLog("Log de Dele  o de Empresa");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			return "principal";

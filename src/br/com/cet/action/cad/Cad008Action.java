@@ -54,16 +54,16 @@ public class Cad008Action extends RecursoPadraoAction {
 			retorno = usuario.insertUsuario(usuarioDadosVo);
 			
 			if(retorno){
-				setMensagemErro("Usuário cadastrado com sucesso!");
-				gravaLog("Log de Inserção Usuario");
+				setMensagemErro("Usu rio cadastrado com sucesso!");
+				gravaLog("Log de Inser  o Usuario");
 			}else{
-				setMensagemErro("Erro ao cadastrar o usuário!");
+				setMensagemErro("Erro ao cadastrar o usu rio!");
 			}
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
 			usuario.updateUsuario(usuarioDadosVo);
-			gravaLog("Log de Alteração Usuario");
+			gravaLog("Log de Altera  o Usuario");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
 			
@@ -72,7 +72,7 @@ public class Cad008Action extends RecursoPadraoAction {
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
 			usuario.deleteUsuario(usuarioDadosVo);
-			gravaLog("Log de Deleção Usuario");
+			gravaLog("Log de Dele  o Usuario");
 			
 		}
 		

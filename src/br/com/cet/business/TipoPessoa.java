@@ -2,8 +2,8 @@ package br.com.cet.business;
 
 public enum TipoPessoa {
 
-	FISICA(1,"Física"),
-	JURIDICA(2,"Jurídica");
+	FISICA(1,"Fisica"),
+	JURIDICA(2,"Juridica");
 
 	
 	private final int codigo;
