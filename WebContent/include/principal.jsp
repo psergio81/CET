@@ -8,27 +8,27 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="es" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="cet" %>
 
-<script src="/padrao/jquery/jquery.js" type="text/javascript"></script>
-<script src="/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
-<script src="/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
-<script src="/padrao/jquery/jquery-ui-1.7.3.custom.min.js" type="text/javascript"></script>	
+<script src="/CET/padrao/jquery/jquery.js" type="text/javascript"></script>
+<script src="/CET/padrao/jquery/jquery.validate.js" type="text/javascript"></script>
+<script src="/CET/padrao/jquery/jquery.maskedinput.js" type="text/javascript"></script>	
+<script src="/CET/padrao/jquery/jquery-ui-1.7.3.custom.min.js" type="text/javascript"></script>	
 
-<script src="/padrao/bootstrap/js/bootstrap.js"></script>
-<script src="/padrao/bootstrap/js/bootstrap-filestyle.js"></script>
-<script src="/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
-<script src="/padrao/bootstrap/js/bootstrap-modal.js"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap.js"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap-filestyle.js"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap-dropdown.js"></script>
+<script src="/CET/padrao/bootstrap/js/bootstrap-modal.js"></script>
 
-<script src="/padrao/scripts/script.js"></script>
-<script src="/padrao/scripts/md5.js"></script>
+<script src="/CET/padrao/scripts/script.js"></script>
+<script src="/CET/padrao/scripts/md5.js"></script>
 
 
-<link rel="stylesheet" href="/padrao/bootstrap/css/bootstrap-responsive.css">
-<link rel="stylesheet" href="/padrao/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="/padrao/bootstrap/css/bootstrap_new_icons.css">
-<link rel="stylesheet" href="/padrao/bootstrap/css/jquery-ui-1.7.3.custom.css">
-<link rel="stylesheet" href="/padrao/bootstrap/css/estilo.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap-responsive.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/bootstrap_new_icons.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/jquery-ui-1.7.3.custom.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/estilo.css">
 
-<link rel="stylesheet" href="/padrao/bootstrap/css/dashboard.css">
+<link rel="stylesheet" href="/CET/padrao/bootstrap/css/dashboard.css">
 
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

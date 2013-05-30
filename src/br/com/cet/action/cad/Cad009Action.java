@@ -7,7 +7,6 @@ import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.business.Programa;
 import br.com.cet.vo.ProgramaVo;
-import br.com.cet.vo.UsuarioVo;
 
 public class Cad009Action extends RecursoPadraoAction {
 
