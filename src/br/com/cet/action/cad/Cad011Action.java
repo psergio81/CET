@@ -1,21 +1,21 @@
 package br.com.cet.action.cad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
-import br.com.cet.business.Programa;
-import br.com.cet.vo.ProgramaVo;
+import br.com.cet.business.Pessoa;
+import br.com.cet.vo.PessoaVo;
 
 public class Cad011Action extends RecursoPadraoAction {
 
-	private ProgramaVo programaVo = new ProgramaVo();
-	private Programa programa = new Programa();
-	private List<ProgramaVo> listaPrograma = null;
-	private String codigoProgramaSelecionado;
+	private Pessoa pessoa = new Pessoa();
+	private List<PessoaVo> listaPessoa = null;
 	private String campoBusca;
 	private boolean filtrar;
+	
 	
 	public void prepare() throws Exception{
 
@@ -28,9 +28,11 @@ public class Cad011Action extends RecursoPadraoAction {
 	public String browser() throws Exception{
 		
 		
-		programaVo.setDescricao(campoBusca);
+		PessoaVo pessoaVo = new PessoaVo() ;
+		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
 		
-		listaPrograma = programa.getListaPrograma(programaVo, filtrar);
+		listaPessoa =  new ArrayList<PessoaVo>();
+		listaPessoa = pessoa.getListaPessoa(pessoaVo, false);
 		
 		return "browser";
 		
@@ -39,18 +41,21 @@ public class Cad011Action extends RecursoPadraoAction {
 	
 	public String crud() throws Exception{
 		
+		PessoaVo pessoaVo = new PessoaVo() ;
+		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		
+		listaPessoa =  new ArrayList<PessoaVo>();
+		listaPessoa = pessoa.getListaPessoa(pessoaVo, false);
+		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
-			programaVo = programa.getProgramaPeloCodigo(codigoProgramaSelecionado);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
-			programa.insertPrograma(programaVo);
 			gravaLog("Log de Inserção Agendamento");
 			
 		}else if(AcoesKey.ACAO_SALVAR_ALTERACAO.equals(ac)){
 			
-			programa.updatePrograma(programaVo);
 			gravaLog("Log de Alteração Agendamento");
 			
 		}else if (AcoesKey.ACAO_PRINCIPAL.equals(ac)) {
@@ -59,44 +64,11 @@ public class Cad011Action extends RecursoPadraoAction {
 			
 		}else if (AcoesKey.ACAO_EXCLUIR.equals(ac)) {
 			
-			programa.deletePrograma(programaVo);
 			gravaLog("Log de Deleção Agendamento");
 			
 		}
 		
 		return SUCCESS;
-	}
-
-	public ProgramaVo getProgramaVo() {
-		return programaVo;
-	}
-
-	public void setProgramaVo(ProgramaVo programaVo) {
-		this.programaVo = programaVo;
-	}
-
-	public Programa getPrograma() {
-		return programa;
-	}
-
-	public void setPrograma(Programa programa) {
-		this.programa = programa;
-	}
-
-	public List<ProgramaVo> getListaPrograma() {
-		return listaPrograma;
-	}
-
-	public void setListaPrograma(List<ProgramaVo> listaPrograma) {
-		this.listaPrograma = listaPrograma;
-	}
-
-	public String getCodigoProgramaSelecionado() {
-		return codigoProgramaSelecionado;
-	}
-
-	public void setCodigoProgramaSelecionado(String codigoProgramaSelecionado) {
-		this.codigoProgramaSelecionado = codigoProgramaSelecionado;
 	}
 
 	public String getCampoBusca() {
@@ -113,6 +85,14 @@ public class Cad011Action extends RecursoPadraoAction {
 
 	public void setFiltrar(boolean filtrar) {
 		this.filtrar = filtrar;
+	}
+
+	public List<PessoaVo> getListaPessoa() {
+		return listaPessoa;
+	}
+
+	public void setListaPessoa(List<PessoaVo> listaPessoa) {
+		this.listaPessoa = listaPessoa;
 	}
 	
 	

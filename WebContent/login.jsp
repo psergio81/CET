@@ -46,7 +46,7 @@
 
 $(document).ready(function(){
 
-	$('#divErros').css('display','none');
+	$('#divErros').hide();
 	
 	$('#loginAction').validate({
 	

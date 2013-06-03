@@ -24,15 +24,30 @@ public class Veiculo {
 		return listaVeiculo;
 
 	}
-	
-	public VeiculoVo getVeiculoPeloCodigo(String codigoVeiculo) throws Exception{
+
+	public List<VeiculoVo> getListaVeiculosPorCliente(VeiculoVo veiculoVo)
+			throws Exception {
 		
-		VeiculoVo veiculoVo = new VeiculoVo();
+		List<VeiculoVo> listaVeiculo = null;
+		
+		try {
+			
+			VeiculoDao veiculoDao = new VeiculoDao();
+			listaVeiculo = veiculoDao.getListaVeiculosPorCliente(veiculoVo);
+			
+		} catch (Exception e) {
+			throw new Exception(e);
+		}
+		
+		return listaVeiculo;
+		
+	}
+	
+	public VeiculoVo getVeiculoPeloCodigo(VeiculoVo veiculoVo) throws Exception{
 		
 		try{
 			
 			VeiculoDao veiculoDao = new VeiculoDao();
-			veiculoVo.setCodigoVeiculo(codigoVeiculo);
 			
 			veiculoVo = veiculoDao.getVeiculoPeloCodigo(veiculoVo);
 			

@@ -47,7 +47,7 @@
 	                <div class="control-group">
 	                    <label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
 	                    <div class="controls input-append">
-	                        <s:select name="agendamentoVo.codigoPessoa" list="#{ }" emptyOption="true" cssClass="span4"/>
+	                        <s:select name="agendamentoVo.codigoPessoa" id="agendamentoVo.codigoPessoa" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" onchange="javascript:buscaVeiculosPorCliente(this.value);" cssClass="span4"/>
 	                        <span class="add-on btn" id="adicionaProprietario"  onclick="javascript:mostrarCampoBusca('spanProprietario')">
 	                           <i class="icon-filter"></i>
 	                        </span>
@@ -63,7 +63,7 @@
 	                <div class="control-group">
 	                    <label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
 	                    <div class="controls input-append">
-	                        <s:select name="agendamentoVo.codigoVeiculo" list="#{ }" emptyOption="true" cssClass="span4"/>
+	                        <s:select name="agendamentoVo.codigoVeiculo"  id="listaVeiculos" list="#{ }" cssClass="span4"/>
 	                        <span class="add-on btn" id="adicionaProprietario" onclick="javascript:mostrarCampoBusca('spanVeiculo')">
 	                           <i class="icon-filter"></i>
 	                        </span>
@@ -170,7 +170,7 @@
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
-		
+
 		if(acao == 'excluir'){
 			irParaBrowser('cad011');
 		}
@@ -343,9 +343,42 @@
 			    $('#botaoTipoInclusao').html('<fmt:message key="label.padrao.cliente.cadastrado" />');
 			}
 		});
+	}
+	
+	
+	function buscaVeiculosPorCliente(codigoCliente){
+		
+		
+		$.ajax({
+            url: "Cad005Action!carregaVeiculosPorCliente.action",
+            type: "POST",
+            dataType: "html",  
+            data: {
+            	codigoEmpresaSelecionada: codigoCliente
+                
+            },
+            success: function(json){   
+                
+                var obj = jQuery.parseJSON(json);
+
+                var options = "<option value=''></option>";
+                
+                $.each(obj, function(obj){
+                    options += "<option value="+this.codigoVeiculo+">"+this.placa+"</option>";
+                  });
+
+                console.log('options: '+options);
+                $('#listaVeiculos').html(options);
+                
+            },
+            error: function(){  
+                alert('Error');
+            }
+        });
 		
 		
 	}
+	
 	
 	
 	

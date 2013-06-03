@@ -8,9 +8,11 @@ import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.helper.ResultJsonHelper;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
+import br.com.cet.business.Pessoa;
 import br.com.cet.business.Tacografo;
 import br.com.cet.business.Veiculo;
 import br.com.cet.business.VeiculoTacografo;
+import br.com.cet.vo.PessoaVo;
 import br.com.cet.vo.TacografoVo;
 import br.com.cet.vo.VeiculoTacografoVo;
 import br.com.cet.vo.VeiculoVo;
@@ -27,6 +29,10 @@ public class Cad005Action extends RecursoPadraoAction {
 	private List<VeiculoTacografoVo> listaTacografosAssociados = null;
 	private String codigoVeiculo;
 	private String codigoTacografo;
+	private String codigoEmpresaSelecionada;
+	private Pessoa pessoa;
+	private PessoaVo pessoaVo;
+	private List<PessoaVo> listaPessoa;
 	
 	public void prepare() throws Exception{
 		super.prepare();
@@ -39,6 +45,7 @@ public class Cad005Action extends RecursoPadraoAction {
 		
 		
 		veiculoVo.setPlaca(campoBusca);
+		veiculoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
 		
 		listaVeiculo = veiculo.getListaVeiculo(veiculoVo, filtrar);
 		
@@ -53,14 +60,24 @@ public class Cad005Action extends RecursoPadraoAction {
 		TacografoVo tacografoVo = new TacografoVo();
 		veiculoVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		
+		pessoaVo = new PessoaVo();
+		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		pessoa = new Pessoa();
+		listaPessoa = pessoa.getListaPessoa(pessoaVo , false);
+		
 		listaTacografo = tacografo.getListaTacografosNaoAssociados(tacografoVo);
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
 		
-			veiculoVo = veiculo.getVeiculoPeloCodigo(codigoVeiculoSelecionado);
+			veiculoVo = new VeiculoVo();
+			veiculoVo.setCodigoVeiculo(codigoVeiculoSelecionado);
+			veiculoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+			
+			veiculoVo = veiculo.getVeiculoPeloCodigo(veiculoVo);
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
 			
+			veiculoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
 			retorno = veiculo.insertVeiculo(veiculoVo);
 			
 			if(retorno){
@@ -148,6 +165,20 @@ public class Cad005Action extends RecursoPadraoAction {
 		
 		return resultJsonHelper.getResultTypeJson();
 	}
+
+	public String carregaVeiculosPorCliente() throws Exception{
+		
+		veiculoVo = new VeiculoVo();
+		veiculoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		veiculoVo.setCodigoProprietario(codigoEmpresaSelecionada);
+		
+		listaVeiculo = veiculo.getListaVeiculosPorCliente(veiculoVo);
+		
+		ResultJsonHelper resultJsonHelper = new ResultJsonHelper(responseOrigem);
+		resultJsonHelper.jsonDo(listaVeiculo);
+		
+		return resultJsonHelper.getResultTypeJson();
+	}
 	
 	public VeiculoVo getVeiculoVo() {
 		return veiculoVo;
@@ -228,6 +259,22 @@ public class Cad005Action extends RecursoPadraoAction {
 
 	public void setCodigoTacografo(String codigoTacografo) {
 		this.codigoTacografo = codigoTacografo;
+	}
+
+	public String getCodigoEmpresaSelecionada() {
+		return codigoEmpresaSelecionada;
+	}
+
+	public void setCodigoEmpresaSelecionada(String codigoEmpresaSelecionada) {
+		this.codigoEmpresaSelecionada = codigoEmpresaSelecionada;
+	}
+
+	public List<PessoaVo> getListaPessoa() {
+		return listaPessoa;
+	}
+
+	public void setListaPessoa(List<PessoaVo> listaPessoa) {
+		this.listaPessoa = listaPessoa;
 	}
 	
 }

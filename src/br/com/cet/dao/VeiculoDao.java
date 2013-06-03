@@ -79,13 +79,16 @@ public class VeiculoDao extends BaseDao {
 	    	connection = getConnection();  
 	  
 		    qry.append("SELECT rowid, cd_veiculo, placa FROM veiculo ");
+		    qry.append(" WHERE cd_empresa = ? ");
 		
 		    if(filtrar){
-		    	qry.append(" WHERE placa like '%' ? '%' ");
+		    	qry.append(" and placa like '%' ? '%' ");
 		    }
 		
 		    
 		    ps = connection.prepareStatement(qry.toString());
+		    
+		    ps.setString(i++, veiculoVo.getCodigoEmpresa());
 		    
 		    if(filtrar){
 		    	ps.setString(i++, veiculoVo.getPlaca());
@@ -111,6 +114,52 @@ public class VeiculoDao extends BaseDao {
 	    
 	    return veiculosList;
 	}
+
+	public List<VeiculoVo> getListaVeiculosPorCliente(VeiculoVo veiculoVo){
+		
+		Connection connection = null;
+		ResultSet rs = null;  
+		PreparedStatement ps = null;  
+		StringBuilder qry = new StringBuilder(); 
+		List<VeiculoVo> veiculosList = null;
+		int i = 1;
+		
+		try {  
+			
+			connection = getConnection();  
+			
+			qry.append("SELECT rowid, cd_veiculo, placa FROM veiculo ");
+			qry.append(" WHERE cd_empresa = ? ");
+			qry.append(" and cd_pessoa = ? ");
+			
+			
+			
+			ps = connection.prepareStatement(qry.toString());
+			
+			ps.setString(i++, veiculoVo.getCodigoEmpresa());
+			ps.setString(i++, veiculoVo.getCodigoProprietario());
+
+			
+			rs = ps.executeQuery();  
+			
+			veiculosList = new ArrayList<VeiculoVo>();
+			
+			while (rs.next()) {  
+				veiculoVo = new VeiculoVo();
+				veiculoVo.setRowid(rs.getString("rowid"));
+				veiculoVo.setCodigoVeiculo(String.valueOf(rs.getInt("cd_veiculo")));
+				veiculoVo.setPlaca(rs.getString("placa"));
+				veiculosList.add(veiculoVo);
+			}  
+			
+		}catch (Exception e) {  
+			e.printStackTrace();
+		}finally {
+			releaseResouces(connection, ps, rs);
+		} 
+		
+		return veiculosList;
+	}
 	
 	public void insertVeiculos(VeiculoVo veiculoVo) throws Exception{
 		
@@ -125,6 +174,8 @@ public class VeiculoDao extends BaseDao {
 	  
 		    qry.append(" INSERT INTO veiculo ");
 		    qry.append(" ( rowid, ");
+		    qry.append(" cd_empresa, ");
+		    qry.append(" cd_pessoa, ");
 		    qry.append(" cd_veiculo, ");
 		    qry.append(" placa ) ");
 		    qry.append(getValues(qry));
@@ -132,6 +183,8 @@ public class VeiculoDao extends BaseDao {
 		    ps = connection.prepareStatement(qry.toString());  
 		    
 		    ps.setString(i++, getNovaSimulacaoRowid());
+		    ps.setInt(i++, Integer.parseInt(veiculoVo.getCodigoEmpresa()));
+		    ps.setInt(i++, Integer.parseInt(veiculoVo.getCodigoProprietario()));
 		    ps.setInt(i++, Integer.parseInt(veiculoVo.getCodigoVeiculo()));
 		    ps.setString(i++, veiculoVo.getPlaca());
 		    

@@ -79,7 +79,7 @@
 			irParaBrowser('cad002');
 		}
 		
-		$('#divErros').css('display','none');
+		$('#divErros').hide();
 		
 		$('#cad002').validate({
 
@@ -139,7 +139,7 @@
 		if(buscaProximoCampo() == true){
 			
 			$('#divErros').slideUp(function(){
-				$('#divErros').css('display','none');
+				$('#divErros').hide();
 			});
 			
 		}else{

@@ -23,6 +23,7 @@ public class Cad004Action extends RecursoPadraoAction {
 	private boolean filtrar;
 	private List<PessoaVo> listaPessoa = null;
 	private List<VeiculoVo> listaVeiculo = null;
+	private PessoaVo pessoaVo;
 	public void prepare() throws Exception{
 		
 		super.prepare();
@@ -45,11 +46,15 @@ public class Cad004Action extends RecursoPadraoAction {
 		boolean retorno;
 		Pessoa pessoa = new Pessoa();
 		listaPessoa = new ArrayList<PessoaVo>();
-		listaPessoa = pessoa.getListaPessoa(null, false);
+		pessoaVo = new PessoaVo();
+		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		listaPessoa = pessoa.getListaPessoa(pessoaVo , false);
 
 		Veiculo veiculo = new Veiculo();
 		listaVeiculo = new ArrayList<VeiculoVo>();
-		listaVeiculo = veiculo.getListaVeiculo(null, false);
+		VeiculoVo veiculoVo = new VeiculoVo();
+		veiculoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		listaVeiculo = veiculo.getListaVeiculo(veiculoVo , false);
 		
 		ensaioVo.setCodigoEmpresa(usuarioLogadoVo.getCodigoEmpresa());
 		

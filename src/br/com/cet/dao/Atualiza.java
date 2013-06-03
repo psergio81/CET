@@ -16,14 +16,14 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0003(false);
 		atualiza.a0004(false);
 		atualiza.a0005(false);
-		atualiza.a0006(false);
+		atualiza.a0006(true);
 		atualiza.a0007(false);
 		atualiza.a0008(false);
 		atualiza.a0009(false);
 		atualiza.a0010(false);
 		atualiza.a0011(false);
 		atualiza.a0012(false);
-		atualiza.a0013(true);
+		atualiza.a0013(false);
 		
 		
 	}
@@ -154,9 +154,11 @@ public class Atualiza extends BaseAtualiza {
 		
 		String nomeTabela = "veiculo";
 		
+		excluirTabela(NOME_BANCO, nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "placa", 100, false);
 		
 	}

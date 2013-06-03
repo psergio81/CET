@@ -81,13 +81,15 @@ public class PessoaDao extends BaseDao {
 	    	connection = getConnection();  
 	  
 		    qry.append("SELECT rowid, cd_pessoa, nm_pessoa, tipo_pessoa, cd_documento FROM pessoa ");
+		    qry.append(" WHERE cd_empresa = ? ");
 		
 		    if(filtrar){
-		    	qry.append(" WHERE nm_pessoa like '%' ? '%' ");
+		    	qry.append(" and nm_pessoa like '%' ? '%' ");
 		    }
 		
 		    
 		    ps = connection.prepareStatement(qry.toString());
+		    ps.setString(i++, pessoaVo.getCodigoEmpresa());
 		    
 		    if(filtrar){
 		    	ps.setString(i++, pessoaVo.getNome());

@@ -28,6 +28,13 @@
 			         	<s:textfield name="veiculoVo.codigoVeiculo" id="codigoVeiculo" cssClass="span2" disabled="true" />
    					</div>
 				</div>
+				
+				<div class="control-group">
+                    <label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
+                    <div class="controls input-append">
+                        <s:select name="veiculoVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" cssClass="span4"/>
+                    </div>
+                </div>
 
 		        <div class="control-group">
 		        	<label for="placa" class="control-label"><fmt:message key="label.padrao.placa"/></label>
@@ -107,7 +114,7 @@
 			irParaBrowser('cad005');
 		}
 		
-	$('#divErros').css('display','none');
+	$('#divErros').hide();
 		
 		$('#cad005').validate({
 
@@ -167,7 +174,7 @@
 		if(buscaProximoCampo() == true){
 			
 			$('#divErros').slideUp(function(){
-				$('#divErros').css('display','none');
+				$('#divErros').hide();
 			});
 			
 		}else{
