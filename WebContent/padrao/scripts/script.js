@@ -139,7 +139,6 @@ function setHoraAtual(idCampo){
 
 $(document).ready(function(){
 	
-	
 	$('.maiusculo').focusout(function(){
 	    this.value = this.value.toUpperCase();
 	});

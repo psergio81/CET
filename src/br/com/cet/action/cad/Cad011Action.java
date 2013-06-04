@@ -6,7 +6,9 @@ import java.util.List;
 import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
+import br.com.cet.action.key.TipoServico;
 import br.com.cet.business.Pessoa;
+import br.com.cet.vo.ComboVo;
 import br.com.cet.vo.PessoaVo;
 
 public class Cad011Action extends RecursoPadraoAction {
@@ -93,6 +95,17 @@ public class Cad011Action extends RecursoPadraoAction {
 
 	public void setListaPessoa(List<PessoaVo> listaPessoa) {
 		this.listaPessoa = listaPessoa;
+	}
+
+	public List<ComboVo> getListaTipoServico() {
+		
+		List<ComboVo> listaTipo = new ArrayList<ComboVo>();
+		
+		for (TipoServico tipo : TipoServico.values()) {
+			listaTipo.add(new ComboVo(String.valueOf(tipo.getCodigo()), tipo.getDescricao()));
+		}
+		
+		return listaTipo;
 	}
 	
 	

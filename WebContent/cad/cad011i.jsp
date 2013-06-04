@@ -87,23 +87,23 @@
 	                </div>
 
                     <div class="control-group">
-                        <label for="codigoAgendamento" class="control-label"><fmt:message key="label.padrao.nome"/></label>
+                        <label for="codigoAgendamento" id="labelTipoPessoa" class="control-label"><fmt:message key="label.padrao.nome"/></label>
                         <div class="controls">
                             <s:textfield name="agendamentoVo.codigoAgendamento" id="codigoAgendamento" cssClass="span4" />
                         </div>
                     </div>
 
                     <div class="control-group">
-                        <label for="codigoAgendamento" class="control-label"><fmt:message key="label.padrao.cpf.cnpj"/></label>
+                        <label for="codigoAgendamento" id="labelDocumento" class="control-label"><fmt:message key="label.padrao.cpf"/></label>
                         <div class="controls">
-                            <s:textfield name="agendamentoVo.codigoAgendamento" id="codigoAgendamento" cssClass="span4" />
+                            <s:textfield name="agendamentoVo.codigoAgendamento" id="documento" cssClass="span4" />
                         </div>
                     </div>
 
                     <div class="control-group">
                         <label for="codigoAgendamento" class="control-label"><fmt:message key="label.padrao.placa"/></label>
                         <div class="controls">
-                            <s:textfield name="agendamentoVo.codigoAgendamento" id="codigoAgendamento" cssClass="span4" />
+                            <s:textfield name="agendamentoVo.codigoAgendamento" id="placa" cssClass="span4" />
                         </div>
                     </div>
                </div>
@@ -111,7 +111,7 @@
                <div class="control-group">
                    <label for="tipoServico" class="control-label"><fmt:message key="label.padrao.tipo.servico"/></label>
                    <div class="controls input-append">
-                       <s:select name="agendamentoVo.codigoTipoServico" list="#{ }" emptyOption="true" cssClass="span4"/>
+                       <s:select name="agendamentoVo.codigoTipoServico" list="listaTipoServico" listKey="chave" listValue="valor" emptyOption="true" cssClass="span4"/>
                    </div>
                </div>
                
@@ -339,6 +339,8 @@
 		$('.tipoInclusao').toggle('slow',function(){
 			if(inclusaoRapida == true){
 				$('#botaoTipoInclusao').html('<fmt:message key="label.padrao.inclusao.rapida" />');
+				$('#placa').mask('aaa-9999');
+				$('#documento').mask('99.999.999/9999-99');
 			}else{
 			    $('#botaoTipoInclusao').html('<fmt:message key="label.padrao.cliente.cadastrado" />');
 			}
@@ -375,10 +377,25 @@
                 alert('Error');
             }
         });
-		
-		
 	}
 	
+    function selecionaTipoPessoa(tipoPessoa){
+        
+        if(tipoPessoa == '1'){
+            
+            $('#labelTipoPessoa').html('<fmt:message key="label.padrao.nome"/>');
+            $('#labelDocumento').html('<fmt:message key="label.padrao.cpf"/>');
+            $('#documento').mask('999.999.999-99');
+            
+        }else{
+            
+            $('#labelTipoPessoa').html('<fmt:message key="label.padrao.razao.social"/>');
+            $('#labelDocumento').html('<fmt:message key="label.padrao.cnpj"/>');
+            $('#documento').mask('99.999.999/9999-99');
+            
+        }
+        
+    }
 	
 	
 	

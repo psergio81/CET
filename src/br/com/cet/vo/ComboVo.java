@@ -23,4 +23,5 @@ public class ComboVo {
 	public void setValor(String valor) {
 		this.valor = valor;
 	}
+
 }
