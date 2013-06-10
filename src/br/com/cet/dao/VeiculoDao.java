@@ -132,13 +132,13 @@ public class VeiculoDao extends BaseDao {
 			qry.append(" WHERE cd_empresa = ? ");
 			qry.append(" and cd_pessoa = ? ");
 			
-			
-			
 			ps = connection.prepareStatement(qry.toString());
 			
 			ps.setString(i++, veiculoVo.getCodigoEmpresa());
 			ps.setString(i++, veiculoVo.getCodigoProprietario());
 
+			System.out.println("veiculoVo.getCodigoEmpresa(): "+veiculoVo.getCodigoEmpresa());
+			System.out.println("veiculoVo.getCodigoProprietario(): "+veiculoVo.getCodigoProprietario());
 			
 			rs = ps.executeQuery();  
 			
@@ -157,7 +157,7 @@ public class VeiculoDao extends BaseDao {
 		}finally {
 			releaseResouces(connection, ps, rs);
 		} 
-		
+
 		return veiculosList;
 	}
 	

@@ -46,10 +46,10 @@
 	
 	<tr class="corpo">
 		<td width="60%" colspan="2" >
-			NOME: CARLITO COMÉRCIO DE PEÇAS LTDA
+			NOME: TESTE CRONOTACOGRAFOS LTDA
 		</td>
 		<td colspan="2" >
-			ENDEREÇO: R. VISC. DE SÃO LEOPOLDO 437
+			ENDEREÇO: R. VISC. DE SABUGOSA 2013
 		</td>
 	</tr>
 	<tr class="corpo">
@@ -57,7 +57,7 @@
 			BAIRRO: SANTOS
 		</td>
 		<td width="30%">
-			CEP: 11010-201
+			CEP: 11000-000   
 		</td>
 		<td width="20%">
 			CIDADE: SANTOS
@@ -68,16 +68,16 @@
 	</tr>
 	<tr class="corpo">
 		<td width="30%">
-			TELEFONE: (13) 3023-4466
+			TELEFONE: (13) 3000-2013
 		</td>
 		<td width="30%">
-			FAX: (13) 3023-4466
+			FAX: (13) 3000-2013
 		</td>
 		<td width="20%">
-			SITE: WWW.CAPNET.COM.BR
+			SITE: WWW.POSTODEENSAIO.COM.BR
 		</td>
 		<td width="20%">
-			E-MAIL: LUCIANO@CAPNET.COM.BR
+			E-MAIL: TESTE@POSTODEENSAIO.COM.BR
 		</td>
 	</tr>
 	
@@ -127,7 +127,7 @@
 					<s:property/>
 				</td>
 				<td>
-					Paulo 
+					TESTE 
 				</td>
 				<td>
 					ABC-1234

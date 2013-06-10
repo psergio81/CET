@@ -1,5 +1,6 @@
 package br.com.cet.action.key;
 
+
 public enum TipoServico {
 	
 	ENSAIO(1, "Ensaio"), 
@@ -30,7 +31,6 @@ public enum TipoServico {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 	
 }
 

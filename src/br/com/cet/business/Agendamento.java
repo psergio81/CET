@@ -2,82 +2,82 @@ package br.com.cet.business;
 
 import java.util.List;
 
-import br.com.cet.dao.ProgramaDao;
-import br.com.cet.vo.ProgramaVo;
+import br.com.cet.dao.AgendamentoDao;
+import br.com.cet.vo.AgendamentoVo;
 
 public class Agendamento {
 
-	public List<ProgramaVo> getListaPrograma(ProgramaVo programaVo, boolean filtrar)
+	public List<AgendamentoVo> getListaAgendamento(AgendamentoVo agendamentoVo, boolean filtrar)
 			throws Exception {
 
-		List<ProgramaVo> listaPrograma = null;
+		List<AgendamentoVo> listaAgendamento = null;
 
 		try {
 
-			ProgramaDao programaDao = new ProgramaDao();
-			listaPrograma = programaDao.getListaProgramas(programaVo, filtrar);
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			listaAgendamento = agendamentoDao.getListaAgendamentos(agendamentoVo, filtrar);
 
 		} catch (Exception e) {
 			throw new Exception(e);
 		}
 
-		return listaPrograma;
+		return listaAgendamento;
 
 	}
 	
-	public ProgramaVo getProgramaPeloCodigo(String codigoPrograma) throws Exception{
+	public AgendamentoVo getAgendamentoPeloCodigo(String codigoAgendamento) throws Exception{
 		
-		ProgramaVo programaVo = new ProgramaVo();
+		AgendamentoVo agendamentoVo = new AgendamentoVo();
 		
 		try{
 			
-			ProgramaDao programaDao = new ProgramaDao();
-			programaVo.setCodigoPrograma(codigoPrograma);
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			agendamentoVo.setCodigoAgendamento(codigoAgendamento);
 			
-			programaVo = programaDao.getProgramaPeloCodigo(programaVo);
+			agendamentoVo = agendamentoDao.getAgendamentoPeloCodigo(agendamentoVo);
 			
 		}catch (Exception e) {
 			throw new Exception(e);
 		}
 		
-		return programaVo;
+		return agendamentoVo;
 		
 	}
 	
-	public void insertPrograma(ProgramaVo programaVo) throws Exception{
+	public void insertAgendamento(AgendamentoVo agendamentoVo) throws Exception{
 		
 		try{
 			
-			ProgramaDao programaDao = new ProgramaDao();
-			String codigoPrograma;
-			codigoPrograma = String.valueOf(programaDao.getProximoCodigo(programaVo.getCodigoEmpresa()));
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			String codigoAgendamento;
+			codigoAgendamento = String.valueOf(agendamentoDao.getProximoCodigo(agendamentoVo.getCodigoEmpresa()));
 
-			programaVo.setCodigoPrograma(codigoPrograma);
-			programaDao.insertProgramas(programaVo);
+			agendamentoVo.setCodigoAgendamento(codigoAgendamento);
+			agendamentoDao.insertAgendamentos(agendamentoVo);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void updatePrograma(ProgramaVo programaVo) throws Exception{
+	public void updateAgendamento(AgendamentoVo agendamentoVo) throws Exception{
 		
 		try{
 			
-			ProgramaDao programaDao = new ProgramaDao();
-			programaDao.updateProgramas(programaVo);
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			agendamentoDao.updateAgendamentos(agendamentoVo);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void deletePrograma(ProgramaVo programaVo){
+	public void deleteAgendamento(AgendamentoVo agendamentoVo){
 		
 		try {
 			
-			ProgramaDao programaDao = new ProgramaDao();
-			programaDao.deletePrograma(programaVo);
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			agendamentoDao.deleteAgendamento(agendamentoVo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

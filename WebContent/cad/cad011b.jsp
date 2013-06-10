@@ -1,10 +1,12 @@
+<!DOCTYPE html P UBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+
 <%@ include file="/include/principal.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
 	<head>
 		
-		<title>[cad011b.jsp] Cadastro de Programa</title>
+		<title>[cad011b.jsp] Cadastro de Agendamento</title>
       	 
 	</head>
 	
@@ -38,7 +40,7 @@
     </div>
     
 	<div class="container">
-		<s:if test="%{listaPrograma.isEmpty()}">
+		<s:if test="%{listaAgendamento.isEmpty()}">
 		    <div class="alert">
 		  		<strong>Sem Resultado!</strong> Não existe nenhum registro para a busca atual.
 			</div>
@@ -50,18 +52,30 @@
 				<thead>
 					<tr>
 						<th width="20%"><fmt:message key="label.padrao.codigo"/></th>
-						<th width="*"><fmt:message key="label.padrao.descricao"/></th>
+						<th width="*"><fmt:message key="label.padrao.proprietario"/></th>
+						<th width="*"><fmt:message key="label.padrao.tipo.servico"/></th>
+						<th width="*"><fmt:message key="label.padrao.data"/></th>
+						<th width="*"><fmt:message key="label.padrao.hora"/></th>
 					</tr>
 				</thead>
 				
 				<tbody>
-					<s:iterator  value="listaPrograma" status="status">
-						<tr onclick="javaScript:detalhes('<s:property value="codigoPrograma" />')">
+					<s:iterator  value="listaAgendamento" status="status">
+						<tr onclick="javaScript:detalhes('<s:property value="codigoAgendamento" />')">
 							<td>
-								<a><fmt:formatNumber value="${codigoPrograma}" type="number"  minIntegerDigits="6" /></a>
+								<a><fmt:formatNumber value="${codigoAgendamento}" type="number"  minIntegerDigits="6" /></a>
 							</td>
 							<td>
-								<a><s:property value="descricao" /></a>
+								<a><s:property value="nomeProprietario" /></a>
+							</td>
+							<td>
+								<a><s:property value="nomeTipoServico" /></a>
+							</td>
+							<td>
+								<a><s:property value="dataAgendamento" /></a>
+							</td>
+							<td>
+								<a><s:property value="horaAgendamento" /></a>
 							</td>
 						</tr>
 					</s:iterator>
@@ -100,7 +114,7 @@
 		
 		function detalhes(codigo){
 			$('#ac').val(' ');
-			$('#cad011').attr("action","Cad011Action!crud.action?ac=consultar&codigoProgramaSelecionado="+codigo);
+			$('#cad011').attr("action","Cad011Action!crud.action?ac=consultar&codigoAgendamentoSelecionado="+codigo);
 			$('#cad011').submit();
 			
 		}

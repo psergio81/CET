@@ -7,7 +7,10 @@ import br.com.cet.action.RecursoPadraoAction;
 import br.com.cet.action.key.AcoesKey;
 import br.com.cet.action.key.ProgramasKey;
 import br.com.cet.action.key.TipoServico;
+import br.com.cet.business.Agendamento;
 import br.com.cet.business.Pessoa;
+import br.com.cet.business.TipoPessoa;
+import br.com.cet.vo.AgendamentoVo;
 import br.com.cet.vo.ComboVo;
 import br.com.cet.vo.PessoaVo;
 
@@ -15,8 +18,11 @@ public class Cad011Action extends RecursoPadraoAction {
 
 	private Pessoa pessoa = new Pessoa();
 	private List<PessoaVo> listaPessoa = null;
+	private List<AgendamentoVo> listaAgendamento = null;
 	private String campoBusca;
 	private boolean filtrar;
+	private AgendamentoVo agendamentoVo;
+	Agendamento agendamento = new Agendamento();
 	
 	
 	public void prepare() throws Exception{
@@ -28,13 +34,11 @@ public class Cad011Action extends RecursoPadraoAction {
 	}
 	
 	public String browser() throws Exception{
+		agendamentoVo = new AgendamentoVo();
 		
-		
-		PessoaVo pessoaVo = new PessoaVo() ;
-		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
-		
-		listaPessoa =  new ArrayList<PessoaVo>();
-		listaPessoa = pessoa.getListaPessoa(pessoaVo, false);
+		agendamentoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+		listaAgendamento = agendamento.getListaAgendamento(agendamentoVo, filtrar);
+	
 		
 		return "browser";
 		
@@ -50,9 +54,14 @@ public class Cad011Action extends RecursoPadraoAction {
 		listaPessoa = pessoa.getListaPessoa(pessoaVo, false);
 		
 		if(AcoesKey.ACAO_CONSULTAR.equals(ac)){
-		
+
+			
 
 		}else if(AcoesKey.ACAO_SALVAR_INCLUSAO.equals(ac)){
+			Agendamento agendamento = new Agendamento();
+			
+			agendamentoVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
+			agendamento.insertAgendamento(agendamentoVo);
 			
 			gravaLog("Log de Inserção Agendamento");
 			
@@ -106,6 +115,33 @@ public class Cad011Action extends RecursoPadraoAction {
 		}
 		
 		return listaTipo;
+	}
+	
+	public List<ComboVo> getListaTipoPessoa() {
+		
+		List<ComboVo> listaTipo = new ArrayList<ComboVo>();
+		
+		for (TipoPessoa tipo : TipoPessoa.values()) {
+			listaTipo.add(new ComboVo(String.valueOf(tipo.getCodigo()), tipo.getDescricao()));
+		}
+		
+		return listaTipo;
+	}
+
+	public AgendamentoVo getAgendamentoVo() {
+		return agendamentoVo;
+	}
+
+	public void setAgendamentoVo(AgendamentoVo agendamentoVo) {
+		this.agendamentoVo = agendamentoVo;
+	}
+
+	public List<AgendamentoVo> getListaAgendamento() {
+		return listaAgendamento;
+	}
+
+	public void setListaAgendamento(List<AgendamentoVo> listaAgendamento) {
+		this.listaAgendamento = listaAgendamento;
 	}
 	
 	

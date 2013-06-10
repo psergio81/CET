@@ -108,3 +108,7 @@ body {
 .table td{
 	cursor: pointer;
 }
+
+.form-signin{
+    padding: 19px 29px 70px;	
+}

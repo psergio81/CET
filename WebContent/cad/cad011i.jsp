@@ -1,6 +1,6 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ include file="/include/principal.jsp" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 	<head>
 	
@@ -11,7 +11,6 @@
 	<div class="navbar navbar-fixed-top">
 	
 		<es:menu mostrarNomePrograma="true"/>
-		
 		<es:botoes codigoPrograma="cad011" />
    	
 	</div>
@@ -22,6 +21,7 @@
 		    <s:form id="cad011" action="Cad011Action!crud.action" theme="simple" cssClass="well form-horizontal">
 		        <s:hidden name="ac" id="ac"/>
 		        <s:hidden name="agendamentoVo.codigoAgendamento"/>
+		        <s:hidden id="codigoTipoInclusao" name="codigoTipoInclusao" value="1"/>
 		       
 		       
 		        <div class="control-group">
@@ -47,12 +47,12 @@
 	                <div class="control-group">
 	                    <label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
 	                    <div class="controls input-append">
-	                        <s:select name="agendamentoVo.codigoPessoa" id="agendamentoVo.codigoPessoa" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" onchange="javascript:buscaVeiculosPorCliente(this.value);" cssClass="span4"/>
+	                        <s:select name="agendamentoVo.codigoProprietario" id="agendamentoVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" onchange="javascript:buscaVeiculosPorCliente(this.value);" cssClass="span4"/>
 	                        <span class="add-on btn" id="adicionaProprietario"  onclick="javascript:mostrarCampoBusca('spanProprietario')">
 	                           <i class="icon-filter"></i>
 	                        </span>
 	                        <span class="hide busca" id="spanProprietario">
-		                        <s:textfield name="programaVo.descricaoMenu" id="descricaoMenu" required="required" cssClass="span4" />
+		                        <s:textfield name="campoBuscaProprietario" id="descricaoMenu" required="required" cssClass="span4" />
 		                        <span class="add-on btn" id="adicionaProprietario">
 		                           <i class="icon-search"></i>
 		                        </span>
@@ -62,27 +62,30 @@
 	
 	                <div class="control-group">
 	                    <label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
-	                    <div class="controls input-append">
+	                    <div id="selecaoVeiculo" class="controls input-append">
 	                        <s:select name="agendamentoVo.codigoVeiculo"  id="listaVeiculos" list="#{ }" cssClass="span4"/>
 	                        <span class="add-on btn" id="adicionaProprietario" onclick="javascript:mostrarCampoBusca('spanVeiculo')">
 	                           <i class="icon-filter"></i>
 	                        </span>
 	                        <span class="hide busca" id="spanVeiculo">
-		                        <s:textfield name="programaVo.descricaoMenu" id="descricaoMenu" required="required" cssClass="span4" />
+		                        <s:textfield name="campoBuscaVeiculo" id="descricaoMenu" required="required" cssClass="span4" />
 		                        <span class="add-on btn" id="adicionaProprietario">
 		                           <i class="icon-search"></i>
 		                        </span>
 	                        </span>
 	                    </div>
+                        <div id="inclusaoPorPlaca" class="controls input-append" style="display: none;">
+                             <s:textfield name="agendamentoVo.codigoAgendamento" id="codigoAgendamento" cssClass="span4" />
+                        </div>
 	                </div>
                 </div> 
                     
                 <div class="tipoInclusao hide">
                     
 	                <div class="control-group">
-	                    <label for="codigoPessoa" class="control-label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
+	                    <label for="codigoProprietario" class="control-label"><fmt:message key="label.padrao.tipo.pessoa"/></label>
 	                    <div class="controls">
-	                        <s:select cssClass="input" list="#{'1':'Física','2':'Jurídica'}" name="pessoaVo.tipoPessoa" id="tipoPessoa" onchange="javascript:selecionaTipoPessoa(this.value)" cssErrorClass="span3"/>               
+	                        <s:select cssClass="input" list="listaTipoPessoa" listKey="chave" listValue="valor" id="tipoPessoa" onchange="javascript:selecionaTipoPessoa(this.value)" cssErrorClass="span3"/>               
 	                    </div>
 	                </div>
 
@@ -118,7 +121,7 @@
                <div class="control-group">
                    <label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
                    <div class="controls input-append">
-                       <s:textfield id="dataAgendamento" name="ensaioVo.data" cssClass="span2 data "/>
+                       <s:textfield id="dataAgendamento" name="agendamentoVo.dataAgendamento" cssClass="span2 data "/>
                        <span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
                    </div>
                </div>
@@ -126,12 +129,16 @@
                <div class="control-group">
                    <label for="hora" class="control-label"><fmt:message key="label.padrao.hora.inicio"/></label>
                    <div class="controls input-append">
-                       <s:textfield id="horaInicioEnsaio" name="ensaioVo.horaInicio" cssClass="span2"/>
+                       <s:textfield id="horaInicioEnsaio" name="agendamentoVo.horaAgendamento" cssClass="span2"/>
                        <span class="add-on btn" onclick="javascript:setHoraAtual('horaInicioEnsaio')">
                           <i class="icon-time"></i>
                        </span>
                    </div>
                </div>
+		       <div id="divAviso" class="alert alert-block" style="overflow; position:absolute; display: none; width: 300px; top: 150px; right: 10px;">
+                    <h4>Aviso!!!</h4>
+	               <div id="mensagemAviso"></div>
+                </div> 
 		        
 		    </s:form>
 		    
@@ -334,15 +341,18 @@
 
 	function alterarTipoInclusao(){
 		
-		var inclusaoRapida = $('#clienteCadastrado').is(':visible');
+		var codigoTipoInclusao = $('#codigoTipoInclusao').val();
 		
 		$('.tipoInclusao').toggle('slow',function(){
-			if(inclusaoRapida == true){
+			if(codigoTipoInclusao == "1"){
 				$('#botaoTipoInclusao').html('<fmt:message key="label.padrao.inclusao.rapida" />');
 				$('#placa').mask('aaa-9999');
 				$('#documento').mask('99.999.999/9999-99');
+				$('#codigoTipoInclusao').val("2");
+				
 			}else{
 			    $('#botaoTipoInclusao').html('<fmt:message key="label.padrao.cliente.cadastrado" />');
+				$('#codigoTipoInclusao').val("1");
 			}
 		});
 	}
@@ -350,27 +360,46 @@
 	
 	function buscaVeiculosPorCliente(codigoCliente){
 		
+		if(codigoCliente == 0){
+			 $('#divAviso').fadeOut('fast');
+             $('#mensagemAviso').html('');
+             $('#selecaoVeiculo').show();
+             $('#inclusaoPorPlaca').hide();
+             
+             return;
+		}
 		
 		$.ajax({
             url: "Cad005Action!carregaVeiculosPorCliente.action",
             type: "POST",
-            dataType: "html",  
+            dataType: "json",  
             data: {
             	codigoEmpresaSelecionada: codigoCliente
                 
             },
             success: function(json){   
-                
-                var obj = jQuery.parseJSON(json);
 
-                var options = "<option value=''></option>";
-                
-                $.each(obj, function(obj){
-                    options += "<option value="+this.codigoVeiculo+">"+this.placa+"</option>";
-                  });
+            	if(json != null && json.length > 0){
+            		
+	                var options = "<option value=''></option>";
+	                
+	                $.each(json, function(json){
+	                    options += "<option value="+this.codigoVeiculo+">"+this.placa+"</option>";
+	                });
+	
+	                $('#listaVeiculos').html(options);
+	                $('#divAviso').fadeOut('slow');
+	                $('#selecaoVeiculo').show();
+	                $('#inclusaoPorPlaca').hide();
+	                
+	                
+            	}else{
+	                $('#mensagemAviso').html('Não existe veículo cadastrado para o cliente selecionado. Informe uma placa para a inclusão rápida deste registro');
+	                $('#divAviso').fadeIn(1000).delay(1000).fadeOut('slow');
+	                $('#selecaoVeiculo').hide();
+	                $('#inclusaoPorPlaca').show();
+            	}
 
-                console.log('options: '+options);
-                $('#listaVeiculos').html(options);
                 
             },
             error: function(){  

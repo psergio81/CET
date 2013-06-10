@@ -1,11 +1,19 @@
 package br.com.cet.vo;
 
+import br.com.cet.action.key.TipoServico;
+import br.com.cet.util.UtString;
+
+
+
+
 public class AgendamentoVo extends EstruturaVo{
 	
 	private String codigoAgendamento;
 	private String codigoProprietario;
+	private String nomeProprietario;
 	private String codigoVeiculo;
 	private String codigoTipoServico;
+	private String nomeTipoServico;
 	private String dataAgendamento;
 	private String horaAgendamento;
 	
@@ -45,6 +53,25 @@ public class AgendamentoVo extends EstruturaVo{
 	}
 	public void setCodigoTipoServico(String codigoTipoServico) {
 		this.codigoTipoServico = codigoTipoServico;
+	}
+	public String getNomeProprietario() {
+		return nomeProprietario;
+	}
+	public void setNomeProprietario(String nomeProprietario) {
+		this.nomeProprietario = nomeProprietario;
+	}
+	public String getNomeTipoServico() {
+		
+		for (TipoServico tipo : TipoServico.values()) {
+			if(UtString.equals(codigoTipoServico, String.valueOf(tipo.getCodigo()))){
+				return tipo.getDescricao();
+			}
+		}
+		return "";
+	}
+	
+	public void setNomeTipoServico(String nomeTipoServico) {
+		this.nomeTipoServico = nomeTipoServico;
 	}
 	
 	
