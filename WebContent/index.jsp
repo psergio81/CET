@@ -26,12 +26,7 @@
 
     .maximizarOrdemServicoPendente{
         
-        width: 65.96% !important;
-    
-    }
-    .maximizarOrdemServicoPendente tbody{
-        
-        font-size: medium;
+        width: 65.9% !important;
     
     }
 
@@ -48,8 +43,8 @@
 
 	</div>
 	
-	<input type="hidden" id="mostraAtalho" value="${usuarioVo.mostraAtalhosTelaInicial}"> 
-	<input type="hidden" id="mostraGrafico" value="${usuarioVo.mostraGraficoTelaInicial}"> 
+	<input type="hidden" id="mostraAtalho" value="${usuarioLogadoVo.mostraAtalhosTelaInicial}"> 
+	<input type="hidden" id="mostraGrafico" value="${usuarioLogadoVo.mostraGraficoTelaInicial}"> 
 	
     <div class="container-fluid" id="atalhos">
         <div class="widget">
@@ -89,8 +84,8 @@
 			<div class="span4 maximizarInformacoes" id="informacoes">
 				<div class="widget-content">
 					<p>
-						<b>Usuário:</b> <c:out value="${usuarioVo.nomeUsuario}" /><br>
-						<b>Empresa:</b> <c:out value="${empresaVo.codigoEmpresa}"/> - <c:out value="${empresaVo.razaoSocial}"/>
+						<b>Usuário:</b> <c:out value="${usuarioLogadoVo.nomeUsuario}" /><br>
+						<b>Empresa:</b> <c:out value="${empresaLogadaVo.codigoEmpresa}"/> - <c:out value="${empresaLogadaVo.razaoSocial}"/>
 					</p>
 				</div>
 				<div class="widget-content">
@@ -125,7 +120,7 @@
                 <cet:grafico tituloDaSerie="Ensaios" tituloDoGrafico="Ensaios por Mês" /> 
             </div>
             
-			<div class="span4 widget-content maximizarOrdemServicoPendente" style="height: 297px; overflow-y: scroll; font-size: 8px !important;" id="ordemServico">
+			<div class="span4 widget-content maximizarOrdemServicoPendente" style="height: 297px; overflow-y: scroll;" id="ordemServico">
 			     <table class="table table-condensed">
 			         <thead>
                            <tr>
@@ -223,9 +218,11 @@
             'action': action+'Action!browser.action',
             'name': 'irParaProgrma',
             'id': 'irParaProgrma',
-            'method':'Post'
+            'method':'post'
         });
 
+    	console.log($('#irParaProgrma').html());
+    	return;
     	newForm.submit();
     }
     function irParaRelatorio(action){

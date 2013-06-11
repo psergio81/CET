@@ -28,9 +28,6 @@ public class RecursoPadraoAction extends SystemAction{
 	private String ultimosEnsaiosJson;
 	private List<EnsaioVo> listaEnsaio = new ArrayList<EnsaioVo>();
 	
-//	protected UsuarioVo usuarioVo = new UsuarioVo();
-//	protected EmpresaVo empresaVo = new EmpresaVo();
-
 	
 	public void prepare() throws Exception {
 		
