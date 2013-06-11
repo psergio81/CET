@@ -1,4 +1,4 @@
-package br.com.cet.log;
+package br.com.cet.business;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

@@ -103,6 +103,11 @@
 		<action name="Rel001Action!*" method="{1}" class="br.com.cet.action.cad.Rel001Action">
 			<result name="success">/rel/rel001.jsp</result>
 		</action>
+		
+		<action name="Rel002Action!*" method="{1}" class="br.com.cet.action.rel.Rel002Action">
+			<result name="browser">/rel/rel002b.jsp</result>
+			<result name="success">/rel/rel002r.jsp</result>
+		</action>
 	
 	</package>
 

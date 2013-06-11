@@ -31,11 +31,11 @@ public class LogDao extends BaseDao {
 	}
 	
 	
-	public List<LogVo> getListLog(String codigoEmpresa, String codigoPrograma, String codigoUsuario, String busca){
-		return getListaLog(codigoEmpresa, codigoPrograma, codigoUsuario, busca, POR_TODOS	);
+	public List<LogVo> getListaLogPorTodos(String codigoEmpresa, String codigoPrograma, String codigoUsuario, String busca, String dataInicial, String dataFinal){
+		return getListaGeralLog(codigoEmpresa, codigoPrograma, codigoUsuario, busca, dataInicial, dataFinal, POR_TODOS	);
 	}
 	
-	private List<LogVo> getListaLog(String codigoEmpresa, String codigoPrograma, String codigoUsuario, String busca, int criterio){
+	private List<LogVo> getListaGeralLog(String codigoEmpresa, String codigoPrograma, String codigoUsuario, String busca, String dataInicial, String dataFinal, int criterio){
 		
 		Connection connection = null;
 		ResultSet rs = null;  

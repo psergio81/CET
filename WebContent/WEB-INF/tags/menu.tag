@@ -103,6 +103,12 @@
 									<s:a action="Rel001Action!crud.action" target="_blank">Ensaios</s:a>
 								</a>
 							</li>
+							
+							<li>
+								<a href="#">
+									<s:a action="Rel002Action!browser.action">Log Ações</s:a>
+								</a>
+							</li>
 						</ul>
 					</li>
 				</ul>

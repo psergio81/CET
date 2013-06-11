@@ -13,6 +13,7 @@ public class ProgramasKey {
 	public static final String CADASTRO_DE_PROGRAMAS					= "Cadastro de Programas";
 	public static final String UPLOAD_ARQUIVOS							= "Upload de Arquivos";
 	public static final String CADASTRO_DE_AGENDAMENTOS					= "Cadastro de Agendamentos";
+	public static final String RELATORIO_LOG_ACAO						= "Relatório Log Ações";
 	
 	
 	public static final String CODIGO_CADASTRO_DE_EMPRESAS 				= "1";
@@ -26,5 +27,6 @@ public class ProgramasKey {
 	public static final String CODIGO_CADASTRO_DE_PROGRAMAS				= "9";
 	public static final String CODIGO_UPLOAD_ARQUIVOS					= "10";
 	public static final String CODIGO_CADASTRO_DE_AGENDAMENTOS			= "11";
+	public static final String CODIGO_RELATORIO_LOG_ACAO				= "12";
 		
 }

@@ -10,7 +10,7 @@ import org.apache.struts2.interceptor.ApplicationAware;
 import org.apache.struts2.interceptor.RequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-import br.com.cet.log.Log;
+import br.com.cet.business.Log;
 import br.com.cet.vo.EmpresaVo;
 import br.com.cet.vo.UsuarioVo;
 

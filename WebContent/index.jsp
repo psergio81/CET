@@ -182,7 +182,7 @@
 	<hr>
 
 	<footer>
-	<p>&copy; Stdio.H - Company 2012</p>
+	<p>&copy; Stdio.H - Company 2013</p>
 	</footer>
 
 </body>
