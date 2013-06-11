@@ -221,8 +221,6 @@
             'method':'post'
         });
 
-    	console.log($('#irParaProgrma').html());
-    	return;
     	newForm.submit();
     }
     function irParaRelatorio(action){
