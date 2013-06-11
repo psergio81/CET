@@ -37,9 +37,10 @@ public class LoginAction extends RecursoPadraoAction{
 		if(!UtString.isNullOrEmpty(nick) && !UtString.isNullOrEmpty(senha)){
 		
 			usuarioVo = usuario.autenticacao(nick, senha);
-			empresaVo = empresa.getEmpresaPeloCodigo(usuarioVo.getCodigoEmpresa());
 			
 			if(usuarioVo != null){
+				setMensagemErro("");
+				empresaVo = empresa.getEmpresaPeloCodigo(usuarioVo.getCodigoEmpresa());
 				
 				ParametroUsuario parametroUsuario = new ParametroUsuario();
 				usuarioVo = parametroUsuario.getParametroUsuario(usuarioVo);
@@ -61,6 +62,8 @@ public class LoginAction extends RecursoPadraoAction{
 				
 				
 				return SUCCESS;
+			}else{
+				setMensagemErro("Login e/ou Senha não conferem!");
 			}
 		
 		}

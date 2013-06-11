@@ -60,15 +60,17 @@ function irParaPrincipal(codigo){
 
 function buscaProximoCampo(){
 	
-	$('.required').each(function(i,obj){
-
-		if(this.value == ''){
-			
-			this.focus();
-			return false;
+	var elementos = $('.required');
+	var retorno  = true;
+	
+	for ( var i = 0; i < elementos.length; i++) {
+		if(elementos[i].value == ''){
+			retorno =  false;
+			break;
 		}
-		
-	});
+	}
+	
+	return retorno;
 }
 
 function formataZero(numero, tamanho){

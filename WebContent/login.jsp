@@ -23,9 +23,15 @@
 		
 	<s:form id="loginAction" action="LoginAction!autenticacao.action" theme="simple" cssClass="form-signin">
 	
+	   <s:hidden name="mensagemErro" id="mensagemErro" value="%{mensagemErro}"/>
+	
 		<h3 class="form-signin-heading">Ensaio de Tacógrafos</h3>
-        <s:textfield name="usuarioVo.nick" id="nick" cssClass="input-block-level required" placeholder="Login"/>
-        <s:password name="usuarioVo.senha" id="senha" cssClass="input-block-level required" placeholder="Senha" />
+        <s:textfield name="usuarioVo.nick" id="nick" cssClass="input-block-level required"/>
+        <s:password name="usuarioVo.senha" id="senha" cssClass="input-block-level required"/>
+		
+		<div id="progressbar" class="progress progress-striped active" style="display: none;">
+            <div id="progresso" class="bar" style="width: 0%;"></div>
+        </div>
         
         <div class="control-group pull-right" >
 			<div class="controls">
@@ -35,6 +41,7 @@
 				</a>
 			</div>
 		</div>
+		
 		
       </s:form>
       
@@ -48,6 +55,18 @@
 $(document).ready(function(){
 
 	$('#divErros').hide();
+	
+	var mensagem = $('#mensagemErro').val();
+    
+
+    if(mensagem != null && mensagem != ''){
+        $('#listaErros').html(mensagem);
+        $('#divErros').fadeIn(2000).fadeOut('slow',function(){
+	        $('#listaErros').html('');
+        });
+    }
+	
+	
 	
 	$('#loginAction').validate({
 	
@@ -83,17 +102,29 @@ function autenticar(){
 	$('#senha').val(senha);
 	
 	
-	if(buscaProximoCampo() == true){
-		
-		$('#textoBtnLogin').html('Logando...');
-	}else{
+	if(buscaProximoCampo() == false){
 		
 		$('#divErros').fadeIn(2000).fadeOut('slow');
+		$('#loginAction').delay(1000).submit();
 		
+	}else{
+
+		$('#textoBtnLogin').html('Logando...');
+		$('#progressbar').show('slow');
+		var progress = setInterval(function() {
+		    var $bar = $('.bar');
+	
+		    if ($bar.width()==400) {
+		        clearInterval(progress);
+		        $('.progress').removeClass('active');
+				$('#loginAction').delay(1000).submit();
+				
+		    } else {
+		        $bar.width($bar.width()+100);
+		    }
+		    $bar.text($bar.width()/4 + "%");
+		}, 800);
 	}
-	
-	$('#loginAction').delay(1000).submit();
-	
 }
 
 </script>
