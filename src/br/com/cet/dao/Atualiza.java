@@ -5,25 +5,25 @@ package br.com.cet.dao;
 public class Atualiza extends BaseAtualiza {
 
 
-	private static final String NOME_BANCO = "ensaio";
+	private static final String NOME_BANCO = "postodee_ensaio";
 	
 	public static void main(String[] args) {
 		
 		Atualiza atualiza = new Atualiza();
 		
-		atualiza.a0001(false);
-		atualiza.a0002(false);
-		atualiza.a0003(false);
-		atualiza.a0004(false);
-		atualiza.a0005(false);
+		atualiza.a0001(true);
+		atualiza.a0002(true);
+		atualiza.a0003(true);
+		atualiza.a0004(true);
+		atualiza.a0005(true);
 		atualiza.a0006(true);
-		atualiza.a0007(false);
-		atualiza.a0008(false);
-		atualiza.a0009(false);
-		atualiza.a0010(false);
-		atualiza.a0011(false);
-		atualiza.a0012(false);
-		atualiza.a0013(false);
+		atualiza.a0007(true);
+		atualiza.a0008(true);
+		atualiza.a0009(true);
+		atualiza.a0010(true);
+		atualiza.a0011(true);
+		atualiza.a0012(true);
+		atualiza.a0013(true);
 		
 		
 	}
@@ -56,6 +56,8 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "website", 40, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "email", 40, false);
 
+		executarComandoSql("insert into empresa(cd_empresa, nm_empresa, ) values(1, 'Empresa Principal ADM')");
+		
 	}
 	
 	/**
@@ -283,6 +285,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.BOOLEAN, NOME_BANCO, nomeTabela, "ic_mostra_grafico", 0, false);
 		
 		executarComandoSql("Insert into parametro_usuario (cd_empresa, cd_usuario, ic_mostra_grafico, ic_mostra_atalhos) Values(1,1,1,1)");
+		executarComandoSql("Insert into parametro_usuario (cd_empresa, cd_usuario, ic_mostra_grafico, ic_mostra_atalhos) Values(1,2,1,1)");
 		
 		
 		
