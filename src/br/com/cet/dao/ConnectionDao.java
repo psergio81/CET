@@ -34,8 +34,8 @@ public class ConnectionDao{
 	private static Connection getConnectionMySql(){
 		
 		String url = "jdbc:mysql://localhost/postodee_ensaio";
-		String user = "postodee_ensaio";
-		String password = "P@ssDAew0";
+		String user = "root";
+		String password = "P@ssw0rd";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); 

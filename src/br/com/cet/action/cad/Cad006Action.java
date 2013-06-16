@@ -28,6 +28,7 @@ public class Cad006Action extends RecursoPadraoAction {
 	public String browser() throws Exception{
 		
 		
+		pessoaVo.setCodigoEmpresa(empresaLogadaVo.getCodigoEmpresa());
 		pessoaVo.setNome(campoBusca);
 		
 		listaPessoa = pessoa.getListaPessoa(pessoaVo, filtrar);

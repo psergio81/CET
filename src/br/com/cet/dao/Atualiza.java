@@ -56,7 +56,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "website", 40, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "email", 40, false);
 
-		executarComandoSql("insert into empresa(cd_empresa, nm_empresa, ) values(1, 'Empresa Principal ADM')");
+		executarComandoSql("insert into empresa(cd_empresa, nm_empresa ) values(1, 'Empresa Principal ADM')");
 		
 	}
 	
@@ -130,7 +130,6 @@ public class Atualiza extends BaseAtualiza {
 		
 		String nomeTabela = "ensaio";
 		
-		executarComandoSql("drop table "+nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_ensaio", 0, false);		
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);	
@@ -156,7 +155,6 @@ public class Atualiza extends BaseAtualiza {
 		
 		String nomeTabela = "veiculo";
 		
-		excluirTabela(NOME_BANCO, nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_veiculo", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
@@ -302,7 +300,6 @@ public class Atualiza extends BaseAtualiza {
 		
 		String nomeTabela = "agendamento";
 		
-		excluirTabela(NOME_BANCO, nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_agendamento", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);

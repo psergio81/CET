@@ -46,6 +46,7 @@ public class BaseAtualiza extends BaseDao {
 	
 	
 	public void criarTabela(String nomeBanco, String nomeTabela) {
+		excluirTabela(nomeBanco, nomeTabela);
 		printLog(CRIANDO_TABELA, nomeBanco, nomeTabela);
 	    try {  
 	    	connection = getConnection();

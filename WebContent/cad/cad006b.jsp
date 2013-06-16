@@ -65,7 +65,7 @@
 								</a>
 							</td>
 							<td>
-								<a><s:property value="tipoPessoa" /></a>
+								<a><s:property value="descricaoTipoPessoa" /></a>
 							</td>
 							<td>
 								<a><s:property value="nome" /></a>
