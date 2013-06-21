@@ -66,9 +66,12 @@
 
                     <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad006" label="Pessoa" nomeIcone="icon-user"/>
 
+                    <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad008" label="Usuário" nomeIcone="icon-user"/>
+
                     <cet:botao_atalho funcao="irParaRelatorio" codigoPrograma="Rel001" label="Relatório" nomeIcone="icon-file"/>
 
                     <cet:botao_atalho funcao="irParaPrograma" codigoPrograma="Cad010" label="Upload" nomeIcone="icon-upload"/>
+
                     
                 </div>
             </div>
