@@ -16,6 +16,8 @@ public class AgendamentoVo extends EstruturaVo{
 	private String nomeTipoServico;
 	private String dataAgendamento;
 	private String horaAgendamento;
+	private String gru;
+	private String statusGru;
 	
 	
 	public String getCodigoAgendamento() {
@@ -72,6 +74,18 @@ public class AgendamentoVo extends EstruturaVo{
 	
 	public void setNomeTipoServico(String nomeTipoServico) {
 		this.nomeTipoServico = nomeTipoServico;
+	}
+	public String getGru() {
+		return gru;
+	}
+	public void setGru(String gru) {
+		this.gru = gru;
+	}
+	public String getStatusGru() {
+		return statusGru;
+	}
+	public void setStatusGru(String statusGru) {
+		this.statusGru = statusGru;
 	}
 	
 	

@@ -23,17 +23,30 @@
         <div class="container">
             <s:form id="cad011" action="Cad011Action!browser.action" theme="simple" cssClass="well form-horizontal">
                 <s:hidden name="filtrar" id="filtrar" />
-        
-        		<div class="control-group">
-                	<label for="razaoSocial" class="control-label" ><fmt:message key="label.padrao.filtro"/></label>
+					<div class="control-group">
+                	<label for="razaoSocial" class="control-label" ><fmt:message key="label.padrao.cliente"/></label>
    					<div class="controls">
 		                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="span3" />
 						<a class="btn btn" href="javaScript:filtrar();">
 							<i class="icon-search icon">
 							</i><fmt:message key="label.padrao.buscar"/>
 						</a>
-   					</div>
-				</div>
+   					</div></div>
+				 
+               <div class="control-group">
+                   <label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
+                   <div class="controls input-append">
+                       <s:textfield id="dataAgendamento" name="agendamentoVo.dataAgendamento" cssClass="span2 data "/>
+                       <span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
+                   </div>
+               </div>
+
+               <div class="control-group">
+                   <label for="data" class="control-label"><fmt:message key="label.padrao.status.gru"/></label>
+                   <div class="controls input-append">
+                       <s:select name="agendamentoVo.codigoVeiculo"  id="listaVeiculos" list="#{'0':'Não Consultada', '1':'Ativa', '2':'Inativa' }" cssClass="span4" emptyOption="true"/>
+                   </div>
+               </div>
             </s:form>
         </div>
     </div>
@@ -55,6 +68,7 @@
 						<th width="*"><fmt:message key="label.padrao.tipo.servico"/></th>
 						<th width="*"><fmt:message key="label.padrao.data"/></th>
 						<th width="*"><fmt:message key="label.padrao.hora"/></th>
+						<th width="*"><fmt:message key="label.padrao.status.gru"/></th>
 					</tr>
 				</thead>
 				
@@ -76,6 +90,9 @@
 							<td>
 								<a><s:property value="horaAgendamento" /></a>
 							</td>
+							<td>
+								<a><s:property value="statusGru" /></a>
+							</td>
 						</tr>
 					</s:iterator>
 				</tbody>
@@ -95,6 +112,13 @@
 			
 			$('#campoBusca').val('');
 			$('#filtrar').val(false);
+			setDataAtual('dataAgendamento');
+			
+			$('#dataAtual').click(function(){
+		            
+			    setDataAtual('dataAgendamento');
+		            
+	         });
 			
 		});
 		
@@ -118,6 +142,5 @@
 			
 		}
 		
-			
 	</script>
 </html>

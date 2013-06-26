@@ -172,7 +172,7 @@
 		
 		var $codigo = $('#codigoVeiculo').val();
 		
-		if(buscaProximoCampo() == true){
+		if(buscaProximoCampo() == 'true'){
 			
 			$('#divErros').slideUp(function(){
 				$('#divErros').hide();

@@ -97,6 +97,7 @@
 
 		<action name="Cad011Action!*" method="{1}" class="br.com.cet.action.cad.Cad011Action">
 			<result name="success">/cad/cad011i.jsp</result>
+			<result name="agendamentos">/include/cad011a.jsp</result>
 			<result name="browser">/cad/cad011b.jsp</result>
 		</action>
 
@@ -107,6 +108,9 @@
 		<action name="Rel002Action!*" method="{1}" class="br.com.cet.action.rel.Rel002Action">
 			<result name="browser">/rel/rel002b.jsp</result>
 			<result name="success">/rel/rel002r.jsp</result>
+		</action>
+
+		<action name="ConsultaGruAction!*" method="{1}" class="br.com.cet.action.ConsultaGruAction">
 		</action>
 	
 	</package>

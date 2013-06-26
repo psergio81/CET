@@ -184,7 +184,7 @@ jQuery.validator.addMethod("cpf", function(value, element) {
 	
 	return this.optional(element) || retorno;
 
-}, "Informe um CPF válido."); 
+}, "Informe um CPF v&aacute;lido."); 
 
 jQuery.validator.addMethod("dateBR", function(value, element) {
 	 //contando chars
@@ -201,7 +201,7 @@ jQuery.validator.addMethod("dateBR", function(value, element) {
 	if(mes==2  &&  (dia>29||(dia==29 && ano%4!=0)))return false;
 	if(ano < 1900)return false;
 	return true;
-}, "Informe uma data válida"); 
+}, "Informe uma data v&aacute;lida"); 
 
 jQuery.validator.addMethod("dateTimeBR", function(value, element) {
 	 //contando chars
@@ -227,7 +227,7 @@ jQuery.validator.addMethod("dateTimeBR", function(value, element) {
 	var minuto 		= horario.substr(3,2);
 	if(horario.length!=5||isNaN(hora)||isNaN(minuto)||hora>23||minuto>59||doispontos!=":")return false;
 	return true;
-}, "Informe uma data e uma hora válida");	
+}, "Informe uma data e uma hora v&aacute;lida");	
 
 
 

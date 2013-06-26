@@ -30,7 +30,6 @@ public class Cad011Action extends RecursoPadraoAction {
 		super.prepare();
 		
 		setPrograma(ProgramasKey.CODIGO_CADASTRO_DE_AGENDAMENTOS, ProgramasKey.CADASTRO_DE_AGENDAMENTOS);
-		
 	}
 	
 	public String browser() throws Exception{
@@ -81,7 +80,7 @@ public class Cad011Action extends RecursoPadraoAction {
 		
 		return SUCCESS;
 	}
-
+	
 	public String getCampoBusca() {
 		return campoBusca;
 	}
@@ -126,6 +125,11 @@ public class Cad011Action extends RecursoPadraoAction {
 		}
 		
 		return listaTipo;
+	}
+	
+	public String buscarAgendamentos(){
+		
+		return "agendamentos";
 	}
 
 	public AgendamentoVo getAgendamentoVo() {

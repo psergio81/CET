@@ -137,7 +137,7 @@
 		
 		var $codigo = $('#codigoMarca').val();
 		
-		if(buscaProximoCampo() == true){
+		if(buscaProximoCampo() == 'true'){
 			
 			$('#divErros').slideUp(function(){
 				$('#divErros').hide();

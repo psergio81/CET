@@ -136,7 +136,7 @@
 		
 		var $codigo = $('#codigoModelo').val();
 		
-		if(buscaProximoCampo() == true){
+		if(buscaProximoCampo() == 'true'){
 			
 			$('#divErros').slideUp(function(){
 				$('#divErros').hide();

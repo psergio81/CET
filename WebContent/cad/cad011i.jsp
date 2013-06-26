@@ -14,7 +14,38 @@
 		<es:botoes codigoPrograma="cad011" />
    	
 	</div>
-
+	
+	<div id="horariosAgendados" class="alert alert-info" style="position: fixed; overflow-y: scroll; right: 0px; top: 100px; height: 420px;">
+        <button type="button" class="close" onclick="javascript:fechar('horariosAgendados')">&times;</button>
+        
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th colspan="2" style="text-align: center;">
+                        Agendamentos para o dia <span id="spanData"></span>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        Horario
+                    </th>
+                    <th>
+                        Tipo Serviço
+                    </th>
+                </tr>
+            </thead>
+            
+            <tbody id="regitros">
+            
+            
+            </tbody>
+        </table>    
+    
+    </div>
+	
+	<a href="javascript:buscar()"> AJAX</a>
+    <div id="ajx"></div>
+ 
 	<div class="container-fluid">
 		<div class="container">
 		
@@ -37,9 +68,9 @@
 			         	 <span class="add-on" id="botaoTipoInclusao" onclick="javascript:alterarTipoInclusao()" style="width: 120px; text-align: left;">
                             <fmt:message key="label.padrao.cliente.cadastrado" />
                         </span>
-			         	 <span class="add-on btn" id="botaoTipoInclusao" onclick="javascript:alterarTipoInclusao()">
-                            <i class="icon-refresh"></i>
-                        </span>
+<!-- 			         	 <span class="add-on btn" id="botaoTipoInclusao" onclick="javascript:alterarTipoInclusao()"> -->
+<!--                             <i class="icon-refresh"></i> -->
+<!--                         </span> -->
    					</div>
 				</div>
 					
@@ -48,9 +79,9 @@
 	                    <label for="proprietario" class="control-label"><fmt:message key="label.padrao.proprietario"/></label>
 	                    <div class="controls input-append">
 	                        <s:select name="agendamentoVo.codigoProprietario" id="agendamentoVo.codigoProprietario" list="listaPessoa" listKey="codigoPessoa" listValue="nome" emptyOption="true" onchange="javascript:buscaVeiculosPorCliente(this.value);" cssClass="span4"/>
-	                        <span class="add-on btn" id="adicionaProprietario"  onclick="javascript:mostrarCampoBusca('spanProprietario')">
-	                           <i class="icon-filter"></i>
-	                        </span>
+<!-- 	                        <span class="add-on btn" id="adicionaProprietario"  onclick="javascript:mostrarCampoBusca('spanProprietario')"> -->
+<!-- 	                           <i class="icon-filter"></i> -->
+<!-- 	                        </span> -->
 	                        <span class="hide busca" id="spanProprietario">
 		                        <s:textfield name="campoBuscaProprietario" id="descricaoMenu" required="required" cssClass="span4" />
 		                        <span class="add-on btn" id="adicionaProprietario">
@@ -64,9 +95,9 @@
 	                    <label for="veiculo" class="control-label"><fmt:message key="label.padrao.veiculo"/></label>
 	                    <div id="selecaoVeiculo" class="controls input-append">
 	                        <s:select name="agendamentoVo.codigoVeiculo"  id="listaVeiculos" list="#{ }" cssClass="span4"/>
-	                        <span class="add-on btn" id="adicionaProprietario" onclick="javascript:mostrarCampoBusca('spanVeiculo')">
-	                           <i class="icon-filter"></i>
-	                        </span>
+<!-- 	                        <span class="add-on btn" id="adicionaProprietario" onclick="javascript:mostrarCampoBusca('spanVeiculo')"> -->
+<!-- 	                           <i class="icon-filter"></i> -->
+<!-- 	                        </span> -->
 	                        <span class="hide busca" id="spanVeiculo">
 		                        <s:textfield name="campoBuscaVeiculo" id="descricaoMenu" required="required" cssClass="span4" />
 		                        <span class="add-on btn" id="adicionaProprietario">
@@ -122,7 +153,7 @@
                    <label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
                    <div class="controls input-append">
                        <s:textfield id="dataAgendamento" name="agendamentoVo.dataAgendamento" cssClass="span2 data "/>
-                       <span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
+<!--                        <span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span> -->
                    </div>
                </div>
                
@@ -130,11 +161,18 @@
                    <label for="hora" class="control-label"><fmt:message key="label.padrao.hora.inicio"/></label>
                    <div class="controls input-append">
                        <s:textfield id="horaInicioEnsaio" name="agendamentoVo.horaAgendamento" cssClass="span2"/>
-                       <span class="add-on btn" onclick="javascript:setHoraAtual('horaInicioEnsaio')">
-                          <i class="icon-time"></i>
-                       </span>
+<!--                        <span class="add-on btn" onclick="javascript:setHoraAtual('horaInicioEnsaio')"> -->
+<!--                           <i class="icon-time"></i> -->
+<!--                        </span> -->
                    </div>
                </div>
+               <div class="control-group">
+                    <label for="gru" class="control-label"><fmt:message key="label.padrao.gru"/></label>
+                    <div class="controls input-append">
+                        <s:textfield name="agendamentoVo.gru" maxlength="18" value="" id="GruNumDocumento" required="required" cssClass="span4" />
+                        <a id="consultar" class="btn">Consultar</a>
+                    </div>
+                </div>
 		       <div id="divAviso" class="alert alert-block" style="overflow; position:absolute; display: none; width: 300px; top: 150px; right: 10px;">
                     <h4>Aviso!!!</h4>
 	               <div id="mensagemAviso"></div>
@@ -145,6 +183,9 @@
 			<es:mensagemErro />
 			
 		</div>
+	</div>
+	<div id="retornoBuscaGru" class="well">
+	
 	</div>
 
     <div class="modal hide" id="myModal">
@@ -177,6 +218,8 @@
 	$(document).ready(function(){
 		
 		var acao = $('#ac').val();
+		
+		mostrarAgendamentos();
 
 		if(acao == 'excluir'){
 			irParaBrowser('cad011');
@@ -191,14 +234,32 @@
             
         });
 	    
-	    $('#horaEnsaio').mask('99:99');
+	    $('#consultar').click(function(){
+	    	
+	    	var numeroGru = $('#GruNumDocumento').val();
+	    	
+	    	var newForm = jQuery('<form>', {
+	            'action': 'http://dipin.inmetro.rs.gov.br/scw/pagamentos/consultar',
+	            'method':'post',
+	            'target': '_blank'
+	        }).append(jQuery('<input>', {
+	            'name': 'data[Gru][num_documento]',
+	            'value': numeroGru,
+	            'type': 'hidden'
+	        }));
+	        newForm.submit();
+	    	
+	    });
+	    
+	    $('#dataAgendamento').change(function(){
+	    	
+	    	mostrarAgendamentos();
+	    	
+	    });
+	    
+	    $('#dataAgendamento').mask('99/99/9999');
+	    $('#horaInicioEnsaio').mask('99:99');
         
-        $('#dataAtual').click(function(){
-            
-            setDataAtual('dataAgendamento');
-            
-        });
-		
 		
 		$('#cad011').validate({
 
@@ -217,14 +278,48 @@
 			errorElement: "li",
 			
             rules:{
-            	"agendamentoVo.descricao":{
+            	"agendamentoVo.codigoProprietario":{
                 	required:true
+                },
+            	"agendamentoVo.codigoVeiculo":{
+                	required:true
+                },
+            	"agendamentoVo.codigoTipoServico":{
+                	required:true
+                },
+                "agendamentoVo.dataAgendamento":{
+                    required:true,
+                    dateBR:true
+                },
+                "agendamentoVo.horaAgendamento":{
+                    required:true,
+                    timeBR:true
+                },
+                "agendamentoVo.gru":{
+                    minlength:18,
+                    number:true
                 }
                 
             },
             messages:{
-            	"agendamentoVo.descricao":{
+            	"agendamentoVo.codigoProprietario":{
                     required: "O campo Descrição é obrigatório."	
+                },
+            	"agendamentoVo.codigoVeiculo":{
+                    required: "O campo Veículo é obrigatório."	
+                },
+            	"agendamentoVo.codigoTipoServico":{
+                    required: "O campo Tipo de Serviço é obrigatório."	
+                },
+            	"agendamentoVo.dataAgendamento":{
+                    required: "O campo Data Agendamento é obrigatório."	
+                },
+            	"agendamentoVo.horaAgendamento":{
+                    required: "O campo Hora Agendamento é obrigatório."	
+                },
+            	"agendamentoVo.gru":{
+                    minlength: "O campo GRU deve conter {0} números",
+                    number: "O campo GRU deve ser preechido apenas por números."
                 }
             }
 	    });
@@ -254,7 +349,9 @@
 		
 		var $codigo = $('#codigoAgendamento').val();
 		
-		if(buscaProximoCampo() == true){
+		console.log('buscaProximoCampo(): '+buscaProximoCampo());
+		
+		if(buscaProximoCampo() == 'true'){
 			
 			$('#divErros').slideUp(function(){
 				$('#divErros').css('display','none');
@@ -424,6 +521,67 @@
             
         }
         
+    }
+    
+    function fechar(idDiv){
+    	$('#'+idDiv).hide();
+    }
+    
+    function mostrarAgendamentos(){
+    	
+    	if($('#dataAgendamento').val() == null || $('#dataAgendamento').val() == ''){
+    		return;
+    	} 
+    	
+    	
+    	$.ajax({
+            url: "Cad011Action!buscarAgendamentos.action",
+            type: "POST",
+            dataType: "html",  
+            data: {
+                
+            },
+            success: function(html){   
+
+            	$('#regitros').html(html);
+            	
+            },
+            error: function(){  
+                alert('Error');
+            }
+        });
+    	
+    	
+    	
+    	$('#horariosAgendados').slideUp();
+        $('#spanData').html($('#dataAgendamento').val());
+        $('#horariosAgendados').slideDown();
+    	
+    }
+    
+    function buscar(){
+        
+    	$.ajax({
+            url: "ConsultaGruAction!buscar.action",
+            type: "post",
+            contentType: "application/json",
+            dataType: "html",  
+            data: {
+                codigoGru:'999000000009838354'
+            },
+            success: function(html){   
+                $('#retornoBuscaGru').html(html);
+                $('#retornoBuscaGru > .fakeinput3').html(html);
+                
+
+            },
+            error: function(){  
+                alert('Error');
+            }
+        });
+    
+    
+    
     }
 	
 	

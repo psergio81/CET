@@ -24,6 +24,7 @@ public class Atualiza extends BaseAtualiza {
 		atualiza.a0011(true);
 		atualiza.a0012(true);
 		atualiza.a0013(true);
+		atualiza.a0014(true);
 		
 		
 	}
@@ -308,6 +309,28 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_servico", 0, false);
 		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "gru", 30, false);
+		
+	}
+
+	
+	/**
+	 * Criar tabela Consulta GRU
+	 */
+	private void a0014(boolean rodar){
+		
+		if(!rodar){
+			return;
+		}
+		
+		String nomeTabela = "consulta_gru";
+		
+		criarTabela(NOME_BANCO, nomeTabela);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_gru", 0, false);
+		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "status", 0, false);
 		
 	}
 }
