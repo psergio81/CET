@@ -1,5 +1,5 @@
+
 <%@ include file="/include/principal.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="en">
 	<head>
@@ -88,7 +88,17 @@ $(document).ready(function(){
             }
         }
     });
+	
+	$('#loginAction input').keydown(function(e) {
+	    if (e.keyCode == 13) {
+	    	autenticar();
+	    }
+	});
+	
 });
+
+
+
 
 function autenticar(){
 	
@@ -120,7 +130,10 @@ function autenticar(){
 		    } else {
 		        $bar.width($bar.width()+100);
 		    }
-		    $bar.text($bar.width()/4 + "%");
+		    var percent = $bar.width()/4;
+		    if(percent > 1){
+		        $bar.text(percent + "%");
+		    }
 		}, 800);
 	}
 }

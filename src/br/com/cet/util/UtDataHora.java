@@ -22,7 +22,7 @@ public class UtDataHora {
 		return dateFormat.format(calendar.getTimeInMillis());
 	}
 
-	public static int dataToInteiro(String horaCompleta){
+	public static int horaToInteiro(String horaCompleta){
 		if(UtString.isNullOrEmpty(horaCompleta)){
 			return 0;
 		}

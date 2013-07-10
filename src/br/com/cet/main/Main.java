@@ -11,8 +11,6 @@ public class Main {
 	public static void main(String[] args) {
 		testeInsert();
 		testeConexaoBanco();
-		System.out.println("Michell vovó...");
-		System.out.println("Michell vovó...");
 	}
 	
 	public static void testeConexaoBanco(){

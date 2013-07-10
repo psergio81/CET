@@ -88,6 +88,22 @@ public class AgendamentoVo extends EstruturaVo{
 		this.statusGru = statusGru;
 	}
 	
-	
+	public String getStatusGruFormatado(){
+		switch (statusGru) {
+		case "1":
+			
+			return "Ativa";
+
+		case "2":
+			
+			return "Inativa";
+			
+		case "0":
+			
+			return "Não Consultada";
+		}
+		
+		return "";
+	}
 		
 }

@@ -31,7 +31,7 @@ public class ResultJsonHelper {
 			out.print(getJson());
 			out.flush();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return null;
 	}

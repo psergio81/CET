@@ -135,7 +135,7 @@ public class BaseAtualiza extends BaseDao {
 		try {  
 			connection = getConnection();
 			
-			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s INT NULL ;", nomeBanco,nomeTabela,nomeCampo);
+			qry = String.format("ALTER TABLE %s.%s ADD COLUMN %s INT NULL DEFAULT 0 ;", nomeBanco,nomeTabela,nomeCampo);
 			
 			Statement statement = connection.createStatement();
 			statement.execute(qry);

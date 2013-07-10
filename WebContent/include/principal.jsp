@@ -30,6 +30,9 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/padrao/bootstrap/css/dashboard.css">
 
+<c:set var="imagens" value="${pageContext.request.contextPath}/imagens" />
+<c:set var="icones" value="${pageContext.request.contextPath}/icones" />
+
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">

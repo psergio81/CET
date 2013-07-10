@@ -22,29 +22,21 @@ public class LoginInterceptor extends SystemAction implements Interceptor{
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		 
-		System.out.println("Interceptor Login");
 		
 		try{ 
 			
-			//final ActionContext context = invocation.getInvocationContext();  
 			 Map<String, Object> session = invocation.getInvocationContext().getSession(); 
 			
-			// HttpServletRequest request = (HttpServletRequest) context.get(ActionContext.HTTP_REQUEST);  
-			 
-			 //HttpSession session = (HttpSession) context.get(ActionContext.SESSION);  
-			 
-			// HttpSession session = request.getSession(true);
-			 
 			 
 	         if (session.containsKey("usuarioLogadoVo")) {
 	        	 
-	        	 System.out.println("Usuario Existe na Sessao");
+//	        	 System.out.println("Usuario Existe na Sessao");
 	        	 
 	        	//esta if é para verificar os acessos do usuario, quando o mesmo for implementado
 	        	
 	         } else { 
-	        	 System.out.println("Usuario nao existe na sessao");
-	        	 System.out.println(invocation.getInvocationContext().getName());
+//	        	 System.out.println("Usuario nao existe na sessao");
+//	        	 System.out.println(invocation.getInvocationContext().getName());
 	        	 
 	        	 if(!UtString.equals(invocation.getInvocationContext().getName(), "LoginAction")){
 	        		 return "login";

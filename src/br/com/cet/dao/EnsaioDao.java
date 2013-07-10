@@ -247,8 +247,8 @@ public class EnsaioDao extends BaseDao {
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEnsaio()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoEmpresa()));
 		    ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
-		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraInicio()));
-		    ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraFim()));
+		    ps.setInt(i++, UtDataHora.horaToInteiro(ensaioVo.getHoraInicio()));
+		    ps.setInt(i++, UtDataHora.horaToInteiro(ensaioVo.getHoraFim()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 		    ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 		    ps.setString(i++, ensaioVo.getGru());
@@ -286,8 +286,8 @@ public class EnsaioDao extends BaseDao {
 			
 			ps = connection.prepareStatement(qry.toString());  
 			ps.setDate(i++, UtConverte.dataStringToDateSql( ensaioVo.getData()));
-			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraInicio()));
-			ps.setInt(i++, UtDataHora.dataToInteiro(ensaioVo.getHoraFim()));
+			ps.setInt(i++, UtDataHora.horaToInteiro(ensaioVo.getHoraInicio()));
+			ps.setInt(i++, UtDataHora.horaToInteiro(ensaioVo.getHoraFim()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoProprietario()));
 			ps.setInt(i++, UtConverte.stringToInteiro(ensaioVo.getCodigoVeiculo()));
 			ps.setString(i++, ensaioVo.getGru());

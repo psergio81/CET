@@ -7,6 +7,7 @@ public class FiltroGenericoVo extends EstruturaVo{
 	private String buscaTextoPadrao;
 	private String dataInicial;
 	private String dataFinal;
+	
 	public String getBuscaTextoPadrao() {
 		return buscaTextoPadrao;
 	}

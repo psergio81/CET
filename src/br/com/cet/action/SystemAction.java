@@ -43,9 +43,6 @@ public class SystemAction extends ActionSupport implements Preparable,SessionAwa
 		usuarioLogadoVo = (UsuarioVo) session.get("usuarioLogadoVo");
 		empresaLogadaVo = (EmpresaVo) session.get("empresaLogadaVo");
 		
-		System.out.println("usuarioLogadoVo....: "+usuarioLogadoVo);
-		
-		
 		log = new Log(usuarioLogadoVo, empresaLogadaVo);
 	} 
 	

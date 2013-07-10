@@ -25,7 +25,7 @@
                 <s:hidden name="filtrar" id="filtrar" />
 					<div class="control-group">
                 	<label for="razaoSocial" class="control-label" ><fmt:message key="label.padrao.cliente"/></label>
-   					<div class="controls">
+   					<div class="controls input-append">
 		                <s:textfield name="campoBusca" id="campoBusca" required="required" cssClass="span3" />
 						<a class="btn btn" href="javaScript:filtrar();">
 							<i class="icon-search icon">
@@ -36,7 +36,7 @@
                <div class="control-group">
                    <label for="data" class="control-label"><fmt:message key="label.padrao.data"/></label>
                    <div class="controls input-append">
-                       <s:textfield id="dataAgendamento" name="agendamentoVo.dataAgendamento" cssClass="span2 data "/>
+                       <s:textfield id="dataBuscaAgendamento" name="dataBuscaAgendamento" cssClass="span2 data "/>
                        <span class="add-on btn" id="dataAtual"><i class="icon-calendar"></i></span>
                    </div>
                </div>
@@ -44,7 +44,7 @@
                <div class="control-group">
                    <label for="data" class="control-label"><fmt:message key="label.padrao.status.gru"/></label>
                    <div class="controls input-append">
-                       <s:select name="agendamentoVo.codigoVeiculo"  id="listaVeiculos" list="#{'0':'Não Consultada', '1':'Ativa', '2':'Inativa' }" cssClass="span4" emptyOption="true"/>
+                       <s:select name="agendamentoVo.statusGru"  id="listaVeiculos" list="#{'0':'Não Consultada', '1':'Ativa', '2':'Inativa' }" cssClass="span4" emptyOption="true"/>
                    </div>
                </div>
             </s:form>
@@ -59,7 +59,7 @@
 		
 		</s:if>
 		<s:else>
-		    <table width="100%" class="table table-bordered table-striped ">
+		    <table class="table table-bordered table-striped ">
 
 				<thead>
 					<tr>
@@ -91,7 +91,7 @@
 								<a><s:property value="horaAgendamento" /></a>
 							</td>
 							<td>
-								<a><s:property value="statusGru" /></a>
+								<a><s:property value="statusGruFormatado" /></a>
 							</td>
 						</tr>
 					</s:iterator>
@@ -112,11 +112,10 @@
 			
 			$('#campoBusca').val('');
 			$('#filtrar').val(false);
-			setDataAtual('dataAgendamento');
 			
 			$('#dataAtual').click(function(){
 		            
-			    setDataAtual('dataAgendamento');
+			    setDataAtual('dataBuscaAgendamento');
 		            
 	         });
 			

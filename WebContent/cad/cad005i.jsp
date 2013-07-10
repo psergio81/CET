@@ -45,6 +45,13 @@
 				</div>
 
 		        <div class="control-group">
+		        	<label for="renavam" class="control-label"><fmt:message key="label.padrao.renavam"/></label>
+   					<div class="controls">
+			         	<s:textfield name="veiculoVo.renavam" id="renavam" required="required" cssClass="span2" maxlength="11" />
+   					</div>
+				</div>
+
+		        <div class="control-group">
 		        	<label for="descricao" class="control-label"><fmt:message key="label.padrao.tacografo"/></label>
    					<div class="controls">
 						<s:select name="tacografosDisponiveis" id="tacografosDisponiveis" list="listaTacografo" listKey="codigoTacografo" listValue="codigoSerie" emptyOption="true" ></s:select>
@@ -135,12 +142,19 @@
             rules:{
             	"veiculoVo.placa":{
                 	required:true
+                },
+                "veiculoVo.renavam":{
+                	required:true,
+                	renavam:true
                 }
                 
             },
             messages:{
             	"veiculoVo.placa":{
                     required: "O campo Placa é obrigatório."	
+                },
+                "veiculoVo.renavam":{
+                    required: "O campo Renavam é obrigatório."	
                 }
             }
 	    });

@@ -11,20 +11,19 @@ public class Atualiza extends BaseAtualiza {
 		
 		Atualiza atualiza = new Atualiza();
 		
-		atualiza.a0001(true);
-		atualiza.a0002(true);
-		atualiza.a0003(true);
-		atualiza.a0004(true);
-		atualiza.a0005(true);
-		atualiza.a0006(true);
-		atualiza.a0007(true);
-		atualiza.a0008(true);
-		atualiza.a0009(true);
-		atualiza.a0010(true);
-		atualiza.a0011(true);
-		atualiza.a0012(true);
+		atualiza.a0001(false);
+		atualiza.a0002(false);
+		atualiza.a0003(false);
+		atualiza.a0004(false);
+		atualiza.a0005(false);
+		atualiza.a0006(false);
+		atualiza.a0007(false);
+		atualiza.a0008(false);
+		atualiza.a0009(false);
+		atualiza.a0010(false);
+		atualiza.a0011(false);
+		atualiza.a0012(false);
 		atualiza.a0013(true);
-		atualiza.a0014(true);
 		
 		
 	}
@@ -161,6 +160,7 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_pessoa", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "placa", 100, false);
+		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "renavam", 15, false);
 		
 	}
 
@@ -301,6 +301,7 @@ public class Atualiza extends BaseAtualiza {
 		
 		String nomeTabela = "agendamento";
 		
+		excluirTabela(NOME_BANCO, nomeTabela);
 		criarTabela(NOME_BANCO, nomeTabela);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_agendamento", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
@@ -310,27 +311,11 @@ public class Atualiza extends BaseAtualiza {
 		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
 		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
 		criarCampo(TipoCampo.VARCHAR, NOME_BANCO, nomeTabela, "gru", 30, false);
+		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data_consulta_gru", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora_consulta_gru", 0, false);
+		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "status_gru", 0, false);
 		
 	}
 
 	
-	/**
-	 * Criar tabela Consulta GRU
-	 */
-	private void a0014(boolean rodar){
-		
-		if(!rodar){
-			return;
-		}
-		
-		String nomeTabela = "consulta_gru";
-		
-		criarTabela(NOME_BANCO, nomeTabela);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_empresa", 0, false);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "cd_gru", 0, false);
-		criarCampo(TipoCampo.DATA, NOME_BANCO, nomeTabela, "data", 0, false);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "hora", 0, false);
-		criarCampo(TipoCampo.INTEIRO, NOME_BANCO, nomeTabela, "status", 0, false);
-		
-	}
 }

@@ -4,11 +4,11 @@ import java.util.List;
 
 import br.com.cet.dao.AgendamentoDao;
 import br.com.cet.vo.AgendamentoVo;
+import br.com.cet.vo.ConsultaGruVo;
 
 public class Agendamento {
 
-	public List<AgendamentoVo> getListaAgendamento(AgendamentoVo agendamentoVo, boolean filtrar)
-			throws Exception {
+	public List<AgendamentoVo> getListaAgendamento(AgendamentoVo agendamentoVo, boolean filtrar) throws Exception {
 
 		List<AgendamentoVo> listaAgendamento = null;
 
@@ -25,14 +25,11 @@ public class Agendamento {
 
 	}
 	
-	public AgendamentoVo getAgendamentoPeloCodigo(String codigoAgendamento) throws Exception{
-		
-		AgendamentoVo agendamentoVo = new AgendamentoVo();
+	public AgendamentoVo getAgendamentoPeloCodigo(AgendamentoVo agendamentoVo) throws Exception{
 		
 		try{
 			
 			AgendamentoDao agendamentoDao = new AgendamentoDao();
-			agendamentoVo.setCodigoAgendamento(codigoAgendamento);
 			
 			agendamentoVo = agendamentoDao.getAgendamentoPeloCodigo(agendamentoVo);
 			
@@ -84,4 +81,42 @@ public class Agendamento {
 		}
 	}
 
+	public List<AgendamentoVo> getAgendamentosPorDia(AgendamentoVo agendamentoVo) {
+		
+		try {
+			
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			return agendamentoDao.getAgendamentosPorDia(agendamentoVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	public void updateStatusGru(ConsultaGruVo consultaGruVo){
+		
+		try {
+			
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			agendamentoDao.updateStatusGru(consultaGruVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public boolean isExisteGruCadastradoMesmoCodigo(AgendamentoVo agendamentoVo) {
+		
+		try {
+			
+			AgendamentoDao agendamentoDao = new AgendamentoDao();
+			return agendamentoDao.isExisteGruCadastradoMesmoCodigo(agendamentoVo);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
 }

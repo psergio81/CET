@@ -38,8 +38,6 @@ public class RecursoPadraoAction extends SystemAction{
 		Tacografo tacografo = new Tacografo();
 		Pessoa pessoa = new Pessoa();
 		
-		System.out.println("usuarioLogadoVo... "+usuarioLogadoVo);
-		
 		setQuantidadeEnsaios(String.valueOf(ensaio.getQuantidadeEnsaios(usuarioLogadoVo.getCodigoEmpresa())));
 		setQuantidadeVeiculos(String.valueOf(veiculo.getQuantidadeVeiculos(usuarioLogadoVo.getCodigoEmpresa())));
 		setQuantidadeTacografos(String.valueOf(tacografo.getQuantidadeTacografo(usuarioLogadoVo.getCodigoEmpresa())));
@@ -68,8 +66,6 @@ public class RecursoPadraoAction extends SystemAction{
 		resultJsonHelper.jsonDo(teste);
 		String json = resultJsonHelper.getJson();
 		setUltimosEnsaiosJson(json);
-		
-		
 		
 	}
 	

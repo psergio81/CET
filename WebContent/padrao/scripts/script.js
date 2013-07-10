@@ -186,6 +186,35 @@ jQuery.validator.addMethod("cpf", function(value, element) {
 
 }, "Informe um CPF v&aacute;lido."); 
 
+jQuery.validator.addMethod("renavam", function(value, element) {
+	
+	value = jQuery.trim(value);
+	
+	var digitosRenavam = new Array();		
+	var tamanho = value.length-1;
+	var total = 0;
+	var retorno;
+
+	digitosRenavam = value.split('');
+
+	for(var i = 0; i < tamanho ; i++){
+		total += digitosRenavam[i] * (i+2);
+	}
+
+	total = total % 11;
+
+	total = (total == 10 ? 0 : total);
+
+	if(total == 10 || total == digitosRenavam[tamanho]){
+		retorno = true;
+	}else{
+		retorno = false;
+	}
+	
+	return this.optional(element) || retorno;
+	
+}, "Informe um RENAVAM v&aacute;lido."); 
+
 jQuery.validator.addMethod("dateBR", function(value, element) {
 	 //contando chars
 	if(value.length!=10) return false;

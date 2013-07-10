@@ -58,11 +58,8 @@ public class Empresa {
 		}catch (Exception e) {
 			e.printStackTrace();
 			
-			System.out.println("falso");
-			
 			return false;
 		}
-		System.out.println("true");
 		return true;
 	}
 

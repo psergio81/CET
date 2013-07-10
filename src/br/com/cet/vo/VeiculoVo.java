@@ -5,6 +5,7 @@ public class VeiculoVo extends EstruturaVo{
 	private String codigoVeiculo;
 	private String codigoProprietario;
 	private String placa;
+	private String renavam;
 
 	public VeiculoVo(){}
 	
@@ -34,6 +35,14 @@ public class VeiculoVo extends EstruturaVo{
 
 	public void setCodigoProprietario(String codigoProprietario) {
 		this.codigoProprietario = codigoProprietario;
+	}
+
+	public String getRenavam() {
+		return renavam;
+	}
+
+	public void setRenavam(String renavam) {
+		this.renavam = renavam;
 	}
 	
 		

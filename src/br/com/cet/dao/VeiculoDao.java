@@ -137,9 +137,6 @@ public class VeiculoDao extends BaseDao {
 			ps.setString(i++, veiculoVo.getCodigoEmpresa());
 			ps.setString(i++, veiculoVo.getCodigoProprietario());
 
-			System.out.println("veiculoVo.getCodigoEmpresa(): "+veiculoVo.getCodigoEmpresa());
-			System.out.println("veiculoVo.getCodigoProprietario(): "+veiculoVo.getCodigoProprietario());
-			
 			rs = ps.executeQuery();  
 			
 			veiculosList = new ArrayList<VeiculoVo>();

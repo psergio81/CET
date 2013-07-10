@@ -1,6 +1,8 @@
 package br.com.cet.vo;
 
-public class EstruturaVo {
+import java.io.Serializable;
+
+public class EstruturaVo implements Serializable {
 	
 	private String rowid;
 	private String codigoUsuarioCriador;
